@@ -73,19 +73,9 @@ module WSProgressBar
 	PBM_GETPOS      = (WM_USER+8)
 	PBM_SETBARCOLOR = (WM_USER+9)
 	
-	#Icon messages
-	WM_SETICON      = 0x0080
-	
 	#Dialog Controls
 	STATIC1			= 0x142
-	STATIC2			= 0x145
-	
-	#Icon constants
-	IMAGE_ICON      = 1
-	LR_LOADFROMFILE = 0x00000040
-	LR_DEFAULTSIZE  = 0x00000010
-	ICON_BIG        = 1
-	ICON_SMALL      = 0	
+	STATIC2			= 0x145	
 	
 	#Window visibility
 	SW_SHOW	= 5
