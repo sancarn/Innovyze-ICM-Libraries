@@ -26,3 +26,7 @@ gempath:
 Step 3: Be aware that some code - even code within gems - can make assumptions about where gems are located. Some code may programmatically alter `gempath` or `gemhome`. You may need to "alter it back" in your own code.
 
 Unfortunately there isn't a lot of / any documentation on how to do this, so it will only ever be experimental.
+
+# Native Gem capabilities
+
+If you have admin rights you may be able to write files to `Gem.dir` directly. However I have not tested this so far.
