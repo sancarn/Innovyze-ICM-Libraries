@@ -73,9 +73,19 @@ module WSProgressBar
 	PBM_GETPOS      = (WM_USER+8)
 	PBM_SETBARCOLOR = (WM_USER+9)
 	
+	#Icon messages
+	WM_SETICON      = 0x0080
+	
 	#Dialog Controls
 	STATIC1			= 0x142
-	STATIC2			= 0x145	
+	STATIC2			= 0x145
+	
+	#Icon constants
+	IMAGE_ICON      = 1
+	LR_LOADFROMFILE = 0x00000040
+	LR_DEFAULTSIZE  = 0x00000010
+	ICON_BIG        = 1
+	ICON_SMALL      = 0	
 	
 	#Window visibility
 	SW_SHOW	= 5
@@ -102,20 +112,26 @@ module WSProgressBar
 		@PTHwnd = GetDlgItem.call(@Hwnd,STATIC2) 
 		raise 'Failed to get progressbar handle' if (@PTHwnd <= 0)
 		
+		#Set progress bar minimum an maximum values
+		@min = 0
+		@max = 100
+		
 		@value = 0
 		@message = "Starting..."
 		@title = "Please wait..."
 	end
 	
 	def value
-		@value = SendMessage.call(@PBHwnd, PBM_GETPOS,0,0)
+		@value    # = SendMessage.call(@PBHwnd, PBM_GETPOS,0,0)
 	end
 	
 	
 	def value=(i)
-		@value=i
-		SendMessage.call(@PBHwnd, PBM_SETPOS,i,0) 
-		SetWindowText.call(@PTHwnd, i.to_s + "%")
+		SendMessage.call(@PBHwnd, PBM_SETPOS,i.to_i,0)
+		
+		oldValue = @value
+		@value = (i.to_f - @min) / (@max-@min).abs * 100
+		SetWindowText.call(@PTHwnd, @value.to_i.to_s + "%") unless oldValue.to_i == @value.to_i
 	end
 	
 	def message
@@ -123,8 +139,10 @@ module WSProgressBar
 	end
 	
 	def message=(s)
-		@message = s
-		SetWindowText.call(@STHwnd,s)
+		if s != @message
+			@message = s
+			SetWindowText.call(@STHwnd,s)
+		end
 	end
 	
 	def title
@@ -143,6 +161,26 @@ module WSProgressBar
 	def hidden=(b)
 		@hidden=b
 		ShowWindow.call(@Hwnd,b ? SW_HIDE : SW_SHOW)
+	end
+	
+	def max
+		@max
+	end
+	
+	def max=(i)
+		raise "Maximum must be positive" if i.to_i < 0
+		@max = i.to_i
+		SendMessage.call(@PBHwnd, PBM_SETRANGE32, @min,@max)
+	end
+	
+	def min
+		@min
+	end
+	
+	def min=(i)
+		raise "Minimum must be positive" if i.to_i < 0
+		@min = i.to_i
+		SendMessage.call(@PBHwnd, PBM_SETRANGE32, @min,@max)
 	end
 end
 
