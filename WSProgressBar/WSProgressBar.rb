@@ -1,3 +1,6 @@
+#Author:       James Warren
+#Date updated: 02/10/2017
+
 require "Win32API" 
 
 module WSProgressBar
@@ -115,23 +118,41 @@ module WSProgressBar
 		#Set progress bar minimum an maximum values
 		@min = 0
 		@max = 100
+		@stepSize= 1
+		
 		
 		@value = 0
+		@textValue = 0
 		@message = "Starting..."
 		@title = "Please wait..."
+	end
+	
+	def stepSize
+		@stepSize
+	end
+	
+	def stepSize=(i)
+		@stepSize = i
+	end
+	
+	def step()
+		self.value+=@stepSize
 	end
 	
 	def value
 		@value    # = SendMessage.call(@PBHwnd, PBM_GETPOS,0,0)
 	end
 	
+	def percentage
+		@textValue
+	end
 	
 	def value=(i)
 		SendMessage.call(@PBHwnd, PBM_SETPOS,i.to_i,0)
-		
-		oldValue = @value
-		@value = (i.to_f - @min) / (@max-@min).abs * 100
-		SetWindowText.call(@PTHwnd, @value.to_i.to_s + "%") unless oldValue.to_i == @value.to_i
+		@value = i
+		oldValue = @textValue
+		@textValue = (i.to_f - @min) / (@max-@min).abs * 100
+		SetWindowText.call(@PTHwnd, @textValue.to_i.to_s + "%") unless oldValue.to_i == @textValue.to_i
 	end
 	
 	def message
@@ -183,7 +204,3 @@ module WSProgressBar
 		SendMessage.call(@PBHwnd, PBM_SETRANGE32, @min,@max)
 	end
 end
-
-
-
-
