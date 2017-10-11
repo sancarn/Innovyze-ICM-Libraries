@@ -7,3 +7,6 @@ Normally, when running a ruby script in the GUI, a Progress bar appears. However
 ## Why should I use a progress bar?
 
 Progress bars are a good visual representation of how much time your algorithm will take to finish. This is very important when it comes to usability of your applications. 
+
+## More information:
+For more information you can see my [linked in article](https://www.linkedin.com/pulse/infoworks-icm-ruby-script-progress-bar-james-warren)
