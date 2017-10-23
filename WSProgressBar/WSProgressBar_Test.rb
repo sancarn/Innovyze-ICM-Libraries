@@ -1,4 +1,3 @@
-# This script runs for roughly 44 minutes
 require_relative('WSProgressBar.rb')
 
 WSProgressBar.getInstance()
