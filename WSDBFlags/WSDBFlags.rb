@@ -57,7 +57,7 @@ end
 
 
 class WSFlag
-	attr_accessor :name, :desc, :color, :defunct
+	attr_reader :name, :desc, :color, :defunct
 	def initialize(name,desc,color,defunct)
 		@name = name
 		@desc = desc
