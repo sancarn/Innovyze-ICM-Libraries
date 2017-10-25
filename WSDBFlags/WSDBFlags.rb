@@ -113,8 +113,8 @@ class WSDBFlags < Array
 	
 end
 
-#Remove helper library:
-Object.send(:remove_const, :IWDBHelper)
+#Remove helper library: - requires more thought.
+#Object.send(:remove_const, :IWDBHelper)
 
 #~~~~~~~~
 #EXAMPLE:
