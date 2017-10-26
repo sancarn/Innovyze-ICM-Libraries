@@ -1,4 +1,3 @@
-require 'win32ole'
 class IWDBHelper
 	attr_accessor :iwdb, :type, :mdb
 	def initialize(iwdb)
