@@ -1,5 +1,4 @@
-require 'uri'
-
+require 'win32ole'
 class IWDBHelper
 	attr_accessor :iwdb, :type, :mdb
 	def initialize(iwdb)
@@ -14,14 +13,12 @@ class IWDBHelper
 		#Get useful variables
 		path = @iwdb.path
 		ext = File.extname(path)
-		
 		#Do some checks on data collected
-		if ext == "icmt"
+		if ext == ".icmt"
 			@type = "Transportable"
-		elsif ext == "icmm"
+		elsif ext == ".icmm"
 			@type = "Standalone"
 		elsif /(?<hostname>.+):(?<port>\d+)\/(?<dbname>.+)/.match(path)	
-			
 			@type = "Workgroup"
 		else
 			@type = "Unknown"
@@ -35,6 +32,7 @@ class IWDBHelper
 		if @mdb
 			return @mdb
 		end
+		
 		if self.type == "Workgroup"
 			#pe-le-file3:40000/523-110_Newthorpe_ICM6.5
 			#==>
@@ -43,6 +41,21 @@ class IWDBHelper
 			Dir.glob('\\pe-le-file3\icm-workgroups/523-110_Newthorpe_ICM6.5.sndb/*')
 			path = /(?<hostname>.+):(?<port>\d+)\/(?<dbname>.+)/.match(@iwdb.path)			
 			@mdb = "\\\\#{path[:hostname]}\\icm-workgroups/#{path[:dbname]}.sndb/master.wdb"
+		elsif self.type == "Standalone"
+			#Instantiate match
+			icmm = ""
+			
+			#Find match
+			File.open(@iwdb.path).each_line do |line|
+				icmm = /^GUID,1,(?<guid>.+?)\s*$/.match(line)
+				if icmm
+					break;
+				end
+			end
+			
+			@mdb = "#{@iwdb.path}\\..\\#{icmm[:guid]}\\"
+		elsif self.type == "Transportable"
+			@mdb = @iwdb.path
 		else
 			@mdb = nil
 		end
@@ -79,13 +92,32 @@ class WSDBFlags < Array
 			)
 			
 			if match
-				match[0][0].each_line do |line|
-					if line.strip() != ""
-						flag = /\s*(?<name>.+)\s*,\s*(?<desc>.+)\s*,\s*(?<defunct>\d)\s*,\s*(?<color>\d+)/.match(line) 
-						if flag
-							self.push(WSFlag.new(flag[:name],eval(flag[:desc]),flag[:color], flag[:defunct]))
-						end
-					end
+				@raw = match[0][0]
+			end
+		elsif _iwdb.type == "Standalone"
+			#Instantiate data
+			data = ""
+			
+			#Get data
+			File.open(_iwdb.mdb + "RootPrefs.DAT").each_line do |line|
+				data =/^flags\s*,\s*1\s*,\s*(?<flags>".+")\s*$/m.match(line)
+				if data
+					break;
+				end
+			end
+			
+			@raw = eval(data[:flags].gsub(/""/,"\\\""))
+		else
+			return 0
+		end
+		
+		@raw.each_line do |line|
+			if line.strip() != ""
+				
+				flag = /\s*(?<name>.+)\s*,\s*(?<desc>.+)\s*,\s*(?<defunct>\d)\s*,\s*(?<color>\d+)/.match(line.strip()) 
+				
+				if flag
+					self.push(WSFlag.new(flag[:name],eval(flag[:desc]),flag[:color], flag[:defunct]))
 				end
 			end
 		end
@@ -119,10 +151,10 @@ end
 #~~~~~~~~
 #EXAMPLE:
 #~~~~~~~~
-#	dbflags = WSDBFlags.new
-#	dbflags.each do |flag|
-#		puts flag.name + "," + flag.desc  + "," + flag.color
-#	end
-#	
-#	puts dbflags.keys.to_s
-#	puts dbflags.descriptions.to_s
+dbflags = WSDBFlags.new
+dbflags.each do |flag|
+	puts flag.name + "," + flag.desc  + "," + flag.color
+end
+
+puts dbflags.keys.to_s
+puts dbflags.descriptions.to_s
