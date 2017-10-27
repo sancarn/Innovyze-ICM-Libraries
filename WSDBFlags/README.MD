@@ -1,4 +1,4 @@
-# class WSDBFlags
+# class `WSDBFlags`
 
 ## Introduction to flags
 
@@ -31,7 +31,7 @@ Link: US_Invert
 
 ----
 
-## The alternative
+## In comes `WSDBFlags`
 
 So what can be done if Innovyze doesn't provide the interface?
 
@@ -42,6 +42,8 @@ In Innovyze's own words:
 Too right it is! So over the past 2 nights, after work, I have been developing a WSDBFlags class. The class itself helps you read the flag data inside your databases, and wraps the flags in an easily accessible wrapper. Here's an example test script:
 
 ```ruby
+require_relative("libs\\WSDBFlags.rb")
+
 #print all flags
 WSDBFlags.new.each do |flag|
     puts [flag.name,flag.desc,flag.defunct,flag.color].join(",")
@@ -65,6 +67,7 @@ And here's a slightly more complicated example:
 #e.g.
 # 100 - S - Surveyed 
 # 300 - AS - Assumed
+require_relative("libs\\WSDBFlags.rb")
 fields = ["ds_invert","us_invert","width"]
 flags = WSDBFlags.new
 fields.each do |field|
@@ -96,7 +99,9 @@ Due to the nature of this operation I cannot guarantee this class will work on y
 
 The algorithm works by searching the workgroup database / standalone database for the following regex pattern:
 
-	/flags.+id, description, defunct, color(?<data>(?:.|\s)*?)[\x00-\x08]/m
+```ruby
+/flags.+id, description, defunct, color(?<data>(?:.|\s)*?)[\x00-\x08]/m
+```
 
 When the string is found, it can easily be parsed with ruby, as the string itself is just a regular CSV.
 
@@ -106,8 +111,9 @@ Currently, the class is intentionally built to only read the data. You cannot cr
 
 Currently the line we search for is actually more akin the following
 
-	flags.{4}id, description, defunct, color
-
+```
+flags.{4}id, description, defunct, color
+```
 	
 where `.{4}` represents a 4 byte number which contains, I believe, the number of minutes since epoch of the model network. Testing shows that this figure is updated whenever a user attempts to change an existing flag or add a new one. Ultimately, I believe, this is the 'date flags were last modified' flag for the user flags data.
 
