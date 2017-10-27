@@ -1,4 +1,6 @@
-#class WSDBFlags
+# class WSDBFlags
+
+## Introduction to flags
 
 Data Flags are a powerful tool for recording the source and integrity of data in the model. Some types of InfoWorks ICM version controlled items, e networks, support data flags for many of their data fields.
 
@@ -8,64 +10,71 @@ At our organisation we have numerous standard flags set out for us by the water 
 
 For this reason, when we try to identify model health, it is often important to check which flags were used in the model and where in the model these flags were used. ICMExchange does provide some good ways to do this, e.g. 
 
-	net = WSApplication.current_network
-	net.row_objects("hw_conduit").each do |link|
-		puts link.conduit_width_flag
-	end
+```ruby
+net = WSApplication.current_network
+net.row_objects("hw_conduit").each do |link|
+    puts link.conduit_width_flag
+end
+```
 	
 However ICM does not provide an easy way for us programmers to find out what these flags mean.
 
 Recently when I was making a model audit algorithm in Ruby, we wanted to identify which flags in the model were non-standard and flag them up in our audit log. We also wanted to be able to generate a flag table where the counts of each flag where listed next to their specific flags and descriptions. E.G.
 
-	Link: US_Invert
-	****************************
-	| Flag | Description | Count |
-	|------|-------------|-------|
-	| #A   | Asset Data  |  800  |
-	| SY   | Surveyed    |  100  |
-	| AS   | Assumed     |  100  |
+Link: US_Invert
+
+| Flag | Description | Count |
+|------|-------------|-------|
+| #A   | Asset Data  |  800  |
+| SY   | Surveyed    |  100  |
+| AS   | Assumed     |  100  |
+
+----
+
+## The alternative
 
 So what can be done if Innovyze doesn't provide the interface?
 
 In Innovyze's own words:
 
-	Users must note that the flexible nature of the Ruby scripting language means that the language is almost infinitely flexible, ...
+> Users must note that the flexible nature of the Ruby scripting language means that the language is almost infinitely flexible, ...
 
 Too right it is! So over the past 2 nights, after work, I have been developing a WSDBFlags class. The class itself helps you read the flag data inside your databases, and wraps the flags in an easily accessible wrapper. Here's an example test script:
 
-	#print all flags
-	WSDBFlags.new.each do |flag|
-		puts [flag.name,flag.desc,flag.defunct,flag.color].join(",")
-	end
-	
-	#'S' for Surveyed, 'AS' for Assumed
-	standard_flags = ["#A", "#D", "#G","#I","#S","#V", "S", "AS"]
-	
-	#Look for non standard flags:
-	puts "Non standard flags:"
-	(WSDBFlags.new.map {|flag| standard_flags.index(flag.name) ? flag : nil}).compact
-	.each do |flag|
-		puts "#{flag.name} - #{flag.desc}"
-	end
-	
+```ruby
+#print all flags
+WSDBFlags.new.each do |flag|
+    puts [flag.name,flag.desc,flag.defunct,flag.color].join(",")
+end
+
+#'S' for Surveyed, 'AS' for Assumed
+standard_flags = ["#A", "#D", "#G","#I","#S","#V", "S", "AS"]
+
+#Look for non standard flags:
+puts "Non standard flags:"
+(WSDBFlags.new.map {|flag| standard_flags.index(flag.name) ? flag : nil}).compact
+.each do |flag|
+    puts "#{flag.name} - #{flag.desc}"
+end
+```
+
 And here's a slightly more complicated example:
-	
-	#Find and returns the counts of each flags used in DS_Invert, US_invert and Width fields of the hw_conduit table:
-	#e.g.
-	# 100 - S - Surveyed 
-	# 300 - AS - Assumed
-	fields = ["ds_invert","us_invert","width"]
-	flags = WSDBFlags.new
-	fields.each do |field|
-		puts field
-		(row_objects("hw_conduit").group_by {|link| link["#{field}_flag"] })
-		.each do |flag,links|
-				puts "#{links.length.to_s.ljust(5)} - #{flag.ljust(3)} - #{(flags.search {|f| f.name == flag}).desc}"
-		end
-	end
 
-
-
+```ruby
+#Find and returns the counts of each flags used in DS_Invert, US_invert and Width fields of the hw_conduit table:
+#e.g.
+# 100 - S - Surveyed 
+# 300 - AS - Assumed
+fields = ["ds_invert","us_invert","width"]
+flags = WSDBFlags.new
+fields.each do |field|
+    puts "#{field}:"
+    (row_objects("hw_conduit").group_by {|link| link["#{field}_flag"] })
+    .each do |flag,links|
+        puts "#{links.length.to_s.ljust(5)} - #{flag.ljust(3)} - #{(flags.search {|f| f.name == flag}).desc}"
+    end
+end
+```
 
 # Conclusion:
 
@@ -104,7 +113,7 @@ where `.{4}` represents a 4 byte number which contains, I believe, the number of
 
 It may also be interesting knowing that flags are sorted alphabetically in the database.
 
-**Testing notes**
+Tests:
 
 ```
 * With 2 new flags bytes = 1;0;0;0
