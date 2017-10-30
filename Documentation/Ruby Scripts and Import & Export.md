@@ -7,8 +7,6 @@ It is possible to customise the Open Data Import and Export Centres to some exte
 
 The scripts must be written using a text editor external to the InfoWorks ICM / InfoNet software. It is possible to use Notepad but editors designed specifically for this process are more suitable. TextPad is a suitable such program, which offers useful highlighting when editing Ruby scripts, but there are others available.
 Ruby scripts are conventionally given the 'rb' suffix e.g. 'myimport.rb', 'myexport.rb'.
-
- 
  
 ### Loading The Scripts
 
