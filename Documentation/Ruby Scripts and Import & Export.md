@@ -7,8 +7,6 @@ It is possible to customise the Open Data Import and Export Centres to some exte
 
 The scripts must be written using a text editor external to the InfoWorks ICM / InfoNet software. It is possible to use Notepad but editors designed specifically for this process are more suitable. TextPad is a suitable such program, which offers useful highlighting when editing Ruby scripts, but there are others available.
 Ruby scripts are conventionally given the 'rb' suffix e.g. 'myimport.rb', 'myexport.rb'.
- 
- <br>
 
 ### Loading The Scripts
 
@@ -62,7 +60,7 @@ b) if you set a field using the script that is also set by the normal field mapp
 
 # Instance methods of the WSImporter object
 The following methods of the WSImporter object are used to control the import:
-
+<br>
 ## writeRecord
 
 ### Purpose 
@@ -73,8 +71,7 @@ This is used to determine whether the record should be written.
 ```ruby
 obj.writeRecord = false
 ```
-
-
+<br>
 ## deleteRecord
 
 ### Purpose 
@@ -85,7 +82,7 @@ As writeRecord but used to determine whether the corresponding object should be 
 ```ruby
 obj.deleteRecord = true
 ```
-
+<br>
 ## tableAbandoned
 
 ### Purpose 
@@ -94,7 +91,7 @@ This is used to determine whether the table should be abandoned i.e. no further 
 ```ruby
 obj.tableAbandoned = true
 ```
-
+<br>
 ## logMessage
 
 ### Purpose 
@@ -109,7 +106,7 @@ logMessage(message,type)
 **message** - The text to display.
 
 **type** - 'E', 'W' and 'I' for error, warning and information respectively. If the 2nd parameter is not one of these three strings, the message is treated as an error message. 
-
+<br>
 ## []
 
 ### Purpose 
@@ -123,7 +120,7 @@ if(obj['my field 26']='D') logMessage("Where 'my field 26' is 'D'",'I')
 ```
 
 Field names which are read refer to the names in the import data source, names which are written refer to field names in the InfoWorks network. If a column in the import layer has the same name as a column in the infoworks table, a 1 is appended to the end of it's name.
-
+<br>
 ## message_box
 
 ### Purpose 
@@ -164,7 +161,7 @@ elsif ret=='Yes'
 	@setusernumbers=true
 End
 ```
-
+<br>
 ## input_box(prompt,title,default)
 
 ### Syntax
