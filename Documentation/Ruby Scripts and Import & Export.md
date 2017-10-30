@@ -389,3 +389,6 @@ This allows the user to use multiple classes in the same script.
 
 
 
+## Other resources:
+
+http://blog.innovyze.com/2015/03/11/nifty-script-for-creating-a-unique-id-in-the-open-data-import-setting/
