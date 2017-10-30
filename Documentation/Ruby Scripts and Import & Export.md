@@ -85,6 +85,7 @@ As writeRecord but used to determine whether the corresponding object should be 
 obj.deleteRecord = true
 ```
 <br>
+
 ## tableAbandoned
 
 ### Purpose 
