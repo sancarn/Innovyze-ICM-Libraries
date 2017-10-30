@@ -120,7 +120,7 @@ logMessage(message,type)
 ## []
 
 ### Purpose 
-Used to get and set field values. `[<field name>]` gets data from the table you are importing from. `[<field name>]=` sets field values in the model network.
+Used to get and set field values. `obj[<field name>]` gets data from the table you are importing from. `obj[<field name>] = something` sets field values in the model network. I.E. Field names which are read refer to the names in the import data source, names which are written refer to field names in the InfoWorks network. 
 
 ### Syntax
 
@@ -131,7 +131,7 @@ if(obj['my field 26']='D') logMessage("Where 'my field 26' is 'D'",'I')
 
 ### Other information
 
-Field names which are read refer to the names in the import data source, names which are written refer to field names in the InfoWorks network. If a column in the import layer has the same name as a column in the infoworks table, a 1 is appended to the end of it's name. Finally if the field being requested is an empty string, i.e. `obj[""]` the expression will return the **0 based rowid** of the object in the GIS table.
+If the field being requested is an empty string, i.e. `obj[""]` the expression will return the **0 based rowid** of the object in the GIS table.
 
 It is currently unknown whether you are able to extract geographic data from the `WSImporter` class.
 <br>
@@ -193,6 +193,27 @@ input_box(prompt,title,default)
 **Default** – the default value for the input, this is initially the value in the editable text box.
 
 If OK is pressed, the value in the text box will be returned as a string, otherwise an empty string will be returned (in line with the equivalent VBScript function).
+
+```ruby
+#Import into a new model network, each with a us_node_id = obj[""]
+class Importer
+    def Importer.onEndRecordNode(obj)
+        obj["us_node_id"] = obj[""]
+    end
+end
+```
+
+```ruby
+#Import into a new model network, each with a unique GUID as a US_ID, DS_ID can be calculated later
+class Importer
+    def Importer.onBeginNode()
+        require 'securerandom'    
+    end
+    def Importer.onEndRecordNode(obj)
+        obj["us_node_id"] = SecureRandom.uuid 
+    end
+end
+```
 
 ```ruby
 class Importer
