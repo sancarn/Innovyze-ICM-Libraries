@@ -131,7 +131,9 @@ if(obj['my field 26']='D') logMessage("Where 'my field 26' is 'D'",'I')
 
 ### Other information
 
-Field names which are read refer to the names in the import data source, names which are written refer to field names in the InfoWorks network. If a column in the import layer has the same name as a column in the infoworks table, a 1 is appended to the end of it's name. Finally if the field being requested is an empty string, i.e. `obj[""]` the expression will return the rowid of the object in the GIS table.
+Field names which are read refer to the names in the import data source, names which are written refer to field names in the InfoWorks network. If a column in the import layer has the same name as a column in the infoworks table, a 1 is appended to the end of it's name. Finally if the field being requested is an empty string, i.e. `obj[""]` the expression will return the **0 based rowid** of the object in the GIS table.
+
+It is currently unknown whether you are able to extract geographic data from the `WSImporter` class.
 <br>
 
 ## message_box
