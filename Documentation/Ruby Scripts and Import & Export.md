@@ -169,7 +169,7 @@ End
 ```
 <br>
 
-## input_box(prompt,title,default)
+## input_box
 
 ### Syntax
 
