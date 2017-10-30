@@ -70,12 +70,14 @@ And here's a slightly more complicated example:
 require_relative("libs\\WSDBFlags.rb")
 
 net = WSApplication.current_network
+links = net.row_objects("hw_conduit")
+puts "Total conduits: #{links.length}"
 fields = ["ds_invert","us_invert","conduit_width"]
 flags = WSDBFlags.new
 fields.each do |field|
     puts ""
     puts "#{field}:"
-    (net.row_objects("hw_conduit").group_by {|link| link["#{field}_flag"] })
+    (links.group_by {|link| link["#{field}_flag"] })
     .each do |flag,links|
         puts "#{links.length.to_s.ljust(5)} - #{flag.ljust(3)} - #{ flag == "" ? "No flag" : flags[flags.index {|f| f.name == flag}].desc}"
     end
