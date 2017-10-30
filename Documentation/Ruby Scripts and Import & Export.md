@@ -120,7 +120,7 @@ logMessage(message,type)
 ## []
 
 ### Purpose 
-Used to get and set field values
+Used to get and set field values.
 
 ### Syntax
 
@@ -129,7 +129,9 @@ obj['user_number_1']=123
 if(obj['my field 26']='D') logMessage("Where 'my field 26' is 'D'",'I')
 ```
 
-Field names which are read refer to the names in the import data source, names which are written refer to field names in the InfoWorks network. If a column in the import layer has the same name as a column in the infoworks table, a 1 is appended to the end of it's name.
+### Other information
+
+Field names which are read refer to the names in the import data source, names which are written refer to field names in the InfoWorks network. If a column in the import layer has the same name as a column in the infoworks table, a 1 is appended to the end of it's name. Finally if the field being requested is an empty string, i.e. `obj[""]` the expression will return the rowid of the object in the GIS table.
 <br>
 
 ## message_box
