@@ -139,7 +139,7 @@ class WSDBFlags < Array
 	end
 	
 	def defunctFlags
-		self.map {|flag| flag.defunct }
+		(self.map {|flag| flag.defunct ==1 ? flag.name : nil }).compact
 	end
 	
 end
