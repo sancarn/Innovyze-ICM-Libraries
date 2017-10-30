@@ -1,5 +1,10 @@
 # Ruby In ODIC / ODXC
+
 Version 2.01 27-Jan-2013 (updated for ICM 5.0 / InfoNet 5.0)
+
+### Author notes
+
+This documentation is a remake of existing documentation provided by Innovyze Support. However I expect to improve this documentation and if any others have suggestions feel free to make a push/pull request to increase the quality of the documentation more.
 
 ## INTRODUCTION
 
@@ -325,7 +330,8 @@ class Exporter
 	def Exporter.Penguin(obj)
 		return 'yyy'+obj['x'].to_s+'zzz'+obj['y'].to_s
 	end
-end```
+end
+```
 
 In array fields it is possible to get values for the current row of the array in this manner e.g. obj['details.code']
 
