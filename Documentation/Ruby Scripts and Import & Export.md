@@ -25,30 +25,36 @@ The methods must be methods of the class itself rather than methods of a base cl
 Open Data Import Centre
 
 The user should define a class Importer containing a number of methods with names of the form
+
+```
 OnBegin<tablename>
 OnEnd<tablename>
 OnBeginRecord<tablename>
 OnEndRecord<tablename>
+```
+
 are called as follows:
 
-•	OnBegin<tablename> - before importing the table 
-•	OnEnd<tablename> - after importing the table 
-•	OnBeginRecord<tablename> - before each record is processed. Specifically, this is called AFTER the data is read but before any processing is done. Processing in this case means the normal assignment of the import data to the InfoWorks ICM fields based on the field mapping set up on the Open Data Import Centre Dialog
-•	OnEndRecord<tablename> - after the normal assignment of the import data to the InfoWorks ICM fields BUT before the data is written to the master database. 
+* OnBegin<tablename> - before importing the table 	
+* OnEnd<tablename> - after importing the table 
+* OnBeginRecord<tablename> - before each record is processed. Specifically, this is called AFTER the data is read but before any processing is done. Processing in this case means the normal assignment of the import data to the InfoWorks ICM fields based on the field mapping set up on the Open Data Import Centre Dialog
+* OnEndRecord<tablename> - after the normal assignment of the import data to the InfoWorks ICM fields BUT before the data is written to the master database. 
 
 These methods have one parameter which is of class WSImporter. This object is used to set and get field values, choose whether to add or update or delete a record, whether to log a message and whether to abandon further import into the table.
 Only some of these methods may be used in the OnBegin<table> and OnEnd<table> methods - see below.
 
 The table names are the names which appear in the Select Table To Import Data into list on the Open Data Import Centre dialog but with any spaces in the name removed, for example
-•	Node
-•	Conduit
-•	2DZone
-•	FlapValve
+
+* Node
+* Conduit
+* 2DZone
+* FlapValve
+
 If you are using a sub-table e.g. Details for CCTV Surveys then the name of the subtable should follow the table name without any spaces e.g. CCTVSurveyDetails. 
 
 ## Using the methods
-•	OnBegin<tablename> - the primary purpose of OnBegin is to initialise values in class instance variables that are used later in the record. 
-•	OnBeginRecord<tablename> and OnEndRecord<tablename> - it makes little difference whether you do things in OnBeginRecord or OnEndRecord, except that
+* OnBegin<tablename> - the primary purpose of OnBegin is to initialise values in class instance variables that are used later in the record. 
+* OnBeginRecord<tablename> and OnEndRecord<tablename> - it makes little difference whether you do things in OnBeginRecord or OnEndRecord, except that
 a) if you know you are going to abandon a record, you may as well do it in OnBeginRecord. This will speed up the import process 
 b) if you set a field using the script that is also set by the normal field mapping, you must do this in OnEndRecord. Otherwise the field will be overwritten by the normal assignment 
 
