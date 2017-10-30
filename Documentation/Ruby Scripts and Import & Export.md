@@ -258,6 +258,24 @@ class Importer
 end
 ```
 
+```ruby
+#If a previous ruby instance has been initialised, then the row which is currently being imported to will be logged to the message log.
+class Importer
+    def Importer.OnBeginConduit(imp)
+        if WSApplication
+            @conds = WSApplication.current_network.row_objects("hw_conduit").length
+        else
+            @conds = 0
+        end
+    end
+    
+    def Importer.OnEndRecordConduit(imp)
+        imp.logMessage((imp[""].to_i+@conds.to_i).to_s,"I")
+        imp.writeRecord = false
+    end
+end
+```
+
 # Open Data Export Centre
 
 The script mechanism for export is different from the script mechanism for imports. 
@@ -345,3 +363,8 @@ Behaviour in InfoNet Exchange. In InfoNet Exchange, rather than using the fixed 
 In the methods odec_export_ex and odic_import_ex the class is set in the options 'hash' e.g `myhash['Callback Class']=MyClass`
 
 This allows the user to use multiple classes in the same script.
+
+
+
+
+
