@@ -120,7 +120,7 @@ logMessage(message,type)
 ## []
 
 ### Purpose 
-Used to get and set field values.
+Used to get and set field values. `[<field name>]` gets data from the table you are importing from. `[<field name>]=` sets field values in the model network.
 
 ### Syntax
 
