@@ -197,7 +197,7 @@ If OK is pressed, the value in the text box will be returned as a string, otherw
 ```ruby
 #Import into a new model network, each with a us_node_id = obj[""]
 class Importer
-    def Importer.onEndRecordNode(obj)
+    def Importer.onEndRecordConduit(obj)
         obj["us_node_id"] = obj[""]
     end
 end
@@ -206,10 +206,10 @@ end
 ```ruby
 #Import into a new model network, each with a unique GUID as a US_ID, DS_ID can be calculated later
 class Importer
-    def Importer.onBeginNode()
+    def Importer.onBeginConduit()
         require 'securerandom'    
     end
-    def Importer.onEndRecordNode(obj)
+    def Importer.onEndRecordConduit(obj)
         obj["us_node_id"] = SecureRandom.uuid 
     end
 end
