@@ -14,6 +14,6 @@ fields.each do |field|
     puts "#{field}:"
     (links.group_by {|link| link["#{field}_flag"] })
     .each do |flag,links|
-        puts "#{links.length.to_s.ljust(5)} - #{flag.ljust(3)} - #{ flag == "" ? "No flag" : flags[flags.index {|f| f.name == flag}].desc}"
+        puts "#{links.length.to_s.ljust(5)} - #{flag.ljust(3)} - #{ flag == "" ? "No flag" : begin flags[flags.index {|f| f.name == flag}].desc rescue "Nil" end}"
     end
 end
