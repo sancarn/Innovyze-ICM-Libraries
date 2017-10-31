@@ -146,14 +146,3 @@ end
 
 #Remove helper library: - requires more thought.
 #Object.send(:remove_const, :IWDBHelper)
-
-#~~~~~~~~
-#EXAMPLE:
-#~~~~~~~~
-dbflags = WSDBFlags.new
-dbflags.each do |flag|
-	puts flag.name + "," + flag.desc  + "," + flag.color
-end
-
-puts dbflags.keys.to_s
-puts dbflags.descriptions.to_s
