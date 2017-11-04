@@ -112,7 +112,7 @@ if !iwdb.model_object_from_type_and_id("Selection list",localStorage[:id])
 end
 ```
 
-Here we create a new object with our application identifier as a name. I created the application identifier by going to [guidgen.com](https://www.guidgen.com/) and copying the GUID/UUID generated. The reason programmers use GUIDs is because the probability of them not being unique is tiny.
+Here we create a new object with our application identifier. I created the application identifier by going to [guidgen.com](https://www.guidgen.com/) and copying the GUID/UUID generated. The reason programmers use GUIDs is because the probability of them not being unique is tiny.
 
 > While each generated GUID is not guaranteed to be unique, the total number of unique keys (2^128 or 3.4×10^38) is so large that the probability of the same number being generated twice is very small. For example, consider the observable universe, which contains about 5×10^22 stars; every star could then have 6.8×10^15 universally unique GUIDs.
 
