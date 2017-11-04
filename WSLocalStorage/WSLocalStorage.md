@@ -59,7 +59,7 @@ puts Sandbox.new.instance_eval("@@class")
 puts "---"
 ```
 
-The above code should return this to the console:
+The above code should return:
 
 ```
  ---
@@ -69,15 +69,15 @@ The above code should return this to the console:
 => nil
 ```
 
-ICM's Ruby virtual machine works in exactly the same way to this, and I wouldn't be surprised if the implementation was identical. The important thing to note though is this allows us to share data between scripts ran in the **same instance** of ICM, **in-process** without the need for any external files.
+ICM's RubyVM works in exactly the same way to this, and I wouldn't be surprised if the implementation was identical. The important thing to note is that this allows us to share data between scripts ran in the **same instance** of ICM, **in-process without the need for any external files**.
 
-To make this local stroage easier to manage, I've made a class to easily give you access to global storage for your application. This works through an 'identifier' system. In the end, we'd rather not have many global variables pollution the global namespace. It is better to build all variables into a single global variable.
+To make this local storage easier to manage, I've made a class, `WSLocalStorage`, which gives access to the power of this storage without polluting the global namespace.
 
 ## So what?
 
 So what's the use of this behaviour? Let's look at an example.
 
-Say you want to make a ruby application which helps users build selection lists from the ground up. Traditionally in ICM there is no way to 'build up' a selection list. You can make a selection, and then make a selection list from your selection, but if you want to overwrite your existing selection list with a new one, there is no easy way to do this. Instead let's build a set of scripts which helps users build up, overwrite, delete from and clear their selection lists.
+Say you want to make a ruby application which helps users build selection lists from the ground up. Traditionally in ICM there is no way to 'build up' a selection list. You can make a selection, and then make a selection list from your selection, but if you want to overwrite your existing selection list, add to it, or remove objects from it there is no easy way built into ICM. Instead let's build a set of scripts which helps users build up, overwrite, delete from and clear their selection lists.
 
 The different script files we'll make are the following:
 
@@ -89,16 +89,18 @@ SL_Clear.rb
 SL_Overwrite.rb
 ```
 
-We will first select a selection list. The easiest way to do this is by providing the ID of the selection list to operate on. This is where `SL_Select.rb` comes in handy. `SL_Select.rb` will select the selection list to operate on and store this data in a `WSLocalStorage` object. From here it can easily be accessed for `SL_Append`, `SL_Remove`, `SL_Clear` and `SL_Overwrite` operations.
+`SL_Select.rb` will be used to allow the user to select the selection list to operate on. The easiest way to do this is by getting the user to provide the ID of the selection list to operate on. `SL_Select.rb` will then store this data in a `WSLocalStorage` object. From here it can easily be accessed for `SL_Append`, `SL_Remove`, `SL_Clear` and `SL_Overwrite` operations.
 
 **SL_Select.rb**
 
 ```ruby
 #'Selection List' operations GUID: a8344089-9f06-4058-9955-57283c090659
 localStorage = WSLocalStorage.new("a8344089-9f06-4058-9955-57283c090659")
+
+#Get the user to select the selection list ID they wish to operate on:
 localStorage["id"] = WSApplication.input_box("Enter selection list ID:", "Select selection list", "").to_i
 
-#Check that model object is of type selection list:
+#Check that model object is of type selection list, and error if not:
 iwdb = WSApplication.current_database
 if !iwdb.model_object_from_type_and_id("Selection list",localStorage["id"])
   localStorage["id"] = 0
@@ -106,23 +108,23 @@ if !iwdb.model_object_from_type_and_id("Selection list",localStorage["id"])
 end
 ```
 
-Here we create a new object with our application identifier as a name. I greated this application identifier by going to [this website](https://www.guidgen.com/) and copying the GUID/UUID generated. The reason programmers use GUIDs is because the probability of them not being unique is tiny.
+Here we create a new object with our application identifier as a name. I created the application identifier by going to [guidgen.com](https://www.guidgen.com/) and copying the GUID/UUID generated. The reason programmers use GUIDs is because the probability of them not being unique is tiny.
 
 > While each generated GUID is not guaranteed to be unique, the total number of unique keys (2^128 or 3.4×10^38) is so large that the probability of the same number being generated twice is very small. For example, consider the observable universe, which contains about 5×10^22 stars; every star could then have 6.8×10^15 universally unique GUIDs.
 
-For this reason we are creating almost certainty that our application id is unique and not going to clash with any other applications anyone else has made. Then we set the `id` key of our personal application space to the ID of a selection list given by the user. Afterwards we check whether the ID provided is indeed a selection list. If not then we notify the user of their mistakes and set the `id` key of our personal application space to `0`, which ensures that no further operations will be run on this id. Next, let's work on the operations.
+For this reason we are creating an identifier which is almost certainly unique and is not going to clash with any other applications anyone else has made. Then we set the `id` key of our `WSLocalStorage` object to the ID of a selection list given by the user. Afterwards we check whether the ID provided is indeed a selection list. If not then we'll notify the user and set the `id` key of our `WSLocalStorage` object to `0`, which'll be useful for stoppign future errors. Next, let's work on the operations.
 
 **SL_Append.rb**
 
 ```ruby
 localStorage = WSLocalStorage.new("a8344089-9f06-4058-9955-57283c090659")
 if localStorage["id"] && localStorage["id"] != 0
-  WSApplication.load_selection localStorage["id"]		#Add the old selection list to the current selection
-  WSApplication.save_selection localStorage["id"]		#Save the selection
+  WSApplication.load_selection localStorage["id"]
+  WSApplication.save_selection localStorage["id"]
 end
 ```
 
-Here we use our application identifier to grab the current localStorage object currently setup by SL_Select. Then we make sure the id stored in the application is non `0` and non `nil`. This prevents errors discussed earlier. Then we use this ID to load the selection list. When using `load_seletion` ICM actually appends the selection list to the current selection (as if you were holding control while draggin the selection list). Ultimately ICM has already done the job of appending the selection lists for us, now we just need to save the changes, which we do with `save_selection`.
+Here we use our application identifier to grab the current localStorage object currently setup by `SL_Select`. Then we make sure the `id` stored in the `WSLocalStorage` object is non `0` and non `nil`. Then we use this ID to load the selection list. When using `load_seletion` ICM actually appends the selection list to the current selection (as if you were holding control while draggin the selection list). Ultimately ICM has already done the job of appending the selection lists for us, now we just need to save the changes, which we do with `save_selection`.
 
 **SL_Remove.rb**
 
@@ -178,6 +180,6 @@ if localStorage["id"] && localStorage["id"] != 0
 end
 ```
 
-And to finish it off, to overwrite a selection list, we simply save the current selection list to the current chosen selection list.
+And to finish it off, to overwrite a selection list, we simply save the current selection list to the current chosen selection list. With the above ruby scripts we can have much more flexibility over our selection lists in InfoWorks ICM and InfoNet.
 
-With the above ruby scripts we can have much more flexibility over our selection lists in InfoWorks ICM and InfoNet.
+Hopefully this shows you the power of `WSLocalStorage` object. It really allows users to interact with your ruby scripts, in the application they were designed in. Because currently in ICM the amount a user can really intergrate with ICM is very limited.
