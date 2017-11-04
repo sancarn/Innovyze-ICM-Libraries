@@ -1,6 +1,6 @@
 # ICMExchange (Ruby) - Cross script data sharing
 
-When writing software it is often useful to keep track of changes made by the user. For this you need to be able to store data until it's required in the future. When making ruby applications in ICM, the same is true but ICM provides no way to access data between scripts. Or does it?
+It is often useful to allow the user to put your application in a certain state which can then be acted upon at a later time. For this you need to be able to store data until it's required in the future. When making ruby applications in ICM, the same is true but ICM provides no way to access data between scripts. Or does it?
 
 To investigate further we need to explore how the ruby runtime in ICM, or at least, an accurate representation of how it works.
 
