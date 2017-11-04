@@ -93,7 +93,7 @@ SL_Clear.rb
 SL_Overwrite.rb
 ```
 
-`SL_Select.rb` will be used to allow the user to select the selection list to operate on. The easiest way to do this is by getting the user to provide the ID of the selection list to operate on. `SL_Select.rb` will then store this data in a `WSLocalStorage` object. From here it can easily be accessed for `SL_Append`, `SL_Remove`, `SL_Clear` and `SL_Overwrite` operations.
+`SL_Select.rb` will be used to allow the user to select the selection list to operate on. The easiest way to do this is by getting the user to provide the selection list's ID. `SL_Select.rb` will then store this data in a `WSLocalStorage` object. From here it can easily be accessed for `SL_Append`, `SL_Remove`, `SL_Clear` and `SL_Overwrite` operations.
 
 **SL_Select.rb**
 
