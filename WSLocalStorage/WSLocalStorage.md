@@ -2,7 +2,7 @@
 
 It is often useful to allow the user to put your application in a certain state which can then be acted upon at a later time. For this you need to be able to store data until it's required in the future. When making ruby applications in ICM, the same is true but ICM provides no way to access data between scripts. Or does it?
 
-To investigate further we need to explore how the ruby runtime in ICM, or at least, an accurate representation of how it works.
+To investigate further we need to explore how the ruby runtime in ICM works, or at least an accurate representation of it.
 
 The first thing to note about the ruby runtime in ICM, is that ICM always appears to use the same virtual machine to run all ruby scripts in one process. You can see it as the following example:
 
