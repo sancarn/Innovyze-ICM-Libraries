@@ -128,7 +128,7 @@ if localStorage[:id]
 end
 ```
 
-Here we use our application identifier to grab the current localStorage object currently setup by `SL_Select`. Then we make sure the `id` stored in the `WSLocalStorage` object is non `0` and non `nil`. Then we use this ID to load the selection list. When using `load_seletion` ICM actually appends the selection list to the current selection (as if you were holding control while draggin the selection list). Ultimately ICM has already done the job of appending the selection lists for us, now we just need to save the changes, which we do with `save_selection`.
+Here we use our application identifier to grab the current localStorage object currently setup by `SL_Select`. Then we make sure the `id` stored in the `WSLocalStorage` object is non `nil`. Then we use this ID to load the selection list. When using `load_seletion` ICM actually appends the selection list to the current selection (as if you were holding ctrl while dragging the selection list into the geoplan). Ultimately ICM has already done the job of appending the selection lists for us, now we just need to save the changes, which we do with `save_selection`.
 
 **SL_Remove.rb**
 
