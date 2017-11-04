@@ -1,5 +1,9 @@
 # ICMExchange (Ruby) - Cross script data sharing
 
+TODO:
+
+* Talk about all 4 variable scopes
+
 It is often useful to allow the user to put your application in a certain state which can then be acted upon at a later time. For this you need to be able to store data until it's required in the future. When making ruby applications in ICM, the same is true but ICM provides no way to access data between scripts. Or does it?
 
 To investigate further we need to explore how the ruby runtime in ICM works, or at least an accurate representation of it.
@@ -77,7 +81,7 @@ To make this local storage easier to manage, I've made a class, `WSLocalStorage`
 
 So what's the use of this behaviour? Let's look at an example.
 
-Say you want to make a ruby application which helps users build selection lists from the ground up. Traditionally in ICM there is no way to 'build up' a selection list. You can make a selection, and then make a selection list from your selection, but if you want to overwrite your existing selection list, add to it, or remove objects from it there is no easy way built into ICM. Instead let's build a set of scripts which helps users build up, overwrite, delete from and clear their selection lists.
+Say you want to make a ruby application which helps users build selection lists from the ground up. Traditionally in ICM there is no way to 'build up' a selection list. You can make a selection, and then make a selection list from your selection, but if you want to overwrite your existing selection list, add to it, or remove objects from it there is no easy way to do this built into ICM. Instead let's build a set of scripts which helps users build up, overwrite, delete from and clear their selection lists.
 
 The different script files we'll make are the following:
 
