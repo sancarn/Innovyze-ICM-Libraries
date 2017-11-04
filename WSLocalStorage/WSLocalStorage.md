@@ -180,4 +180,4 @@ end
 
 And to finish it off, to overwrite a selection list, we simply save the current selection list to the current chosen selection list.
 
-With the above ruby scripts we can have much more flexibility over our selection lists in InfoWorks ICM and InfoNet. Feel free to comment your own ideas which can use this library!
+With the above ruby scripts we can have much more flexibility over our selection lists in InfoWorks ICM and InfoNet.
