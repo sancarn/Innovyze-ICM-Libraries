@@ -10,7 +10,7 @@ The first thing to note about the ruby runtime in ICM, is that ICM always appear
 class Sandbox
 end
 
-Sandbox.new.instance_eval(rubyCode)
+Sandbox.new.instance_eval(YOUR_RUBY_CODE)
 ```
 
 As shown, each time the code is evaluated, it is done so in it's own new instance of a ruby Sandbox object using instance_eval.  This is important because it means that ruby scripts can't intentionally interact with eachother. I.E. The local variables of one ruby script are not accessible from the local variables from another. To see this in action run the following ruby script in [a ruby REPL](https://repl.it/languages/ruby):
