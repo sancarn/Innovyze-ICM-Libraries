@@ -116,7 +116,7 @@ Here we create a new object with our application identifier. I created the appli
 
 > While each generated GUID is not guaranteed to be unique, the total number of unique keys (2^128 or 3.4×10^38) is so large that the probability of the same number being generated twice is very small. For example, consider the observable universe, which contains about 5×10^22 stars; every star could then have 6.8×10^15 universally unique GUIDs.
 
-For this reason we are creating an identifier which is almost certainly unique and is not going to clash with any other applications anyone else has made. Then we set the `id` key of our `WSLocalStorage` object to the ID of a selection list given by the user. Afterwards we check whether the ID provided is indeed a selection list. If not then we'll notify the user and set the `id` key of our `WSLocalStorage` object to `0`, which'll be useful for stoppign future errors. Next, let's work on the operations.
+For this reason we are creating an identifier which is almost certainly unique and is not going to clash with any other applications anyone else has made. Then we set the `id` key of our `WSLocalStorage` object to the ID of a selection list given by the user. Afterwards we check whether the ID provided is indeed the ID of a selection list. If not then we'll notify the user and set the `id` key of our `WSLocalStorage` object to `nil`, which'll be useful for stoppign future errors. Next, let's work on the operations.
 
 **SL_Append.rb**
 
