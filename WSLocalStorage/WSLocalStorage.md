@@ -186,4 +186,4 @@ end
 
 And to finish it off, to overwrite a selection list, we simply save the current selection to the current chosen selection list. With the above ruby scripts we can have much more flexibility over our selection lists in InfoWorks ICM and InfoNet.
 
-Hopefully this shows you the power of the `WSLocalStorage` class. It really allows users to interact with your ruby scripts, in the application they were designed in. Because currently in ICM the amount a user can really intergrate with ICM is very limited.
+Hopefully this shows you the power of the `WSLocalStorage` class. It really allows users to interact with your ruby scripts, in the application they were designed in. Because currently in ICM the amount a user can really interact with ICM is very limited.
