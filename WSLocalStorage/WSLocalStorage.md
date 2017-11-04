@@ -107,7 +107,7 @@ localStorage["id"] = WSApplication.input_box("Enter selection list ID:", "Select
 # Check that model object is of type selection list, and error if not:
 iwdb = WSApplication.current_database
 if !iwdb.model_object_from_type_and_id("Selection list",localStorage["id"])
-  localStorage["id"] = 0
+  localStorage["id"] = nil
   WSApplication.message_box("ID selected is not the ID of a selection list.","!","OK",nil)
 end
 ```
@@ -122,7 +122,7 @@ For this reason we are creating an identifier which is almost certainly unique a
 
 ```ruby
 localStorage = WSLocalStorage.new("a8344089-9f06-4058-9955-57283c090659")
-if localStorage["id"] && localStorage["id"] != 0
+if localStorage["id"]
   WSApplication.load_selection localStorage["id"]
   WSApplication.save_selection localStorage["id"]
 end
@@ -134,7 +134,7 @@ Here we use our application identifier to grab the current localStorage object c
 
 ```ruby
 localStorage = WSLocalStorage.new("a8344089-9f06-4058-9955-57283c090659")
-if localStorage["id"] && localStorage["id"] != 0
+if localStorage["id"]
   net = WSApplication.current_network
   to_remove = {}
   net.table_names.each do |table|
@@ -166,7 +166,7 @@ end
 
 ```ruby
 localStorage = WSLocalStorage.new("a8344089-9f06-4058-9955-57283c090659")
-if localStorage["id"] && localStorage["id"] != 0
+if localStorage["id"]
   net = WSApplication.current_network
   net.clear_selection
   net.save_selection localStorage["id"]
@@ -179,7 +179,7 @@ Going back to the easier operations, to clear the selection list, we simply save
 
 ```ruby
 localStorage = WSLocalStorage.new("a8344089-9f06-4058-9955-57283c090659")
-if localStorage["id"] && localStorage["id"] != 0
+if localStorage["id"]
   WSApplication.current_network.save_selection localStorage["id"]
 end
 ```
