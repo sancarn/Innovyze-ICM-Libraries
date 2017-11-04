@@ -4,7 +4,7 @@ It is often useful to allow the user to put your application in a certain state 
 
 To investigate further we need to explore how the ruby runtime in ICM works, or at least an accurate representation of it.
 
-The first thing to note about the ruby runtime in ICM, is that ICM always appears to use the same virtual machine to run all ruby scripts in one process. You can see it as the following example:
+The first thing to note about the ruby runtime in ICM, is that ICM always appears to use the same virtual machine to run all ruby scripts in one process. You can see it in the following example:
 
 ```ruby
 class Sandbox
