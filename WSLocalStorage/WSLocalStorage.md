@@ -1,9 +1,5 @@
 # ICMExchange (Ruby) - Cross script data sharing
 
-TODO:
-
-* Talk about all 4 variable scopes
-
 It is often useful to allow the user to put your application in a certain state which can then be acted upon at a later time. For this you need to be able to store data until it's required in the future. When making ruby applications in ICM, the same is true but ICM provides no way to access data between scripts. Or does it?
 
 To investigate further we need to explore how the ruby runtime in ICM works, or at least an accurate representation of it.
