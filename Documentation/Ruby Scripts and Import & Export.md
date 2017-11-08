@@ -133,7 +133,7 @@ if(obj['my field 26']='D') logMessage("Where 'my field 26' is 'D'",'I')
 
 If the field being requested is an empty string, i.e. `obj[""]` the expression will return the **0 based rowid** of the object in the GIS table.
 
-It is currently unknown whether you are able to extract geographic data from the `WSImporter` class.
+`WSImporter` can only access simple data types (`Integer`, `FloatingPoint`, `Boolean`, `String`, `Date`). Ultimately `WSImporter` cannot access data of type `blob`, so for example `point_array` is not accessible via the `WSImporter` object.
 <br>
 
 ## message_box
