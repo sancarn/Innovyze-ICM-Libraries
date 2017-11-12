@@ -1,4 +1,4 @@
-Ruby tip - Run ruby commands when ICM is closed
+# Ruby tip - Run ruby commands when ICM is closed
 
 In the last article I briefly explained that when running ruby scripts in ICM they all run in the same process.
 
