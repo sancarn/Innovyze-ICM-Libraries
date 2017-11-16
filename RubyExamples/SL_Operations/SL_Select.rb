@@ -1,3 +1,5 @@
+require_relative('libs\WSLocalStorage.rb')
+
 # 'Selection List' operations GUID: a8344089-9f06-4058-9955-57283c090659
 localStorage = WSLocalStorage.new("a8344089-9f06-4058-9955-57283c090659")
 
