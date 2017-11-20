@@ -1,7 +1,7 @@
 class WSLocalStorage < Hash
-	def initialize(identifier)
+	def WSLocalStorage.new(identifier)
 		$local ||= {}
 		$local[identifier] ||= {}
-		self = $local[identifier]
+		return $local[identifier]
 	end
 end
