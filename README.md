@@ -3,7 +3,7 @@ A number of open source libraries I've created for ruby developers who are devel
 
 
 
-## Wishlist
+## Infoworks API Wishlist / Library ideas
 
 ### Run a ruby script when opening ICM
 
