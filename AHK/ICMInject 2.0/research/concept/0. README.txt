@@ -1,0 +1,6 @@
+STEP 1.
+	Run "1. Concept.ahk"
+STEP 2.
+	Run "2. Script.rb" in ICM
+STEP 3.
+	Observe that ruby can pull data directly out of object.
