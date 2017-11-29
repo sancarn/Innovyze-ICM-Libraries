@@ -1,11 +1,12 @@
 ﻿;Example:
 ;
 ;#include path\to\ICM-Toolbar.ahk
-;if(ICM.isReady()){}
-;	ICM.Toolbar.SharedActions.ExecuteAction(1)
-;	ICM.WaitTilReady()
-;	ICM.Toolbar.SharedActions.ExecuteAction(2)
-;	ICM.WaitTilReady()
+;icm := ICM.new(WinExist("ahk_exe InnovyzeWC.exe"))
+;if(icm.isReady()){}
+;	icm.Toolbar.SharedActions.ExecuteAction(1)
+;	icm.WaitTilReady()
+;	icm.Toolbar.SharedActions.ExecuteAction(2)
+;	icm.WaitTilReady()
 ;	Msgbox, Finished!
 ;} else {
 ;	Msgbox, ICM is currently processing other data.
@@ -19,15 +20,37 @@
 ;https://msdn.microsoft.com/en-us/library/2dhc1abk.aspx#cdatabase__cdatabase
 ;
 
-#Include %A_LineFile%\..\Libs\acc.ahk
+#Include %A_LineFile%\..\libs\acc.ahk
+#Include %A_LineFile%\..\libs\Win32.ahk
 
-Global WM_COMMAND = 0x111
-
+;Dev notes:
+;
+; * Avoid using classes like - ahk_class Afx:0000000140000000:8:0000000000010005...
+;   -> These are unstable as they change from instance to instance.
+;
+;
+;
 
 Class ICM {
-
+	__new(handle) {
+		this.hwnd := handle
+		
+		;Initialise acc and Msg32 elements
+		this.__init()
+	}
+	
+	create(){
+		;Run ICM and save handle
+		
+		;Initialise acc and Msg32 elements
+		this.__init()
+	}
+	
+	__init(){
+	
+	}
+	
 	WaitTilReady(){
-		WM_NULL := 0x00
 		WS_DISABLED := 0x8000000
 		
 		ErrorLevel=FAIL
@@ -39,16 +62,17 @@ Class ICM {
 		while(Style & WS_DISABLED) {
 			while(ErrorLevel="FAIL"){
 				;Test responsive
-				SendMessage, %WM_NULL%, 0,0,,ahk_exe InnovyzeWC.exe
+				SendMessage, % Msg32.WM_NULL, 0,0,,% "ahk_id " . this.hwnd
 			}
-			;Test style
-			WinGet, Style, Style, ahk_class Afx:0000000140000000:8:0000000000010005:0000000000000000:\d+ ahk_exe InnovyzeWC.exe
+			;Test style - Check style of icm elements
+			
+			;WinGet, Style, Style, ahk_class Afx:0000000140000000:8:0000000000010005:0000000000000000:\d+ % "ahk_id " . this.hwnd
 		}
 		sleep,30
 	}
 
 	isReady(){
-		SendMessage, %WM_NULL%, 0,0,,ahk_exe InnovyzeWC.exe,,,,250
+		SendMessage, % Msg32.WM_NULL, 0,0,,% "ahk_id " . this.hwnd,,,,250
 		return ErrorLevel!="FAIL"
 	}
 
@@ -58,19 +82,17 @@ Class ICM {
 		;ID = 3:  35082
 		; ...
 		wParam := 35080 + id - 1
-		PostMessage, %WM_COMMAND%,%wParam%,0,,ahk_exe InnovyzeWC.exe
+		PostMessage, % Msg32.WM_COMMAND,%wParam%,0,,% "ahk_id " . this.hwnd
 	}
 	
 	Class Geoplans {
 		Next(){
-			WM_MDIGETACTIVE	= 0x0229
-			WM_MDINEXT	= 0x0224
-			SendMessage, %WM_MDIGETACTIVE%, , , MDIClient1, ahk_exe InnovyzeWC.exe
+			SendMessage, % Msg32.WM_MDIGETACTIVE, , , MDIClient1, % "ahk_id " . this.hwnd
 			MDIHwnd := ErrorLevel
-			SendMessage, %WM_MDINEXT%, %MDIHwnd%, 0,MDIClient1, ahk_exe InnovyzeWC.exe
+			SendMessage, % Msg32.WM_MDINEXT, %MDIHwnd%, 0,MDIClient1, % "ahk_id " . this.hwnd
 			
 			;Sanity check:
-			SendMessage, %WM_MDIGETACTIVE%, , , MDIClient1, ahk_exe InnovyzeWC.exe
+			SendMessage, % Msg32.WM_MDIGETACTIVE, , , MDIClient1, % "ahk_id " . this.hwnd
 			if(MDIHwnd <> ErrorLevel){
 				return true
 			} else {
@@ -80,14 +102,12 @@ Class ICM {
 			}
 		}
 		Previous(){
-			WM_MDIGETACTIVE	= 0x0229
-			WM_MDINEXT	= 0x0224
-			SendMessage, %WM_MDIGETACTIVE%, , , MDIClient1, ahk_exe InnovyzeWC.exe
+			SendMessage, % Msg32.WM_MDIGETACTIVE, , , MDIClient1, % "ahk_id " . this.hwnd
 			MDIHwnd := ErrorLevel
-			SendMessage, %WM_MDINEXT%, %MDIHwnd%, 1,MDIClient1, ahk_exe InnovyzeWC.exe
+			SendMessage, % Msg32.WM_MDINEXT, %MDIHwnd%, 1,MDIClient1, % "ahk_id " . this.hwnd
 			
 			;Sanity check:
-			SendMessage, %WM_MDIGETACTIVE%, , , MDIClient1, ahk_exe InnovyzeWC.exe
+			SendMessage, % Msg32.WM_MDIGETACTIVE, , , MDIClient1, % "ahk_id " . this.hwnd
 			if(MDIHwnd <> ErrorLevel){
 				return true
 			} else {
@@ -99,7 +119,7 @@ Class ICM {
 		Count(){
 			TCM_FIRST:= 0x1300
 			TCM_GETITEMCOUNT := TCM_FIRST + 4
-			SendMessage, %TCM_GETITEMCOUNT%, 0,0, SysTabControl321,ahk_exe InnovyzeWC.exe
+			SendMessage, %TCM_GETITEMCOUNT%, 0,0, SysTabControl321,% "ahk_id " . this.hwnd
 			return ErrorLevel
 			
 			;WinGetText, txt, ahk_exe InnovyzeWC.exe
@@ -119,7 +139,6 @@ Class ICM {
 		;https://msdn.microsoft.com/en-us/library/bb982948.aspx
 		;; can use WM_GETDLGCODE  to navigate using keyboard
 		
-		;ctrl := "Afx:0000000140000000:8:0000000000010003:0000000001100065:00000000000000001" ;<-- hwnd determined from acc_ahk
 		AFXMessageControl := 0xD2A44
 		SysListViewControl := 0x9F2296
 		
@@ -129,12 +148,12 @@ Class ICM {
 				;ICM.MasterDatabase.FindWindow.Open
 				wParam := 0x0000DF72
 				lParam := 0x00000000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%
 			}
 		}
 		
 		GetSelectedMDBItemID(SysList="SysListView321"){
-			ControlGet, hSysListView, hwnd, , %SysList%, ahk_exe InnovyzeWC.exe
+			ControlGet, hSysListView, hwnd, , %SysList%, % "ahk_id " . this.hwnd
 			accLV:=Acc_ObjectFromWindow(hSysListView)
 			Loop, % accLV.accChildCount -1
 			{
@@ -155,37 +174,37 @@ Class ICM {
 			open(){
 				wParam := 0xDDE0
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%
 			}
 			propertiesOpen(){
 				wParam := 0xDDF8
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			copy(){
 				wParam := 0xDDF2
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			move(){
 				wParam := 0xDE31
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			compare(){
 				wParam := 0xDDEF
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			rename(){
 				wParam := 0xDDF1
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			showCommitHistory(){
 				wParam := 0xDDE5
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			newItem(index){ ;Model group and Master group only
 				;0 based index
@@ -227,18 +246,18 @@ Class ICM {
 					,"Workspace"]
 				wParam := 0xDDE3 + index
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			exportToFile(type){ ; exports to file type. Type defined by 0-based-index in right click > export drop down menu
 				wParam := 0xDDE2 + type
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			
 			openAs(){
 				wParam := 0xDDE1
 				lParam := 0x0000
-				PostMessage, %WM_COMMAND%,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%	
 			}
 			
 			;CUSTOM - Would be nice to have
@@ -254,13 +273,13 @@ Class ICM {
 	Class Toolbar {
 		Class Menu {
 			OpenDatabaseItem(){
-				PostMessage, %WM_COMMAND%,35282,0,,ahk_exe InnovyzeWC.exe 
+				PostMessage, % Msg32.WM_COMMAND,35282,0,,% "ahk_id " . this.hwnd 
 			}
 			RunRubyScript(){
-				PostMessage, %WM_COMMAND%,35068,0,,ahk_exe InnovyzeWC.exe
+				PostMessage, % Msg32.WM_COMMAND,35068,0,,% "ahk_id " . this.hwnd
 			}
 			RunSimulationReport(){
-				PostMessage, %WM_COMMAND%,34431,0,,ahk_exe InnovyzeWC.exe
+				PostMessage, % Msg32.WM_COMMAND,34431,0,,% "ahk_id " . this.hwnd
 			}
 			RunAddon(ID){
 				;ID = 1:  35080
@@ -268,38 +287,38 @@ Class ICM {
 				;ID = 3:  35082
 				; ...
 				wParam := 35079+ID
-				PostMessage, %WM_COMMAND%,%wParam%,0,,ahk_exe InnovyzeWC.exe
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,0,,% "ahk_id " . this.hwnd
 			}
 			Print(){
-				PostMessage, %WM_COMMAND%,57607,0,,ahk_exe InnovyzeWC.exe
+				PostMessage, % Msg32.WM_COMMAND,57607,0,,% "ahk_id " . this.hwnd
 			}
 		}
 		
 		Class UserActions {
 			Open(){
 				;Use postmessage to open the user actions dialog
-				PostMessage, %WM_COMMAND%,35282,0,,ahk_exe InnovyzeWC.exe
+				PostMessage, % Msg32.WM_COMMAND,35282,0,,% "ahk_id " . this.hwnd
 			}
 			ExecuteAction(id){
 				Xpos := 10 + 27*(id-1)
-				ControlClick, ToolbarWindow322, ahk_exe InnovyzeWC.exe, , LEFT, 1, X%Xpos% Y10
+				ControlClick, ToolbarWindow322, % "ahk_id " . this.hwnd, , LEFT, 1, X%Xpos% Y10
 			}
 			ExecuteByMessage(ID){
 				Msgbox, Maybe not implemented
 				wParam := 35271 + ID
 				controlHwnd := 0
-				PostMessage, %WM_COMMAND%,%wParam%,0,%controlHwnd%,ahk_exe InnovyzeWC.exe
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,0,%controlHwnd%,% "ahk_id " . this.hwnd
 			}
 		}
 		
 		Class SharedActions {
 			Open(){
 				;Use postmessage to open the shared actions dialog
-				PostMessage, %WM_COMMAND%,35282,0,,ahk_exe InnovyzeWC.exe
+				PostMessage, % Msg32.WM_COMMAND,35282,0,,% "ahk_id " . this.hwnd
 			}
 			ExecuteAction(id){
 				Xpos := 10 + 27*(id-1)
-				ControlClick, ToolbarWindow323, ahk_exe InnovyzeWC.exe, , LEFT, 1, X%Xpos% Y10
+				ControlClick, ToolbarWindow323, % "ahk_id " . this.hwnd, , LEFT, 1, X%Xpos% Y10
 			}
 		}
 		
@@ -461,7 +480,7 @@ Class ICM {
 			
 			}
 			NewObjectType(index){
-				Control, Choose, %index%, combobox2, ahk_exe InnovyzeWC.exe
+				Control, Choose, %index%, combobox2, % "ahk_id " . this.hwnd
 			}
 			EditObjectGeometry(){
 			
@@ -488,16 +507,16 @@ Class ICM {
 				;Open "Go to XY" dialog
 				wParam := 0x87C6
 				lParam := 0
-				PostMessage, %WM_COMMAND%,%wParam%,0,,ahk_exe InnovyzeWC.exe
-				WinWait, Go To XY Coordinates ahk_class #32770 ahk_exe InnovyzeWC.exe,, 1
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,0,,% "ahk_id " . this.hwnd
+				WinWait, Go To XY Coordinates ahk_class #32770 % "ahk_id " . this.hwnd,, 1
 				
 				;Get X, Y, Zoom
-				ControlGetText, x, Edit1, ahk_exe InnovyzeWC.exe	;X
-				ControlGetText, y, Edit2, ahk_exe InnovyzeWC.exe	;Y
-				ControlGetText, z, Edit3, ahk_exe InnovyzeWC.exe	;Zoom
+				ControlGetText, x, Edit1, % "ahk_id " . this.hwnd	;X
+				ControlGetText, y, Edit2, % "ahk_id " . this.hwnd	;Y
+				ControlGetText, z, Edit3, % "ahk_id " . this.hwnd	;Zoom
 				
 				;Leave dialog
-				Control,Check,,Button4,ahk_exe InnovyzeWC.exe
+				Control,Check,,Button4,% "ahk_id " . this.hwnd
 				
 				return [x,y,z]
 			}
@@ -505,18 +524,18 @@ Class ICM {
 				;Open "Go to XY" dialog
 				wParam := 0x87C6
 				lParam := 0
-				PostMessage, %WM_COMMAND%,%wParam%,0,,ahk_exe InnovyzeWC.exe
-				WinWait, Go To XY Coordinates ahk_class #32770 ahk_exe InnovyzeWC.exe,, 1
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,0,,% "ahk_id " . this.hwnd
+				WinWait, Go To XY Coordinates ahk_class #32770 % "ahk_id " . this.hwnd,, 1
 				
 				;X1:Static4    X2:Static6
 				;Y1:Static5    Y2:Static7
-				ControlGetText, x1, Static4, ahk_exe InnovyzeWC.exe	;X1
-				ControlGetText, y1, Static5, ahk_exe InnovyzeWC.exe	;Y1
-				ControlGetText, x2, Static6, ahk_exe InnovyzeWC.exe	;X2
-				ControlGetText, y2, Static7, ahk_exe InnovyzeWC.exe	;Y2
+				ControlGetText, x1, Static4, % "ahk_id " . this.hwnd	;X1
+				ControlGetText, y1, Static5, % "ahk_id " . this.hwnd	;Y1
+				ControlGetText, x2, Static6, % "ahk_id " . this.hwnd	;X2
+				ControlGetText, y2, Static7, % "ahk_id " . this.hwnd	;Y2
 				
 				;Leave dialog
-				Control,Check,,Button4,ahk_exe InnovyzeWC.exe
+				Control,Check,,Button4,% "ahk_id " . this.hwnd
 				
 				return [x1,y1,x2,y2]
 			}
@@ -524,19 +543,19 @@ Class ICM {
 				;Open "Go to XY" dialog
 				wParam := 0x87C6
 				lParam := 0
-				PostMessage, %WM_COMMAND%,%wParam%,0,,ahk_exe InnovyzeWC.exe
-				WinWait, Go To XY Coordinates ahk_class #32770 ahk_exe InnovyzeWC.exe,, 1
+				PostMessage, % Msg32.WM_COMMAND,%wParam%,0,,% "ahk_id " . this.hwnd
+				WinWait, Go To XY Coordinates ahk_class #32770 % "ahk_id " . this.hwnd,, 1
 				
 				;Set text
-				ControlSetText, Edit1,%x%,ahk_exe InnovyzeWC.exe	;X
-				ControlSetText, Edit2,%y%,ahk_exe InnovyzeWC.exe	;Y
-				ControlSetText, Edit3,%z%,ahk_exe InnovyzeWC.exe	;Zoom
+				ControlSetText, Edit1,%x%,% "ahk_id " . this.hwnd	;X
+				ControlSetText, Edit2,%y%,% "ahk_id " . this.hwnd	;Y
+				ControlSetText, Edit3,%z%,% "ahk_id " . this.hwnd	;Zoom
 				
 				;Save
-				Control,Check,,Button3,ahk_exe InnovyzeWC.exe
+				Control,Check,,Button3,% "ahk_id " . this.hwnd
 				
 				;Leave dialog
-				Control,Check,,Button4,ahk_exe InnovyzeWC.exe
+				Control,Check,,Button4,% "ahk_id " . this.hwnd
 				
 			}
 		}
@@ -668,10 +687,10 @@ Class ICM {
 
 	Class Geoplan {
 		LaunchPropsThemes(){
-			PostMessage, %WM_COMMAND%,34547,0,,ahk_exe InnovyzeWC.exe
+			PostMessage, % Msg32.WM_COMMAND,34547,0,,% "ahk_id " . this.hwnd
 		}
 		LaunchGISProps(){
-			PostMessage, %WM_COMMAND%,34340,0,,ahk_exe InnovyzeWC.exe
+			PostMessage, % Msg32.WM_COMMAND,34340,0,,% "ahk_id " . this.hwnd
 		}
 
 	}
