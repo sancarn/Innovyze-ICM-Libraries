@@ -1398,25 +1398,25 @@ zero elements.
 The code above may be rewritten using these methods as follows:
 
 ```ruby
-net=WSApplication.current\_network
-net.clear\_selection
-ro=net.row\_object('cams\_manhole','MH354671')
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_object('cams_manhole','MH354671')
 ro.selected=true
-ro.\_seen=true
+ro._seen=true
 unprocessedLinks=Array.new
-ro.navigate('us\_links').each do |l|
-    if !l.\_seen
+ro.navigate('us_links').each do |l|
+    if !l._seen
         unprocessedLinks << l
     end
 end
 while unprocessedLinks.size<0
     working=unprocessedLinks.shift
     working.selected=true
-    workingUSNode=working.navigate1('us\_node')
-    if !workingUSNode.nil? && !workingUSNode.\_seen
+    workingUSNode=working.navigate1('us_node')
+    if !workingUSNode.nil? && !workingUSNode._seen
         workingUSNode.selected=true
-        workingUSNode.navigate('us\_links').each do |l|
-            if !l.\_seen
+        workingUSNode.navigate('us_links').each do |l|
+            if !l._seen
                 unprocessedLinks << l
                 l.selected=true
             end
@@ -1433,43 +1433,43 @@ The navigate method however is much more versatile – this example
 navigates from CCTV surveys to pipes
 
 ```ruby
-net=WSApplication.current\_network
-interesting\_codes=\['ABC','DEF','GHI','JKL','MNO'\]
-net.transaction\_begin
-net.row\_objects('cams\_pipe').each do |ro|
-    (0...interesting\_codes.size).each do |i|
-        ro\['user\_number\_'+(i+1).to\_s\]=nil
+net=WSApplication.current_network
+interesting_codes=['ABC','DEF','GHI','JKL','MNO']
+net.transaction_begin
+net.row_objects('cams_pipe').each do |ro|
+    (0...interesting_codes.size).each do |i|
+        ro['user_number_'+(i+1).to_s]=nil
     end
     ro.write
 end
 
 codes=Hash.new
-net.row\_objects('cams\_cctv\_survey').each do |ro|
+net.row_objects('cams_cctv_survey').each do |ro|
     ro.details.each do |d|
         code=d.code
-        code\_index=interesting\_codes.index(code)
-        if !code\_index.nil?
+        code_index=interesting_codes.index(code)
+        if !code_index.nil?
             pipe=ro.navigate1('pipe')
             if pipe
-                if pipe.\_defects.nil?
-                    pipe.\_defects=Array.new(interesting\_codes.size,0)
+                if pipe._defects.nil?
+                    pipe._defects=Array.new(interesting_codes.size,0)
                 end
-            pipe.\_defects\[code\_index\]+=1
+            pipe._defects[code_index]+=1
             end
         end
     end
 end
 
-net.row\_objects('cams\_pipe').each do |ro|
-    if !ro.\_defects.nil?
-        (0...interesting\_codes.size).each do |i|
-            ro\['user\_number\_'+(i+1).to\_s\]=ro.\_defects\[i\]
+net.row_objects('cams_pipe').each do |ro|
+    if !ro._defects.nil?
+        (0...interesting_codes.size).each do |i|
+            ro['user_number_'+(i+1).to_s]=ro._defects[i]
         end
         ro.write
     end
 end
 
-net.transaction\_commit
+net.transaction_commit
 ```
 
 Essentially, it clears user numbers 1 to 5 for all pipes, then iterates
@@ -1887,68 +1887,70 @@ Index 4 (optional) a subtype – one of the following strings
 
 Here is an example of a prompt exercising most of these options:
 
+```rb
 require 'Date'
 
 val=WSApplication.prompt "Badger",
 
-\[
+[
 
-\['This is a number','NUMBER'\],
+['This is a number','NUMBER'],
 
-\['This is a string','String'\],
+['This is a string','String'],
 
-\['This is a date','Date'\],
+['This is a date','Date'],
 
-\['This is a date with
-default','Date',DateTime.new(2012,7,13,12,45,00)\],
+['This is a date with
+default','Date',DateTime.new(2012,7,13,12,45,00)],
 
-\['This is a number With 4 DP','Number',234.123456,4\],
+['This is a number With 4 DP','Number',234.123456,4],
 
-\['This is a month','Number',11,nil,'MONTH'\],
+['This is a month','Number',11,nil,'MONTH'],
 
-\['This is a range','Number',13,2,'RANGE',100,200\],
+['This is a range','Number',13,2,'RANGE',100,200],
 
-\['String with default','String','Badger'\],
+['String with default','String','Badger'],
 
-\['List','String','Default',nil,'LIST',\['Alpha','Beta','Gamma'\]\],
+['List','String','Default',nil,'LIST',['Alpha','Beta','Gamma']],
 
-\['List of numbers, no default','Number',nil,nil,'LIST',\[3,5,7,11\]\],
+['List of numbers, no default','Number',nil,nil,'LIST',[3,5,7,11]],
 
-\['List of numbers, with
-default','Number',23,nil,'LIST',\[13,17,19,23\]\],
+['List of numbers, with
+default','Number',23,nil,'LIST',[13,17,19,23]],
 
-\['List of dates, no
-default','Date',nil,nil,'LIST',\[DateTime.new(2012,7,13,12,45,00),DateTime.new(2012,7,17,13,15,00),DateTime.new(2012,7,10,17,15,00)\]\],
+['List of dates, no
+default','Date',nil,nil,'LIST',[DateTime.new(2012,7,13,12,45,00),DateTime.new(2012,7,17,13,15,00),DateTime.new(2012,7,10,17,15,00)]],
 
-\['List of dates, with
-default','Date',DateTime.new(2011,10,13,14,12,30),nil,'LIST',\[DateTime.new(2012,7,13,12,45,00),DateTime.new(2012,7,17,13,15,00),DateTime.new(2012,7,10,17,15,00)\]\],
+['List of dates, with
+default','Date',DateTime.new(2011,10,13,14,12,30),nil,'LIST',[DateTime.new(2012,7,13,12,45,00),DateTime.new(2012,7,17,13,15,00),DateTime.new(2012,7,10,17,15,00)]],
 
-\['This is a bool','Boolean'\],
+['This is a bool','Boolean'],
 
-\['This is a false bool','Boolean',false\],
+['This is a false bool','Boolean',false],
 
-\['This is a true bool','Boolean',true\],
+['This is a true bool','Boolean',true],
 
-\['File save','String','Badger.dat',nil,'FILE',false,'dat','Data
-file',false\],
+['File save','String','Badger.dat',nil,'FILE',false,'dat','Data
+file',false],
 
-\['File load single','String',nil,nil,'FILE',true,'dat','MySystem data
-file',false\],
+['File load single','String',nil,nil,'FILE',true,'dat','MySystem data
+file',false],
 
-\['File load multiple','String',nil,nil,'FILE',true,'dat','More than one
-MySystem data file',true\],
+['File load multiple','String',nil,nil,'FILE',true,'dat','More than one
+MySystem data file',true],
 
-\['This is a folder','String',nil,nil,'FOLDER','Name of MyFolder'\],
+['This is a folder','String',nil,nil,'FOLDER','Name of MyFolder'],
 
-\['Read Only String','Readonly','Turbo Pump'\],
+['Read Only String','Readonly','Turbo Pump'],
 
-\['Read Only Number','Readonly',12.3456678\],
+['Read Only Number','Readonly',12.3456678],
 
-\['Read only number 6 dp','ReadOnly',87.65456789,6\]
+['Read only number 6 dp','ReadOnly',87.65456789,6]
 
-\],false
+],false
 
-puts val.to\_s
+puts val.to_s
+```
 
 When run, it looks like this:
 
@@ -2127,7 +2129,7 @@ Note – when scripts are run from the UI, user units are always used.
 e.g.
 
 ```ruby
-errs=WSApplication.override\_user\_units 'd:\\\\temp\\\\uu.csv'
+errs=WSApplication.override_user_units 'd:\\temp\\uu.csv'
 
 if errs.length<0
 
@@ -2408,8 +2410,7 @@ objects of that type – not just the objects of that type in the root.
 
 e.g.
 
-mo=iwdb.model\_object\_from\_type\_and\_guid 'Model
-Network,'{CEB7E8B9-D383-485C-B085-19F6E3E3C8CD}'
+`mo=iwdb.model_object_from_type_and_guid 'Model Network,'{CEB7E8B9-D383-485C-B085-19F6E3E3C8CD}'`
 
 Returns the model object of the given scripting type with the
 ‘CreationGUID’ (an internal database field) given in the second
@@ -2421,7 +2422,7 @@ parameter.
 
 e.g.
 
-mo=iwdb.model\_object\_from\_type\_and\_id('Rainfall Event',1)
+`mo=iwdb.model_object_from_type_and_id('Rainfall Event',1)`
 
 Returns the model object in this database with the type and ID given,
 the type is from the list of scripting types (see above), and the ID is
@@ -2531,8 +2532,6 @@ moc.each { |x| puts x.name }
 
 The each method can be used to iterate through all the objects in the
 collection.
-
-###   
 
 ### WSModelObject
 
@@ -2837,8 +2836,9 @@ contain the object imported.
 
 e.g.
 
-rainfall=model\_group.import\_new\_model\_object 'Rainfall Event','The
-Rainfall','','d:\\\\temp\\\\1.red',0
+```ruby
+rainfall=model_group.import_new_model_object 'Rainfall Event','The Rainfall','','d:\\temp\\1.red',0
+```
 
 *import\_tvd(Exchange only)*
 
@@ -3118,23 +3118,19 @@ network.
 
 e.g.
 
+```ruby
 mo.commits.each do |c|
-
-puts
-"\#{c.branch\_id},\#{c.comment},\#{c.commit\_id},\#{c.deleted\_count},\#{c.inserted\_count},\#{c.modified\_count},\#{c.setting\_changed\_count},|\#{c.user}|"
-
+    puts "\#{c.branch\_id},\#{c.comment},\#{c.commit\_id},\#{c.deleted\_count},\#{c.inserted\_count},\#{c.modified\_count},\#{c.setting\_changed\_count},|\#{c.user}|"
 end
+```
 
 or
-
+```ruby
 (0...mo.commits.length).each do |i|
-
-c=mo.commits\[i\]
-
-puts
-"\#{c.branch\_id},\#{c.comment},\#{c.commit\_id},\#{c.deleted\_count},\#{c.inserted\_count},\#{c.modified\_count},\#{c.setting\_changed\_count},|\#{c.user}|"
-
+    c=mo.commits\[i\]
+    puts "\#{c.branch\_id},\#{c.comment},\#{c.commit\_id},\#{c.deleted\_count},\#{c.inserted\_count},\#{c.modified\_count},\#{c.setting\_changed\_count},|\#{c.user}|"
 end
+```
 
 *commit\_reserve*
 
@@ -3184,13 +3180,12 @@ values are as follows:
 
 e.g.
 
+```ruby
 myHash=Hash.new
-
-myHash\['Multiple Files'\]=true
-
-myHash\['Coordinate Arrays Format'\]='None'
-
-no.csv\_export 'd:\\\\temp\\\\network.csv',myHash
+myHash['Multiple Files']=true
+myHash['Coordinate Arrays Format']='None'
+no.csv_export 'd:\\temp\\network.csv',myHash
+```
 
 *csv\_import*
 
@@ -3620,7 +3615,7 @@ Returns the number of selected items in the network
 
 e.g.
 
-n=nno.select\_sql('hw\_node','x&gt;0')
+`n=nno.select_sql('hw_node','x>0')`
 
 This method runs the SQL query with the given table being the ‘current
 table’ as it appears in the SQL dialog i.e. the default table if the SQL
@@ -3634,8 +3629,7 @@ The SQL query can include multiple clauses in the same was as SQL run
 from the user interface, and can use any of the options that do not open
 results or prompt grids e.g.
 
-nno.select\_sql 'hw\_node', "SELECT distinct x into file
-'d:\\\\temp\\\\distinctx.dat'"
+`nno.select_sql 'hw_node', "SELECT distinct x into file 'd:\\temp\\distinctx.dat'"`
 
 The method returns the number of objects selected in the last clause in
 the SQL block selecting a non-zero number of object (or zero if there is
@@ -3723,7 +3717,9 @@ for the time varying results. Each array contains 2 elements, the first
 of which is the name of the Tab, whilst the 2<sup>nd</sup> is an array
 of attribute names e.g.
 
-\[\['Scalar',\['totfl','totout','totr','totrun','totvol'\]\],\['Node',\['flooddepth','floodvolume','flvol','pcvolbal','qincum','qinfnod','qnode','qrain','vflood','vground','volbal','volume','DEPNOD'\]\]\]
+```rb
+[['Scalar',['totfl','totout','totr','totrun','totvol']],['Node',['flooddepth','floodvolume','flvol','pcvolbal','qincum','qinfnod','qnode','qrain','vflood','vground','volbal','volume','DEPNOD']]]
+```
 
 This method is designed to return information useful when customising
 the parameters to max\_results\_binary\_export.and
@@ -3738,17 +3734,19 @@ on the binary results export dialog e.g. ‘Node’, ‘Link’, ‘Subcatchment
 Each array contains 2 elements, the first of which is the name of the
 Tab, whilst the 2<sup>nd</sup> is an array of attribute names e.g.
 
-\[\["Node", \["flooddepth", "floodvolume", "flvol", "qinfnod", "qnode",
-"qrain", "volume", "depnod"\]\]
+```rb
+[["Node", ["flooddepth", "floodvolume", "flvol", "qinfnod", "qnode",
+"qrain", "volume", "depnod"]]
 
-\["Link", \["ds\_depth", "ds\_flow", "ds\_froude", "ds\_vel", "HYDGRAD",
-"Surcharge", "us\_depth", "us\_flow", "us\_froude", "us\_vel",
-"qinflnk", "qlink", "volume", "pmpstate"\]\]
+["Link", ["ds_depth", "ds_flow", "ds_froude", "ds_vel", "HYDGRAD",
+"Surcharge", "us_depth", "us_flow", "us_froude", "us_vel",
+"qinflnk", "qlink", "volume", "pmpstate"]]
 
-\["Subcatchment", \["qfoul", "qsurf01", "qsurf02", "qsurf03", "qtrade",
-"RAINFALL", "RUNOFF"\]\]
+["Subcatchment", ["qfoul", "qsurf01", "qsurf02", "qsurf03", "qtrade",
+"RAINFALL", "RUNOFF"]]
 
-\["Rain Gauge", \["raindpth", "RAINFALL"\]\]\]
+["Rain Gauge", ["raindpth", "RAINFALL"]]]
+```
 
 This method is designed to return information useful when customising
 the parameters to results\_binary\_export.and results\_csv\_export
@@ -4498,19 +4496,19 @@ providing in all cases that the model object is a selection list.
 
 e.g.
 
-mosl=db.model\_object\_from\_type\_and\_id 'Selection List',14
-
-mosl2=db.model\_object\_from\_type\_and\_id 'Selection List',15
-
-on.save\_selection mosl.path
-
-on.save\_selection mosl2
-
-on.save\_selection 16
+```ruby
+mosl=db.model_object_from_type_and_id 'Selection List',14
+mosl2=db.model_object_from_type_and_id 'Selection List',15
+on.save_selection mosl.path
+on.save_selection mosl2
+on.save_selection 16
+```
 
 e.g.
 
-on.save\_selection mySelectionList.path
+```rb
+on.save_selection mySelectionList.path
+```
 
 Saves the current selection to the already existing selection list.
 
@@ -4520,11 +4518,11 @@ Saves the current selection to the already existing selection list.
 
 e.g.
 
+```rb
 on.scenarios do |s|
-
-puts s
-
+    puts s
 end
+```
 
 This method provides a block of names of scenarios to be iterated
 through. The base scenario is included in the results as the string
@@ -5493,72 +5491,46 @@ default values. This means that were you to create a run, passing an
 empty hash in as the last parameter, and then to look at the values for
 the parameters using the \[\] method of the run object i.e.
 
-db.list\_read\_write\_run\_fields.each do |p|
-
-if !run\[p\].nil?
-
-puts "\#{p} \#{run\[p\]}"
-
+```ruby
+db.list_read_write_run_fields.each do |p|
+    if !run[p].nil?
+        puts "#{p} #{run[p]}"
+    end
 end
-
-end
+```
 
 you would see that a number of the fields have non-nil values as
 follows:
 
+```
 Duration 60
-
 DWFMultiplier 32
-
 EveryNode false
-
 EveryOutflow false
-
 EverySubcatchment false
-
 GaugeMultiplier 1
-
 IncludeBaseFlow false
-
 IncludeLevel false
-
 IncludeNode false
-
 IncludeOutflow false
-
 IncludeRainfall false
-
 IncludeRunoff false
-
 LevelLag 0
-
 LevelThreshold 0.0
-
 NodeLag 0
-
 NodeThreshold 0.0
-
 OutflowLag 0
-
 OutflowThreshold 0.0
-
 RainfallLag 0
-
 RainfallThreshold 0.0
-
 RainType false
-
 ResultsMultiplier 6
-
 RTCLag 0
-
 Start Time 0.0
-
 SubcatchmentLag 0
-
 SubcatchmentThreshold 0.0
-
 TimeStep 60
+```
 
 All other fields are treated as nil by default. However, for a number of
 fields a nil value is treated as a particular default value for that
@@ -6373,17 +6345,17 @@ Notes
     this:
 
 ```ruby
-myStartTime=working\['Start Time'\]
+myStartTime=working['Start Time']
 if myStartTime.nil?
     myText='nil'
-elsif myStartTime.kind\_of? DateTime
-    myText="absolute -\#{myStartTime.year}/\#{myStartTime.month}/\#{myStartTime.day}"
-elsif myStartTime.kind\_of? Float
-    myText="relative - \#{-myStartTime} seconds"
+elsif myStartTime.kind_of? DateTime
+    myText="absolute -#{myStartTime.year}/#{myStartTime.month}/#{myStartTime.day}"
+elsif myStartTime.kind_of? Float
+    myText="relative - #{-myStartTime} seconds"
 else
     myText="unexpected type"
 end
-puts "\#{myText}"
+puts "#{myText}"
 ```
 
 1.  The percentage volume balance is not available from ICM Exchange.
@@ -6453,16 +6425,17 @@ configuration files and the Ruby scripting's UI elements.
 
 At its simplest, if you can hard-code the paths of all files, then this
 can be done with 2 lines of code e.g.
+
 ```ruby
-net=WSApplication.current\_network
-net.odic\_import\_ex('CSV','d:\\temp\\odic.cfg',nil,'Node','d:\\temp\\goat.csv','Pipe','d:\\temp\\stoat.csv')
+net=WSApplication.current_network
+net.odic_import_ex('CSV','d:\temp\odic.cfg',nil,'Node','d:\temp\goat.csv','Pipe','d:\temp\stoat.csv')
 ```
 
 for import and
 
 ```ruby
-net=WSApplication.current\_network
-net.odec\_export\_ex('CSV','d:\\temp\\odxc.cfg',nil,'Node','d:\\temp\\goat2.csv','Pipe','d:\\temp\\stoat2.csv')
+net=WSApplication.current_network
+net.odec_export_ex('CSV','d:\temp\odxc.cfg',nil,'Node','d:\temp\goat2.csv','Pipe','d:\temp\stoat2.csv')
 ```
 
 for export.
@@ -6473,22 +6446,23 @@ unwieldy to call the method multiple times importing one file at a time
 e.g.
 
 ```ruby
-net=WSApplication.current\_network
-import=\[\['Node','goat'\],\['Pipe','stoat'\]\]
+net=WSApplication.current_network
+import=[['Node','goat'],['Pipe','stoat']]
 import.each do |f|
-    net.odic\_import\_ex('CSV','d:\\temp\\odic.cfg',nil,f\[0\],'d:\\temp\\\\'+f\[1\]+'.csv')
+    net.odic_import_ex('CSV','d:\temp\odic.cfg',nil,f[0],'d:\temp\\'+f[1]+'.csv')
 end
 ```
 
 for import and
 
 ```ruby
-net=WSApplication.current\_network
-export=\[\['Node','goat'\],\['Pipe','stoat'\]\]
+net=WSApplication.current_network
+export=[['Node','goat'],['Pipe','stoat']]
 export.each do |f|
-    net.odec\_export\_ex('CSV','d:\\temp\\odxc.cfg',nil,f\[0\],'d:\\temp\\\\'+f\[1\]+'2.csv')
+    net.odec_export_ex('CSV','d:\temp\odxc.cfg',nil,f[0],'d:\temp\\'+f[1]+'2.csv')
 end
 ```
+
 
 for export.
 
@@ -6507,12 +6481,12 @@ It should be noted that
 The first of these can be solved by specifying an error text file e.g.
 
 ```ruby
-net=WSApplication.current\_network
-import=\[\['Node','goat'\],\['Pipe','stoat'\]\]
+net=WSApplication.current_network
+import=[['Node','goat'],['Pipe','stoat']]
 import.each do |f|
     params=Hash.new
-    params\['Error File'\]='d:\\\\temp\\\\errs'+f\[0\]+'.txt'
-    net.odic\_import\_ex('CSV','d:\\temp\\odic.cfg',params,f\[0\],'d:\\temp\\\\'+f\[1\]+'.csv')
+    params['Error File']='d:\temp\errs'+f[0]+'.txt'
+    net.odic_import_ex('CSV','d:\temp\odic.cfg',params,f[0],'d:\temp\\'+f[1]+'.csv')
 end
 ```
 
@@ -6525,14 +6499,14 @@ displaying a message box at the end of the process e.g.
 
 ```ruby
 require 'FileUtils'
-net=WSApplication.current\_network
-import=\[\['Node','goatwitherrs'\],\['Pipe','stoat'\]\]
+net=WSApplication.current_network
+import=[['Node','goatwitherrs'],['Pipe','stoat']]
 errFiles=Array.new
 import.each do |f|
     params=Hash.new
-    errFile='d:\\\\temp\\\\errs'+f\[0\]+'.txt'
-    params\['Error File'\]=errFile
-    net.odic\_import\_ex('CSV','d:\\temp\\odic.cfg',params,f\[0\],'d:\\temp\\\\'+f\[1\]+'.csv')
+    errFile='d:\\temp\\errs'+f[0]+'.txt'
+    params['Error File']=errFile
+    net.odic_import_ex('CSV','d:\temp\odic.cfg',params,f[0],'d:\temp\\'+f[1]+'.csv')
     if File.size(errFile)<0
         errFiles << errFile
     else
@@ -6542,10 +6516,10 @@ end
 if errFiles.size<0
     msg="Errors occurred - please consult the following files:"
     errFiles.each do |f|
-        msg+="\\r\\n"
+        msg+="\r\n"
         msg+=f
     end
-    WSApplication.message\_box msg,nil,nil,nil
+    WSApplication.message_box msg,nil,nil,nil
 end
 ```
 
@@ -6563,21 +6537,21 @@ output e.g.
 
 ```ruby
 require 'FileUtils'
-net=WSApplication.current\_network
-import=\[\['Node','goatwitherrs','nodes'\],\['Pipe','stoat','pipes'\]\]
+net=WSApplication.current_network
+import=[['Node','goatwitherrs','nodes'],['Pipe','stoat','pipes']]
 errInfo=Array.new
 import.each do |f|
     params=Hash.new
-    errFile='d:\\\\temp\\\\errs'+f\[0\]+'.txt'
+    errFile='d:\\temp\\errs'+f[0]+'.txt'
     if File.exists? errFile
         FileUtils.rm errFile
     end
-    params\['Error File'\]=errFile
-    net.odic\_import\_ex('CSV','d:\\temp\\odic.cfg',params,f\[0\],'d:\\temp\\\\'+f\[1\]+'.csv')
+    params['Error File']=errFile
+    net.odic_import_ex('CSV','d:\temp\odic.cfg',params,f[0],'d:\temp\\'+f[1]+'.csv')
     if File.size(errFile)<0
         temp=Array.new
         temp << errFile
-        temp << f\[2\]
+        temp << f[2]
         errInfo << temp
     else
         FileUtils.rm errFile
@@ -6586,13 +6560,13 @@ end
 if errInfo.size<0
     puts "Errors importing data:"
     errInfo.each do |ei|
-        puts "Errors for \#{ei\[1\]}:"
+        puts "Errors for #{ei[1]}:"
         outputString=''
-        File.open ei\[0\] do |f|
-            f.each\_line do |l|
+        File.open ei[0] do |f|
+            f.each_line do |l|
                 l.chomp!
                 outputString+=l
-                outputString+="\\r"
+                outputString+="\r"
             end
         end
         puts outputString
@@ -6606,40 +6580,22 @@ following:
 
 ```ruby
 if errInfo.size<0
-
-consolidatedErrFileName='d:\\temp\\allerrs.txt'
-
-if File.exists? consolidatedErrFileName
-
-FileUtils.rm consolidatedErrFileName
-
-end
-
-consolidatedFile=File.open consolidatedErrFileName,'w'
-
-errInfo.each do |ei|
-
-consolidatedFile.puts "Errors for #{ei[1]}:"
-
-File.open ei[0] do |f|
-
-f.each_line do |l|
-
-l.chomp!
-
-consolidatedFile.puts l
-
-end
-
-end
-
-end
-
-consolidatedFile.close
-
-WSApplication.open_text_view 'Open Data Import Centre
-Errors',consolidatedErrFileName,false
-
+    consolidatedErrFileName='d:\temp\allerrs.txt'
+    if File.exists? consolidatedErrFileName
+        FileUtils.rm consolidatedErrFileName
+    end
+    consolidatedFile=File.open consolidatedErrFileName,'w'
+    errInfo.each do |ei|
+        consolidatedFile.puts "Errors for #{ei[1]}:"
+        File.open ei[0] do |f|
+            f.each_line do |l|
+                l.chomp!
+                consolidatedFile.puts l
+            end
+        end
+    end
+    consolidatedFile.close
+    WSApplication.open_text_view 'Open Data Import Centre Errors',consolidatedErrFileName,false
 end
 ```
 
@@ -6699,99 +6655,50 @@ Mechanism 1:
 
 ```ruby
 require 'FileUtils'
-
 net=WSApplication.current_network
-
-configfile=WSApplication.file_dialog(true,'cfg','Open Data Import
-Centre Config File',nil,false,false)
-
+configfile=WSApplication.file_dialog(true,'cfg','Open Data Import Centre Config File',nil,false,false)
 if configfile.nil?
-
-WSApplication.message_box 'No config file selected - no import will be
-performed',nil,nil,false
-
+    WSApplication.message_box 'No config file selected - no import will be performed',nil,nil,false
 else
-
-folder=WSApplication.folder_dialog 'Select a folder containing the
-files to import',false
-
+    folder=WSApplication.folder_dialog 'Select a folder containing the files to import',false
 if folder.nil?
-
-WSApplication.message_box 'No folder selected - no import will be
-performed'
-
+    WSApplication.message_box 'No folder selected - no import will be performed'
 else
-
-import=[['Node','goatwitherrs','nodes'],['Pipe','stoat','pipes']]
-
-errInfo=Array.new
-
-import.each do |f|
-
-params=Hash.new
-
-errFile=folder+'\\errs'+f[0]+'.txt'
-
-if File.exists? errFile
-
-FileUtils.rm errFile
-
-end
-
-params['Error File']=errFile
-
-net.odic_import_ex('CSV',configfile,params,f[0],folder+'\\'+f[1]+'.csv')
-
-if File.size(errFile)<0
-
-temp=Array.new
-
-temp << errFile
-
-temp << f[2]
-
-errInfo << temp
-
-else
-
-FileUtils.rm errFile
-
-end
-
-end
-
-if errInfo.size<0
-
-puts "Errors importing data:"
-
-errInfo.each do |ei|
-
-puts "Errors for #{ei[1]}:"
-
-outputString=''
-
-File.open ei[0] do |f|
-
-f.each_line do |l|
-
-l.chomp!
-
-outputString+=l
-
-outputString+="\r"
-
-end
-
-end
-
-puts outputString
-
-end
-
-end
-
-end
-
+    import=[['Node','goatwitherrs','nodes'],['Pipe','stoat','pipes']]
+    errInfo=Array.new
+    import.each do |f|
+        params=Hash.new
+        errFile=folder+'\\errs'+f[0]+'.txt'
+        if File.exists? errFile
+            FileUtils.rm errFile
+        end
+        params['Error File']=errFile
+        net.odic_import_ex('CSV',configfile,params,f[0],folder+'\\'+f[1]+'.csv')
+        if File.size(errFile)<0
+            temp=Array.new
+            temp << errFile
+            temp << f[2]
+            errInfo << temp
+        else
+            FileUtils.rm errFile
+        end
+    end
+    if errInfo.size<0
+        puts "Errors importing data:"
+        errInfo.each do |ei|
+            puts "Errors for #{ei[1]}:"
+            outputString=''
+            File.open ei[0] do |f|
+                f.each_line do |l|
+                    l.chomp!
+                    outputString+=l
+                    outputString+="\r"
+                end
+            end
+            puts outputString
+        end
+    end
+    end
 end
 ```
 
@@ -6799,162 +6706,82 @@ Mechanism 2:
 
 ```ruby
 require 'FileUtils'
-
 net=WSApplication.current_network
-
 configfile=configfile=File.dirname(WSApplication.script_file)+'\\odicwithsource.cfg'
-
 import=[['Node','goat','nodes'],['Pipe','stoat','pipes']]
-
 file=WSApplication.file_dialog(true,'csv','CSV File',nil,false,false)
-
 if file.nil?
-
-WSApplication.message_box 'No file selected - no import will be
-performed','OK',nil,false
-
+    WSApplication.message_box 'No file selected - no import will be performed','OK',nil,false
 elsif file[-4..-1].downcase!='.csv'
-
-WSApplication.message_box 'Not a csv file - no import will be
-peformed','OK',nil,false
-
+    WSApplication.message_box 'Not a csv file - no import will be performed','OK',nil,false
 else
-
-folder=File.dirname(file)
-
-name=File.basename(file)[0..-5]
-
-prefix=''
-
-found=false
-
-import.each do |i|
-
-if name.downcase[-i[1].length..-1]==i[1].downcase
-
-prefixlen=name.length-i[1].length
-
-if prefixlen<0
-
-prefix=name[0..prefixlen-1]
-
-end
-
-found=true
-
-break
-
-end
-
-end
-
-if !found
-
-WSApplication.message_box 'File name does not have an expected suffix -
-no import will be performed','OK',nil,false
-
-else
-
-# errInfo is an array of arrays, with one entry added for each imported
-CSV file with some sort of issue
-
-# it will either contain the error file name and a name to be used for
-the table in error messages
-
-# or nil and a filename for any expected files which are missing
-
-errInfo=Array.new
-
-import.each do |f|
-
-csvfilename=folder+'\\'+prefix+f[1]+'.csv'
-
-if !File.exists? csvfilename
-
-temp=Array.new
-
-temp << nil
-
-temp << csvfilename
-
-errInfo << temp
-
-else
-
-params=Hash.new
-
-errFile=folder+'\\errs'+f[0]+'.txt'
-
-if File.exists? errFile
-
-FileUtils.rm errFile
-
-end
-
-params['Error File']=errFile
-
-net.odic_import_ex('CSV',configfile,params,f[0],csvfilename)
-
-if File.size(errFile)<0
-
-temp=Array.new
-
-temp << errFile
-
-temp << f[2]
-
-errInfo << temp
-
-else
-
-FileUtils.rm errFile
-
-end
-
-end
-
-end
-
-if errInfo.size<0
-
-puts "Errors importing data:"
-
-errInfo.each do |ei|
-
-if ei[0].nil?
-
-puts "Expected file #{ei[1]} not found"
-
-else
-
-puts "Errors for #{ei[1]}:"
-
-outputString=''
-
-File.open ei[0] do |f|
-
-f.each_line do |l|
-
-l.chomp!
-
-outputString+=l
-
-outputString+="\r"
-
-end
-
-end
-
-puts outputString
-
-end
-
-end
-
-end
-
-end
-
+    folder=File.dirname(file)
+    name=File.basename(file)[0..-5]
+    prefix=''
+    found=false
+    import.each do |i|
+        if name.downcase[-i[1].length..-1]==i[1].downcase
+            prefixlen=name.length-i[1].length
+            if prefixlen<0
+                prefix=name[0..prefixlen-1]
+            end
+            found=true
+            break
+        end
+    end
+    if !found
+        WSApplication.message_box 'File name does not have an expected suffix - no import will be performed','OK',nil,false
+
+    else
+        # errInfo is an array of arrays, with one entry added for each imported CSV file with some sort of issue
+        # it will either contain the error file name and a name to be used for the table in error messages
+        # or nil and a filename for any expected files which are missing
+        errInfo=Array.new
+        import.each do |f|
+            csvfilename=folder+'\\'+prefix+f[1]+'.csv'
+            if !File.exists? csvfilename
+                temp=Array.new
+                temp << nil
+                temp << csvfilename
+                errInfo << temp
+            else
+                params=Hash.new
+                errFile=folder+'\\errs'+f[0]+'.txt'
+                if File.exists? errFile
+                    FileUtils.rm errFile
+                end
+                params['Error File']=errFile
+                net.odic_import_ex('CSV',configfile,params,f[0],csvfilename)
+                if File.size(errFile)<0
+                    temp=Array.new
+                    temp << errFile
+                    temp << f[2]
+                    errInfo << temp
+                else
+                    FileUtils.rm errFile
+                end
+            end
+        end
+        if errInfo.size<0
+            puts "Errors importing data:"
+            errInfo.each do |ei|
+                if ei[0].nil?
+                    puts "Expected file #{ei[1]} not found"
+                else
+                    puts "Errors for #{ei[1]}:"
+                    outputString=''
+                    File.open ei[0] do |f|
+                        f.each_line do |l|
+                            l.chomp!
+                            outputString+=l
+                            outputString+="\r"
+                        end
+                    end
+                    puts outputString
+                end
+            end
+        end
+    end
 end
 ```
 
@@ -6962,125 +6789,65 @@ Mechanism 3:
 
 ```ruby
 require 'FileUtils'
-
 net = WSApplication.current_network
-
 configfile = configfile = File.dirname(WSApplication.script_file) + '\\odicwithsource.cfg'
-
 import = [
     ['Node', 'goat', 'nodes'],
     ['Pipe', 'stoat', 'pipes']
 ]
-
 files = WSApplication.file_dialog(true, 'csv', 'CSV File', nil, true, false)
-
 if files.nil ? || files.length == 0
-
-WSApplication.message_box 'No file selected - no import will be
-performed ','
-OK ',nil,false
-
+WSApplication.message_box 'No file selected - no import will be performed ','OK',nil,false
 else
-
     nErrs = 0
-
 errInfo = Array.new
-
 files.each do |file |
-
         folder = File.dirname(file)
-
     name = File.basename(file)
-
 if name[-4.. - 1].downcase == '.csv'
-
 name = name[0.. - 5]
-
 import.each do |i |
-
     if i[1].downcase == name.downcase[-i[1].length.. - 1]
-
 params = Hash.new
-
 nErrs += 1
-
 errFile = folder + '\\errs' + nErrs.to_s + '.txt'
-
 if File.exists ? errFile
-
 FileUtils.rm errFile
-
 end
-
 params['Error File'] = errFile
-
 net.odic_import_ex('CSV', configfile, params, i[0], file)
-
-if File.size(errFile) <
-0
-
+if File.size(errFile) < 0
 temp = Array.new
-
 temp << errFile
-
 temp <<i[2]
-
 errInfo <<temp
-
 else
-
     FileUtils.rm errFile
-
 end
-
 break
-
 end
-
 end
-
 end
-
 end
-
 if errInfo.size < 0
-
 puts "Errors importing data:"
-
 errInfo.each do |ei |
-
     if ei[0].nil ?
-
     puts "Expected file #{ei[1]} not found"
-
 else
-
     puts "Errors for #{ei[1]}:"
-
 outputString = ''
-
 File.open ei[0] do |f |
-
         f.each_line do |l |
-
             l.chomp!
-
             outputString += l
-
         outputString += "\r"
-
 end
-
 end
-
 puts outputString
-
 end
-
 end
-
 end
-
 end
 ```
 
