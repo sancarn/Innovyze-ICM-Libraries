@@ -307,8 +307,8 @@ following script:
 ```ruby
 db=WSApplication.open nil,false
 
-mo=db.model_object '&gt;MODG~Basic Initial Loss Runs&gt;MODG~Initial
-Loss Type&gt;RUN~Abs&gt;SIM~M2-60'
+mo=db.model_object '>MODG~Basic Initial Loss Runs>MODG~Initial
+Loss Type>RUN~Abs>SIM~M2-60'
 
 mo.results_binary_export nil,nil,'d:\\temp\\sim.dat'
 ```
@@ -1247,14 +1247,14 @@ A simple example which loops through all the CCTV details to build up a
 list of videos used is as follows:
 
 ```ruby
-net=WSApplication.current\_network
+net=WSApplication.current_network
 videos=Hash.new
-ro=net.row\_objects('cams\_cctv\_survey').each do |ro|
+ro=net.row_objects('cams_cctv_survey').each do |ro|
     ro.details.each do |d|
-        video=d.video\_no
+        video=d.video_no
         if !video.nil?
-            if !videos.has\_key?(video)
-                videos\[video\]=0
+            if !videos.has_key?(video)
+                videos[video]=0
             end
         end
     end
@@ -1273,20 +1273,20 @@ An alternative way of writing the code is to get the rows by index
 rather than use the 'each' method:
 
 ```ruby
-net=WSApplication.current\_network
-net.transaction\_begin
-net.row\_objects('cams\_cctv\_survey').each do |ro|
-    ro\_details=ro.details
-    (0...ro\_details.size).each do |i|
-    detail\_row=ro\_details\[i\]
-    if detail\_row.code=='OJS'
-        detail\_row.code='SJO'
+net=WSApplication.current_network
+net.transaction_begin
+net.row_objects('cams_cctv_survey').each do |ro|
+    ro_details=ro.details
+    (0...ro_details.size).each do |i|
+    detail_row=ro_details[i]
+    if detail_row.code=='OJS'
+        detail_row.code='SJO'
     end
 end
-ro\_details.write
+ro_details.write
 ro.write
 end
-net.transaction\_commit
+net.transaction_commit
 ```
 
 This version makes it more explicit that ro.details and the individual
@@ -1298,9 +1298,9 @@ write method must then be called on the WSRowObject to save it back to
 the local database e.g.
 
 ```ruby
-net=WSApplication.current\_network
-net.transaction\_begin
-net.row\_objects('cams\_cctv\_survey').each do |ro|
+net=WSApplication.current_network
+net.transaction_begin
+net.row_objects('cams_cctv_survey').each do |ro|
     ro.details.each do |d|
         if d.code=='OJS'
             d.code='SJO'
@@ -1309,7 +1309,7 @@ net.row\_objects('cams\_cctv\_survey').each do |ro|
     ro.details.write
     ro.write
 end
-net.transaction\_commit
+net.transaction_commit
 ```
 
 This example changes the OJS code to SJO in all defects in all CCTV
@@ -1335,14 +1335,14 @@ selects its upstream links, then their upstream nodes, then their
 upstream links etc.
 
 ```ruby
-net=WSApplication.current\_network
-net.clear\_selection
-ro=net.row\_object('cams\_manhole','MH354671')
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_object('cams_manhole','MH354671')
 ro.selected=true
-ro.\_seen=true
+ro._seen=true
 unprocessedLinks=Array.new
-ro.us\_links.each do |l|
-    if !l.\_seen
+ro.us_links.each do |l|
+    if !l._seen
         unprocessedLinks << l
     end
 end
@@ -1350,11 +1350,11 @@ end
 while unprocessedLinks.size<0
     working=unprocessedLinks.shift
     working.selected=true
-    workingUSNode=working.us\_node
-    if !workingUSNode.nil? && !workingUSNode.\_seen
+    workingUSNode=working.us_node
+    if !workingUSNode.nil? && !workingUSNode._seen
         workingUSNode.selected=true
-        workingUSNode.us\_links.each do |l|
-            if !l.\_seen
+        workingUSNode.us_links.each do |l|
+            if !l._seen
                 unprocessedLinks << l
                 l.selected=true
             end
@@ -1426,8 +1426,8 @@ end
 ```
 
 As you can see, the only changes here are that calls to us\_links are
-replaced by calls to nagivate('us\_links') and the call to us\_link is
-replaced by a call to navigate1('us\_link').
+replaced by calls to `nagivate('us_links')` and the call to us\_link is
+replaced by a call to `navigate1('us_link')`.
 
 The navigate method however is much more versatile – this example
 navigates from CCTV surveys to pipes
@@ -1968,11 +1968,10 @@ using DateTime.new as described earlier in this document.
 
 If OK is hit without changing any values, it returns an array like this:
 
-\[nil, nil, nil, \#&lt;DateTime: 2012-07-13T12:45:00+00:00
-(78595905/32,0,2299161)&gt;, 234.123456, 11.0, 100.0, "Badger",
-"Default", nil, 23.0, nil, \#&lt;DateTime: 2011-10-13T14:12:30+00:00
-(1414568501/576,0,2299161)&gt;, false, false, true, "Badger.dat", nil,
-nil, nil, "Turbo Pump", 12.3456678, 87.65456789\]
+```
+[nil, nil, nil, #<DateTime: 2012-07-13T12:45:00+00:00 (78595905/32,0,2299161)>, 234.123456, 11.0, 100.0, "Badger",
+"Default", nil, 23.0, nil, #<DateTime: 2011-10-13T14:12:30+00:00 (1414568501/576,0,2299161)>, false, false, true, "Badger.dat", nil, nil, nil, "Turbo Pump", 12.3456678, 87.65456789]
+```
 
 *scalars (*UI only)
 
@@ -2388,7 +2387,7 @@ that are read-write fields i.e. may be set from ICM Exchange scripts.
 e.g.
 
 ```ruby
-mo=iwdb.model\_object('<MODG~My Root Model Group')
+mo=iwdb.model_object('<MODG~My Root Model Group')
 ```
 
 Given a scripting path of an object returns the model object with that
@@ -3120,15 +3119,15 @@ e.g.
 
 ```ruby
 mo.commits.each do |c|
-    puts "\#{c.branch\_id},\#{c.comment},\#{c.commit\_id},\#{c.deleted\_count},\#{c.inserted\_count},\#{c.modified\_count},\#{c.setting\_changed\_count},|\#{c.user}|"
+    puts "#{c.branch_id},#{c.comment},#{c.commit_id},#{c.deleted_count},#{c.inserted_count},#{c.modified_count},#{c.setting_changed_count},|#{c.user}|"
 end
 ```
 
 or
 ```ruby
 (0...mo.commits.length).each do |i|
-    c=mo.commits\[i\]
-    puts "\#{c.branch\_id},\#{c.comment},\#{c.commit\_id},\#{c.deleted\_count},\#{c.inserted\_count},\#{c.modified\_count},\#{c.setting\_changed\_count},|\#{c.user}|"
+    c=mo.commits[i]
+    puts "#{c.branch_id},#{c.comment},#{c.commit_id},#{c.deleted_count},#{c.inserted_count},#{c.modified_count},#{c.setting_changed_count},|#{c.user}|"
 end
 ```
 
@@ -6428,14 +6427,14 @@ can be done with 2 lines of code e.g.
 
 ```ruby
 net=WSApplication.current_network
-net.odic_import_ex('CSV','d:\temp\odic.cfg',nil,'Node','d:\temp\goat.csv','Pipe','d:\temp\stoat.csv')
+net.odic_import_ex('CSV','d:\\temp\\odic.cfg',nil,'Node','d:\\temp\\goat.csv','Pipe','d:\\temp\\stoat.csv')
 ```
 
 for import and
 
 ```ruby
 net=WSApplication.current_network
-net.odec_export_ex('CSV','d:\temp\odxc.cfg',nil,'Node','d:\temp\goat2.csv','Pipe','d:\temp\stoat2.csv')
+net.odec_export_ex('CSV','d:\\temp\\odxc.cfg',nil,'Node','d:\\temp\\goat2.csv','Pipe','d:\\temp\\stoat2.csv')
 ```
 
 for export.
@@ -6449,7 +6448,7 @@ e.g.
 net=WSApplication.current_network
 import=[['Node','goat'],['Pipe','stoat']]
 import.each do |f|
-    net.odic_import_ex('CSV','d:\temp\odic.cfg',nil,f[0],'d:\temp\\'+f[1]+'.csv')
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',nil,f[0],'d:\\temp\\'+f[1]+'.csv')
 end
 ```
 
@@ -6459,7 +6458,7 @@ for import and
 net=WSApplication.current_network
 export=[['Node','goat'],['Pipe','stoat']]
 export.each do |f|
-    net.odec_export_ex('CSV','d:\temp\odxc.cfg',nil,f[0],'d:\temp\\'+f[1]+'2.csv')
+    net.odec_export_ex('CSV','d:\\temp\\odxc.cfg',nil,f[0],'d:\\temp\\'+f[1]+'2.csv')
 end
 ```
 
@@ -6485,8 +6484,8 @@ net=WSApplication.current_network
 import=[['Node','goat'],['Pipe','stoat']]
 import.each do |f|
     params=Hash.new
-    params['Error File']='d:\temp\errs'+f[0]+'.txt'
-    net.odic_import_ex('CSV','d:\temp\odic.cfg',params,f[0],'d:\temp\\'+f[1]+'.csv')
+    params['Error File']='d:\\temp\\errs'+f[0]+'.txt'
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',params,f[0],'d:\\temp\\'+f[1]+'.csv')
 end
 ```
 
@@ -6506,7 +6505,7 @@ import.each do |f|
     params=Hash.new
     errFile='d:\\temp\\errs'+f[0]+'.txt'
     params['Error File']=errFile
-    net.odic_import_ex('CSV','d:\temp\odic.cfg',params,f[0],'d:\temp\\'+f[1]+'.csv')
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',params,f[0],'d:\\temp\\'+f[1]+'.csv')
     if File.size(errFile)<0
         errFiles << errFile
     else
@@ -6547,7 +6546,7 @@ import.each do |f|
         FileUtils.rm errFile
     end
     params['Error File']=errFile
-    net.odic_import_ex('CSV','d:\temp\odic.cfg',params,f[0],'d:\temp\\'+f[1]+'.csv')
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',params,f[0],'d:\\temp\\'+f[1]+'.csv')
     if File.size(errFile)<0
         temp=Array.new
         temp << errFile
@@ -6580,7 +6579,7 @@ following:
 
 ```ruby
 if errInfo.size<0
-    consolidatedErrFileName='d:\temp\allerrs.txt'
+    consolidatedErrFileName='d:\\temp\\allerrs.txt'
     if File.exists? consolidatedErrFileName
         FileUtils.rm consolidatedErrFileName
     end
@@ -6797,57 +6796,57 @@ import = [
 ]
 files = WSApplication.file_dialog(true, 'csv', 'CSV File', nil, true, false)
 if files.nil ? || files.length == 0
-WSApplication.message_box 'No file selected - no import will be performed ','OK',nil,false
+    WSApplication.message_box 'No file selected - no import will be performed ','OK',nil,false
 else
     nErrs = 0
-errInfo = Array.new
-files.each do |file |
+    errInfo = Array.new
+    files.each do |file|
         folder = File.dirname(file)
-    name = File.basename(file)
-if name[-4.. - 1].downcase == '.csv'
-name = name[0.. - 5]
-import.each do |i |
-    if i[1].downcase == name.downcase[-i[1].length.. - 1]
-params = Hash.new
-nErrs += 1
-errFile = folder + '\\errs' + nErrs.to_s + '.txt'
-if File.exists ? errFile
-FileUtils.rm errFile
-end
-params['Error File'] = errFile
-net.odic_import_ex('CSV', configfile, params, i[0], file)
-if File.size(errFile) < 0
-temp = Array.new
-temp << errFile
-temp <<i[2]
-errInfo <<temp
-else
-    FileUtils.rm errFile
-end
-break
-end
-end
-end
-end
-if errInfo.size < 0
-puts "Errors importing data:"
-errInfo.each do |ei |
-    if ei[0].nil ?
-    puts "Expected file #{ei[1]} not found"
-else
-    puts "Errors for #{ei[1]}:"
-outputString = ''
-File.open ei[0] do |f |
-        f.each_line do |l |
-            l.chomp!
-            outputString += l
-        outputString += "\r"
-end
-end
-puts outputString
-end
-end
-end
+        name = File.basename(file)
+        if name[-4.. - 1].downcase == '.csv'
+            name = name[0.. - 5]
+            import.each do |i |
+                if i[1].downcase == name.downcase[-i[1].length.. - 1]
+                    params = Hash.new
+                    nErrs += 1
+                    errFile = folder + '\\errs' + nErrs.to_s + '.txt'
+                    if File.exists ? errFile
+                        FileUtils.rm errFile
+                    end
+                    params['Error File'] = errFile
+                    net.odic_import_ex('CSV', configfile, params, i[0], file)
+                    if File.size(errFile) < 0
+                        temp = Array.new
+                        temp << errFile
+                        temp <<i[2]
+                        errInfo <<temp
+                    else
+                        FileUtils.rm errFile
+                    end
+                    break
+                end
+            end
+        end
+    end
+    if errInfo.size < 0
+        puts "Errors importing data:"
+        errInfo.each do |ei|
+            if ei[0].nil ?
+                puts "Expected file #{ei[1]} not found"
+            else
+                puts "Errors for #{ei[1]}:"
+                outputString = ''
+                File.open ei[0] do |f|
+                    f.each_line do |l|
+                        l.chomp!
+                        outputString += l
+                        outputString += "\r"
+                    end
+                end
+                puts outputString
+            end
+        end
+    end
 end
 ```
 
@@ -6903,113 +6902,63 @@ accessed via Ruby's Win32OLE mechanism e.g. to import data
 
 ```ruby
 require 'WIN32OLE'
-
 DAO=WIN32OLE.new "DAO.DBEngine.36"
-
 WSs=DAO.Workspaces
-
 WS=WSs[0]
-
 db=WS.OpenDatabase 'd:\\temp\\test.mdb'
-
 net=WSApplication.current_network
-
 rs=db.OpenRecordset 'MANHOLES'
-
 net.transaction_begin
-
 if !rs.BOF && !rs.EOF
-
-rs.MoveFirst
-
-while !rs.EOF
-
-ro=net.new_row_object('cams_manhole')
-
-ro.id=rs.Fields.Item('Name').Value
-
-ro.x=rs.Fields.Item('x').Value
-
-ro.y=rs.Fields.Item('y').Value
-
-ro.cover_level=rs.Fields.item('cover_level').Value
-
-ro.write
-
-rs.MoveNext
-
+    rs.MoveFirst
+    while !rs.EOF
+        ro=net.new_row_object('cams_manhole')
+        ro.id=rs.Fields.Item('Name').Value
+        ro.x=rs.Fields.Item('x').Value
+        ro.y=rs.Fields.Item('y').Value
+        ro.cover_level=rs.Fields.item('cover_level').Value
+        ro.write
+        rs.MoveNext
+    end
 end
-
-end
-
 net.transaction_commit
-
 rs.Close
-
 db.Close
-
 WS=nil
-
 WSs=nil
+```
 
 And to export data:
 
+```ruby
 require 'WIN32OLE'
-
 DAO=WIN32OLE.new "DAO.DBEngine.36"
-
 WSs=DAO.Workspaces
-
 WS=WSs[0]
-
 db=WS.OpenDatabase 'd:\\temp\\test.mdb'
-
 tabledefs=db.TableDefs
-
 tabledefs.each do |t|
-
-if t.Name=='MANHOLES'
-
-db.Execute 'DROP TABLE MANHOLES'
-
-break
-
+    if t.Name=='MANHOLES'
+        db.Execute 'DROP TABLE MANHOLES'
+        break
+    end
 end
-
-end
-
 tabledefs.Refresh
-
 db.Execute "CREATE TABLE MANHOLES (Name VARCHAR(80),x DOUBLE,y
 DOUBLE,cover_level DOUBLE)"
-
 rs=db.OpenRecordset 'MANHOLES'
-
 net=WSApplication.current_network
-
 net.row_objects('cams_manhole').each do |n|
-
-rs.AddNew
-
-rs.Fields.Item('Name').Value=n.id
-
-rs.Fields.Item('x').Value=n.x
-
-rs.Fields.Item('y').Value=n.y
-
-if !n.cover_level.nil?
-
-rs.Fields.Item('cover_level').Value=n.cover_level
-
+    rs.AddNew
+    rs.Fields.Item('Name').Value=n.id
+    rs.Fields.Item('x').Value=n.x
+    rs.Fields.Item('y').Value=n.y
+    if !n.cover_level.nil?
+        rs.Fields.Item('cover_level').Value=n.cover_level
+    end
+    rs.Update
 end
-
-rs.Update
-
-end
-
 db.close
-
 WS=nil
-
 WSs=nil
 ```
