@@ -6,6 +6,9 @@
 '* Change us_node_id and link_suffix value to a value from the hw_conduit table.
 '* Make sure hw_conduit table is closed before running ExtractDataTest
 
+'If doing it automatically, you can call repair via DAO.RepairDatabase sub-routine.
+'You can unzip directly with Shell.Application's Namespace method
+
 Option Compare Database
 
 Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _
