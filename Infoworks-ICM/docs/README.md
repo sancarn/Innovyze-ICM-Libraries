@@ -11,24 +11,28 @@ work as described.*
 This document is still Work-In-Progress
 
 This file has been transpiled from documentation provided by Innovyze. Afterwards
-it has been edited further to improve the documentation and remove oddities. However
-some oddities due to the transpiling may still occur. For example, occasionally lines
-which used to be whole lines in the original documentation turn into multiple lines.
-This can also happen in the middle of source code examples.
+it has been edited further to improve the documentation and remove transpilation glitches. However
+some glitches due to the transpiling may still occur. For example, occasionally single lines
+have been occasionally split into multiple lines with little reason. These glitches can also occur
+in the middle of source code examples.
 
 **PLEASE REPORT CODE SAMPLES WHICH DO NOT WORK AS ISSUES**, similarly if code samples,
 or descriptions could be articulated in a different more meaningful way, please
-raise these also as issues.
-
-I will gladly accept push requests which add meaningful detail to the document.
+raise these as issues or make a push request to alter the documentation. I will gladly
+accept push requests which add meaningful detail to the document.
 
 There are also numerous undocumented methods, classes and structures provided by
 the Ruby APIs. These will be documented as much as possible in this document, however,
 of course, we are very limited as to how much we can know without information directly
-from Innovyze. **If you have any information or any lost documents please contribute!**
+provided by Innovyze. **If you have any information or any lost documentation please
+contribute it!**
 
 Finally if you have any information regarding the InfoWorksCS API, please send this over
-to me also, as I am hoping to build an InfoWorks CS -> ICM importer.
+to me also, as I am also building a document regarding InfoWorks CS APIs, as the interop
+between InfoWorks CS and InfoWorks ICM is important to all.
+
+I hope his documentation helps you as much as it helps me on a daily basis.
+~Sancarn
 
 Index
 ------------
