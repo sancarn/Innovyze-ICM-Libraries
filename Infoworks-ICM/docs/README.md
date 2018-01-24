@@ -33,7 +33,7 @@ to me also, as I am hoping to build an InfoWorks CS -> ICM importer.
 Index
 ------------
 
-## ICM Exchange and Ruby guidance documents
+## [InfoWorks ICM API guidance documents](#infoworks-icm-api-guidance-documents)
 1. [Introduction](#introduction)
     a. [UI and Exchange](#ui-and-exchange)
 2. [The Exchange Object Model](#the-exchange-object-model)
@@ -48,16 +48,62 @@ Index
     a. [Specific to nodes and links](#specific-to-nodes-and-links)
     b. [General navigation](#general-navigation)
 
-## [InfoWorks ICM API Reference](##infoworks-icm-api-reference)
+## [InfoWorks ICM API Reference](#infoworks-icm-api-reference)
+1. [WSApplication](#wsapplication)
+2. [WSDatabase](#wsdatabase)
+3. [WSModelObjectCollection](#wsmodelobjectcollection)
+4. [WSModelObject](#wsmodelobject)
+5. [WSNumbatNetworkObject](#wsnumbatnetworkobject)
+6. [WSSimObject](#wssimobject)
+7. [WSOpenNetwork](#wsopennetwork)
+8. [WSRowObject](#wsrowobject)
+9. [WSNode](#wsnode)
+10. [WSLink](#wslink)
+11. [WSRiskAnalysisRunObject](#wsriskanalysisrunobject)
+12. [WSRowObjectCollection](#wsrowobjectcollection)
+13. [WSTableInfo](#wstableinfo)
+14. [WSFieldInfo](#wsfieldinfo)
+15. [WSCommit](#wscommit)
+16. [WSCommits](#wscommits)
+17. [WSStructure](#wsstructure)
+18. [WSStructureRow](#wsstructurerow)
+19. [WSValidations](#wsvalidations)
+20. [WSValidation](#wsvalidation)
+
+## [Appendix](#appendix)
+1. [Pollutograph codes](#appendix-1--pollutograph-codes)
+2. [Run Parameters](#appendix-2--run-parameters)
+3. [Running scripts from the user interface](#appendix-3--running-scripts-from-the-user-interface)
+4. [Open Data Import / Export Centre UI Customisation](#appendix-4---open-data-import--export-centre-ui-customisation)
+5. [Character encoding](#appendix-5--character-encoding)
 
 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-
-
-
-
-
-Introduction
+InfoWorks ICM API guidance documents
 ------------
 
 This document describes the Ruby interface for InfoWorks ICM and
@@ -1528,6 +1574,21 @@ Note the use of arrays stored in tags for temporary storage of counts.
 
 ----
 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
@@ -5487,8 +5548,10 @@ Returns the type of the validation message: ‘error’, ‘warning’ or
 Returns the scenario name for the validation message – returns ‘Base’
 for the base scenario.
 
-Appendix 1 – Pollutograph codes
+Appendix
 ===============================
+
+## Appendix 1 – Pollutograph codes
 
 List of pollutograph codes:
 
@@ -5520,8 +5583,7 @@ List of pollutograph codes:
 | P3A  |
 | BOA  |
 
-Appendix 2 – Run Parameters
-===========================
+## Appendix 2 – Run Parameters
 
 The fields that are set on the run dialog in the user interface are, in
 ICM Exchange, set as key value pairs within the hash passed in as the
@@ -6416,8 +6478,7 @@ puts "#{myText}"
 
 1.  The percentage volume balance is not available from ICM Exchange.
 
-Appendix 3 – Running scripts from the user interface
-====================================================
+## Appendix 3 – Running scripts from the user interface
 
 Ruby scripts may be run from the user interface when a network of any
 type is open.
@@ -6471,8 +6532,7 @@ file or a subdirectory of it.
 
 Changes to this file only take effect when the application is restarted.
 
-Appendix 4 - Open Data Import / Export Centre UI Customisation
-==============================================================
+## Appendix 4 - Open Data Import / Export Centre UI Customisation
 
 The Ruby scripting can be used to make the import / export of data via
 the open data import centre more streamlined for users of the software
@@ -6907,8 +6967,7 @@ else
 end
 ```
 
-Appendix 5 – Character encoding
-===============================
+## Appendix 5 – Character encoding
 
 Note that this behaviour was changed in ICM version 7.0 / InfoNet
 version 17.0.
@@ -6951,8 +7010,7 @@ OR
 | Turkish            | Windows-1254 | CP857   |
 | Western European   | Windows-1252 | CP1252  |
 
-Appendix 6 – Interacting with Jet databases
-===========================================
+## Appendix 6 – Interacting with Jet databases
 
 Jet databases may be read and written to using the DAO interface,
 accessed via Ruby's Win32OLE mechanism e.g. to import data
