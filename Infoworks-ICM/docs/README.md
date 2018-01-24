@@ -8,6 +8,8 @@ work as described.*
 
 ## Sancarn's notes
 
+This document is still Work-In-Progress
+
 This file has been transpiled from documentation provided by Innovyze. Afterwards
 it has been edited further to improve the documentation and remove oddities. However
 some oddities due to the transpiling may still occur. For example, occasionally lines
@@ -27,6 +29,33 @@ from Innovyze. **If you have any information or any lost documents please contri
 
 Finally if you have any information regarding the InfoWorksCS API, please send this over
 to me also, as I am hoping to build an InfoWorks CS -> ICM importer.
+
+Index
+------------
+
+## ICM Exchange and Ruby guidance documents
+1. [Introduction](#introduction)
+    a. [UI and Exchange](#ui-and-exchange)
+2. [The Exchange Object Model](#the-exchange-object-model)
+3. [WSNumbatNetworkObject vs WSOpenNetwork](#wsnumbatnetworkobject-vs-wsopennetwork)
+4. [Methods](#methods)
+5. [Dates and Times](dates-and-times)
+6. [Handling objects at the master database level](#handling-objects-at-the-master-database-level)
+7. [Scripting paths](#scripting-paths)
+8. [Handling objects within a network](#handling-objects-within-a-network)
+9. [Getting and setting values in ‘row objects’.](#getting-and-setting-values-in-row-objects)
+10. [Navigating between objects](#navigating-between-objects)
+    a. [Specific to nodes and links](#specific-to-nodes-and-links)
+    b. [General navigation](#general-navigation)
+
+## [InfoWorks ICM API Reference](##infoworks-icm-api-reference)
+
+
+
+
+
+
+
 
 Introduction
 ------------
@@ -1170,9 +1199,6 @@ networks contain one or more of the other three fields named above:
 In addition to these four fields, the following fields containing
 structure blobs occur in the tables as follows:
 
-**  
-**
-
 **Model Network**
 
 | Bank line                    |                            |                     |
@@ -1407,7 +1433,7 @@ over and over again. We do this by use of a tag which we have named
 if they have got the tag set to true, signifying that they have already
 been processed.
 
-#### General.
+#### General navigation
 
 The more general way of navigating between objects is to use the
 navigate and navigate1 methods of the WSRowObject. The difference
@@ -1500,9 +1526,19 @@ codes for each pipe, then stores those in user numbers 1 to 5.
 Note the use of arrays stored in tags for temporary storage of counts.
 
 
---
+----
 
-Method Reference
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+InfoWorks ICM API Reference
 ----------------
 
 ### WSApplication
