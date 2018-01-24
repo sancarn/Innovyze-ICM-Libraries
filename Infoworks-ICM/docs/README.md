@@ -6,6 +6,28 @@
 class or method in this document does not guarantee it will exist and/or
 work as described.*
 
+## Sancarn's notes
+
+This file has been transpiled from documentation provided by Innovyze. Afterwards
+it has been edited further to improve the documentation and remove oddities. However
+some oddities due to the transpiling may still occur. For example, occasionally lines
+which used to be whole lines in the original documentation turn into multiple lines.
+This can also happen in the middle of source code examples.
+
+**PLEASE REPORT CODE SAMPLES WHICH DO NOT WORK AS ISSUES**, similarly if code samples,
+or descriptions could be articulated in a different more meaningful way, please
+raise these also as issues.
+
+I will gladly accept push requests which add meaningful detail to the document.
+
+There are also numerous undocumented methods, classes and structures provided by
+the Ruby APIs. These will be documented as much as possible in this document, however,
+of course, we are very limited as to how much we can know without information directly
+from Innovyze. **If you have any information or any lost documents please contribute!**
+
+Finally if you have any information regarding the InfoWorksCS API, please send this over
+to me also, as I am hoping to build an InfoWorks CS -> ICM importer.
+
 Introduction
 ------------
 
@@ -307,8 +329,7 @@ following script:
 ```ruby
 db=WSApplication.open nil,false
 
-mo=db.model_object '>MODG~Basic Initial Loss Runs>MODG~Initial
-Loss Type>RUN~Abs>SIM~M2-60'
+mo=db.model_object '>MODG~Basic Initial Loss Runs>MODG~Initial Loss Type>RUN~Abs>SIM~M2-60'
 
 mo.results_binary_export nil,nil,'d:\\temp\\sim.dat'
 ```
