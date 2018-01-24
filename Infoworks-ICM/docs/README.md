@@ -4584,7 +4584,7 @@ be used instead.
 
 *run\_SQL*
 
-**on.run\_SQL(object,query)**
+**on.run\_SQL(table,query)**
 
 This method runs the SQL query with the given table being the ‘current
 table’ as it appears in the SQL dialog i.e. the default table if the SQL
