@@ -52,7 +52,7 @@ Index
     a. [Specific to nodes and links](#specific-to-nodes-and-links)
     b. [General navigation](#general-navigation)
 
-## [InfoWorks ICM API Reference](#infoworks-icm-api-reference)
+## [InfoWorks ICM API Reference](#infoworks-icm-api-reference-1)
 1. [WSApplication](#wsapplication)
 2. [WSDatabase](#wsdatabase)
 3. [WSModelObjectCollection](#wsmodelobjectcollection)
