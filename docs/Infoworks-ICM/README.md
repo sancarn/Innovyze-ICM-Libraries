@@ -143,16 +143,7 @@ broadly speaking as follows:
     however the user interface items available from the ICM / InfoNet
     user interfaces will not be available.
 
-*Important note – users must note that the flexible nature of the Ruby
-scripting language means that the language is almost infinitely
-flexible, the embedding of the language within the InfoWorks ICM /
-InfoNet applications is intended primarily for the manipulation of data
-via the product’s APIs, and it may not be possible to get other Ruby
-libraries etc. working within InfoWorks without problems and it will not
-be possible to provide support for such attempts. If you aspire to use
-Ruby within the Innovyze products for tasks not centred around the
-products’ APIs you should consult with Innovyze to get advice as to the
-feasibility of what you are intending to attempt.*
+> Note – Due to the embedded nature of Ruby within the InfoWorks ICM / InfoNet applications, it may not be possible to get other Ruby libraries working within InfoWorks without issues. Innovyze will not be able to provide assistance/support when such issues arise.
 
 # The Exchange Object Model
 -------------------------
@@ -485,9 +476,8 @@ while toProcess.size<0
 end
 ```
 
-Note use of delete\_at(0) which returns the first item in the array
-whilst at the same time removing it from the array – the old second item
-becomes the first etc.
+> `array.delete_at(0)` Deletes the element at the specified index, and returns
+the removed element, or `nil` if the index is out of range.
 
 In both the examples above the snippets of code output the paths of the
 found objects but in real life you will want to do something else e.g.
@@ -1610,34 +1600,34 @@ InfoWorks ICM API Reference
 
 #### `add_ons_folder`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=WSApplication.add_ons_folder
 ```
 
-Description:
+##### Description:
 
 
 Returns the full path of the 'add ons' folder described in Appendix 3
 e.g.
 C:\\Users\\badgerb\\AppData\\Roaming\\Innovyze\\WorkgroupClient\\scripts
 
-Note that the folder will not exist unless manually created. Its parent
-folder will almost certainly exist.
+> Note - This folder will not exist unless manually created. Its parent
+folder will exist if InfoNet/InfoWorks has been opened on this PC.
 
 <br/>
 <br/>
 
-#### `background_network (UI only)`
+#### `background_network` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 bn=WSApplication.background_network
 ```
 
-Description:
+##### Description:
 
 
 Returns the background network for the GeoPlan that currently has focus.
@@ -1650,13 +1640,13 @@ is loaded.
 
 #### `cancel_job (ICM Exchange only)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.cancel_job(job)
 ```
 
-Description:
+##### Description:
 
 
 Cancels a job being run by the agent. The parameter is a job ID from the
@@ -1665,15 +1655,15 @@ array returned by launch\_sims – see below.
 <br/>
 <br/>
 
-#### `colour (UI only)`
+#### `colour` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 col=WSApplication.colour(r,g,b)
 ```
 
-Description:
+##### Description:
 
 
 This method exists for convenience in the context of the graph method
@@ -1684,15 +1674,15 @@ black, colour(255,0,0) returns red, colour(255,255,255) returns white.
 <br/>
 <br/>
 
-#### `connect_local_agent (Exchange only)`
+#### `connect_local_agent` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 bSuccess=WSApplication.connect_local_agent(wait_time)
 ```
 
-Description:
+##### Description:
 
 
 Connects to the local agent, returning true if it succeeds. The call
@@ -1703,15 +1693,15 @@ This method must be called before the launch\_sims method is called.
 <br/>
 <br/>
 
-#### `current_database (UI only)`
+#### `current_database` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 db=WSApplication.current_database
 ```
 
-Description:
+##### Description:
 
 
 Returns the current database. Only very limited database functionality
@@ -1721,15 +1711,15 @@ to return the database object for the currently open master database.
 <br/>
 <br/>
 
-#### `current_network (UI only)`
+#### `current_network` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on=WSApplication.current_network
 ```
 
-Description:
+##### Description:
 
 
 Returns the network for the GeoPlan that currently has focus. Scripts
@@ -1742,20 +1732,21 @@ then the results will be available to the script.
 <br/>
 <br/>
 
-#### `create (Exchange only)`
+#### `create` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.create(path)
 ```
 
-Description:
+##### Example:
 
+```rb
+WSApplication.create 'd:\\temp\\1.icmm'
+```
 
-e.g.
-
-WSApplication.create 'd:\\\\temp\\\\1.icmm'
+##### Description:
 
 Creates a standard database at the location given by the path parameter.
 
@@ -1769,15 +1760,15 @@ z:\\test.icmm contains an incorrect path
 <br/>
 <br/>
 
-#### `create_transportable (Exchange only)`
+#### `create_transportable` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.create_transportable(path)
 ```
 
-Description:
+##### Description:
 
 
 Creates a transportable database at the location given by the path
@@ -1786,16 +1777,16 @@ parameter.
 <br/>
 <br/>
 
-#### `file_dialog (UI only)`
+#### `file_dialog` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 file_or_files=WSApplication.file_dialog(open, extension,
 description, default_name,allow_multiple_files,hard_wire_cancel)
 ```
 
-Description:
+##### Description:
 
 
 Displays a file dialog (open or save), and if OK is selected returns the
@@ -1830,15 +1821,15 @@ from the dialog, the execution of the Ruby script is stopped.
 <br/>
 <br/>
 
-#### `folder_dialog (UI only)`
+#### `folder_dialog` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 folder=WSApplication.folder_dialog(title,hard_wire_cancel)
 ```
 
-Description:
+##### Description:
 
 
 Displays a dialog allowing the selection of a folder, returned as a
@@ -1858,15 +1849,15 @@ to false, nil will be returned.
 <br/>
 <br/>
 
-#### `graph (UI only)`
+#### `graph` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.graph(params)
 ```
 
-Description:
+##### Description:
 
 
 Displays a graph according to the parameters passed in.
@@ -1934,13 +1925,13 @@ trace, though they can vary between traces.
 
 #### `input_box(UI only)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=WSApplication.input_box(prompt,title,default)
 ```
 
-Description:
+##### Description:
 
 
 Displays a box allowing the input of a text value. The prompt appears on
@@ -1953,16 +1944,16 @@ returned.
 <br/>
 <br/>
 
-#### `launch_sims (Exchange only)`
+#### `launch_sims` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=WSApplication.launch_sims(sims, server, results_on_server,
 max_threads, after)
 ```
 
-Description:
+##### Description:
 
 
 Launches one or more simulations in a flexible way. This method requires
@@ -1993,15 +1984,15 @@ results array may be passed into it.
 <br/>
 <br/>
 
-#### `message_box (UI only)`
+#### `message_box` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 text=WSApplication.message_box(text,options,icon,hard_wire_cancel)
 ```
 
-Description:
+##### Description:
 
 
 Displays a message box.
@@ -2064,15 +2055,15 @@ The buttons appear as follows:
 <br/>
 <br/>
 
-#### `open_text_view (UI only)`
+#### `open_text_view` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.open_text_view(title,filename,delete_on_exit)
 ```
 
-Description:
+##### Description:
 
 
 This method opens a text file in a text view within the application. The
@@ -2090,15 +2081,15 @@ deleted when the view is closed by the user.
 <br/>
 <br/>
 
-#### `prompt (UI only)`
+#### `prompt` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=WSApplication.prompt(title,layout,hard_wire_cancel)
 ```
 
-Description:
+##### Description:
 
 
 This method displays a prompt grid, similar to that used in the SQL in
@@ -2230,15 +2221,15 @@ If OK is hit without changing any values, it returns an array like this:
 <br/>
 <br/>
 
-#### `scalars (UI only)`
+#### `scalars` (UI only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.scalars(title,layout,hard_wire_cancel)
 ```
 
-Description:
+##### Description:
 
 
 This method displays a grid of values, similar to that used in the SQL
@@ -2272,15 +2263,15 @@ for any others.
 <br/>
 <br/>
 
-#### `wait_for_jobs (Exchange only)`
+#### `wait_for_jobs` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 id_or_nil=WSApplication.wait_for_jobs(array_of_job_ids,wait_for_all,timeout)
 ```
 
-Description:
+##### Description:
 
 
 Waits for one or all of the jobs in the array to complete, or for the
@@ -2304,20 +2295,21 @@ last job to complete)
 <br/>
 <br/>
 
-#### `working_folder (Exchange only)`
+#### `working_folder` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=WSApplication.working_folder
 ```
 
-Description:
+##### Example:
 
+```rb
+puts WSApplication.working_folder
+```
 
-e.g.
-
-puts WSApplication.working\_folder
+##### Description:
 
 Returns the current working folder as a string
 
@@ -2329,20 +2321,21 @@ regardless of whether you have explicitly set it or not
 <br/>
 <br/>
 
-#### `results_folder (Exchange only)`
+#### `results_folder` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=WSApplication.results_folder
 ```
 
-Description:
+##### Example:
 
+```rb
+puts WSApplication.results_folder
+```
 
-e.g.
-
-puts WSApplication.results\_folder
+##### Description:
 
 Returns the current results folder as a string
 
@@ -2354,22 +2347,22 @@ regardless of whether you have explicitly set it or not
 <br/>
 <br/>
 
-#### `open (Exchange only)`
+#### `open` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 iwdb=WSApplication.open(path,bUpdate)
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
-db=WSApplication.open 'd:\\\\temp\\\\1.icmm',false
-
+```ruby
+db=WSApplication.open 'd:\\temp\\1.icmm',false
 db.open nil,false
+```
+
+##### Description:
 
 Opens the database with path ‘path’ and returns an object of type
 WSDatabase. If the database requires updating and the flag bUpdate
@@ -2412,18 +2405,19 @@ if the database requires an update but the second parameter is false
 
 #### `override_user_unit (Exchange only – see note in method text)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 OK=WSApplication.override_user_unit(code,value)
 ```
 
-Description:
+##### Example:
 
+```ruby
+OK=WSApplication.override_user_unit 'X','ft'
+```
 
-e.g.
-
-OK=WSApplication.override\_user\_unit 'X','ft'
+##### Description:
 
 Overrides a current user unit for the duration of the script
 
@@ -2431,35 +2425,31 @@ This can be useful where ICM Exchange is running as a service, where the
 "user" has no settings of it own and you don't want the default user
 units that are selected for the locale
 
-Returns true if successful, false for an unknown unit or value.
+Returns `true` if successful, `false` for an unknown unit or value.
 
-Note – when scripts are run from the UI, user units are always used.
+> Note – When scripts are run from the UI, user units are always used.
 
 <br/>
 <br/>
 
-#### `override_user_units (Exchange only)`
+#### `override_user_units` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 errs=WSApplication.override_user_units(filename)
 ```
 
-Description:
-
-
-e.g.
+##### Example:
 
 ```ruby
-errs=WSApplication.override_user_units 'd:tempuu.csv'
-
+errs=WSApplication.override_user_units 'd:\\temp\\uu.csv'
 if errs.length<0
-
-puts “error reading CSV file”
-
+    puts “error reading CSV file”
 end
 ```
+
+##### Description:
 
 Bulk overrides the current user units for the duration of the script.
 
@@ -2471,7 +2461,7 @@ XY,US Survey ft
 Useful where ICM Exchange is running as a service, where the "user" has
 no settings of it own.
 
-Returns an error string – an empty string indicates success. Note,
+Returns an error string. An empty string indicates success. Note,
 however, that any valid units will be applied, regardless of whether
 there are any errors with other lines of the file.
 
@@ -2487,13 +2477,13 @@ if the file does not exist.
 
 #### `script_file`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=WSApplication.script_file
 ```
 
-Description:
+##### Description:
 
 
 Returns the full path of the script file. This will either by the file
@@ -2507,47 +2497,49 @@ config files for the Open Data Import and Export Centres.
 <br/>
 <br/>
 
-#### `set_exit_code (Exchange only)`
+#### `set_exit_code` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.set_exit_code(exit_code)
 ```
 
-Description:
+##### Example:
 
+```ruby
+WSApplication.set_exit_code 12
+```
 
-e.g.
-
-WSApplication.set\_exit\_code 12
+##### Description:
 
 Sets the InfoLite application’s exit code. The exit code must evaluate
 to a Fixnum, if it does not, an exception will be thrown:
 
 exit code is not a number
 
-Note that calling this method *does not* cause the script to terminate,
+> Note - Calling this method *does not* cause the script to terminate,
 it merely sets the exit code returned to the operating system when the
 script *does* terminate.
 
 <br/>
 <br/>
 
-#### `set_working_folder (Exchange only)`
+#### `set_working_folder` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.set_working_folder(path)
 ```
 
-Description:
+##### Example:
 
+```rb
+WSApplication.set_working_folder 'd:\\temp\\wf'
+```
 
-e.g.
-
-WSApplication.set\_working\_folder 'd:\\\\temp\\\\wf'
+##### Description:
 
 Sets the working folder.
 
@@ -2558,20 +2550,21 @@ by any other instances of ICM Exchange or the ICM UI.
 <br/>
 <br/>
 
-#### `set_results_folder (Exchange only)`
+#### `set_results_folder` (Exchange only)
 
-Syntax:
+##### Syntax:
 
-```ruby
+```rb
 WSApplication.set_results_folder(path)
 ```
 
-Description:
+##### Example:
 
+```rb
+WSApplication.set_results_folder 'd:\\temp\\rf'
+```
 
-e.g.
-
-WSApplication.set\_results\_folder 'd:\\\\temp\\\\rf'
+##### Description:
 
 Sets the results folder.
 
@@ -2584,14 +2577,13 @@ by any other instances of ICM Exchange or the ICM UI.
 
 #### `ui?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=WSApplication.ui?
 ```
 
-Description:
-
+##### Description:
 
 Returns true in interactive mode, false otherwise. The purpose of this
 method is to allow Ruby code to be written which does different things
@@ -2601,9 +2593,11 @@ when run from within the user interface and when run from InfoWorks ICM
 #### `use_arcgis_desktop_licence (Exchange only – see note in method
 text)`
 
-e.g.
+##### Syntax:
 
-WSApplication.use\_arcgis\_desktop\_licence
+```rb
+WSApplication.use_arcgis_desktop_licence
+```
 
 When using the open data import and export centre methods with ArcGIS
 the software uses an ArcGIS server licence type by default. Use this
@@ -2619,18 +2613,19 @@ course, used.
 
 #### `use_user_units?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=WSApplications.use_user_units
 ```
 
-Description:
+##### Example:
 
+```rb
+puts WSApplication.use_user_units?
+```
 
-e.g.
-
-puts WSApplication.use\_user\_units?
+##### Description:
 
 Returns a Boolean indicating whether the application is using user units
 (default is false for the Exchange products and true within the user
@@ -2641,18 +2636,19 @@ interface).
 
 #### `use_user_units=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.use_user_units = flag
 ```
 
-Description:
+##### Example:
 
+```rb
+WSApplication.use_user_units=true
+```
 
-e.g.
-
-WSApplication.use\_user\_units=true
+##### Description:
 
 Sets the flag indicating whether the application is using user units.
 
@@ -2661,18 +2657,19 @@ Sets the flag indicating whether the application is using user units.
 
 #### `use_utf8?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=WSApplications.use_utf8?
 ```
 
-Description:
+##### Example:
 
+```rb
+puts WSApplication.use_utf8?
+```
 
-e.g.
-
-puts WSApplication.use\_utf8?
+##### Description:
 
 Returns a Boolean indicating whether the application is using UTF8 in
 string handling (default is false). See appendix 5 for more details.
@@ -2682,18 +2679,19 @@ string handling (default is false). See appendix 5 for more details.
 
 #### `use_utf8=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSApplication.use_utf8 = flag
 ```
 
-Description:
+##### Example:
 
+```rb
+WSApplication.use_utf8=true
+```
 
-e.g.
-
-WSApplication.use\_utf8=true
+##### Description:
 
 Sets the flag indicating whether the application is using UTF8 in string
 handling (default is false). See appendix 5 for more details.
@@ -2703,18 +2701,19 @@ handling (default is false). See appendix 5 for more details.
 
 #### `version`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=WSApplication.version
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
+```rb
 puts WSApplication.version
+```
+
+##### Description:
 
 Returns the InfoWorks ICM version number as a string e.g.
 
@@ -2734,15 +2733,15 @@ list objects.
 <br/>
 <br/>
 
-#### `copy_into_root (Exchange only)`
+#### `copy_into_root` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=iwdb.copy_into_root object,bCopySims,bCopyGroundModels
 ```
 
-Description:
+##### Description:
 
 
 Given a model object (typically from another database) copies it into
@@ -2754,15 +2753,15 @@ equivalent user interface options.
 <br/>
 <br/>
 
-#### `file_root (Exchange only)`
+#### `file_root` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=iwdb.file_root
 ```
 
-Description:
+##### Description:
 
 
 Returns the root used for GIS files for the database – i.e. the path
@@ -2780,18 +2779,19 @@ containing the master database.
 
 #### `find_model_object`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=iwdb.find_model_object(type,name)
 ```
 
-Description:
+##### Example:
 
+```rb
+puts iwdb.find_model_object('Model Network','MyNetwork')
+```
 
-e.g.
-
-puts iwdb.find\_model\_object('Model Network','MyNetwork')
+##### Description:
 
 Given the scripting type of an object and a name of a version controlled
 object (not its scripting path), will return the model object in the
@@ -2808,18 +2808,19 @@ object in the database uniquely.
 
 #### `find_root_model_object`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=iwdb.find_root_model_object(type,name)
 ```
 
-Description:
+##### Example:
 
+```rb
+mo=iwdb.find_root_model_object('Master Group','My Master Group')
+```
 
-e.g.
-
-mo=iwdb.find\_root\_model\_object('Master Group','My Master Group')
+##### Description:
 
 Given the scripting type of an object and the name of an object, will
 return the model object with that name in the root of the database.
@@ -2831,13 +2832,13 @@ Currently the only object types found in the root of the database are
 
 #### `guid`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=iwdb.guid
 ```
 
-Description:
+##### Description:
 
 
 Returns the GUID for the database, otherwise known as the ‘database
@@ -2846,20 +2847,21 @@ identifier’.
 <br/>
 <br/>
 
-#### `list_read_write_run_fields (Exchange only)`
+#### `list_read_write_run_fields` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=iwdb.list_read_write_run_fields
 ```
 
-Description:
+##### Example:
 
+```rb
+iwdb.list_read_write_run_fields {|fn| puts fn}
+```
 
-e.g.
-
-iwdb.list\_read\_write\_run\_fields {|fn| puts fn}
+##### Description:
 
 Returns an array of strings containing all the fields in the Run object
 that are read-write fields i.e. may be set from ICM Exchange scripts.
@@ -2869,20 +2871,19 @@ that are read-write fields i.e. may be set from ICM Exchange scripts.
 
 #### `model_object`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=iwdb.model_object(scripting_path)
 ```
 
-Description:
-
-
-e.g.
+##### Example:
 
 ```ruby
-mo=iwdb.model_object('<MODG~My Root Model Group')
+mo=iwdb.model_object('>MODG~My Root Model Group')
 ```
+
+##### Description:
 
 Given a scripting path of an object returns the model object with that
 path, otherwise returns nil.
@@ -2895,13 +2896,13 @@ the ‘official’ way of finding the model object.
 
 #### `model_object_collection`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 moc=iwdb.model_object_collection(type)
 ```
 
-Description:
+##### Description:
 
 
 Given a scripting type, returns a WSModelObjectCollection of all the
@@ -2910,20 +2911,21 @@ objects of that type – not just the objects of that type in the root.
 <br/>
 <br/>
 
-#### `model_object_from_type_and_guid (Exchange only)`
+#### `model_object_from_type_and_guid` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=iwdb.model_object_from_type_and_guid(type,guid)
 ```
 
-Description:
+##### Example:
 
+```ruby
+mo=iwdb.model_object_from_type_and_guid 'Model Network','{CEB7E8B9-D383-485C-B085-19F6E3E3C8CD}'
+```
 
-e.g.
-
-`mo=iwdb.model_object_from_type_and_guid 'Model Network,'{CEB7E8B9-D383-485C-B085-19F6E3E3C8CD}'`
+##### Description:
 
 Returns the model object of the given scripting type with the
 ‘CreationGUID’ (an internal database field) given in the second
@@ -2934,18 +2936,19 @@ parameter.
 
 #### `model_object_from_type_and_id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=iwdb.model_object_from_type_and_id(type,id)
 ```
 
-Description:
+##### Example:
 
+```rb
+mo=iwdb.model_object_from_type_and_id('Rainfall Event',1)
+```
 
-e.g.
-
-`mo=iwdb.model_object_from_type_and_id('Rainfall Event',1)`
+##### Description:
 
 Returns the model object in this database with the type and ID given,
 the type is from the list of scripting types (see above), and the ID is
@@ -2959,20 +2962,21 @@ and obtaining its properties.
 <br/>
 <br/>
 
-#### `new_network_name (Exchange only)`
+#### `new_network_name` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 name=iwdb.new_network_name(type,name,branch,add)
 ```
 
-Description:
+##### Example:
 
+```rb
+newName=iwdb.network_ntework_name('Model Network',oldName,false,false)
+```
 
-e.g.
-
-newname=iwdb.network\_ntework\_name('Model Network',oldname,false,false)
+##### Description:
 
 The purpose of this method is to generate a name for a new network based
 on a given network name, with the intention that the old name is the
@@ -2991,21 +2995,21 @@ or not the name ends in \# or \_ followed by a number.
 <br/>
 <br/>
 
-#### `new_model_object (Exchange only)`
+#### `new_model_object` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=iwdb.new_model_object(type,name)
 ```
 
-Description:
+##### Example:
 
+```rb
+root_master_group=iwdb.new_model_object('Master Group','MyRootMasterGroup')
+```
 
-e.g.
-
-root\_master\_group=iwdb.new\_model\_object('Master
-Group','MyRootMasterGroup')
+##### Description:
 
 Given a scripting type and a name, creates a new object with that name
 in the root of the database. For this to work it is necessary that the
@@ -3036,18 +3040,19 @@ unable to create object – if the creation fails for some other reason
 
 #### `path`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=iwdb.path
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
+```rb
 puts iwdb.path
+```
+
+##### Description:
 
 returns the pathname of the master database as a string
 
@@ -3056,13 +3061,13 @@ returns the pathname of the master database as a string
 
 #### `root_model_objects`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 moc=iwdb.root_model_objects
 ```
 
-Description:
+##### Description:
 
 
 Returns a WSModelObjectCollection of all the objects in the root of the
@@ -3077,13 +3082,13 @@ database.
 
 #### `[]`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=moc[n]
 ```
 
-Description:
+##### Description:
 
 
 Returns the nth WSModelObject in the collection. The index is 0 based
@@ -3094,13 +3099,13 @@ i.e. valid values are from 0 to length-1.
 
 #### `count`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=moc.count
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of WSModelObjects in the collection
@@ -3110,18 +3115,19 @@ Returns the number of WSModelObjects in the collection
 
 #### `each`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 WSModelObjectCollection.each do |mo|
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
+```rb
 moc.each { |x| puts x.name }
+```
+
+##### Description:
 
 The each method can be used to iterate through all the objects in the
 collection.
@@ -3134,20 +3140,20 @@ products.
 <br/>
 <br/>
 
-#### `\[] (Exchange only)`
+#### `\[]` (Exchange only)
 
 <br/>
 <br/>
 
 #### `\[]=(Exchange only)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo['field']=value
 ```
 
-Description:
+##### Description:
 
 
 **v=mo\['field'\]**
@@ -3170,15 +3176,15 @@ to another object in the database. In this case the value stored may be
 <br/>
 <br/>
 
-#### `bulk_delete (Exchange only)`
+#### `bulk_delete` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.bulk_delete
 ```
 
-Description:
+##### Description:
 
 
 This deletes the object and all its children. The deleted objects are
@@ -3189,33 +3195,34 @@ NOT put into the recycle bin, they are completely deleted.
 
 #### `children`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 moc=mo.children
 ```
 
-Description:
+##### Example:
 
+```rb
+master_group.children.each {|c| puts "child #{c.path}"}
+```
 
-e.g.
-
-master\_group.children.each {|c| puts "child \#{c.path}"}
+##### Description:
 
 Returns the children of the object as a WSModelObjectCollection
 
 <br/>
 <br/>
 
-#### `comment (Exchange only)`
+#### `comment` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=mo.comment
 ```
 
-Description:
+##### Description:
 
 
 Returns the description (i.e. the text which appears in the description
@@ -3224,15 +3231,15 @@ tab of the properties for an object) as a string.
 <br/>
 <br/>
 
-#### `comment= (Exchange only)`
+#### `comment=` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.comment=s
 ```
 
-Description:
+##### Description:
 
 
 Sets the description (as described above) for an object from a string.
@@ -3240,24 +3247,23 @@ Sets the description (as described above) for an object from a string.
 <br/>
 <br/>
 
-#### `compare (Exchange only)`
+#### `compare` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=mo.compare(mo2)
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
+```rb
 if mo.compare(mo2)
-
-puts “networks are identical”
-
+    puts “networks are identical”
 end
+```
+
+##### Description:
 
 Given another model object, compare the 2 objects returning true if they
 are identical, false otherwise. The objects must both be of the same
@@ -3269,15 +3275,15 @@ database.
 <br/>
 <br/>
 
-#### `copy_here (Exchange only)`
+#### `copy_here` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo2=mo.copy_here(object,bCopySims,bCopyGroundModels)
 ```
 
-Description:
+##### Description:
 
 
 Given a model object (typically from another database) copies it into
@@ -3289,15 +3295,15 @@ corresponding to the equivalent user interface options.
 <br/>
 <br/>
 
-#### `deletable? (Exchange only)`
+#### `deletable?` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=mo.deletable?
 ```
 
-Description:
+##### Description:
 
 
 Returns true if the object can be deleted by normal means i.e. without
@@ -3309,15 +3315,15 @@ used in a simulation etc.
 <br/>
 <br/>
 
-#### `delete (Exchange only)`
+#### `delete` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.delete
 ```
 
-Description:
+##### Description:
 
 
 Deletes the object, providing it can be deleted in the normal user
@@ -3328,15 +3334,15 @@ interface.
 <br/>
 <br/>
 
-#### `delete_results (Exchange only)`
+#### `delete_results` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.delete_results
 ```
 
-Description:
+##### Description:
 
 
 Deletes the results for the object, if the object is a simulation.
@@ -3344,15 +3350,15 @@ Deletes the results for the object, if the object is a simulation.
 <br/>
 <br/>
 
-#### `export (Exchange only)`
+#### `export` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.export(path,format)
 ```
 
-Description:
+##### Description:
 
 
 Exports the model object in the appropriate format.
@@ -3477,13 +3483,13 @@ the format field:
 
 #### `find_child_model_object`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo_found=mo.find_child_model_object(type,name)
 ```
 
-Description:
+##### Description:
 
 
 Given the scripting type of an object and a name will return the child
@@ -3494,13 +3500,13 @@ of the object with that name and type.
 
 #### `id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=mo.id
 ```
 
-Description:
+##### Description:
 
 
 Returns the ID of the model object as a number
@@ -3508,15 +3514,15 @@ Returns the ID of the model object as a number
 <br/>
 <br/>
 
-#### `import_data (Exchange only)`
+#### `import_data` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 import_data(format,filepath)
 ```
 
-Description:
+##### Description:
 
 
 Imports data into an existing object.
@@ -3531,15 +3537,15 @@ format and have the same meaning as for export\_data above.
 <br/>
 <br/>
 
-#### `import_new_model_object (Exchange only)`
+#### `import_new_model_object` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo=mo.import_new_model_object(type,name,format,filepath,event)
 ```
 
-Description:
+##### Description:
 
 
 Imports a new model object from a file.
@@ -3594,13 +3600,13 @@ rainfall=model_group.import_new_model_object 'Rainfall Event','The Rainfall','',
 
 #### `import_tvd(Exchange only)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.import_tvd(filename,format,event)
 ```
 
-Description:
+##### Description:
 
 
 Imports event data into an existing object.
@@ -3626,13 +3632,13 @@ overwriting the data already there if there is any.
 
 #### `modified_by`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=mo.modified_by
 ```
 
-Description:
+##### Description:
 
 
 Returns the name of the user who last modified the object as a string.
@@ -3642,13 +3648,13 @@ Returns the name of the user who last modified the object as a string.
 
 #### `name`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=mo.name
 ```
 
-Description:
+##### Description:
 
 
 Returns the name of an object as a string.
@@ -3656,15 +3662,15 @@ Returns the name of an object as a string.
 <br/>
 <br/>
 
-#### `name= (Exchange only)`
+#### `name=` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.name=s
 ```
 
-Description:
+##### Description:
 
 
 Sets the name of an object from a string
@@ -3719,13 +3725,13 @@ selection lists may not be created from scripts in the UI in viewer mode
 
 #### `new_risk_analysis_run (ICM Exchange only)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 raro=mo.new_risk_analysis_run(name,damage_function,runs,param)
 ```
 
-Description:
+##### Description:
 
 
 Creates a new risk analysis run object. The parameters are as follows:
@@ -3752,13 +3758,13 @@ Param – the numerical parameter
 
 #### `new_run`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 run=mo.new_run(name,network,commit_id,rainfalls_and_flow_surveys,scenarios,parameters)
 ```
 
-Description:
+##### Description:
 
 
 Creates a new run. The method must be called on a model group otherwise
@@ -3826,15 +3832,15 @@ Parameters for the run may either be set in this call.
 <br/>
 <br/>
 
-#### `update_to_latest (Exchange only)`
+#### `update_to_latest` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 mo.update_to_latest
 ```
 
-Description:
+##### Description:
 
 
 This method may only be used on runs. The following conditions must
@@ -3853,15 +3859,15 @@ version of network’ button on the Run view in the user interface.
 <br/>
 <br/>
 
-#### `open (Exchange only)`
+#### `open` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 opennet=mo.open
 ```
 
-Description:
+##### Description:
 
 
 Returns a WSOpenNetwork object corresponding to the model object,
@@ -3893,18 +3899,19 @@ When you open the results of a simulation:
 
 #### `path`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=mo.path
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
+```rb
 puts mo.path
+```
+
+##### Description:
 
 Returns the scripting path of the object as a string.
 
@@ -3913,13 +3920,13 @@ Returns the scripting path of the object as a string.
 
 #### `parent_type`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=mo.parent_type
 ```
 
-Description:
+##### Description:
 
 
 Returns the scripting type of the parent of the object (or ‘Master
@@ -3930,13 +3937,13 @@ Database’ if the object is in the root of the database).
 
 #### `parent_id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=mo.parent_id
 ```
 
-Description:
+##### Description:
 
 
 Returns the ID of the parent object (or 0 if the object is in the root
@@ -3947,13 +3954,13 @@ of the database).
 
 #### `type`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=mo.type
 ```
 
-Description:
+##### Description:
 
 
 Returns the scripting type of the object.
@@ -3967,22 +3974,25 @@ Returns the scripting type of the object.
 
 #### `commit`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 id=nno.commit(comment)
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
+```rb
 nno.commit 'this is the commit comment for this commit'
+```
 
 or
 
+```rb
 id=nno.commit('this is the commit comment for this commit').
+```
+
+##### Description:
 
 Commits changes to a network to the database. Returns the commit ID or
 returns nil if there were not changes made since the last commit.
@@ -3992,13 +4002,13 @@ returns nil if there were not changes made since the last commit.
 
 #### `commits`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 c=nno.commits
 ```
 
-Description:
+##### Description:
 
 
 Returns a WSCommits object containing the commits for the network i.e.
@@ -4026,13 +4036,13 @@ end
 
 #### `commit_reserve`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 id=nno.commit_reserve(comment)
 ```
 
-Description:
+##### Description:
 
 
 This is similar to commit in that it commits changes to the network to
@@ -4045,13 +4055,13 @@ reserved.
 
 #### `csv_changes`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.csv_changes(commit_id1, commit_id2, filename)
 ```
 
-Description:
+##### Description:
 
 
 Outputs the differences between commit id 1 and commit id 2 to the
@@ -4065,13 +4075,13 @@ functionality.
 
 #### `csv_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.csv_export(filename,options)
 ```
 
-Description:
+##### Description:
 
 
 Exports the network to a CSV file with options similar to those
@@ -4111,13 +4121,13 @@ no.csv_export 'd:tempnetwork.csv',myHash
 
 #### `csv_import`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.csv_import(filename,options)
 ```
 
-Description:
+##### Description:
 
 
 Updates the network from a CSV file with options similar to those
@@ -4144,13 +4154,13 @@ default options will be used. The hash values are as follows:
 
 #### `current_commit_id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 id=nno.current_commit_id
 ```
 
-Description:
+##### Description:
 
 
 Returns the commit ID of the local copy of the network – this may not be
@@ -4162,13 +4172,13 @@ is returned by latest\_commit\_id (see below).
 
 #### `GIS_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.GIS_export(format,params,location)
 ```
 
-Description:
+##### Description:
 
 
 Exports the network data to GIS.
@@ -4226,13 +4236,13 @@ and unrecognised values are not permitted.
 
 #### `latest_commit_id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 id=nno.latest_commit_id
 ```
 
-Description:
+##### Description:
 
 
 Returns the latest commit ID for the network i.e. the ID of the most
@@ -4244,13 +4254,13 @@ of the local copy, which is returned by current\_commit\_id (see above).
 
 #### `list_GIS_export_tables`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=nno.list_GIS_export_tables
 ```
 
-Description:
+##### Description:
 
 
 This method lists the tables that will be exported to GIS as an array of
@@ -4262,13 +4272,13 @@ customising the parameters to GIS\_export.
 
 #### `odec_export_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.odec_export_ex(format, config_file, options, …)
 ```
 
-Description:
+##### Description:
 
 
 This method exports network data using a previously set up Open Data
@@ -4420,13 +4430,13 @@ For SQL Server the parameters are as follows:
 
 #### `odic_import_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.odic_import_ex(format, config_file, options, …)
 ```
 
-Description:
+##### Description:
 
 
 This method imports and updates network data using a previously set up
@@ -4559,13 +4569,13 @@ For SQL server the parameters are as follows:
 
 #### `remove_local`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.remove_local
 ```
 
-Description:
+##### Description:
 
 
 Removes the local copy of the network, any uncommitted changes will be
@@ -4576,13 +4586,13 @@ lost.
 
 #### `reserve`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.reserve
 ```
 
-Description:
+##### Description:
 
 
 Reserves the network so no-one else can edit it and updates the local
@@ -4593,13 +4603,13 @@ copy to the latest version.
 
 #### `revert`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.revert
 ```
 
-Description:
+##### Description:
 
 
 Reverts any uncommitted changes in the local copy of the network.
@@ -4609,13 +4619,13 @@ Reverts any uncommitted changes in the local copy of the network.
 
 #### `select_changes`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.select_changes
 ```
 
-Description:
+##### Description:
 
 
 Select all objects added or changed between the commit id specified and
@@ -4631,13 +4641,13 @@ Obviously, deleted objects will not be selected.
 
 #### `select_clear`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.select_clear
 ```
 
-Description:
+##### Description:
 
 
 Clears the selection in the network
@@ -4647,13 +4657,13 @@ Clears the selection in the network
 
 #### `select_count`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=nno.select_count
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of selected items in the network
@@ -4663,18 +4673,19 @@ Returns the number of selected items in the network
 
 #### `select_sql`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=nno.select_sql(table,query)
 ```
 
-Description:
+##### Example:
 
+```rb
+n=nno.select_sql('hw_node','x>0')
+```
 
-e.g.
-
-`n=nno.select_sql('hw_node','x>0')`
+##### Description:
 
 This method runs the SQL query with the given table being the ‘current
 table’ as it appears in the SQL dialog i.e. the default table if the SQL
@@ -4699,13 +4710,13 @@ no such clause).
 
 #### `uncommitted_changes?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=nno.uncomitted_changes?
 ```
 
-Description:
+##### Description:
 
 
 Returns true if there are uncomitted changes in the local copy of the
@@ -4716,13 +4727,13 @@ network, false otherwise.
 
 #### `unreserve`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.unreserve
 ```
 
-Description:
+##### Description:
 
 
 Cancels the reservation of the network.
@@ -4732,13 +4743,13 @@ Cancels the reservation of the network.
 
 #### `update`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=nno.update
 ```
 
-Description:
+##### Description:
 
 
 Updates the local copy of the network from the server. Returns true if
@@ -4749,13 +4760,13 @@ there are no conflicts, false if there are.
 
 #### `user_field_names`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.user_field_names(filename,arbitrarystring)
 ```
 
-Description:
+##### Description:
 
 
 Produces a CSV file consisting of the names of all the user fields for
@@ -4811,13 +4822,13 @@ This chart shows which methods are available for which object types:
 
 #### `list_max_results_attributes`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=sim.list_max_results_attributes
 ```
 
-Description:
+##### Description:
 
 
 Returns an array of arrays. The arrays returned correspond to the tabs
@@ -4839,13 +4850,13 @@ max\_results\_csv\_export
 
 #### `list_results_attributes`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=sim.list_results_attributes
 ```
 
-Description:
+##### Description:
 
 
 Returns an array of arrays. The arrays returned correspond to the tabs
@@ -4875,13 +4886,13 @@ the parameters to results\_binary\_export.and results\_csv\_export
 
 #### `list_results_GIS_export_tables`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=sim.list_results_GIS_export_tables
 ```
 
-Description:
+##### Description:
 
 
 Returns an array of the tables that may be exported to GIS using the
@@ -4928,13 +4939,13 @@ used for all links, which are combined into one GIS layer, is \_links.
 
 #### `list_timesteps`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=list_timesteps
 ```
 
-Description:
+##### Description:
 
 
 For a normal simulation, this returns an array of the results timesteps
@@ -4948,13 +4959,13 @@ periods for the object.
 
 #### `max_flood_contours_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 max_flood_contours_export(format,groundModel,theme,filename)
 ```
 
-Description:
+##### Description:
 
 
 Exports the flood contours to files (GIS or ASCII). The ASCII format is
@@ -4981,13 +4992,13 @@ Filename: the filename to be exported.
 
 #### `max_results_binary_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 max_results_binary_export(selection,attributes,file)
 ```
 
-Description:
+##### Description:
 
 
 Exports the maximum results (and other summary results) for the
@@ -5008,13 +5019,13 @@ list\_max\_results\_attributes method above.
 
 #### `results_binary_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 results_binary_export(selection,attributes,file)
 ```
 
-Description:
+##### Description:
 
 
 Exports the results for each results timestep for the simulation in a
@@ -5035,13 +5046,13 @@ list\_max\_results\_attributes method above.
 
 #### `max_results_csv_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 results_csv_export(selection, attributes, folder)
 ```
 
-Description:
+##### Description:
 
 
 Exports the results for the simulation in the CSV format corresponding
@@ -5064,13 +5075,13 @@ results\_csv\_export\_ex)
 
 #### `results_csv_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 results_csv_export(selection,folder)
 ```
 
-Description:
+##### Description:
 
 
 Exports the results for the simulation in the CSV format corresponding
@@ -5085,13 +5096,13 @@ which case results for the whole network will be exported.
 
 #### `results_csv_export_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 results_csv_export_ex(selection, attributes, folder)
 ```
 
-Description:
+##### Description:
 
 
 As for results\_csv\_export but takes an extra attributes parameter
@@ -5104,13 +5115,13 @@ an array as described in the list\_results\_attributes method above
 
 #### `results_GIS_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 results_GIS_export(format,timesteps,params,folder)
 ```
 
-Description:
+##### Description:
 
 
 Exports simulation results to GIS.  
@@ -5222,13 +5233,13 @@ then a default of 2 decimal places is used.
 
 #### `run`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 sim.run
 ```
 
-Description:
+##### Description:
 
 
 This method runs a simulation, waiting until the simulation finishes,
@@ -5241,13 +5252,13 @@ simulation will be run on the current machine.
 
 #### `run_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 sim.run_ex(server,number_of_threads)
 ```
 
-Description:
+##### Description:
 
 
 This method behaves as run above, except that you may control (a) the
@@ -5262,13 +5273,13 @@ and ‘\*’ has the meaning of any available server.
 
 #### `status`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=sim.status
 ```
 
-Description:
+##### Description:
 
 
 Returns the status of simulation, one of:
@@ -5286,13 +5297,13 @@ Returns the status of simulation, one of:
 
 #### `success_substatus`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=sim.success_substatus
 ```
 
-Description:
+##### Description:
 
 
 If the simulation succeeded, returns its substatus, one of:
@@ -5308,13 +5319,13 @@ If the simulation succeeded, returns its substatus, one of:
 
 #### `timestep_count`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=sim.timestep_count
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of results timesteps for a simulation.
@@ -5328,18 +5339,19 @@ Returns the number of results timesteps for a simulation.
 
 #### `add_scenario`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.add_scenario(name,based_on,notes)
 ```
 
-Description:
+##### Example:
 
+```rb
+on.add_scenario 'My Scenario',nil,'This is my scenario'
+```
 
-e.g.
-
-on.add\_scenario 'My Scenario',nil,'This is my scenario'
+##### Description:
 
 The parameters are:
 
@@ -5352,13 +5364,13 @@ The parameters are:
 
 #### *clear\_selection*
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.clear_selection
 ```
 
-Description:
+##### Description:
 
 
 Clears the selection
@@ -5366,15 +5378,15 @@ Clears the selection
 <br/>
 <br/>
 
-#### `close (Exchange only)`
+#### `close` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.close
 ```
 
-Description:
+##### Description:
 
 
 Closes the WSOpenNetwork. It is not necessary to call this, but it will
@@ -5389,13 +5401,13 @@ thrown).
 
 #### `current_timestep`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=on.current_timestep
 ```
 
-Description:
+##### Description:
 
 
 The WSOpenNetwork object has a current timestep corresponding to the
@@ -5413,13 +5425,13 @@ for the ‘maximum’ ‘timestep’.
 
 #### `current_timestep_time`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 t=on.current_timestep_time
 ```
 
-Description:
+##### Description:
 
 
 Returns the time of the current timestep.
@@ -5427,15 +5439,15 @@ Returns the time of the current timestep.
 <br/>
 <br/>
 
-#### `current_timestep= (Exchange only)`
+#### `current_timestep=` (Exchange only)
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.current_timestep=7
 ```
 
-Description:
+##### Description:
 
 
 This method sets the current timestep to the timestep with the index
@@ -5444,13 +5456,13 @@ to the ‘maximum’ ‘timestep’.
 
 #### *csv\_export*
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.csv_export(filename,options)
 ```
 
-Description:
+##### Description:
 
 
 Exports the WSOpenNetwork to the file specified
@@ -5478,13 +5490,13 @@ following fields
 
 #### `csv_import`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 nno.csv_import(filename,options)
 ```
 
-Description:
+##### Description:
 
 
 Updates the WSOpenNetwork from the CSV file specified.
@@ -5526,13 +5538,13 @@ all of the following.
 
 #### `current_scenario`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 puts on.current_scenario
 ```
 
-Description:
+##### Description:
 
 
 Returns the WSOpenNetwork object’s current scenario as a string.
@@ -5545,13 +5557,13 @@ English).
 
 #### `current_scenario=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.current_scenario=new_scenario
 ```
 
-Description:
+##### Description:
 
 
 Sets the WSOpenNetwork’s current scenario. The new value should be a
@@ -5563,18 +5575,19 @@ base scenario. The new scenario must exist.
 
 #### `delete_scenario`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.delete_scenario(scenario_name)
 ```
 
-Description:
+##### Example:
 
+```rb
+on.delete_scenario('myScenario')
+```
 
-e.g.
-
-on.delete\_scenario('myscenario')
+##### Description:
 
 Deletes the scenario specified in the string parameter. If the specified
 scenario is the current scenario, the current scenario is set to be the
@@ -5585,13 +5598,13 @@ base scenario.
 
 #### `delete_selection`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.delete_selection
 ```
 
-Description:
+##### Description:
 
 
 Deletes the current selection from the network in the current scenario.
@@ -5601,13 +5614,13 @@ Deletes the current selection from the network in the current scenario.
 
 #### `each`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.each do |x|
 ```
 
-Description:
+##### Description:
 
 
 Iterates through all the objects in the WSOpenNetwork e.g.
@@ -5623,13 +5636,13 @@ end
 
 #### `each_selected`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.each_selected do |x|
 ```
 
-Description:
+##### Description:
 
 
 As each but iterates through the selected objects only.
@@ -5639,13 +5652,13 @@ As each but iterates through the selected objects only.
 
 #### `export_IDs`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.export_IDs(filename,parameters)
 ```
 
-Description:
+##### Description:
 
 
 Exports the IDs of all the objects or the current selection to a file,
@@ -5665,24 +5678,22 @@ current locals)
 
 #### `field_names(type)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.field_names(type)
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
-arr=on.field\_names('hw\_node')
-
+```rb
+arr=on.field_names('hw_node')
 arr.each do |f|
-
-puts f
-
+    puts f
 end
+```
+
+##### Description:
 
 Given the internal name of a type, returns a list of names of the fields
 for that object type – the object type cannot be a class.
@@ -5692,13 +5703,13 @@ for that object type – the object type cannot be a class.
 
 #### `gauge_timestep_count`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=on.gauge_timestep_count
 ```
 
-Description:
+##### Description:
 
 
 This method returns the number of gauge timesteps. If there are no gauge
@@ -5710,13 +5721,13 @@ timestep for the run was set to 0 it returns 0.
 
 #### `gauge_timestep_time`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 t=on.gauge_timestep_time(timestep_no)
 ```
 
-Description:
+##### Description:
 
 
 This method returns the time for the gague timestep with the index given
@@ -5727,13 +5738,13 @@ as the method’s parameter.
 
 #### `GIS_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.GIS_export(format,params,location)
 ```
 
-Description:
+##### Description:
 
 
 Exports the network data to GIS.
@@ -5746,13 +5757,13 @@ explanation of the parameters.
 
 #### `list_gauge_timesteps`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.list_gauge_timesteps
 ```
 
-Description:
+##### Description:
 
 
 This method returns an array containing the times of all the gauge
@@ -5763,13 +5774,13 @@ timesteps for the sim in order.
 
 #### `list_GIS_export_tables`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.list_GIS_export_tables
 ```
 
-Description:
+##### Description:
 
 
 This method lists the tables that will be exported to GIS as an array of
@@ -5781,13 +5792,13 @@ customising the parameters to GIS\_export.
 
 #### `list_timesteps`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.list_timesteps
 ```
 
-Description:
+##### Description:
 
 
 This method returns an array containing the times of all the timesteps
@@ -5798,13 +5809,13 @@ for the sim in order.
 
 #### `load_selection`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 no.load_selection(selection_list)
 ```
 
-Description:
+##### Description:
 
 
 Selects objects based on the selection list object. The parameter may be
@@ -5816,18 +5827,19 @@ a WSModelObject, an object path or the numerical ID of the model object
 
 #### `new_row_object`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro=on.new_row_object(type)
 ```
 
-Description:
+##### Example:
 
+```rb
+ro=no.new_row_object('hw_node')
+```
 
-e.g.
-
-ro=no.new\_row\_object('hw\_node')
+##### Description:
 
 This method creates a new row object in the network. This must be done
 within a transaction.
@@ -5837,13 +5849,13 @@ within a transaction.
 
 #### `objects_in_polygon`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 vec=on.objects_in_polygon(polygon,type_or_types)
 ```
 
-Description:
+##### Description:
 
 
 Returns a Ruby array of objects in a polygon. This is essentially the
@@ -5857,13 +5869,13 @@ network and the background network.
 
 #### `odic_import_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 vec=on.odic_import_ex(format,config_file,params,…)
 ```
 
-Description:
+##### Description:
 
 
 As for WSNumbatNetworkObject above except that it returns an array of
@@ -5877,13 +5889,13 @@ objects may not be open when their network is not).
 
 #### `odec_export_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.odec_export_ex(format,config_file,params,…)
 ```
 
-Description:
+##### Description:
 
 
 As for WSNumbatNetworkObject above.
@@ -5893,18 +5905,19 @@ As for WSNumbatNetworkObject above.
 
 #### `row_object`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro=on.row_object(table,id)
 ```
 
-Description:
+##### Example:
 
+```rb
+ro=on.row_object('hw_node','MH111111')
+```
 
-e.g.
-
-ro=on.row\_object('hw\_node','MH111111')
+##### Description:
 
 Given a table name and an ID (with the parts separated by . if it is a
 type with multiple key fields) returns a WSRowObject or derived class.
@@ -5915,18 +5928,19 @@ Returns nil if there is no such object in the network.
 
 #### `row_objects`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.row_objects(table)
 ```
 
-Description:
+##### Example:
 
+```rb
+vec=on.row_objects('hw_node')
+```
 
-e.g.
-
-vec=on.row\_objects('hw\_node')
+##### Description:
 
 Given a table name returns a vector of WSRowObject (possibly including
 instances of derived classes). Returns a vector of zero length if there
@@ -5937,13 +5951,13 @@ are no objects of that type in the network.
 
 #### `row_objects_from_asset_id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.row_objects_from_asset_id(type,asset_id)
 ```
 
-Description:
+##### Description:
 
 
 Given an asset ID and a type returns a vector of WSRowObject (possibly
@@ -5956,13 +5970,13 @@ network.
 
 #### `row_object_collection`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 roc=on.row_object_collection(type)
 ```
 
-Description:
+##### Description:
 
 
 Given a type returns a WSRowObjectCollection (see below) representing a
@@ -5975,13 +5989,13 @@ all objects will be returned.
 
 #### `row_object_collection_selection`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 roc=on.row_object_collection_selection(type)
 ```
 
-Description:
+##### Description:
 
 
 As row\_object\_collection above, but only returns objects currently
@@ -5992,14 +6006,14 @@ selected in the WSOpenNetwork.
 
 #### `run_inference`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.run_inference(inference,ground_model, mode,
 zone_or_zone_category, error_file)
 ```
 
-Description:
+##### Description:
 
 
 Runs the inference object on the network, which must be a collection
@@ -6049,13 +6063,13 @@ be used instead.
 
 #### `run_SQL`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.run_SQL(table,query)
 ```
 
-Description:
+##### Description:
 
 
 This method runs the SQL query with the given table being the ‘current
@@ -6071,13 +6085,13 @@ nodes’ or ‘All links’ in the dropdowns in the SQL dialog.
 
 #### `run_stored_query_object`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.run_stored_query_object(stored_query_object)
 ```
 
-Description:
+##### Description:
 
 
 Runs a stored query object. The parameter is the stored query object to
@@ -6093,13 +6107,13 @@ and is not the case when they are run from the Exchange products.
 
 #### `save_selection`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.save_selection(selection_list)
 ```
 
-Description:
+##### Description:
 
 
 Saves the current selection (in the current scenario) to an already
@@ -6130,22 +6144,21 @@ Saves the current selection to the already existing selection list.
 
 #### `scenarios`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.scenarios.each do |s|
 ```
 
-Description:
-
-
-e.g.
+##### Example:
 
 ```rb
 on.scenarios do |s|
     puts s
 end
 ```
+
+##### Description:
 
 This method provides a block of names of scenarios to be iterated
 through. The base scenario is included in the results as the string
@@ -6156,13 +6169,13 @@ through. The base scenario is included in the results as the string
 
 #### `search_at_point(x,y,distance,types)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 roc=find_at_point(x,y,distance,types)
 ```
 
-Description:
+##### Description:
 
 
 Finds the objects within a distance of a given point, returning a vector
@@ -6176,13 +6189,13 @@ contain a category and a table within that category.
 
 #### `selection_size`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=on.selection_size
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of objects selected.
@@ -6192,13 +6205,13 @@ Returns the number of objects selected.
 
 #### `snapshot_import`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.snapshot_import(filename)
 ```
 
-Description:
+##### Description:
 
 
 Imports a snapshot file into the network from the given filename. This
@@ -6210,13 +6223,13 @@ parameter being nil.
 
 #### `snapshot_import_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.snapshot_import_ex(filename,parameters_hash)
 ```
 
-Description:
+##### Description:
 
 
 Imports a snapshot file into the network from the given filename. The
@@ -6244,13 +6257,13 @@ ImportImageFiles - Boolean
 
 #### `snapshot_export`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.snapshot_export(filename)
 ```
 
-Description:
+##### Description:
 
 
 Exports a snapshot of the network to the given filename.
@@ -6268,13 +6281,13 @@ Snapshots cannot be exported from networks with uncommitted changes.
 
 #### `snapshot_export_ex`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.snapshot_ex(filename,parameters_hash)
 ```
 
-Description:
+##### Description:
 
 
 Exports a snapshot of the network to the given filename. The second
@@ -6319,13 +6332,13 @@ Snapshots cannot be exported from networks with uncommitted changes.
 
 #### `snapshot_scan`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 details_hash=on.snapshot_scan(filename)
 ```
 
-Description:
+##### Description:
 
 
 Given a snapshot file, this method scans it and returns a hash
@@ -6389,22 +6402,21 @@ than the user is using to import the data.
 
 #### `table_names`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.table_names
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
-on.table\_names.each do |n|
-
-puts n
-
+```rb
+on.table_names.each do |n|
+    puts n
 end
+```
+
+##### Description:
 
 This method returns an array of the tables names for the WSOpenNetwork –
 these are the internal names.
@@ -6414,13 +6426,13 @@ these are the internal names.
 
 #### `table`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 t=on.table(name)
 ```
 
-Description:
+##### Description:
 
 
 Given a table name, this method returns a WSTableInfo object for that
@@ -6431,13 +6443,13 @@ table.
 
 #### `tables`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=on.tables
 ```
 
-Description:
+##### Description:
 
 
 This method returns an array of WSTableInfo objects for the
@@ -6448,13 +6460,13 @@ WSOpenNetwork.
 
 #### `timestep_count`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=on.timestep_count
 ```
 
-Description:
+##### Description:
 
 
 This method returns the number of timesteps in the results for the sim,
@@ -6466,13 +6478,13 @@ time varying results this method will return 0.
 
 #### `timestep_time`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 t=on.timestep_time(timestep_no)
 ```
 
-Description:
+##### Description:
 
 
 This method returns the time for the timestep with the index given as
@@ -6483,13 +6495,13 @@ the method’s parameter.
 
 #### `transaction_begin`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.transaction_begin
 ```
 
-Description:
+##### Description:
 
 
 Changes to objects in the network should in general be included within
@@ -6503,13 +6515,13 @@ changes since transaction\_begin
 
 #### `transaction_commit`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.transaction_commit
 ```
 
-Description:
+##### Description:
 
 
 Commits the transaction – see above.
@@ -6519,13 +6531,13 @@ Commits the transaction – see above.
 
 #### `transaction_rollback`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.transaction_end
 ```
 
-Description:
+##### Description:
 
 
 Ends the transaction – see above.
@@ -6535,13 +6547,13 @@ Ends the transaction – see above.
 
 #### `update_cctv_scores`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 on.update_cctv_scores
 ```
 
-Description:
+##### Description:
 
 
 Calculates CCTV scores for all surveys in the network using the current
@@ -6552,13 +6564,13 @@ standard.
 
 #### `validate`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 v=on.validate(scenarios)
 ```
 
-Description:
+##### Description:
 
 
 This method validates the scenario or scenarios given in the parameter,
@@ -6588,13 +6600,13 @@ validated, or an array of strings, in which case all the named scenarios
 
 #### `missing_method`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro['field']=value
 ```
 
-Description:
+##### Description:
 
 
 **v=ro\['field'\]**
@@ -6619,13 +6631,13 @@ objects as described in the ‘getting and setting values’ section above.
 
 #### `category`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=ro.category
 ```
 
-Description:
+##### Description:
 
 
 Returns the category name (as described above) of the object’s table as
@@ -6636,13 +6648,13 @@ a string.
 
 #### `contains?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=ro.contains?(ro2)
 ```
 
-Description:
+##### Description:
 
 
 Returns true if polygon ro contains the object ro2.
@@ -6652,13 +6664,13 @@ Returns true if polygon ro contains the object ro2.
 
 #### `delete`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro.delete
 ```
 
-Description:
+##### Description:
 
 
 Deletes the row object.
@@ -6668,13 +6680,13 @@ Deletes the row object.
 
 #### `field`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 f=ro.field(fieldname)
 ```
 
-Description:
+##### Description:
 
 
 Returns the WSFieldInfo object associated with the named field in the
@@ -6688,13 +6700,13 @@ getting the field info from that.
 
 #### `gauge_results`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=ro.gauge_results(results_field_name)
 ```
 
-Description:
+##### Description:
 
 
 Returns an array of the results for the given results field name for the
@@ -6707,13 +6719,13 @@ return the ‘normal’ results.
 
 #### `id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 id=ro.id
 ```
 
-Description:
+##### Description:
 
 
 Returns the ID of the object as a string. If the object has a multi-part
@@ -6725,13 +6737,13 @@ character.
 
 #### `id=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro.id=newid
 ```
 
-Description:
+##### Description:
 
 
 Updates the ID of the row object.
@@ -6741,13 +6753,13 @@ Updates the ID of the row object.
 
 #### `is_inside?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 B=ro.is_inside?(ro2)
 ```
 
-Description:
+##### Description:
 
 
 Returns true if ro2 is inside the polygon ro2.
@@ -6762,13 +6774,13 @@ Returns true if ro2 is inside the polygon ro2.
 
 #### `navigate1`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 vec=ro.navigate(navigation_type)
 ```
 
-Description:
+##### Description:
 
 
 **ro2=ro.navigate(navigation\_type)**
@@ -6844,13 +6856,13 @@ software as follows:
 
 #### `objects_in_polygon`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 vec=ro.objects_in_polygon(type_or_types)
 ```
 
-Description:
+##### Description:
 
 
 Returns a vector of the objects in the polygon (from the same network).
@@ -6866,13 +6878,13 @@ method.
 
 #### `result`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 f=ro.result(result_fields_name)
 ```
 
-Description:
+##### Description:
 
 
 Returns the result for the given results field name for the object at
@@ -6883,13 +6895,13 @@ the current timestep.
 
 #### `results`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=ro.results(result_field_name)
 ```
 
-Description:
+##### Description:
 
 
 Returns an array of the results for the given results field name for the
@@ -6900,13 +6912,13 @@ object at all timesteps – the field must have time varying results.
 
 #### `selected?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=ro.selected?
 ```
 
-Description:
+##### Description:
 
 
 returns True if the object is currently selected, False otherwise
@@ -6916,18 +6928,19 @@ returns True if the object is currently selected, False otherwise
 
 #### `selected=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro.selected=b
 ```
 
-Description:
+##### Example:
 
-
-e.g.
-
+```rb
 ro.selected=true
+```
+
+##### Description:
 
 ro2.selected=false
 
@@ -6939,13 +6952,13 @@ selected, otherwise it is deselected.
 
 #### `table`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=ro.table
 ```
 
-Description:
+##### Description:
 
 
 Returns the internal name of the object’s table as a string.
@@ -6955,13 +6968,13 @@ Returns the internal name of the object’s table as a string.
 
 #### `table_info`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ti=ro.table_info
 ```
 
-Description:
+##### Description:
 
 
 Returns the WSTableInfo object for the object’s table, this may be used
@@ -6972,13 +6985,13 @@ to get the list of fields for the object.
 
 #### `write`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro.write
 ```
 
-Description:
+##### Description:
 
 
 After changing field values it is necessary to call the write method,
@@ -6996,13 +7009,13 @@ of ‘category’ node as described above. It has two extra methods:
 
 #### `us_links`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 roc=node.us_links
 ```
 
-Description:
+##### Description:
 
 
 Returns a WSRowObjectCollection (see below) representing all the
@@ -7014,13 +7027,13 @@ of length zero is returned.
 
 #### `ds_links`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 roc=node.ds_links
 ```
 
-Description:
+##### Description:
 
 
 Returns a WSRowObjectCollection (see below) representing all the
@@ -7039,13 +7052,13 @@ of ‘category’ link as described above. It has two extra methods:
 
 #### `us_node`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro=link.us_node
 ```
 
-Description:
+##### Description:
 
 
 Returns a WSRowObject representing the link’s upstream node, or nil if
@@ -7056,13 +7069,13 @@ it doesn’t have one.
 
 #### `ds_node`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro=link.ds_node
 ```
 
-Description:
+##### Description:
 
 
 Returns a WSRowObject representing the link’s downstream node, or nil if
@@ -7077,13 +7090,13 @@ it doesn’t have one.
 
 #### `run`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 raro.run
 ```
 
-Description:
+##### Description:
 
 
 Performs the risk analysis run.
@@ -7097,13 +7110,13 @@ Performs the risk analysis run.
 
 #### `length`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=roc.length
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of WSRowObjects in the collection
@@ -7113,13 +7126,13 @@ Returns the number of WSRowObjects in the collection
 
 #### `\[]`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 ro=roc[n]
 ```
 
-Description:
+##### Description:
 
 
 Returns the nth WSRowObject in the collection. The index is 0 based i.e.
@@ -7130,13 +7143,13 @@ valid values are from 0 to length-1.
 
 #### `each`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 roc.each {|ro|}
 ```
 
-Description:
+##### Description:
 
 
 Allows the user to iterate through all objects in the collection e.g.
@@ -7156,13 +7169,13 @@ end
 
 #### `description`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=ti.description
 ```
 
-Description:
+##### Description:
 
 
 returns the description of the table.
@@ -7172,13 +7185,13 @@ returns the description of the table.
 
 #### `fields`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=ti.fields
 ```
 
-Description:
+##### Description:
 
 
 returns an array of the fields for this table – the fields are of type
@@ -7191,13 +7204,13 @@ WSFieldInfo
 
 #### `name`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=ti.name
 ```
 
-Description:
+##### Description:
 
 
 returns the internal name of the table.
@@ -7207,13 +7220,13 @@ returns the internal name of the table.
 
 #### `results_fields`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=ti.results_fields
 ```
 
-Description:
+##### Description:
 
 
 Returns an array of results fields as instances of the WSFieldInfo
@@ -7237,13 +7250,13 @@ software, except for user defined fields and tables in InfoNet.
 
 #### `data_type`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=fi.data_type
 ```
 
-Description:
+##### Description:
 
 
 Returns the data type of the field as a string. The method is named
@@ -7283,13 +7296,13 @@ type is the Ruby string.
 
 #### `description`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=fi.description
 ```
 
-Description:
+##### Description:
 
 
 returns the description of the table
@@ -7299,13 +7312,13 @@ returns the description of the table
 
 #### `fields`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 arr=fi.fields
 ```
 
-Description:
+##### Description:
 
 
 returns an array of fields if the field is itself a ‘structure blob’. If
@@ -7316,13 +7329,13 @@ the field is not a structure blob, this method returns nil.
 
 #### `has_time_varying_results?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=fi.has_time_varying_results?
 ```
 
-Description:
+##### Description:
 
 
 This method returns true if the field has time varying results i.e.
@@ -7335,13 +7348,13 @@ more discussion.
 
 #### `has_max_results?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 b=fi.has_max_results?
 ```
 
-Description:
+##### Description:
 
 
 This method returns true if the field has a maximum / summary result
@@ -7355,13 +7368,13 @@ WSTableInfo results\_fields method for more discussion.
 
 #### `name`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=fi.name
 ```
 
-Description:
+##### Description:
 
 
 returns the name of the field
@@ -7371,13 +7384,13 @@ returns the name of the field
 
 #### `read_only?`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 bReadOnly=fi.read_only?
 ```
 
-Description:
+##### Description:
 
 
 Returns true if the field is read only, false if it isn't
@@ -7387,13 +7400,13 @@ Returns true if the field is read only, false if it isn't
 
 #### `size (from version 7.0)`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=fi.size
 ```
 
-Description:
+##### Description:
 
 
 Returns 4 if the field is a flag field, the length of a string field for
@@ -7445,13 +7458,13 @@ WSCommit class.
 
 #### `each`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 sb.each {|v|}
 ```
 
-Description:
+##### Description:
 
 
 Iterates through the collection.
@@ -7461,13 +7474,13 @@ Iterates through the collection.
 
 #### `length`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=sb.length
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of WSStructureRow objects in the WSStructure
@@ -7478,13 +7491,13 @@ collection
 
 #### `length=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 sb.length=n
 ```
 
-Description:
+##### Description:
 
 
 Sets the number of WSStructureRow objects in the WSStructure collection
@@ -7494,13 +7507,13 @@ Sets the number of WSStructureRow objects in the WSStructure collection
 
 #### `size`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=sb.size
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of WSStructureRow objects in the WSStructure
@@ -7511,13 +7524,13 @@ collection (synonym for length)
 
 #### `size=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 sb.size=n
 ```
 
-Description:
+##### Description:
 
 
 Sets the number of WSStructureRow objects in the WSStructure collection
@@ -7528,13 +7541,13 @@ Sets the number of WSStructureRow objects in the WSStructure collection
 
 #### `write`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 sb.write
 ```
 
-Description:
+##### Description:
 
 
 Causes the changes to the WSStructure, i.e. changes to its length, data
@@ -7553,13 +7566,13 @@ user interface!).
 
 #### `\[]`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 v=sb[n]
 ```
 
-Description:
+##### Description:
 
 
 Returns the nth WSStructureRow object in the collection (zero based).
@@ -7573,13 +7586,13 @@ Returns the nth WSStructureRow object in the collection (zero based).
 
 #### `\[]`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 v=row[val]
 ```
 
-Description:
+##### Description:
 
 
 Returns the value of the named field in the WSStructureRow object.
@@ -7589,13 +7602,13 @@ Returns the value of the named field in the WSStructureRow object.
 
 #### `\[]=`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 row[val]=v
 ```
 
-Description:
+##### Description:
 
 
 Sets the value of the named field in the WSStructureRow object.
@@ -7609,13 +7622,13 @@ Sets the value of the named field in the WSStructureRow object.
 
 #### `error_count`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=vals.error_count
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of errors found when performing the validation.
@@ -7625,13 +7638,13 @@ Returns the number of errors found when performing the validation.
 
 #### `warning_count`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=vals.warning_count
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of warnings found when performing the validation.
@@ -7641,13 +7654,13 @@ Returns the number of warnings found when performing the validation.
 
 #### `length`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=vals.length
 ```
 
-Description:
+##### Description:
 
 
 Returns the number of WSValidation objects in the WSValidations
@@ -7658,13 +7671,13 @@ collection
 
 #### `each`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n.each {|v|}
 ```
 
-Description:
+##### Description:
 
 
 Iterates through the collection.
@@ -7674,13 +7687,13 @@ Iterates through the collection.
 
 #### `\[]`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 v=vals[n]
 ```
 
-Description:
+##### Description:
 
 
 Returns the nth WSValidation object in the collection (zero based).
@@ -7698,13 +7711,13 @@ when the network is validated within the user interface.
 
 #### `code`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=v.code
 ```
 
-Description:
+##### Description:
 
 
 Returns the code of the validation message.
@@ -7714,13 +7727,13 @@ Returns the code of the validation message.
 
 #### `field`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=v.field
 ```
 
-Description:
+##### Description:
 
 
 Returns the field from the validation message. This may not be a real
@@ -7732,13 +7745,13 @@ description will be returned.
 
 #### `field_description`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=v.field_description
 ```
 
-Description:
+##### Description:
 
 
 Returns the field column from the validation message as it appears in
@@ -7749,13 +7762,13 @@ the validation window.
 
 #### `object_id`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=v.object_id
 ```
 
-Description:
+##### Description:
 
 
 Returns ID for the object in the validation message, if any.
@@ -7765,13 +7778,13 @@ Returns ID for the object in the validation message, if any.
 
 #### `object_type`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=v.object_type
 ```
 
-Description:
+##### Description:
 
 
 Returns the description from the object type column of the validation
@@ -7782,13 +7795,13 @@ message, if any.
 
 #### `message`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=v.object_message
 ```
 
-Description:
+##### Description:
 
 
 Returns the validation message.
@@ -7798,13 +7811,13 @@ Returns the validation message.
 
 #### `priority`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=v.priority
 ```
 
-Description:
+##### Description:
 
 
 Returns the priority of the validation message.
@@ -7814,13 +7827,13 @@ Returns the priority of the validation message.
 
 #### `type`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 n=v.type
 ```
 
-Description:
+##### Description:
 
 
 Returns the type of the validation message: ‘error’, ‘warning’ or
@@ -7831,13 +7844,13 @@ Returns the type of the validation message: ‘error’, ‘warning’ or
 
 #### `scenario`
 
-Syntax:
+##### Syntax:
 
 ```ruby
 s=v.scenario
 ```
 
-Description:
+##### Description:
 
 
 Returns the scenario name for the validation message – returns ‘Base’
