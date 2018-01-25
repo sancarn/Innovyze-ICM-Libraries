@@ -2,9 +2,9 @@
 
 ## Disclaimer
 
-*We do not guarantee the information in this document. The presence of a
+<span style='color="red"'>*We do not guarantee the information in this document. The presence of a
 class or method in this document does not guarantee it will exist and/or
-work as described.*
+work as described.*</span>
 
 ## Sancarn's notes
 
@@ -1608,7 +1608,7 @@ InfoWorks ICM API Reference
 
 ### WSApplication
 
-*add\_ons\_folder*
+#### `add\_ons\_folder`
 
 **s=WSApplication.add\_ons\_folder**
 
@@ -1619,7 +1619,7 @@ C:\\Users\\badgerb\\AppData\\Roaming\\Innovyze\\WorkgroupClient\\scripts
 Note that the folder will not exist unless manually created. Its parent
 folder will almost certainly exist.
 
-*background\_network (UI only)*
+#### `background\_network (UI only)`
 
 **bn=WSApplication.background\_network**
 
@@ -1628,14 +1628,14 @@ Scripts may only work on current and background networks in the UI mode.
 The background network may, of course, be nil if no background network
 is loaded.
 
-*cancel\_job (ICM Exchange only)*
+#### `cancel\_job (ICM Exchange only)`
 
 **WSApplication.cancel\_job(job)**
 
 Cancels a job being run by the agent. The parameter is a job ID from the
 array returned by launch\_sims – see below.
 
-*colour (UI only)*
+#### `colour (UI only)`
 
 **col=WSApplication.colour(r,g,b)**
 
@@ -1644,7 +1644,7 @@ described below. Given 3 parameters, r, g and b from 0 to 255 returns a
 colour with those red, green and blue values e.g. colour(0,0,0) returns
 black, colour(255,0,0) returns red, colour(255,255,255) returns white.
 
-*connect\_local\_agent (Exchange only)*
+#### `connect\_local\_agent (Exchange only)`
 
 **bSuccess=WSApplication.connect\_local\_agent(wait\_time)**
 
@@ -1653,7 +1653,7 @@ waits for a number of milliseconds specified in the parameter.
 
 This method must be called before the launch\_sims method is called.
 
-*current\_database (UI only)*
+#### `current\_database (UI only)`
 
 **db=WSApplication.current\_database**
 
@@ -1661,7 +1661,7 @@ Returns the current database. Only very limited database functionality
 is available from Ruby scripting from within the UI. This method is used
 to return the database object for the currently open master database.
 
-*current\_network (UI only)*
+#### `current\_network (UI only)`
 
 **on=WSApplication.current\_network**
 
@@ -1672,7 +1672,7 @@ mode.
 If a Ruby script is run in the UI when the current network has results
 then the results will be available to the script.
 
-*create (Exchange only)*
+#### `create (Exchange only)`
 
 **WSApplication.create(path)**
 
@@ -1689,14 +1689,14 @@ Error 43 : Can't overwrite an existing database
 
 z:\\test.icmm contains an incorrect path
 
-*create\_transportable (Exchange only)*
+#### `create\_transportable (Exchange only)`
 
 **WSApplication.create\_transportable(path)**
 
 Creates a transportable database at the location given by the path
 parameter.
 
-*file\_dialog (UI only)*
+#### `file\_dialog (UI only)`
 
 **file\_or\_files=WSApplication.file\_dialog(open, extension,
 description, default\_name,allow\_multiple\_files,hard\_wire\_cancel)**
@@ -1730,7 +1730,7 @@ strings is returned.
 Hard-wire cancel – if this parameter is true or nil, if the user cancels
 from the dialog, the execution of the Ruby script is stopped.
 
-*folder\_dialog (UI only)*
+#### `folder\_dialog (UI only)`
 
 **folder=WSApplication.folder\_dialog(title,hard\_wire\_cancel)**
 
@@ -1748,7 +1748,7 @@ If the user selects OK, the path of the folder is returned as a string.
 If the user selects cancel and the hard\_wire\_cancel parameter is set
 to false, nil will be returned.
 
-*graph (UI only)*
+#### `graph (UI only)`
 
 **WSApplication.graph(params)**
 
@@ -1812,7 +1812,7 @@ that can be converted to a floating point values).
 There must be an equal number of values in the XArray and YArray in each
 trace, though they can vary between traces.
 
-*input\_box(UI only)*
+#### `input\_box(UI only)`
 
 **s=WSApplication.input\_box(prompt,title,default)**
 
@@ -1823,7 +1823,7 @@ is initially set to the ‘default’ parameter. If the user hits OK, the
 value in the text field is returned, otherwise the empty string is
 returned.
 
-*launch\_sims (Exchange only)*
+#### `launch\_sims (Exchange only)`
 
 **arr=WSApplication.launch\_sims(sims, server, results\_on\_server,
 max\_threads, after)**
@@ -1853,7 +1853,7 @@ to the wait\_for\_jobs method and the cancel\_job method. Any nil values
 in the array will be safely ignored by the wait\_for\_jobs method so the
 results array may be passed into it.
 
-*message\_box (UI only)*
+#### `message\_box (UI only)`
 
 **text=WSApplication.message\_box(text,options,icon,hard\_wire\_cancel)**
 
@@ -1914,7 +1914,7 @@ The buttons appear as follows:
 
 <img src="./media/image10.png" width="339" height="161" />
 
-*open\_text\_view (UI only)*
+#### `open\_text\_view (UI only)`
 
 **WSApplication.open\_text\_view(title,filename,delete\_on\_exit)**
 
@@ -1930,7 +1930,7 @@ The purpose of the delete\_on\_exit parameter is allow the user to
 create a temporary file which will be displayed by this method and then
 deleted when the view is closed by the user.
 
-*prompt (UI only)*
+#### `prompt (UI only)`
 
 **arr=WSApplication.prompt(title,layout,hard\_wire\_cancel)**
 
@@ -2095,7 +2095,7 @@ If OK is hit without changing any values, it returns an array like this:
 "Default", nil, 23.0, nil, #<DateTime: 2011-10-13T14:12:30+00:00 (1414568501/576,0,2299161)>, false, false, true, "Badger.dat", nil, nil, nil, "Turbo Pump", 12.3456678, 87.65456789]
 ```
 
-*scalars (*UI only)
+#### `scalars (`UI only)
 
 **WSApplication.scalars(title,layout,hard\_wire\_cancel)**
 
@@ -2127,7 +2127,7 @@ Index 2 (optional) – a number of decimal places to be used between 0 and
 8 inclusive, this will be used for float and double values and ignored
 for any others.
 
-*wait\_for\_jobs (Exchange only)*
+#### `wait\_for\_jobs (Exchange only)`
 
 **id\_or\_nil=WSApplication.wait\_for\_jobs(array\_of\_job\_ids,wait\_for\_all,timeout)**
 
@@ -2149,7 +2149,7 @@ Returns Qnil if waittime is exceeded, otherwise returns the array index
 of the job that caused the wait to end (if waitall is true, this is the
 last job to complete)
 
-*working\_folder (Exchange only)*
+#### `working\_folder (Exchange only)`
 
 **s=WSApplication.working\_folder**
 
@@ -2164,7 +2164,7 @@ in the UI, the default working folder which is used will be returned
 i.e. this returns the working folder that is actually being used
 regardless of whether you have explicitly set it or not
 
-*results\_folder (Exchange only)*
+#### `results\_folder (Exchange only)`
 
 **s=WSApplication.results\_folder**
 
@@ -2179,7 +2179,7 @@ in the UI, the default results folder which is used will be returned
 i.e. this returns the results folder that is actually being used
 regardless of whether you have explicitly set it or not
 
-*open (Exchange only)*
+#### `open (Exchange only)`
 
 **iwdb=WSApplication.open(path,bUpdate)**
 
@@ -2225,7 +2225,7 @@ database requires minor update but allow update flag is not set
 
 if the database requires an update but the second parameter is false
 
-*override\_user\_unit (Exchange only – see note in method text)*
+#### `override\_user\_unit (Exchange only – see note in method text)`
 
 **OK=WSApplication.override\_user\_unit(code,value)**
 
@@ -2243,7 +2243,7 @@ Returns true if successful, false for an unknown unit or value.
 
 Note – when scripts are run from the UI, user units are always used.
 
-*override\_user\_units (Exchange only)*
+#### `override\_user\_units (Exchange only)`
 
 **errs=WSApplication.override\_user\_units(filename)**
 
@@ -2280,7 +2280,7 @@ the path specified.")
 
 if the file does not exist.
 
-*script\_file*
+#### `script\_file`
 
 **s=WSApplication.script\_file**
 
@@ -2292,7 +2292,7 @@ This method is supplied primarily to obtain the script's path in order
 to process the path to get the paths of files in the same directory e.g.
 config files for the Open Data Import and Export Centres.
 
-*set\_exit\_code (Exchange only)*
+#### `set\_exit\_code (Exchange only)`
 
 **WSApplication.set\_exit\_code(exit\_code)**
 
@@ -2309,7 +2309,7 @@ Note that calling this method *does not* cause the script to terminate,
 it merely sets the exit code returned to the operating system when the
 script *does* terminate.
 
-*set\_working\_folder (Exchange only)*
+#### `set\_working\_folder (Exchange only)`
 
 **WSApplication.set\_working\_folder(path)**
 
@@ -2323,7 +2323,7 @@ NB – this working folder will be used for the duration of this ICM
 Exchange run. it will not be stored in the registry and will not be used
 by any other instances of ICM Exchange or the ICM UI.
 
-*set\_results\_folder (Exchange only)*
+#### `set\_results\_folder (Exchange only)`
 
 **WSApplication.set\_results\_folder(path)**
 
@@ -2337,7 +2337,7 @@ NB – this results folder will be used for the duration of this ICM
 Exchange run. it will not be stored in the registry and will not be used
 by any other instances of ICM Exchange or the ICM UI.
 
-*ui?*
+#### `ui?`
 
 **b=WSApplication.ui?**
 
@@ -2346,8 +2346,8 @@ method is to allow Ruby code to be written which does different things
 when run from within the user interface and when run from InfoWorks ICM
 / InfoNet Exchange.
 
-*use\_arcgis\_desktop\_licence (Exchange only – see note in method
-text)*
+#### `use\_arcgis\_desktop\_licence (Exchange only – see note in method
+text)`
 
 e.g.
 
@@ -2362,7 +2362,7 @@ on their use of the software.
 Note – when scripts are run from the UI, the desktop licence is, of
 course, used.
 
-*use\_user\_units?*
+#### `use\_user\_units?`
 
 **b=WSApplications.use\_user\_units**
 
@@ -2374,7 +2374,7 @@ Returns a Boolean indicating whether the application is using user units
 (default is false for the Exchange products and true within the user
 interface).
 
-*use\_user\_units=*
+#### `use\_user\_units=`
 
 **WSApplication.use\_user\_units = flag**
 
@@ -2384,7 +2384,7 @@ WSApplication.use\_user\_units=true
 
 Sets the flag indicating whether the application is using user units.
 
-*use\_utf8?*
+#### `use\_utf8?`
 
 **b=WSApplications.use\_utf8?**
 
@@ -2395,7 +2395,7 @@ puts WSApplication.use\_utf8?
 Returns a Boolean indicating whether the application is using UTF8 in
 string handling (default is false). See appendix 5 for more details.
 
-*use\_utf8=*
+#### `use\_utf8=`
 
 **WSApplication.use\_utf8 = flag**
 
@@ -2406,7 +2406,7 @@ WSApplication.use\_utf8=true
 Sets the flag indicating whether the application is using UTF8 in string
 handling (default is false). See appendix 5 for more details.
 
-*version*
+#### `version`
 
 **s=WSApplication.version**
 
@@ -2429,7 +2429,7 @@ products. The primary purpose of the methods that ARE permitted is to
 allow navigation of the database in order to find and create selection
 list objects.
 
-*copy\_into\_root (Exchange only)*
+#### `copy\_into\_root (Exchange only)`
 
 **mo=iwdb.copy\_into\_root object,bCopySims,bCopyGroundModels**
 
@@ -2439,7 +2439,7 @@ and bCopyGroundModels parameters determine whether or not simulation
 results and ground models respectively are copied, corresponding to the
 equivalent user interface options.
 
-*file\_root (Exchange only)*
+#### `file\_root (Exchange only)`
 
 **s=iwdb.file\_root**
 
@@ -2453,7 +2453,7 @@ force the roots to be below the master database, then the path returned
 will be the one used by the software in this situation i.e. the folder
 containing the master database.
 
-*find\_model\_object*
+#### `find\_model\_object`
 
 **mo=iwdb.find\_model\_object(type,name)**
 
@@ -2471,7 +2471,7 @@ advantage of the fact that version controlled objects have unique names
 so the name, rather than scripting full path is enough to identify the
 object in the database uniquely.
 
-*find\_root\_model\_object*
+#### `find\_root\_model\_object`
 
 **mo=iwdb.find\_root\_model\_object(type,name)**
 
@@ -2484,14 +2484,14 @@ return the model object with that name in the root of the database.
 Currently the only object types found in the root of the database are
 ‘Master Group’, ‘Model Group’ and ‘Asset Group’
 
-*guid*
+#### `guid`
 
 **s=iwdb.guid**
 
 Returns the GUID for the database, otherwise known as the ‘database
 identifier’.
 
-*list\_read\_write\_run\_fields (Exchange only)*
+#### `list\_read\_write\_run\_fields (Exchange only)`
 
 **arr=iwdb.list\_read\_write\_run\_fields**
 
@@ -2502,7 +2502,7 @@ iwdb.list\_read\_write\_run\_fields {|fn| puts fn}
 Returns an array of strings containing all the fields in the Run object
 that are read-write fields i.e. may be set from ICM Exchange scripts.
 
-*model\_object*
+#### `model\_object`
 
 **mo=iwdb.model\_object(scripting\_path)**
 
@@ -2518,14 +2518,14 @@ path, otherwise returns nil.
 If you know the scripting path of the object in the database, this is
 the ‘official’ way of finding the model object.
 
-*model\_object\_collection*
+#### `model\_object\_collection`
 
 **moc=iwdb.model\_object\_collection(type)**
 
 Given a scripting type, returns a WSModelObjectCollection of all the
 objects of that type – not just the objects of that type in the root.
 
-*model\_object\_from\_type\_and\_guid (Exchange only)*
+#### `model\_object\_from\_type\_and\_guid (Exchange only)`
 
 **mo=iwdb.model\_object\_from\_type\_and\_guid(type,guid)**
 
@@ -2537,7 +2537,7 @@ Returns the model object of the given scripting type with the
 ‘CreationGUID’ (an internal database field) given in the second
 parameter.
 
-*model\_object\_from\_type\_and\_id*
+#### `model\_object\_from\_type\_and\_id`
 
 **mo=iwdb.model\_object\_from\_type\_and\_id(type,id)**
 
@@ -2554,7 +2554,7 @@ This can be an easy way of getting a WSModelObject from something you
 have found in the InfoWorks ICM UI by selecting the object in the tree
 and obtaining its properties.
 
-*new\_network\_name (Exchange only)*
+#### `new\_network\_name (Exchange only)`
 
 **name=iwdb.new\_network\_name(type,name,branch,add)**
 
@@ -2576,7 +2576,7 @@ except that \_ is used as the special character instead of \#. If add is
 true then \#1 or \_1 will be appended to the name regardless of whether
 or not the name ends in \# or \_ followed by a number.
 
-*new\_model\_object (Exchange only)*
+#### `new\_model\_object (Exchange only)`
 
 **mo=iwdb.new\_model\_object(type,name)**
 
@@ -2609,7 +2609,7 @@ licence of some sort
 
 unable to create object – if the creation fails for some other reason
 
-*path*
+#### `path`
 
 **s=iwdb.path**
 
@@ -2619,7 +2619,7 @@ puts iwdb.path
 
 returns the pathname of the master database as a string
 
-*root\_model\_objects*
+#### `root\_model\_objects`
 
 **moc=iwdb.root\_model\_objects**
 
@@ -2630,20 +2630,20 @@ database.
 
 ### WSModelObjectCollection
 
-*\[\]*
+#### `\[\]`
 
 **mo=moc\[n\]**
 
 Returns the nth WSModelObject in the collection. The index is 0 based
 i.e. valid values are from 0 to length-1.
 
-*count*
+#### `count`
 
 **n=moc.count**
 
 Returns the number of WSModelObjects in the collection
 
-*each*
+#### `each`
 
 **WSModelObjectCollection.each do |mo|**
 
@@ -2659,9 +2659,9 @@ collection.
 The majority of these methods are only available in the Exchange
 products.
 
-*\[\] (Exchange only)*
+#### `\[\] (Exchange only)`
 
-*\[\]=(Exchange only)*
+#### `\[\]=(Exchange only)`
 
 **mo\['field'\]=value**
 
@@ -2682,14 +2682,14 @@ to another object in the database. In this case the value stored may be
 
 3.  The scripting path of the object
 
-*bulk\_delete (Exchange only)*
+#### `bulk\_delete (Exchange only)`
 
 **mo.bulk\_delete**
 
 This deletes the object and all its children. The deleted objects are
 NOT put into the recycle bin, they are completely deleted.
 
-*children*
+#### `children`
 
 **moc=mo.children**
 
@@ -2699,20 +2699,20 @@ master\_group.children.each {|c| puts "child \#{c.path}"}
 
 Returns the children of the object as a WSModelObjectCollection
 
-*comment (Exchange only)*
+#### `comment (Exchange only)`
 
 **s=mo.comment**
 
 Returns the description (i.e. the text which appears in the description
 tab of the properties for an object) as a string.
 
-*comment= (Exchange only)*
+#### `comment= (Exchange only)`
 
 **mo.comment=s**
 
 Sets the description (as described above) for an object from a string.
 
-*compare (Exchange only)*
+#### `compare (Exchange only)`
 
 **b=mo.compare(mo2)**
 
@@ -2731,7 +2731,7 @@ is currently a limitation that the simulation results may only be
 compared if the database from which they came is the current master
 database.
 
-*copy\_here (Exchange only)*
+#### `copy\_here (Exchange only)`
 
 **mo2=mo.copy\_here(object,bCopySims,bCopyGroundModels)**
 
@@ -2741,7 +2741,7 @@ The bCopySims and bCopyGroundModels parameters determine whether or not
 simulation results and ground models respectively are copied,
 corresponding to the equivalent user interface options.
 
-*deletable? (Exchange only)*
+#### `deletable? (Exchange only)`
 
 **b=mo.deletable?**
 
@@ -2751,7 +2751,7 @@ corresponds to whether the object can be deleted from the normal user
 interface and reflects the same rules e.g. does it have children, is it
 used in a simulation etc.
 
-*delete (Exchange only)*
+#### `delete (Exchange only)`
 
 **mo.delete**
 
@@ -2760,13 +2760,13 @@ interface i.e. without using bulk\_delete which can, of course, delete
 anything. This reflects, therefore, the rules used in the user
 interface.
 
-*delete\_results (Exchange only)*
+#### `delete\_results (Exchange only)`
 
 **mo.delete\_results**
 
 Deletes the results for the object, if the object is a simulation.
 
-*export (Exchange only)*
+#### `export (Exchange only)`
 
 **mo.export(path,format)**
 
@@ -2848,7 +2848,7 @@ format for the following object types:
 >
 > Trade Waste *(from a version 7.5 patch)*
 
-*(from version 6.5)*
+#### `(from version 6.5)`
 
 The results obtained by risk analysis runs may be exported as follows:
 
@@ -2884,20 +2884,20 @@ the format field:
 >
 > "Category Code vs Component"
 
-*find\_child\_model\_object*
+#### `find\_child\_model\_object`
 
 **mo\_found=mo.find\_child\_model\_object(type,name)**
 
 Given the scripting type of an object and a name will return the child
 of the object with that name and type.
 
-*id*
+#### `id`
 
 **n=mo.id**
 
 Returns the ID of the model object as a number
 
-*import\_data (Exchange only)*
+#### `import\_data (Exchange only)`
 
 **import\_data(format,filepath)**
 
@@ -2910,7 +2910,7 @@ The formats supported for rainfall events are
 CRD,CSD,EVP,ISD,TEM and WND which export data in the InfoWorks text file
 format and have the same meaning as for export\_data above.
 
-*import\_new\_model\_object (Exchange only)*
+#### `import\_new\_model\_object (Exchange only)`
 
 **mo=mo.import\_new\_model\_object(type,name,format,filepath,event)**
 
@@ -2961,7 +2961,7 @@ e.g.
 rainfall=model_group.import_new_model_object 'Rainfall Event','The Rainfall','','d:\\temp\\1.red',0
 ```
 
-*import\_tvd(Exchange only)*
+#### `import\_tvd(Exchange only)`
 
 **mo.import\_tvd(filename,format,event)**
 
@@ -2983,26 +2983,26 @@ If the format is ‘RED’ and the type of the object is a rainfall event
 this will import the data in event file format into an existing event,
 overwriting the data already there if there is any.
 
-*modified\_by*
+#### `modified\_by`
 
 **s=mo.modified\_by**
 
 Returns the name of the user who last modified the object as a string.
 
-*name*
+#### `name`
 
 **s=mo.name**
 
 Returns the name of an object as a string.
 
-*name= (Exchange only)*
+#### `name= (Exchange only)`
 
 **mo.name=s**
 
 Sets the name of an object from a string
 
-*new\_model\_object – limited functionality in UI, full in Exchange –
-see below*
+#### `new\_model\_object – limited functionality in UI, full in Exchange –
+see below`
 
 **mo2=mo.new\_model\_object(type,name)**
 
@@ -3046,7 +3046,7 @@ unable to create object – if the call fails for some other reason.
 
 selection lists may not be created from scripts in the UI in viewer mode
 
-*new\_risk\_analysis\_run (ICM Exchange only)*
+#### `new\_risk\_analysis\_run (ICM Exchange only)`
 
 **raro=mo.new\_risk\_analysis\_run(name,damage\_function,runs,param)**
 
@@ -3069,7 +3069,7 @@ Runs – This parameter must be one of
 
 Param – the numerical parameter
 
-*new\_run*
+#### `new\_run`
 
 **run=mo.new\_run(name,network,commit\_id,rainfalls\_and\_flow\_surveys,scenarios,parameters)**
 
@@ -3135,7 +3135,7 @@ Parameters – this must be a hash containing parameters (see Appendix 2).
 
 Parameters for the run may either be set in this call.
 
-*update\_to\_latest (Exchange only)*
+#### `update\_to\_latest (Exchange only)`
 
 **mo.update\_to\_latest**
 
@@ -3152,7 +3152,7 @@ apply:
 This method has the same effect as pressing the ‘update to latest
 version of network’ button on the Run view in the user interface.
 
-*open (Exchange only)*
+#### `open (Exchange only)`
 
 **opennet=mo.open**
 
@@ -3180,7 +3180,7 @@ When you open the results of a simulation:
     only maximum results in which case they are opened as the maximum
     results timestep.
 
-*path*
+#### `path`
 
 **s=mo.path**
 
@@ -3190,21 +3190,21 @@ puts mo.path
 
 Returns the scripting path of the object as a string.
 
-*parent\_type*
+#### `parent\_type`
 
 **s=mo.parent\_type**
 
 Returns the scripting type of the parent of the object (or ‘Master
 Database’ if the object is in the root of the database).
 
-*parent\_id*
+#### `parent\_id`
 
 **n=mo.parent\_id**
 
 Returns the ID of the parent object (or 0 if the object is in the root
 of the database).
 
-*type*
+#### `type`
 
 **s=mo.type**
 
@@ -3214,7 +3214,7 @@ Returns the scripting type of the object.
 
 ### WSNumbatNetworkObject
 
-*commit*
+#### `commit`
 
 **id=nno.commit(comment)**
 
@@ -3229,7 +3229,7 @@ id=nno.commit('this is the commit comment for this commit').
 Commits changes to a network to the database. Returns the commit ID or
 returns nil if there were not changes made since the last commit.
 
-*commits*
+#### `commits`
 
 **c=nno.commits**
 
@@ -3253,7 +3253,7 @@ or
 end
 ```
 
-*commit\_reserve*
+#### `commit\_reserve`
 
 **id=nno.commit\_reserve(comment)**
 
@@ -3262,7 +3262,7 @@ the database and returns the commit ID if changes have been made, nil
 otherwise. The difference is that commit\_reserve keeps the network
 reserved.
 
-*csv\_changes*
+#### `csv\_changes`
 
 **nno.csv\_changes(commit\_id1, commit\_id2, filename)**
 
@@ -3272,7 +3272,7 @@ generated by the “Compare network” function and can be used to apply the
 changes to another network via “Import/Update from CSV files…”
 functionality.
 
-*csv\_export*
+#### `csv\_export`
 
 **nno.csv\_export(filename,options)**
 
@@ -3308,7 +3308,7 @@ myHash['Coordinate Arrays Format']='None'
 no.csv_export 'd:\\temp\\network.csv',myHash
 ```
 
-*csv\_import*
+#### `csv\_import`
 
 **nno.csv\_import(filename,options)**
 
@@ -3331,7 +3331,7 @@ default options will be used. The hash values are as follows:
 | New Flag             | String  |         | Flag used for new and updated data                                                                                    |
 | Update Flag          | String  |         | If the 'update with any flag' option is set to false, only update fields with this flag value                         |
 
-*current\_commit\_id*
+#### `current\_commit\_id`
 
 **id=nno.current\_commit\_id**
 
@@ -3339,7 +3339,7 @@ Returns the commit ID of the local copy of the network – this may not be
 the latest commit ID i.e. the most recent commit ID on the server, which
 is returned by latest\_commit\_id (see below).
 
-*GIS\_export*
+#### `GIS\_export`
 
 **nno.GIS\_export(format,params,location)**
 
@@ -3393,7 +3393,7 @@ The tables element of the hash must be an array of strings which must be
 names of tables as returned by the list\_GIS\_export\_tables. Duplicates
 and unrecognised values are not permitted.
 
-*latest\_commit\_id*
+#### `latest\_commit\_id`
 
 **id=nno.latest\_commit\_id**
 
@@ -3401,7 +3401,7 @@ Returns the latest commit ID for the network i.e. the ID of the most
 recent commit on the server. This may not be the same as the commit ID
 of the local copy, which is returned by current\_commit\_id (see above).
 
-*list\_GIS\_export\_tables*
+#### `list\_GIS\_export\_tables`
 
 **arr=nno.list\_GIS\_export\_tables**
 
@@ -3409,7 +3409,7 @@ This method lists the tables that will be exported to GIS as an array of
 strings. This method is designed to return information useful when
 customising the parameters to GIS\_export.
 
-*odec\_export\_ex*
+#### `odec\_export\_ex`
 
 **nno.odec\_export\_ex(format, config\_file, options, …)**
 
@@ -3557,7 +3557,7 @@ For SQL Server the parameters are as follows:
 
 9.  Password
 
-*odic\_import\_ex*
+#### `odic\_import\_ex`
 
 **nno.odic\_import\_ex(format, config\_file, options, …)**
 
@@ -3686,27 +3686,27 @@ For SQL server the parameters are as follows:
 >
 > 8- password (for non-integrated security, nil otherwise)
 
-*remove\_local*
+#### `remove\_local`
 
 **nno.remove\_local**
 
 Removes the local copy of the network, any uncommitted changes will be
 lost.
 
-*reserve*
+#### `reserve`
 
 **nno.reserve**
 
 Reserves the network so no-one else can edit it and updates the local
 copy to the latest version.
 
-*revert*
+#### `revert`
 
 **nno.revert**
 
 Reverts any uncommitted changes in the local copy of the network.
 
-*select\_changes*
+#### `select\_changes`
 
 **nno.select\_changes**
 
@@ -3718,19 +3718,19 @@ an exception will be thrown).
 
 Obviously, deleted objects will not be selected.
 
-*select\_clear*
+#### `select\_clear`
 
 **nno.select\_clear**
 
 Clears the selection in the network
 
-*select\_count*
+#### `select\_count`
 
 **n=nno.select\_count**
 
 Returns the number of selected items in the network
 
-*select\_sql*
+#### `select\_sql`
 
 **n=nno.select\_sql(table,query)**
 
@@ -3756,27 +3756,27 @@ The method returns the number of objects selected in the last clause in
 the SQL block selecting a non-zero number of object (or zero if there is
 no such clause).
 
-*uncommitted\_changes?*
+#### `uncommitted\_changes?`
 
 **b=nno.uncomitted\_changes?**
 
 Returns true if there are uncomitted changes in the local copy of the
 network, false otherwise.
 
-*unreserve*
+#### `unreserve`
 
 **nno.unreserve**
 
 Cancels the reservation of the network.
 
-*update*
+#### `update`
 
 **b=nno.update**
 
 Updates the local copy of the network from the server. Returns true if
 there are no conflicts, false if there are.
 
-*user\_field\_names*
+#### `user\_field\_names`
 
 **nno.user\_field\_names(filename,arbitrarystring)**
 
@@ -3828,7 +3828,7 @@ This chart shows which methods are available for which object types:
 | single\_result\_csv\_export        | \*  |                       |                   |
 | timestep\_count                    | \*  | \*                    | \*                |
 
-*list\_max\_results\_attributes*
+#### `list\_max\_results\_attributes`
 
 **arr=sim.list\_max\_results\_attributes**
 
@@ -3846,7 +3846,7 @@ This method is designed to return information useful when customising
 the parameters to max\_results\_binary\_export.and
 max\_results\_csv\_export
 
-*list\_results\_attributes*
+#### `list\_results\_attributes`
 
 **arr=sim.list\_results\_attributes**
 
@@ -3872,7 +3872,7 @@ Tab, whilst the 2<sup>nd</sup> is an array of attribute names e.g.
 This method is designed to return information useful when customising
 the parameters to results\_binary\_export.and results\_csv\_export
 
-*list\_results\_GIS\_export\_tables*
+#### `list\_results\_GIS\_export\_tables`
 
 **arr=sim.list\_results\_GIS\_export\_tables**
 
@@ -3915,7 +3915,7 @@ tables are added to InfoWorks. The current list is:
 Note the results for 2D elements is \_2DElements and that the table name
 used for all links, which are combined into one GIS layer, is \_links.
 
-*list\_timesteps*
+#### `list\_timesteps`
 
 **arr=list\_timesteps**
 
@@ -3925,7 +3925,7 @@ on how absolute and relative times are handled.
 For a risk analysis results object, this returns an array of the return
 periods for the object.
 
-*max\_flood\_contours\_export*
+#### `max\_flood\_contours\_export`
 
 **max\_flood\_contours\_export(format,groundModel,theme,filename)**
 
@@ -3948,7 +3948,7 @@ for the contours.
 
 Filename: the filename to be exported.
 
-*max\_results\_binary\_export*
+#### `max\_results\_binary\_export`
 
 **max\_results\_binary\_export(selection,attributes,file)**
 
@@ -3965,7 +3965,7 @@ The attributes parameter may be nil, in which case all attributes are
 exported, or may be an array as described in the
 list\_max\_results\_attributes method above.
 
-*results\_binary\_export*
+#### `results\_binary\_export`
 
 **results\_binary\_export(selection,attributes,file)**
 
@@ -3982,7 +3982,7 @@ The attributes parameter may be nil, in which case all attributes are
 exported, or may be an array as described in the
 list\_max\_results\_attributes method above.
 
-*max\_results\_csv\_export*
+#### `max\_results\_csv\_export`
 
 **results\_csv\_export(selection, attributes, folder)**
 
@@ -4001,7 +4001,7 @@ max\_results\_binary\_export).
 (Note that the parameters for this method are the same as those for
 results\_csv\_export\_ex)
 
-*results\_csv\_export*
+#### `results\_csv\_export`
 
 **results\_csv\_export(selection,folder)**
 
@@ -4012,7 +4012,7 @@ The selection parameter may contain the ID or scripting path of a
 selection list object, or the WSModelObject itself, or it may be nil in
 which case results for the whole network will be exported.
 
-*results\_csv\_export\_ex*
+#### `results\_csv\_export\_ex`
 
 **results\_csv\_export\_ex(selection, attributes, folder)**
 
@@ -4021,7 +4021,7 @@ which may be nil, in which case all attributes are exported, or may be
 an array as described in the list\_results\_attributes method above
 (i.e. as results\_binary\_export).
 
-*results\_GIS\_export*
+#### `results\_GIS\_export`
 
 **results\_GIS\_export(format,timesteps,params,folder)**
 
@@ -4129,7 +4129,7 @@ The optional 3<sup>rd</sup> value must be an integer between 0 and 9
 inclusive representing the number of decimal places. If this is not set
 then a default of 2 decimal places is used.
 
-*run*
+#### `run`
 
 **sim.run**
 
@@ -4138,7 +4138,7 @@ however long that may be. There are alternative mechanisms for running
 simulations which permit greater control over the process. The
 simulation will be run on the current machine.
 
-*run\_ex*
+#### `run\_ex`
 
 **sim.run\_ex(server,number\_of\_threads)**
 
@@ -4149,7 +4149,7 @@ be used as with the user interface option. The server name may be a
 machine name or one of ‘.’ Or ‘\*’. ‘.’ has the meaning of local machine
 and ‘\*’ has the meaning of any available server.
 
-*status*
+#### `status`
 
 **n=sim.status**
 
@@ -4163,7 +4163,7 @@ Returns the status of simulation, one of:
 
 -   “Fail”
 
-*success\_substatus*
+#### `success\_substatus`
 
 **n=sim.success\_substatus**
 
@@ -4175,7 +4175,7 @@ If the simulation succeeded, returns its substatus, one of:
 
 -   “OK”
 
-*timestep\_count*
+#### `timestep\_count`
 
 **n=sim.timestep\_count**
 
@@ -4185,7 +4185,7 @@ Returns the number of results timesteps for a simulation.
 
 ### WSOpenNetwork
 
-*add\_scenario*
+#### `add\_scenario`
 
 **on.add\_scenario(name,based\_on,notes)**
 
@@ -4208,7 +4208,7 @@ The parameters are:
 
 Clears the selection
 
-*close (Exchange only)*
+#### `close (Exchange only)`
 
 **on.close**
 
@@ -4219,7 +4219,7 @@ within that network (e.g. of type WSRowObject) become invalid and any
 attempt to access methods for them will cause an exception to be
 thrown).
 
-*current\_timestep*
+#### `current\_timestep`
 
 **n=on.current\_timestep**
 
@@ -4233,13 +4233,13 @@ begin timestep\_count – 1. The value of -1, representing the ‘maximum’
 ICM Exchange will be 0 if there are time varying results, otherwise -1
 for the ‘maximum’ ‘timestep’.
 
-*current\_timestep\_time*
+#### `current\_timestep\_time`
 
 **t=on.current\_timestep\_time**
 
 Returns the time of the current timestep.
 
-*current\_timestep= (Exchange only)*
+#### `current\_timestep= (Exchange only)`
 
 **on.current\_timestep=7**
 
@@ -4271,7 +4271,7 @@ following fields
 | Coordinate Arrays Format | The mechanism whereby arrays of coordinates (e.g. polylines and polygons) are exported. Choices are ‘None’, ‘Packed’ and ‘Unpacked’ | Packed |
 | Other Arrays Format      | The mechanism whereby other arrays (e.g. shapes / demand diagrams) are exported. Choices are ‘None’, ‘Packed’ and ‘Separate’        | Packed |
 
-*csv\_import*
+#### `csv\_import`
 
 **nno.csv\_import(filename,options)**
 
@@ -4309,7 +4309,7 @@ all of the following.
 | New Flag             | Flag used for new / updated fields                                                                                                                                    | Blank |
 | Update Flag          | Flag used to determine what objects are updated if the ‘Update With Any Flag’ field is set to false                                                                   | Blank |
 
-*current\_scenario*
+#### `current\_scenario`
 
 **puts on.current\_scenario**
 
@@ -4318,7 +4318,7 @@ Returns the WSOpenNetwork object’s current scenario as a string.
 If the current scenario is the base scenario, returns ‘Base’ (in
 English).
 
-*current\_scenario=*
+#### `current\_scenario=`
 
 **on.current\_scenario=new\_scenario**
 
@@ -4326,7 +4326,7 @@ Sets the WSOpenNetwork’s current scenario. The new value should be a
 string or can be nil in which case the current scenario is set to the
 base scenario. The new scenario must exist.
 
-*delete\_scenario*
+#### `delete\_scenario`
 
 **on.delete\_scenario(scenario\_name)**
 
@@ -4338,13 +4338,13 @@ Deletes the scenario specified in the string parameter. If the specified
 scenario is the current scenario, the current scenario is set to be the
 base scenario.
 
-*delete\_selection*
+#### `delete\_selection`
 
 **on.delete\_selection**
 
 Deletes the current selection from the network in the current scenario.
 
-*each*
+#### `each`
 
 **on.each do |x|**
 
@@ -4356,13 +4356,13 @@ puts x.id
 
 end
 
-*each\_selected*
+#### `each\_selected`
 
 **on.each\_selected do |x|**
 
 As each but iterates through the selected objects only.
 
-*export\_IDs*
+#### `export\_IDs`
 
 **on.export\_IDs(filename,parameters)**
 
@@ -4378,7 +4378,7 @@ will be exported (default false i.e. all exported)
 UTF8 – if set to true the file will be UTF8 encoded (default false i.e.
 current locals)
 
-*field\_names(type)*
+#### `field\_names(type)`
 
 **arr=on.field\_names(type)**
 
@@ -4395,7 +4395,7 @@ end
 Given the internal name of a type, returns a list of names of the fields
 for that object type – the object type cannot be a class.
 
-*gauge\_timestep\_count*
+#### `gauge\_timestep\_count`
 
 **n=on.gauge\_timestep\_count**
 
@@ -4403,14 +4403,14 @@ This method returns the number of gauge timesteps. If there are no gauge
 timesteps, either because no objects are ‘gauged’ or because the gauge
 timestep for the run was set to 0 it returns 0.
 
-*gauge\_timestep\_time*
+#### `gauge\_timestep\_time`
 
 **t=on.gauge\_timestep\_time(timestep\_no)**
 
 This method returns the time for the gague timestep with the index given
 as the method’s parameter.
 
-*GIS\_export*
+#### `GIS\_export`
 
 **on.GIS\_export(format,params,location)**
 
@@ -4419,14 +4419,14 @@ Exports the network data to GIS.
 See the method of the same name for WSNumbatNetworkObject for an
 explanation of the parameters.
 
-*list\_gauge\_timesteps*
+#### `list\_gauge\_timesteps`
 
 **arr=on.list\_gauge\_timesteps**
 
 This method returns an array containing the times of all the gauge
 timesteps for the sim in order.
 
-*list\_GIS\_export\_tables*
+#### `list\_GIS\_export\_tables`
 
 **arr=on.list\_GIS\_export\_tables**
 
@@ -4434,14 +4434,14 @@ This method lists the tables that will be exported to GIS as an array of
 strings. This method is designed to return information useful when
 customising the parameters to GIS\_export.
 
-*list\_timesteps*
+#### `list\_timesteps`
 
 **arr=on.list\_timesteps**
 
 This method returns an array containing the times of all the timesteps
 for the sim in order.
 
-*load\_selection*
+#### `load\_selection`
 
 **no.load\_selection(selection\_list)**
 
@@ -4449,7 +4449,7 @@ Selects objects based on the selection list object. The parameter may be
 a WSModelObject, an object path or the numerical ID of the model object
 – providing in all cases that the model object is a selection list.
 
-*new\_row\_object*
+#### `new\_row\_object`
 
 **ro=on.new\_row\_object(type)**
 
@@ -4460,7 +4460,7 @@ ro=no.new\_row\_object('hw\_node')
 This method creates a new row object in the network. This must be done
 within a transaction.
 
-*objects\_in\_polygon*
+#### `objects\_in\_polygon`
 
 **vec=on.objects\_in\_polygon(polygon,type\_or\_types)**
 
@@ -4470,7 +4470,7 @@ first parmeter. The purpose of this method is to allow the polygon to be
 in one network and the objects found to be in another e.g. the current
 network and the background network.
 
-*odic\_import\_ex*
+#### `odic\_import\_ex`
 
 **vec=on.odic\_import\_ex(format,config\_file,params,…)**
 
@@ -4480,13 +4480,13 @@ import (this would not be possible in the WSNumbatNetworkObject version,
 since the network is not left open after the method, and WSRowObject
 objects may not be open when their network is not).
 
-*odec\_export\_ex*
+#### `odec\_export\_ex`
 
 **on.odec\_export\_ex(format,config\_file,params,…)**
 
 As for WSNumbatNetworkObject above.
 
-*row\_object*
+#### `row\_object`
 
 **ro=on.row\_object(table,id)**
 
@@ -4498,7 +4498,7 @@ Given a table name and an ID (with the parts separated by . if it is a
 type with multiple key fields) returns a WSRowObject or derived class.
 Returns nil if there is no such object in the network.
 
-*row\_objects*
+#### `row\_objects`
 
 **arr=on.row\_objects(table)**
 
@@ -4510,7 +4510,7 @@ Given a table name returns a vector of WSRowObject (possibly including
 instances of derived classes). Returns a vector of zero length if there
 are no objects of that type in the network.
 
-*row\_objects\_from\_asset\_id*
+#### `row\_objects\_from\_asset\_id`
 
 **arr=on.row\_objects\_from\_asset\_id(type,asset\_id)**
 
@@ -4519,7 +4519,7 @@ including instances of derived classes) with that asset ID. Returns a
 vector of zero length if there are no objects of that type in the
 network.
 
-*row\_object\_collection*
+#### `row\_object\_collection`
 
 **roc=on.row\_object\_collection(type)**
 
@@ -4528,14 +4528,14 @@ collection of objects in the network which can be iterated through. The
 parameter can be the type or class of the object, or nil in which case
 all objects will be returned.
 
-*row\_object\_collection\_selection*
+#### `row\_object\_collection\_selection`
 
 **roc=on.row\_object\_collection\_selection(type)**
 
 As row\_object\_collection above, but only returns objects currently
 selected in the WSOpenNetwork.
 
-*run\_inference*
+#### `run\_inference`
 
 **on.run\_inference(inference,ground\_model, mode,
 zone\_or\_zone\_category, error\_file)**
@@ -4582,7 +4582,7 @@ When run within the UI, the ground model parameter must be nil. If there
 is a ground model loaded into the network (either TIN or grid), it will
 be used instead.
 
-*run\_SQL*
+#### `run\_SQL`
 
 **on.run\_SQL(table,query)**
 
@@ -4594,7 +4594,7 @@ The names ‘\_nodes’ or ‘\_links’ can be used to run the SQL over all
 node or link tables in the same way as can be achieved by selecting ‘All
 nodes’ or ‘All links’ in the dropdowns in the SQL dialog.
 
-*run\_stored\_query\_object*
+#### `run\_stored\_query\_object`
 
 **on.run\_stored\_query\_object(stored\_query\_object)**
 
@@ -4606,7 +4606,7 @@ From version 6.5, when run from the UI, spatial queries and those with
 UI may be run from the UI. This was not the case with previous versions
 and is not the case when they are run from the Exchange products.
 
-*save\_selection*
+#### `save\_selection`
 
 **on.save\_selection(selection\_list)**
 
@@ -4633,7 +4633,7 @@ on.save_selection mySelectionList.path
 
 Saves the current selection to the already existing selection list.
 
-*scenarios*
+#### `scenarios`
 
 **on.scenarios.each do |s|**
 
@@ -4649,7 +4649,7 @@ This method provides a block of names of scenarios to be iterated
 through. The base scenario is included in the results as the string
 ‘Base’, in English.
 
-*search\_at\_point(x,y,distance,types)*
+#### `search\_at\_point(x,y,distance,types)`
 
 **roc=find\_at\_point(x,y,distance,types)**
 
@@ -4659,13 +4659,13 @@ searched), a string or an array of strings, these strings may be the
 name of a type or a category. It may not contain duplicates, and may not
 contain a category and a table within that category.
 
-*selection\_size*
+#### `selection\_size`
 
 **n=on.selection\_size**
 
 Returns the number of objects selected.
 
-*snapshot\_import*
+#### `snapshot\_import`
 
 **on.snapshot\_import(filename)**
 
@@ -4673,7 +4673,7 @@ Imports a snapshot file into the network from the given filename. This
 has the same effect as calling snapshot\_import\_ex with the second
 parameter being nil.
 
-*snapshot\_import\_ex*
+#### `snapshot\_import\_ex`
 
 **on.snapshot\_import\_ex(filename,parameters\_hash)**
 
@@ -4697,7 +4697,7 @@ UpdateExistingObjectsFoundByUID – Boolean
 
 ImportImageFiles - Boolean
 
-*snapshot\_export*
+#### `snapshot\_export`
 
 **on.snapshot\_export(filename)**
 
@@ -4711,7 +4711,7 @@ exported.
 
 Snapshots cannot be exported from networks with uncommitted changes.
 
-*snapshot\_export\_ex*
+#### `snapshot\_export\_ex`
 
 **on.snapshot\_ex(filename,parameters\_hash)**
 
@@ -4752,7 +4752,7 @@ snapshot\_export.
 
 Snapshots cannot be exported from networks with uncommitted changes.
 
-*snapshot\_scan*
+#### `snapshot\_scan`
 
 **details\_hash=on.snapshot\_scan(filename)**
 
@@ -4812,7 +4812,7 @@ UnknownFieldCount –the number of unknown fields for the table, this will
 be zero unless the export is from a more recent version of the software
 than the user is using to import the data.
 
-*table\_names*
+#### `table\_names`
 
 **arr=on.table\_names**
 
@@ -4827,21 +4827,21 @@ end
 This method returns an array of the tables names for the WSOpenNetwork –
 these are the internal names.
 
-*table*
+#### `table`
 
 **t=on.table(name)**
 
 Given a table name, this method returns a WSTableInfo object for that
 table.
 
-*tables*
+#### `tables`
 
 **arr=on.tables**
 
 This method returns an array of WSTableInfo objects for the
 WSOpenNetwork.
 
-*timestep\_count*
+#### `timestep\_count`
 
 **n=on.timestep\_count**
 
@@ -4849,14 +4849,14 @@ This method returns the number of timesteps in the results for the sim,
 it does not include the ‘maximum’ ‘timestep’ so for sims without any
 time varying results this method will return 0.
 
-*timestep\_time*
+#### `timestep\_time`
 
 **t=on.timestep\_time(timestep\_no)**
 
 This method returns the time for the timestep with the index given as
 the method’s parameter.
 
-*transaction\_begin*
+#### `transaction\_begin`
 
 **on.transaction\_begin**
 
@@ -4866,26 +4866,26 @@ ended either with transaction\_commit, which commits the changes since
 transaction\_begin, or with transaction\_rollback, which cancels the
 changes since transaction\_begin
 
-*transaction\_commit*
+#### `transaction\_commit`
 
 **on.transaction\_commit**
 
 Commits the transaction – see above.
 
-*transaction\_rollback*
+#### `transaction\_rollback`
 
 **on.transaction\_end**
 
 Ends the transaction – see above.
 
-*update\_cctv\_scores*
+#### `update\_cctv\_scores`
 
 **on.update\_cctv\_scores**
 
 Calculates CCTV scores for all surveys in the network using the current
 standard.
 
-*validate*
+#### `validate`
 
 **v=on.validate(scenarios)**
 
@@ -4901,11 +4901,11 @@ validated, or an array of strings, in which case all the named scenarios
 
 ### WSRowObject
 
-*\[\]*
+#### `\[\]`
 
-*\[\]=*
+#### `\[\]=`
 
-*missing\_method*
+#### `missing\_method`
 
 **ro\['field'\]=value**
 
@@ -4926,26 +4926,26 @@ validated, or an array of strings, in which case all the named scenarios
 The above are used to set and get values of fields for WSRowObject
 objects as described in the ‘getting and setting values’ section above.
 
-*category*
+#### `category`
 
 **s=ro.category**
 
 Returns the category name (as described above) of the object’s table as
 a string.
 
-*contains?*
+#### `contains?`
 
 **b=ro.contains?(ro2)**
 
 Returns true if polygon ro contains the object ro2.
 
-*delete*
+#### `delete`
 
 **ro.delete**
 
 Deletes the row object.
 
-*field*
+#### `field`
 
 **f=ro.field(fieldname)**
 
@@ -4955,7 +4955,7 @@ which does not depend on the actual WSRowObject or its value for the
 field – it is essentially a short cut to getting the table and then
 getting the field info from that.
 
-*gauge\_results*
+#### `gauge\_results`
 
 **arr=ro.gauge\_results(results\_field\_name)**
 
@@ -4964,7 +4964,7 @@ object at all gauge timesteps – the field must have time varying
 results. If the object or field does not have gauge results it will
 return the ‘normal’ results.
 
-*id*
+#### `id`
 
 **id=ro.id**
 
@@ -4972,21 +4972,21 @@ Returns the ID of the object as a string. If the object has a multi-part
 primary key, then the key will be output with part separated by the ‘.’
 character.
 
-*id=*
+#### `id=`
 
 **ro.id=newid**
 
 Updates the ID of the row object.
 
-*is\_inside?*
+#### `is\_inside?`
 
 **B=ro.is\_inside?(ro2)**
 
 Returns true if ro2 is inside the polygon ro2.
 
-*navigate*
+#### `navigate`
 
-*navigate1*
+#### `navigate1`
 
 **vec=ro.navigate(navigation\_type)**
 
@@ -5058,7 +5058,7 @@ software as follows:
 | general\_surveys              | No  |
 | fog\_inspections              | No  |
 
-*objects\_in\_polygon*
+#### `objects\_in\_polygon`
 
 **vec=ro.objects\_in\_polygon(type\_or\_types)**
 
@@ -5070,27 +5070,27 @@ contain a category and a table within that category. This is the same as
 the similar parameter in the WSNumbatNetworkObject’s search\_at\_point
 method.
 
-*result*
+#### `result`
 
 **f=ro.result(result\_fields\_name)**
 
 Returns the result for the given results field name for the object at
 the current timestep.
 
-*results*
+#### `results`
 
 **arr=ro.results(result\_field\_name)**
 
 Returns an array of the results for the given results field name for the
 object at all timesteps – the field must have time varying results.
 
-*selected?*
+#### `selected?`
 
 **b=ro.selected?**
 
 returns True if the object is currently selected, False otherwise
 
-*selected=*
+#### `selected=`
 
 **ro.selected=b**
 
@@ -5103,20 +5103,20 @@ ro2.selected=false
 If the value on the right of the = evaluates to true, the object is
 selected, otherwise it is deselected.
 
-*table*
+#### `table`
 
 **s=ro.table**
 
 Returns the internal name of the object’s table as a string.
 
-*table\_info*
+#### `table\_info`
 
 **ti=ro.table\_info**
 
 Returns the WSTableInfo object for the object’s table, this may be used
 to get the list of fields for the object.
 
-*write*
+#### `write`
 
 **ro.write**
 
@@ -5130,7 +5130,7 @@ otherwise the changes will not take effect.
 This class is derived from the WSRowObject class, and represents objects
 of ‘category’ node as described above. It has two extra methods:
 
-*us\_links*
+#### `us\_links`
 
 **roc=node.us\_links**
 
@@ -5138,7 +5138,7 @@ Returns a WSRowObjectCollection (see below) representing all the
 upstream links of the node. If there are no upstream links a collection
 of length zero is returned.
 
-*ds\_links*
+#### `ds\_links`
 
 **roc=node.ds\_links**
 
@@ -5153,14 +5153,14 @@ collection of length zero is returned.
 This class is derived from the WSRowObject class, and represents objects
 of ‘category’ link as described above. It has two extra methods:
 
-*us\_node*
+#### `us\_node`
 
 **ro=link.us\_node**
 
 Returns a WSRowObject representing the link’s upstream node, or nil if
 it doesn’t have one.
 
-*ds\_node*
+#### `ds\_node`
 
 **ro=link.ds\_node**
 
@@ -5171,7 +5171,7 @@ it doesn’t have one.
 
 ### WSRiskAnalysisRunObject
 
-*run*
+#### `run`
 
 **raro.run**
 
@@ -5181,20 +5181,20 @@ Performs the risk analysis run.
 
 ### WSRowObjectCollection
 
-*length*
+#### `length`
 
 **n=roc.length**
 
 Returns the number of WSRowObjects in the collection
 
-*\[\]*
+#### `\[\]`
 
 **ro=roc\[n\]**
 
 Returns the nth WSRowObject in the collection. The index is 0 based i.e.
 valid values are from 0 to length-1.
 
-*each*
+#### `each`
 
 **roc.each {|ro|}**
 
@@ -5210,13 +5210,13 @@ end
 
 ### WSTableInfo
 
-*description*
+#### `description`
 
 **s=ti.description**
 
 returns the description of the table.
 
-*fields*
+#### `fields`
 
 **arr=ti.fields**
 
@@ -5225,13 +5225,13 @@ WSFieldInfo
 
 - flags are treated as separate fields.
 
-*name*
+#### `name`
 
 **s=ti.name**
 
 returns the internal name of the table.
 
-*results\_fields*
+#### `results\_fields`
 
 **arr=ti.results\_fields**
 
@@ -5251,7 +5251,7 @@ software, except for user defined fields and tables in InfoNet.
 
 ### WSFieldInfo
 
-*data\_type*
+#### `data\_type`
 
 **s=fi.data\_type**
 
@@ -5287,20 +5287,20 @@ follows:
 Flag fields have their type returned as ‘Flag’, their underlying Ruby
 type is the Ruby string.
 
-*description*
+#### `description`
 
 **s=fi.description**
 
 returns the description of the table
 
-*fields*
+#### `fields`
 
 **arr=fi.fields**
 
 returns an array of fields if the field is itself a ‘structure blob’. If
 the field is not a structure blob, this method returns nil.
 
-*has\_time\_varying\_results?*
+#### `has\_time\_varying\_results?`
 
 **b=fi.has\_time\_varying\_results?**
 
@@ -5309,7 +5309,7 @@ results for the timesteps in the simulation. It will return false for
 network fields. Please see the WSTableInfo results\_fields method for
 more discussion.
 
-*has\_max\_results?*
+#### `has\_max\_results?`
 
 **b=fi.has\_max\_results?**
 
@@ -5319,19 +5319,19 @@ is open in the UI and the timestep control is set to the ‘maximum’
 ‘timestep’. It will return false for network fields. Please see the
 WSTableInfo results\_fields method for more discussion.
 
-*name*
+#### `name`
 
 **s=fi.name**
 
 returns the name of the field
 
-*read\_only?*
+#### `read\_only?`
 
 **bReadOnly=fi.read\_only?**
 
 Returns true if the field is read only, false if it isn't
 
-*size (from version 7.0)*
+#### `size (from version 7.0)`
 
 **n=fi.size**
 
@@ -5379,40 +5379,40 @@ WSCommit class.
 
 ### WSStructure
 
-*each*
+#### `each`
 
 **sb.each {|v|}**
 
 Iterates through the collection.
 
-*length*
+#### `length`
 
 **n=sb.length**
 
 Returns the number of WSStructureRow objects in the WSStructure
 collection
 
-*length=*
+#### `length=`
 
 **sb.length=n**
 
 Sets the number of WSStructureRow objects in the WSStructure collection
 
-*size*
+#### `size`
 
 **n=sb.size**
 
 Returns the number of WSStructureRow objects in the WSStructure
 collection (synonym for length)
 
-*size=*
+#### `size=`
 
 **sb.size=n**
 
 Sets the number of WSStructureRow objects in the WSStructure collection
 (synonym for length)
 
-*write*
+#### `write`
 
 **sb.write**
 
@@ -5427,7 +5427,7 @@ write method (and then, of course, the transaction must be committed and
 the network written to the database with the commit method or in the
 user interface!).
 
-*\[\]*
+#### `\[\]`
 
 **v=sb\[n\]**
 
@@ -5437,13 +5437,13 @@ Returns the nth WSStructureRow object in the collection (zero based).
 
 ### WSStructureRow
 
-*\[\]*
+#### `\[\]`
 
 **v=row\[val\]**
 
 Returns the value of the named field in the WSStructureRow object.
 
-*\[\]=*
+#### `\[\]=`
 
 **row\[val\]=v**
 
@@ -5453,32 +5453,32 @@ Sets the value of the named field in the WSStructureRow object.
 
 ### WSValidations
 
-*error\_count*
+#### `error\_count`
 
 **n=vals.error\_count**
 
 Returns the number of errors found when performing the validation.
 
-*warning\_count*
+#### `warning\_count`
 
 **n=vals.warning\_count**
 
 Returns the number of warnings found when performing the validation.
 
-*length*
+#### `length`
 
 **n=vals.length**
 
 Returns the number of WSValidation objects in the WSValidations
 collection
 
-*each*
+#### `each`
 
 **n.each {|v|}**
 
 Iterates through the collection.
 
-*\[\]*
+#### `\[\]`
 
 **v=vals\[n\]**
 
@@ -5492,13 +5492,13 @@ The methods of this class are are all read only and each of them returns
 the value in one of the fields that appears in the validation windows
 when the network is validated within the user interface.
 
-*code*
+#### `code`
 
 **n=v.code**
 
 Returns the code of the validation message.
 
-*field*
+#### `field`
 
 **s=v.field**
 
@@ -5506,46 +5506,46 @@ Returns the field from the validation message. This may not be a real
 database field, but if it is then the internal name rather than the
 description will be returned.
 
-*field\_description*
+#### `field\_description`
 
 **s=v.field\_description**
 
 Returns the field column from the validation message as it appears in
 the validation window.
 
-*object\_id*
+#### `object\_id`
 
 **s=v.object\_id**
 
 Returns ID for the object in the validation message, if any.
 
-*object\_type*
+#### `object\_type`
 
 **s=v.object\_type**
 
 Returns the description from the object type column of the validation
 message, if any.
 
-*message*
+#### `message`
 
 **s=v.object\_message**
 
 Returns the validation message.
 
-*priority*
+#### `priority`
 
 **n=v.priority**
 
 Returns the priority of the validation message.
 
-*type*
+#### `type`
 
 **n=v.type**
 
 Returns the type of the validation message: ‘error’, ‘warning’ or
 ‘information’.
 
-*scenario*
+#### `scenario`
 
 **s=v.scenario**
 
