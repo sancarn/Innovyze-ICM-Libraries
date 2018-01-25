@@ -1628,6 +1628,7 @@ folder will almost certainly exist.
 
 <br/>
 <br/>
+
 #### `background_network (UI only)`
 
 Syntax:
@@ -1646,6 +1647,7 @@ is loaded.
 
 <br/>
 <br/>
+
 #### `cancel_job (ICM Exchange only)`
 
 Syntax:
@@ -1662,6 +1664,7 @@ array returned by launch\_sims – see below.
 
 <br/>
 <br/>
+
 #### `colour (UI only)`
 
 Syntax:
@@ -1680,6 +1683,7 @@ black, colour(255,0,0) returns red, colour(255,255,255) returns white.
 
 <br/>
 <br/>
+
 #### `connect_local_agent (Exchange only)`
 
 Syntax:
@@ -1698,6 +1702,7 @@ This method must be called before the launch\_sims method is called.
 
 <br/>
 <br/>
+
 #### `current_database (UI only)`
 
 Syntax:
@@ -1715,6 +1720,7 @@ to return the database object for the currently open master database.
 
 <br/>
 <br/>
+
 #### `current_network (UI only)`
 
 Syntax:
@@ -1735,6 +1741,7 @@ then the results will be available to the script.
 
 <br/>
 <br/>
+
 #### `create (Exchange only)`
 
 Syntax:
@@ -1761,6 +1768,7 @@ z:\\test.icmm contains an incorrect path
 
 <br/>
 <br/>
+
 #### `create_transportable (Exchange only)`
 
 Syntax:
@@ -1777,6 +1785,7 @@ parameter.
 
 <br/>
 <br/>
+
 #### `file_dialog (UI only)`
 
 Syntax:
@@ -1820,6 +1829,7 @@ from the dialog, the execution of the Ruby script is stopped.
 
 <br/>
 <br/>
+
 #### `folder_dialog (UI only)`
 
 Syntax:
@@ -1847,6 +1857,7 @@ to false, nil will be returned.
 
 <br/>
 <br/>
+
 #### `graph (UI only)`
 
 Syntax:
@@ -1920,6 +1931,7 @@ trace, though they can vary between traces.
 
 <br/>
 <br/>
+
 #### `input_box(UI only)`
 
 Syntax:
@@ -1940,6 +1952,7 @@ returned.
 
 <br/>
 <br/>
+
 #### `launch_sims (Exchange only)`
 
 Syntax:
@@ -1979,6 +1992,7 @@ results array may be passed into it.
 
 <br/>
 <br/>
+
 #### `message_box (UI only)`
 
 Syntax:
@@ -2049,6 +2063,7 @@ The buttons appear as follows:
 
 <br/>
 <br/>
+
 #### `open_text_view (UI only)`
 
 Syntax:
@@ -2074,6 +2089,7 @@ deleted when the view is closed by the user.
 
 <br/>
 <br/>
+
 #### `prompt (UI only)`
 
 Syntax:
@@ -2213,6 +2229,7 @@ If OK is hit without changing any values, it returns an array like this:
 
 <br/>
 <br/>
+
 #### `scalars (UI only)`
 
 Syntax:
@@ -2254,6 +2271,7 @@ for any others.
 
 <br/>
 <br/>
+
 #### `wait_for_jobs (Exchange only)`
 
 Syntax:
@@ -2285,6 +2303,7 @@ last job to complete)
 
 <br/>
 <br/>
+
 #### `working_folder (Exchange only)`
 
 Syntax:
@@ -2309,6 +2328,7 @@ regardless of whether you have explicitly set it or not
 
 <br/>
 <br/>
+
 #### `results_folder (Exchange only)`
 
 Syntax:
@@ -2333,6 +2353,7 @@ regardless of whether you have explicitly set it or not
 
 <br/>
 <br/>
+
 #### `open (Exchange only)`
 
 Syntax:
@@ -2388,6 +2409,7 @@ if the database requires an update but the second parameter is false
 
 <br/>
 <br/>
+
 #### `override_user_unit (Exchange only – see note in method text)`
 
 Syntax:
@@ -2415,6 +2437,7 @@ Note – when scripts are run from the UI, user units are always used.
 
 <br/>
 <br/>
+
 #### `override_user_units (Exchange only)`
 
 Syntax:
@@ -2461,6 +2484,7 @@ if the file does not exist.
 
 <br/>
 <br/>
+
 #### `script_file`
 
 Syntax:
@@ -2482,6 +2506,7 @@ config files for the Open Data Import and Export Centres.
 
 <br/>
 <br/>
+
 #### `set_exit_code (Exchange only)`
 
 Syntax:
@@ -2508,6 +2533,7 @@ script *does* terminate.
 
 <br/>
 <br/>
+
 #### `set_working_folder (Exchange only)`
 
 Syntax:
@@ -2531,6 +2557,7 @@ by any other instances of ICM Exchange or the ICM UI.
 
 <br/>
 <br/>
+
 #### `set_results_folder (Exchange only)`
 
 Syntax:
@@ -2554,6 +2581,7 @@ by any other instances of ICM Exchange or the ICM UI.
 
 <br/>
 <br/>
+
 #### `ui?`
 
 Syntax:
@@ -2588,6 +2616,7 @@ course, used.
 
 <br/>
 <br/>
+
 #### `use_user_units?`
 
 Syntax:
@@ -2609,6 +2638,7 @@ interface).
 
 <br/>
 <br/>
+
 #### `use_user_units=`
 
 Syntax:
@@ -2628,6 +2658,7 @@ Sets the flag indicating whether the application is using user units.
 
 <br/>
 <br/>
+
 #### `use_utf8?`
 
 Syntax:
@@ -2648,6 +2679,7 @@ string handling (default is false). See appendix 5 for more details.
 
 <br/>
 <br/>
+
 #### `use_utf8=`
 
 Syntax:
@@ -2668,6 +2700,7 @@ handling (default is false). See appendix 5 for more details.
 
 <br/>
 <br/>
+
 #### `version`
 
 Syntax:
@@ -2700,6 +2733,7 @@ list objects.
 
 <br/>
 <br/>
+
 #### `copy_into_root (Exchange only)`
 
 Syntax:
@@ -2719,6 +2753,7 @@ equivalent user interface options.
 
 <br/>
 <br/>
+
 #### `file_root (Exchange only)`
 
 Syntax:
@@ -2742,6 +2777,7 @@ containing the master database.
 
 <br/>
 <br/>
+
 #### `find_model_object`
 
 Syntax:
@@ -2769,6 +2805,7 @@ object in the database uniquely.
 
 <br/>
 <br/>
+
 #### `find_root_model_object`
 
 Syntax:
@@ -2791,6 +2828,7 @@ Currently the only object types found in the root of the database are
 
 <br/>
 <br/>
+
 #### `guid`
 
 Syntax:
@@ -2807,6 +2845,7 @@ identifier’.
 
 <br/>
 <br/>
+
 #### `list_read_write_run_fields (Exchange only)`
 
 Syntax:
@@ -2827,6 +2866,7 @@ that are read-write fields i.e. may be set from ICM Exchange scripts.
 
 <br/>
 <br/>
+
 #### `model_object`
 
 Syntax:
@@ -2852,6 +2892,7 @@ the ‘official’ way of finding the model object.
 
 <br/>
 <br/>
+
 #### `model_object_collection`
 
 Syntax:
@@ -2868,6 +2909,7 @@ objects of that type – not just the objects of that type in the root.
 
 <br/>
 <br/>
+
 #### `model_object_from_type_and_guid (Exchange only)`
 
 Syntax:
@@ -2889,6 +2931,7 @@ parameter.
 
 <br/>
 <br/>
+
 #### `model_object_from_type_and_id`
 
 Syntax:
@@ -2915,6 +2958,7 @@ and obtaining its properties.
 
 <br/>
 <br/>
+
 #### `new_network_name (Exchange only)`
 
 Syntax:
@@ -2946,6 +2990,7 @@ or not the name ends in \# or \_ followed by a number.
 
 <br/>
 <br/>
+
 #### `new_model_object (Exchange only)`
 
 Syntax:
@@ -2988,6 +3033,7 @@ unable to create object – if the creation fails for some other reason
 
 <br/>
 <br/>
+
 #### `path`
 
 Syntax:
@@ -3007,6 +3053,7 @@ returns the pathname of the master database as a string
 
 <br/>
 <br/>
+
 #### `root_model_objects`
 
 Syntax:
@@ -3027,6 +3074,7 @@ database.
 
 <br/>
 <br/>
+
 #### `[]`
 
 Syntax:
@@ -3043,6 +3091,7 @@ i.e. valid values are from 0 to length-1.
 
 <br/>
 <br/>
+
 #### `count`
 
 Syntax:
@@ -3058,6 +3107,7 @@ Returns the number of WSModelObjects in the collection
 
 <br/>
 <br/>
+
 #### `each`
 
 Syntax:
@@ -3083,10 +3133,12 @@ products.
 
 <br/>
 <br/>
+
 #### `\[] (Exchange only)`
 
 <br/>
 <br/>
+
 #### `\[]=(Exchange only)`
 
 Syntax:
@@ -3117,6 +3169,7 @@ to another object in the database. In this case the value stored may be
 
 <br/>
 <br/>
+
 #### `bulk_delete (Exchange only)`
 
 Syntax:
@@ -3133,6 +3186,7 @@ NOT put into the recycle bin, they are completely deleted.
 
 <br/>
 <br/>
+
 #### `children`
 
 Syntax:
@@ -3152,6 +3206,7 @@ Returns the children of the object as a WSModelObjectCollection
 
 <br/>
 <br/>
+
 #### `comment (Exchange only)`
 
 Syntax:
@@ -3168,6 +3223,7 @@ tab of the properties for an object) as a string.
 
 <br/>
 <br/>
+
 #### `comment= (Exchange only)`
 
 Syntax:
@@ -3183,6 +3239,7 @@ Sets the description (as described above) for an object from a string.
 
 <br/>
 <br/>
+
 #### `compare (Exchange only)`
 
 Syntax:
@@ -3211,6 +3268,7 @@ database.
 
 <br/>
 <br/>
+
 #### `copy_here (Exchange only)`
 
 Syntax:
@@ -3230,6 +3288,7 @@ corresponding to the equivalent user interface options.
 
 <br/>
 <br/>
+
 #### `deletable? (Exchange only)`
 
 Syntax:
@@ -3249,6 +3308,7 @@ used in a simulation etc.
 
 <br/>
 <br/>
+
 #### `delete (Exchange only)`
 
 Syntax:
@@ -3267,6 +3327,7 @@ interface.
 
 <br/>
 <br/>
+
 #### `delete_results (Exchange only)`
 
 Syntax:
@@ -3282,6 +3343,7 @@ Deletes the results for the object, if the object is a simulation.
 
 <br/>
 <br/>
+
 #### `export (Exchange only)`
 
 Syntax:
@@ -3373,6 +3435,7 @@ format for the following object types:
 
 <br/>
 <br/>
+
 #### `(from version 6.5)`
 
 The results obtained by risk analysis runs may be exported as follows:
@@ -3411,6 +3474,7 @@ the format field:
 
 <br/>
 <br/>
+
 #### `find_child_model_object`
 
 Syntax:
@@ -3427,6 +3491,7 @@ of the object with that name and type.
 
 <br/>
 <br/>
+
 #### `id`
 
 Syntax:
@@ -3442,6 +3507,7 @@ Returns the ID of the model object as a number
 
 <br/>
 <br/>
+
 #### `import_data (Exchange only)`
 
 Syntax:
@@ -3464,6 +3530,7 @@ format and have the same meaning as for export\_data above.
 
 <br/>
 <br/>
+
 #### `import_new_model_object (Exchange only)`
 
 Syntax:
@@ -3524,6 +3591,7 @@ rainfall=model_group.import_new_model_object 'Rainfall Event','The Rainfall','',
 
 <br/>
 <br/>
+
 #### `import_tvd(Exchange only)`
 
 Syntax:
@@ -3555,6 +3623,7 @@ overwriting the data already there if there is any.
 
 <br/>
 <br/>
+
 #### `modified_by`
 
 Syntax:
@@ -3570,6 +3639,7 @@ Returns the name of the user who last modified the object as a string.
 
 <br/>
 <br/>
+
 #### `name`
 
 Syntax:
@@ -3585,6 +3655,7 @@ Returns the name of an object as a string.
 
 <br/>
 <br/>
+
 #### `name= (Exchange only)`
 
 Syntax:
@@ -3645,6 +3716,7 @@ selection lists may not be created from scripts in the UI in viewer mode
 
 <br/>
 <br/>
+
 #### `new_risk_analysis_run (ICM Exchange only)`
 
 Syntax:
@@ -3677,6 +3749,7 @@ Param – the numerical parameter
 
 <br/>
 <br/>
+
 #### `new_run`
 
 Syntax:
@@ -3752,6 +3825,7 @@ Parameters for the run may either be set in this call.
 
 <br/>
 <br/>
+
 #### `update_to_latest (Exchange only)`
 
 Syntax:
@@ -3778,6 +3852,7 @@ version of network’ button on the Run view in the user interface.
 
 <br/>
 <br/>
+
 #### `open (Exchange only)`
 
 Syntax:
@@ -3815,6 +3890,7 @@ When you open the results of a simulation:
 
 <br/>
 <br/>
+
 #### `path`
 
 Syntax:
@@ -3834,6 +3910,7 @@ Returns the scripting path of the object as a string.
 
 <br/>
 <br/>
+
 #### `parent_type`
 
 Syntax:
@@ -3850,6 +3927,7 @@ Database’ if the object is in the root of the database).
 
 <br/>
 <br/>
+
 #### `parent_id`
 
 Syntax:
@@ -3866,6 +3944,7 @@ of the database).
 
 <br/>
 <br/>
+
 #### `type`
 
 Syntax:
@@ -3885,6 +3964,7 @@ Returns the scripting type of the object.
 
 <br/>
 <br/>
+
 #### `commit`
 
 Syntax:
@@ -3909,6 +3989,7 @@ returns nil if there were not changes made since the last commit.
 
 <br/>
 <br/>
+
 #### `commits`
 
 Syntax:
@@ -3942,6 +4023,7 @@ end
 
 <br/>
 <br/>
+
 #### `commit_reserve`
 
 Syntax:
@@ -3960,6 +4042,7 @@ reserved.
 
 <br/>
 <br/>
+
 #### `csv_changes`
 
 Syntax:
@@ -3979,6 +4062,7 @@ functionality.
 
 <br/>
 <br/>
+
 #### `csv_export`
 
 Syntax:
@@ -4024,6 +4108,7 @@ no.csv_export 'd:tempnetwork.csv',myHash
 
 <br/>
 <br/>
+
 #### `csv_import`
 
 Syntax:
@@ -4056,6 +4141,7 @@ default options will be used. The hash values are as follows:
 
 <br/>
 <br/>
+
 #### `current_commit_id`
 
 Syntax:
@@ -4073,6 +4159,7 @@ is returned by latest\_commit\_id (see below).
 
 <br/>
 <br/>
+
 #### `GIS_export`
 
 Syntax:
@@ -4136,6 +4223,7 @@ and unrecognised values are not permitted.
 
 <br/>
 <br/>
+
 #### `latest_commit_id`
 
 Syntax:
@@ -4153,6 +4241,7 @@ of the local copy, which is returned by current\_commit\_id (see above).
 
 <br/>
 <br/>
+
 #### `list_GIS_export_tables`
 
 Syntax:
@@ -4170,6 +4259,7 @@ customising the parameters to GIS\_export.
 
 <br/>
 <br/>
+
 #### `odec_export_ex`
 
 Syntax:
@@ -4327,6 +4417,7 @@ For SQL Server the parameters are as follows:
 
 <br/>
 <br/>
+
 #### `odic_import_ex`
 
 Syntax:
@@ -4465,6 +4556,7 @@ For SQL server the parameters are as follows:
 
 <br/>
 <br/>
+
 #### `remove_local`
 
 Syntax:
@@ -4481,6 +4573,7 @@ lost.
 
 <br/>
 <br/>
+
 #### `reserve`
 
 Syntax:
@@ -4497,6 +4590,7 @@ copy to the latest version.
 
 <br/>
 <br/>
+
 #### `revert`
 
 Syntax:
@@ -4512,6 +4606,7 @@ Reverts any uncommitted changes in the local copy of the network.
 
 <br/>
 <br/>
+
 #### `select_changes`
 
 Syntax:
@@ -4533,6 +4628,7 @@ Obviously, deleted objects will not be selected.
 
 <br/>
 <br/>
+
 #### `select_clear`
 
 Syntax:
@@ -4548,6 +4644,7 @@ Clears the selection in the network
 
 <br/>
 <br/>
+
 #### `select_count`
 
 Syntax:
@@ -4563,6 +4660,7 @@ Returns the number of selected items in the network
 
 <br/>
 <br/>
+
 #### `select_sql`
 
 Syntax:
@@ -4598,6 +4696,7 @@ no such clause).
 
 <br/>
 <br/>
+
 #### `uncommitted_changes?`
 
 Syntax:
@@ -4614,6 +4713,7 @@ network, false otherwise.
 
 <br/>
 <br/>
+
 #### `unreserve`
 
 Syntax:
@@ -4629,6 +4729,7 @@ Cancels the reservation of the network.
 
 <br/>
 <br/>
+
 #### `update`
 
 Syntax:
@@ -4645,6 +4746,7 @@ there are no conflicts, false if there are.
 
 <br/>
 <br/>
+
 #### `user_field_names`
 
 Syntax:
@@ -4706,6 +4808,7 @@ This chart shows which methods are available for which object types:
 
 <br/>
 <br/>
+
 #### `list_max_results_attributes`
 
 Syntax:
@@ -4733,6 +4836,7 @@ max\_results\_csv\_export
 
 <br/>
 <br/>
+
 #### `list_results_attributes`
 
 Syntax:
@@ -4768,6 +4872,7 @@ the parameters to results\_binary\_export.and results\_csv\_export
 
 <br/>
 <br/>
+
 #### `list_results_GIS_export_tables`
 
 Syntax:
@@ -4820,6 +4925,7 @@ used for all links, which are combined into one GIS layer, is \_links.
 
 <br/>
 <br/>
+
 #### `list_timesteps`
 
 Syntax:
@@ -4839,6 +4945,7 @@ periods for the object.
 
 <br/>
 <br/>
+
 #### `max_flood_contours_export`
 
 Syntax:
@@ -4871,6 +4978,7 @@ Filename: the filename to be exported.
 
 <br/>
 <br/>
+
 #### `max_results_binary_export`
 
 Syntax:
@@ -4897,6 +5005,7 @@ list\_max\_results\_attributes method above.
 
 <br/>
 <br/>
+
 #### `results_binary_export`
 
 Syntax:
@@ -4923,6 +5032,7 @@ list\_max\_results\_attributes method above.
 
 <br/>
 <br/>
+
 #### `max_results_csv_export`
 
 Syntax:
@@ -4951,6 +5061,7 @@ results\_csv\_export\_ex)
 
 <br/>
 <br/>
+
 #### `results_csv_export`
 
 Syntax:
@@ -4971,6 +5082,7 @@ which case results for the whole network will be exported.
 
 <br/>
 <br/>
+
 #### `results_csv_export_ex`
 
 Syntax:
@@ -4989,6 +5101,7 @@ an array as described in the list\_results\_attributes method above
 
 <br/>
 <br/>
+
 #### `results_GIS_export`
 
 Syntax:
@@ -5106,6 +5219,7 @@ then a default of 2 decimal places is used.
 
 <br/>
 <br/>
+
 #### `run`
 
 Syntax:
@@ -5124,6 +5238,7 @@ simulation will be run on the current machine.
 
 <br/>
 <br/>
+
 #### `run_ex`
 
 Syntax:
@@ -5144,6 +5259,7 @@ and ‘\*’ has the meaning of any available server.
 
 <br/>
 <br/>
+
 #### `status`
 
 Syntax:
@@ -5167,6 +5283,7 @@ Returns the status of simulation, one of:
 
 <br/>
 <br/>
+
 #### `success_substatus`
 
 Syntax:
@@ -5188,6 +5305,7 @@ If the simulation succeeded, returns its substatus, one of:
 
 <br/>
 <br/>
+
 #### `timestep_count`
 
 Syntax:
@@ -5207,6 +5325,7 @@ Returns the number of results timesteps for a simulation.
 
 <br/>
 <br/>
+
 #### `add_scenario`
 
 Syntax:
@@ -5246,6 +5365,7 @@ Clears the selection
 
 <br/>
 <br/>
+
 #### `close (Exchange only)`
 
 Syntax:
@@ -5266,6 +5386,7 @@ thrown).
 
 <br/>
 <br/>
+
 #### `current_timestep`
 
 Syntax:
@@ -5289,6 +5410,7 @@ for the ‘maximum’ ‘timestep’.
 
 <br/>
 <br/>
+
 #### `current_timestep_time`
 
 Syntax:
@@ -5304,6 +5426,7 @@ Returns the time of the current timestep.
 
 <br/>
 <br/>
+
 #### `current_timestep= (Exchange only)`
 
 Syntax:
@@ -5352,6 +5475,7 @@ following fields
 
 <br/>
 <br/>
+
 #### `csv_import`
 
 Syntax:
@@ -5399,6 +5523,7 @@ all of the following.
 
 <br/>
 <br/>
+
 #### `current_scenario`
 
 Syntax:
@@ -5417,6 +5542,7 @@ English).
 
 <br/>
 <br/>
+
 #### `current_scenario=`
 
 Syntax:
@@ -5434,6 +5560,7 @@ base scenario. The new scenario must exist.
 
 <br/>
 <br/>
+
 #### `delete_scenario`
 
 Syntax:
@@ -5455,6 +5582,7 @@ base scenario.
 
 <br/>
 <br/>
+
 #### `delete_selection`
 
 Syntax:
@@ -5470,6 +5598,7 @@ Deletes the current selection from the network in the current scenario.
 
 <br/>
 <br/>
+
 #### `each`
 
 Syntax:
@@ -5491,6 +5620,7 @@ end
 
 <br/>
 <br/>
+
 #### `each_selected`
 
 Syntax:
@@ -5506,6 +5636,7 @@ As each but iterates through the selected objects only.
 
 <br/>
 <br/>
+
 #### `export_IDs`
 
 Syntax:
@@ -5531,6 +5662,7 @@ current locals)
 
 <br/>
 <br/>
+
 #### `field_names(type)`
 
 Syntax:
@@ -5557,6 +5689,7 @@ for that object type – the object type cannot be a class.
 
 <br/>
 <br/>
+
 #### `gauge_timestep_count`
 
 Syntax:
@@ -5574,6 +5707,7 @@ timestep for the run was set to 0 it returns 0.
 
 <br/>
 <br/>
+
 #### `gauge_timestep_time`
 
 Syntax:
@@ -5590,6 +5724,7 @@ as the method’s parameter.
 
 <br/>
 <br/>
+
 #### `GIS_export`
 
 Syntax:
@@ -5608,6 +5743,7 @@ explanation of the parameters.
 
 <br/>
 <br/>
+
 #### `list_gauge_timesteps`
 
 Syntax:
@@ -5624,6 +5760,7 @@ timesteps for the sim in order.
 
 <br/>
 <br/>
+
 #### `list_GIS_export_tables`
 
 Syntax:
@@ -5641,6 +5778,7 @@ customising the parameters to GIS\_export.
 
 <br/>
 <br/>
+
 #### `list_timesteps`
 
 Syntax:
@@ -5657,6 +5795,7 @@ for the sim in order.
 
 <br/>
 <br/>
+
 #### `load_selection`
 
 Syntax:
@@ -5674,6 +5813,7 @@ a WSModelObject, an object path or the numerical ID of the model object
 
 <br/>
 <br/>
+
 #### `new_row_object`
 
 Syntax:
@@ -5694,6 +5834,7 @@ within a transaction.
 
 <br/>
 <br/>
+
 #### `objects_in_polygon`
 
 Syntax:
@@ -5713,6 +5854,7 @@ network and the background network.
 
 <br/>
 <br/>
+
 #### `odic_import_ex`
 
 Syntax:
@@ -5732,6 +5874,7 @@ objects may not be open when their network is not).
 
 <br/>
 <br/>
+
 #### `odec_export_ex`
 
 Syntax:
@@ -5747,6 +5890,7 @@ As for WSNumbatNetworkObject above.
 
 <br/>
 <br/>
+
 #### `row_object`
 
 Syntax:
@@ -5768,6 +5912,7 @@ Returns nil if there is no such object in the network.
 
 <br/>
 <br/>
+
 #### `row_objects`
 
 Syntax:
@@ -5789,6 +5934,7 @@ are no objects of that type in the network.
 
 <br/>
 <br/>
+
 #### `row_objects_from_asset_id`
 
 Syntax:
@@ -5807,6 +5953,7 @@ network.
 
 <br/>
 <br/>
+
 #### `row_object_collection`
 
 Syntax:
@@ -5825,6 +5972,7 @@ all objects will be returned.
 
 <br/>
 <br/>
+
 #### `row_object_collection_selection`
 
 Syntax:
@@ -5841,6 +5989,7 @@ selected in the WSOpenNetwork.
 
 <br/>
 <br/>
+
 #### `run_inference`
 
 Syntax:
@@ -5897,6 +6046,7 @@ be used instead.
 
 <br/>
 <br/>
+
 #### `run_SQL`
 
 Syntax:
@@ -5918,6 +6068,7 @@ nodes’ or ‘All links’ in the dropdowns in the SQL dialog.
 
 <br/>
 <br/>
+
 #### `run_stored_query_object`
 
 Syntax:
@@ -5939,6 +6090,7 @@ and is not the case when they are run from the Exchange products.
 
 <br/>
 <br/>
+
 #### `save_selection`
 
 Syntax:
@@ -5975,6 +6127,7 @@ Saves the current selection to the already existing selection list.
 
 <br/>
 <br/>
+
 #### `scenarios`
 
 Syntax:
@@ -6000,6 +6153,7 @@ through. The base scenario is included in the results as the string
 
 <br/>
 <br/>
+
 #### `search_at_point(x,y,distance,types)`
 
 Syntax:
@@ -6019,6 +6173,7 @@ contain a category and a table within that category.
 
 <br/>
 <br/>
+
 #### `selection_size`
 
 Syntax:
@@ -6034,6 +6189,7 @@ Returns the number of objects selected.
 
 <br/>
 <br/>
+
 #### `snapshot_import`
 
 Syntax:
@@ -6051,6 +6207,7 @@ parameter being nil.
 
 <br/>
 <br/>
+
 #### `snapshot_import_ex`
 
 Syntax:
@@ -6084,6 +6241,7 @@ ImportImageFiles - Boolean
 
 <br/>
 <br/>
+
 #### `snapshot_export`
 
 Syntax:
@@ -6107,6 +6265,7 @@ Snapshots cannot be exported from networks with uncommitted changes.
 
 <br/>
 <br/>
+
 #### `snapshot_export_ex`
 
 Syntax:
@@ -6157,6 +6316,7 @@ Snapshots cannot be exported from networks with uncommitted changes.
 
 <br/>
 <br/>
+
 #### `snapshot_scan`
 
 Syntax:
@@ -6226,6 +6386,7 @@ than the user is using to import the data.
 
 <br/>
 <br/>
+
 #### `table_names`
 
 Syntax:
@@ -6250,6 +6411,7 @@ these are the internal names.
 
 <br/>
 <br/>
+
 #### `table`
 
 Syntax:
@@ -6266,6 +6428,7 @@ table.
 
 <br/>
 <br/>
+
 #### `tables`
 
 Syntax:
@@ -6282,6 +6445,7 @@ WSOpenNetwork.
 
 <br/>
 <br/>
+
 #### `timestep_count`
 
 Syntax:
@@ -6299,6 +6463,7 @@ time varying results this method will return 0.
 
 <br/>
 <br/>
+
 #### `timestep_time`
 
 Syntax:
@@ -6315,6 +6480,7 @@ the method’s parameter.
 
 <br/>
 <br/>
+
 #### `transaction_begin`
 
 Syntax:
@@ -6334,6 +6500,7 @@ changes since transaction\_begin
 
 <br/>
 <br/>
+
 #### `transaction_commit`
 
 Syntax:
@@ -6349,6 +6516,7 @@ Commits the transaction – see above.
 
 <br/>
 <br/>
+
 #### `transaction_rollback`
 
 Syntax:
@@ -6364,6 +6532,7 @@ Ends the transaction – see above.
 
 <br/>
 <br/>
+
 #### `update_cctv_scores`
 
 Syntax:
@@ -6380,6 +6549,7 @@ standard.
 
 <br/>
 <br/>
+
 #### `validate`
 
 Syntax:
@@ -6405,14 +6575,17 @@ validated, or an array of strings, in which case all the named scenarios
 
 <br/>
 <br/>
+
 #### `\[]`
 
 <br/>
 <br/>
+
 #### `\[]=`
 
 <br/>
 <br/>
+
 #### `missing_method`
 
 Syntax:
@@ -6443,6 +6616,7 @@ objects as described in the ‘getting and setting values’ section above.
 
 <br/>
 <br/>
+
 #### `category`
 
 Syntax:
@@ -6459,6 +6633,7 @@ a string.
 
 <br/>
 <br/>
+
 #### `contains?`
 
 Syntax:
@@ -6474,6 +6649,7 @@ Returns true if polygon ro contains the object ro2.
 
 <br/>
 <br/>
+
 #### `delete`
 
 Syntax:
@@ -6489,6 +6665,7 @@ Deletes the row object.
 
 <br/>
 <br/>
+
 #### `field`
 
 Syntax:
@@ -6508,6 +6685,7 @@ getting the field info from that.
 
 <br/>
 <br/>
+
 #### `gauge_results`
 
 Syntax:
@@ -6526,6 +6704,7 @@ return the ‘normal’ results.
 
 <br/>
 <br/>
+
 #### `id`
 
 Syntax:
@@ -6543,6 +6722,7 @@ character.
 
 <br/>
 <br/>
+
 #### `id=`
 
 Syntax:
@@ -6558,6 +6738,7 @@ Updates the ID of the row object.
 
 <br/>
 <br/>
+
 #### `is_inside?`
 
 Syntax:
@@ -6573,10 +6754,12 @@ Returns true if ro2 is inside the polygon ro2.
 
 <br/>
 <br/>
+
 #### `navigate`
 
 <br/>
 <br/>
+
 #### `navigate1`
 
 Syntax:
@@ -6658,6 +6841,7 @@ software as follows:
 
 <br/>
 <br/>
+
 #### `objects_in_polygon`
 
 Syntax:
@@ -6679,6 +6863,7 @@ method.
 
 <br/>
 <br/>
+
 #### `result`
 
 Syntax:
@@ -6695,6 +6880,7 @@ the current timestep.
 
 <br/>
 <br/>
+
 #### `results`
 
 Syntax:
@@ -6711,6 +6897,7 @@ object at all timesteps – the field must have time varying results.
 
 <br/>
 <br/>
+
 #### `selected?`
 
 Syntax:
@@ -6726,6 +6913,7 @@ returns True if the object is currently selected, False otherwise
 
 <br/>
 <br/>
+
 #### `selected=`
 
 Syntax:
@@ -6748,6 +6936,7 @@ selected, otherwise it is deselected.
 
 <br/>
 <br/>
+
 #### `table`
 
 Syntax:
@@ -6763,6 +6952,7 @@ Returns the internal name of the object’s table as a string.
 
 <br/>
 <br/>
+
 #### `table_info`
 
 Syntax:
@@ -6779,6 +6969,7 @@ to get the list of fields for the object.
 
 <br/>
 <br/>
+
 #### `write`
 
 Syntax:
@@ -6802,6 +6993,7 @@ of ‘category’ node as described above. It has two extra methods:
 
 <br/>
 <br/>
+
 #### `us_links`
 
 Syntax:
@@ -6819,6 +7011,7 @@ of length zero is returned.
 
 <br/>
 <br/>
+
 #### `ds_links`
 
 Syntax:
@@ -6843,6 +7036,7 @@ of ‘category’ link as described above. It has two extra methods:
 
 <br/>
 <br/>
+
 #### `us_node`
 
 Syntax:
@@ -6859,6 +7053,7 @@ it doesn’t have one.
 
 <br/>
 <br/>
+
 #### `ds_node`
 
 Syntax:
@@ -6879,6 +7074,7 @@ it doesn’t have one.
 
 <br/>
 <br/>
+
 #### `run`
 
 Syntax:
@@ -6898,6 +7094,7 @@ Performs the risk analysis run.
 
 <br/>
 <br/>
+
 #### `length`
 
 Syntax:
@@ -6913,6 +7110,7 @@ Returns the number of WSRowObjects in the collection
 
 <br/>
 <br/>
+
 #### `\[]`
 
 Syntax:
@@ -6929,6 +7127,7 @@ valid values are from 0 to length-1.
 
 <br/>
 <br/>
+
 #### `each`
 
 Syntax:
@@ -6954,6 +7153,7 @@ end
 
 <br/>
 <br/>
+
 #### `description`
 
 Syntax:
@@ -6969,6 +7169,7 @@ returns the description of the table.
 
 <br/>
 <br/>
+
 #### `fields`
 
 Syntax:
@@ -6987,6 +7188,7 @@ WSFieldInfo
 
 <br/>
 <br/>
+
 #### `name`
 
 Syntax:
@@ -7002,6 +7204,7 @@ returns the internal name of the table.
 
 <br/>
 <br/>
+
 #### `results_fields`
 
 Syntax:
@@ -7031,6 +7234,7 @@ software, except for user defined fields and tables in InfoNet.
 
 <br/>
 <br/>
+
 #### `data_type`
 
 Syntax:
@@ -7076,6 +7280,7 @@ type is the Ruby string.
 
 <br/>
 <br/>
+
 #### `description`
 
 Syntax:
@@ -7091,6 +7296,7 @@ returns the description of the table
 
 <br/>
 <br/>
+
 #### `fields`
 
 Syntax:
@@ -7107,6 +7313,7 @@ the field is not a structure blob, this method returns nil.
 
 <br/>
 <br/>
+
 #### `has_time_varying_results?`
 
 Syntax:
@@ -7125,6 +7332,7 @@ more discussion.
 
 <br/>
 <br/>
+
 #### `has_max_results?`
 
 Syntax:
@@ -7144,6 +7352,7 @@ WSTableInfo results\_fields method for more discussion.
 
 <br/>
 <br/>
+
 #### `name`
 
 Syntax:
@@ -7159,6 +7368,7 @@ returns the name of the field
 
 <br/>
 <br/>
+
 #### `read_only?`
 
 Syntax:
@@ -7174,6 +7384,7 @@ Returns true if the field is read only, false if it isn't
 
 <br/>
 <br/>
+
 #### `size (from version 7.0)`
 
 Syntax:
@@ -7231,6 +7442,7 @@ WSCommit class.
 
 <br/>
 <br/>
+
 #### `each`
 
 Syntax:
@@ -7246,6 +7458,7 @@ Iterates through the collection.
 
 <br/>
 <br/>
+
 #### `length`
 
 Syntax:
@@ -7262,6 +7475,7 @@ collection
 
 <br/>
 <br/>
+
 #### `length=`
 
 Syntax:
@@ -7277,6 +7491,7 @@ Sets the number of WSStructureRow objects in the WSStructure collection
 
 <br/>
 <br/>
+
 #### `size`
 
 Syntax:
@@ -7293,6 +7508,7 @@ collection (synonym for length)
 
 <br/>
 <br/>
+
 #### `size=`
 
 Syntax:
@@ -7309,6 +7525,7 @@ Sets the number of WSStructureRow objects in the WSStructure collection
 
 <br/>
 <br/>
+
 #### `write`
 
 Syntax:
@@ -7333,6 +7550,7 @@ user interface!).
 
 <br/>
 <br/>
+
 #### `\[]`
 
 Syntax:
@@ -7352,6 +7570,7 @@ Returns the nth WSStructureRow object in the collection (zero based).
 
 <br/>
 <br/>
+
 #### `\[]`
 
 Syntax:
@@ -7367,6 +7586,7 @@ Returns the value of the named field in the WSStructureRow object.
 
 <br/>
 <br/>
+
 #### `\[]=`
 
 Syntax:
@@ -7386,6 +7606,7 @@ Sets the value of the named field in the WSStructureRow object.
 
 <br/>
 <br/>
+
 #### `error_count`
 
 Syntax:
@@ -7401,6 +7622,7 @@ Returns the number of errors found when performing the validation.
 
 <br/>
 <br/>
+
 #### `warning_count`
 
 Syntax:
@@ -7416,6 +7638,7 @@ Returns the number of warnings found when performing the validation.
 
 <br/>
 <br/>
+
 #### `length`
 
 Syntax:
@@ -7432,6 +7655,7 @@ collection
 
 <br/>
 <br/>
+
 #### `each`
 
 Syntax:
@@ -7447,6 +7671,7 @@ Iterates through the collection.
 
 <br/>
 <br/>
+
 #### `\[]`
 
 Syntax:
@@ -7470,6 +7695,7 @@ when the network is validated within the user interface.
 
 <br/>
 <br/>
+
 #### `code`
 
 Syntax:
@@ -7485,6 +7711,7 @@ Returns the code of the validation message.
 
 <br/>
 <br/>
+
 #### `field`
 
 Syntax:
@@ -7502,6 +7729,7 @@ description will be returned.
 
 <br/>
 <br/>
+
 #### `field_description`
 
 Syntax:
@@ -7518,6 +7746,7 @@ the validation window.
 
 <br/>
 <br/>
+
 #### `object_id`
 
 Syntax:
@@ -7533,6 +7762,7 @@ Returns ID for the object in the validation message, if any.
 
 <br/>
 <br/>
+
 #### `object_type`
 
 Syntax:
@@ -7549,6 +7779,7 @@ message, if any.
 
 <br/>
 <br/>
+
 #### `message`
 
 Syntax:
@@ -7564,6 +7795,7 @@ Returns the validation message.
 
 <br/>
 <br/>
+
 #### `priority`
 
 Syntax:
@@ -7579,6 +7811,7 @@ Returns the priority of the validation message.
 
 <br/>
 <br/>
+
 #### `type`
 
 Syntax:
@@ -7595,6 +7828,7 @@ Returns the type of the validation message: ‘error’, ‘warning’ or
 
 <br/>
 <br/>
+
 #### `scenario`
 
 Syntax:
