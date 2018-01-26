@@ -21,8 +21,8 @@ var analyse = function(text){
   var lines = text.split("\n");
   var matches = []
   lines.forEach(function(line){
-    var match_class = /^### (\w+)$/i.exec(line)
-    var match_method = /^#### \`(\w+)\`.*$/.exec(line)
+    var match_class = /^### (.+)$/i.exec(line)
+    var match_method = /^#### \`(.+)\`.*$/.exec(line)
     
     if( match_class != null){
       console.log(match_class[1])
