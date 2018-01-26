@@ -82,4 +82,6 @@ end
 
 ### Open a version of a WSNumbatNetwork object
 
-Currently this is impossible, (even impossible to work around). This really needs to be resolved as you lack a huge amount of power without this ability
+Currently this is a WIP feature of Ruby. You can find this under `WSModelObject.open_version` This really needs to be resolved as you lack a huge amount of power without this ability.
+
+Currently the only work around found is to call `csv_changes(commitID1,commitID2,file)` to generate a csv of changes, and then use this csv to update a copy of the latest version of the network.
