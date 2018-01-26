@@ -1,4 +1,4 @@
-## Infoworks API Wishlist
+## Infoworks UI API Wishlist
 
 ### Run a ruby script when opening ICM
 
@@ -60,3 +60,9 @@ end
 
 #...
 ```
+
+## Infoworks Exchange API Wishlist
+
+### Open a version of a WSNumbatNetwork object
+
+Currently this is impossible, (even impossible to work around). This really needs to be resolved as you lack a huge amount of power without this ability
