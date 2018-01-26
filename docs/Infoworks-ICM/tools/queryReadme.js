@@ -1,11 +1,11 @@
 var url = "https://rawgit.com/sancarn/Innovyze-ICM-Libraries/master/docs/Infoworks-ICM/README.md";
 var request = new XMLHttpRequest(url);
 request.open("GET", url, true);
-request.onreadystatechange(function(){
+request.onreadystatechange = function(){
   if(this.readyState==4 && this.status == 200){
     analyse(this.responseText);
   }
-});
+};
 request.send(null);
 
 
