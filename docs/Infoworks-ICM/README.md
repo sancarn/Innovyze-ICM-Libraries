@@ -74,7 +74,7 @@ Index
 19. [WSValidations](#wsvalidations)
 20. [WSValidation](#wsvalidation)
 
-## [Appendix](#appendix)
+## [Appendix](#appendix-1)
 1. [Pollutograph codes](#appendix-1--pollutograph-codes)
 2. [Run Parameters](#appendix-2--run-parameters)
 3. [Running scripts from the user interface](#appendix-3--running-scripts-from-the-user-interface)
@@ -1857,8 +1857,42 @@ to false, nil will be returned.
 WSApplication.graph(params)
 ```
 
+Example:
+
+```ruby
+graphs = {
+    "WindowTitle" => "My awesome traces",
+    "GraphTitle"  => "My cool trace",
+    "XAxisLabel"  => "Cool X-Axis",
+    "YAxisLabel"  => "Cool Y-Axis",
+    "IsTime"      => false
+    "Traces"      => [
+        {
+            "Title"        => "x^2 graph",
+            "TraceColour"  => 0,
+            "SymbolColour" => 0,
+            "Marker"       => "Circle",
+            "LineType"     => "Solid",
+            XArray         => [1,2,3,4,5,6,7,8,9,10],
+            YArray         => [1,4,9,16,25,36,49,64,81,100]
+        },
+        {
+            "Title"        => "x^3 graph",
+            "TraceColour"  => 255,
+            "SymbolColour" => 255,
+            "Marker"       => "Circle",
+            "LineType"     => "Solid",
+            XArray         => [1,2,3,4,5,6,7,8,9,10],
+            YArray         => [1,8,27,64,125,216,343,512,729,1000]
+        }
+    ]
+}
+WSApplication.graph(graphs)
+```
+
 ##### Description:
 
+**This method appears to be deprecated!**
 
 Displays a graph according to the parameters passed in.
 
@@ -1913,7 +1947,7 @@ coordinates of the points. They must be floating point values (or values
 that can be converted to a floating point values) if IsTime is false or
 time values if IsTime is true.
 
-YArray - – an array containing the values used in the trace for the x
+YArray - – an array containing the values used in the trace for the y
 coordinates of the points. They must be floating point values (or values
 that can be converted to a floating point values).
 
@@ -9367,8 +9401,7 @@ tabledefs.each do |t|
     end
 end
 tabledefs.Refresh
-db.Execute "CREATE TABLE MANHOLES (Name VARCHAR(80),x DOUBLE,y
-DOUBLE,cover_level DOUBLE)"
+db.Execute "CREATE TABLE MANHOLES (Name VARCHAR(80),x DOUBLE,y DOUBLE,cover_level DOUBLE)"
 rs=db.OpenRecordset 'MANHOLES'
 net=WSApplication.current_network
 net.row_objects('cams_manhole').each do |n|
