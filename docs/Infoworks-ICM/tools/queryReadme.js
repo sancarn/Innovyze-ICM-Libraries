@@ -1,12 +1,17 @@
 var url = "https://rawgit.com/sancarn/Innovyze-ICM-Libraries/master/docs/Infoworks-ICM/README.md";
 var request = new XMLHttpRequest(url);
-request.open("GET", url, true);
-request.onreadystatechange = function(){
-  if(this.readyState==4 && this.status == 200){
-    analyse(this.responseText);
-  }
-};
-request.send(null);
+
+if(window.text==undefined){
+  request.open("GET", url, true);
+  request.onreadystatechange = function(){
+    if(this.readyState==4 && this.status == 200){
+      analyse(this.responseText);
+    }
+  };
+  request.send(null);
+} else {
+  analyse(window.text)
+}
 
 
 var analyse = function(text){
@@ -16,15 +21,15 @@ var analyse = function(text){
   var lines = text.split("\n");
   var matches = []
   lines.forEach(function(line){
-    var match_class = /^### (\w+)$/i.exec(line)[1]
-    var match_method = /^#### \`(\w+)\`.+$/.exec(line)[1]
+    var match_class = /^### (\w+)$/i.exec(line)
+    var match_method = /^#### \`(\w+)\`.*$/.exec(line)
     
-    if( match_class != nil){
-      console.log(match_class)
-      matches.push(match_class)
-    } else if(match_method!=nil){
-      console.log(match_method)
-      matches.push(match_method)
+    if( match_class != null){
+      console.log(match_class[1])
+      matches.push(match_class[1])
+    } else if(match_method!=null){
+      console.log(match_method[1])
+      matches.push("  " + match_method[1])
     }
   });
   
