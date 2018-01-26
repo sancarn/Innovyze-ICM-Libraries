@@ -1,5 +1,22 @@
 ## Infoworks UI API Wishlist
 
+### Get the name of a WSOpenNetwork object and/or the WSModelObject object
+
+Currently we can do this using open data export center and a special config. However this is incredibly slow. Ideally we should be able to access it directly. For example:
+
+```ruby
+puts WSApplication.current_network.name
+```
+
+or better still, get the `WSModelObject` directly and retrieve the name from there:
+
+```ruby
+net = WSApplication.current_network
+puts net.parent.name
+puts net.parent.id
+puts net.parent.path
+```
+
 ### Run a ruby script when opening ICM
 
 This would be one of the most useful things that Innovyze could implement to ICM. The ability to load a ruby script when ICM is started is of paramount importance to all these other futures. It would be nice if this `startup.rb` script would be in the `%AppData%` folder. However, it is also vital to give the user the opportunity to change this location through a UI option/preference `Tools > Options... `.
