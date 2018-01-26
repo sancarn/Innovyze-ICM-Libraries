@@ -3140,12 +3140,12 @@ products.
 <br/>
 <br/>
 
-#### `\[]` (Exchange only)
+#### `[]` (Exchange only)
 
 <br/>
 <br/>
 
-#### `\[]=(Exchange only)`
+#### `[]=` (Exchange only)
 
 ##### Syntax:
 
@@ -6588,12 +6588,12 @@ validated, or an array of strings, in which case all the named scenarios
 <br/>
 <br/>
 
-#### `\[]`
+#### `[]`
 
 <br/>
 <br/>
 
-#### `\[]=`
+#### `[]=`
 
 <br/>
 <br/>
@@ -7124,7 +7124,7 @@ Returns the number of WSRowObjects in the collection
 <br/>
 <br/>
 
-#### `\[]`
+#### `[]`
 
 ##### Syntax:
 
@@ -7564,7 +7564,7 @@ user interface!).
 <br/>
 <br/>
 
-#### `\[]`
+#### `[]`
 
 ##### Syntax:
 
@@ -7584,7 +7584,7 @@ Returns the nth WSStructureRow object in the collection (zero based).
 <br/>
 <br/>
 
-#### `\[]`
+#### `[]`
 
 ##### Syntax:
 
@@ -7600,7 +7600,7 @@ Returns the value of the named field in the WSStructureRow object.
 <br/>
 <br/>
 
-#### `\[]=`
+#### `[]=`
 
 ##### Syntax:
 
@@ -7685,7 +7685,7 @@ Iterates through the collection.
 <br/>
 <br/>
 
-#### `\[]`
+#### `[]`
 
 ##### Syntax:
 
