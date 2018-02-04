@@ -52,16 +52,16 @@ Index
     a. [Specific to nodes and links](#specific-to-nodes-and-links)
     b. [General navigation](#general-navigation)
 
-## [InfoWorks ICM API Reference](#infoworks-icm-api-reference-1)
-1. [WSApplication](#wsapplication)
-2. [WSDatabase](#wsdatabase)
-3. [WSModelObjectCollection](#wsmodelobjectcollection)
-4. [WSModelObject](#wsmodelobject)
-5. [WSNumbatNetworkObject](#wsnumbatnetworkobject)
-6. [WSSimObject](#wssimobject)
-7. [WSOpenNetwork](#wsopennetwork)
-8. [WSRowObject](#wsrowobject)
-9. [WSNode](#wsnode)
+##  [InfoWorks ICM API Reference](#infoworks-icm-api-reference-1)
+1.  [WSApplication](#wsapplication)
+2.  [WSDatabase](#wsdatabase)
+3.  [WSModelObjectCollection](#wsmodelobjectcollection)
+4.  [WSModelObject](#wsmodelobject)
+5.  [WSNumbatNetworkObject](#wsnumbatnetworkobject)
+6.  [WSSimObject](#wssimobject)
+7.  [WSOpenNetwork](#wsopennetwork)
+8.  [WSRowObject](#wsrowobject)
+9.  [WSNode](#wsnode)
 10. [WSLink](#wslink)
 11. [WSRiskAnalysisRunObject](#wsriskanalysisrunobject)
 12. [WSRowObjectCollection](#wsrowobjectcollection)
@@ -245,7 +245,7 @@ individual nodes in the network.
 **WSLink**
 
 The WSLink class is derived from the WSRowObject class. It represents
-individual links in the nework.
+individual links in the network.
 
 **WSStructure**
 
@@ -314,7 +314,7 @@ WSNumbatNetworkObject class.
 The process of getting a WSOpenNetwork from a WSNumbatNetworkObject may
 be thought of as being akin to opening a network from the tree in the
 software by dragging it to the background, or right-clicking on it and
-thenselecting the ‘Open’ menu item.
+then selecting the ‘Open’ menu item.
 
 Methods
 -------
@@ -346,7 +346,7 @@ class DateTime
 end
 ```
 
-Ruby’s behaviour means that you can add this method in your code and
+Ruby’s behavior means that you can add this method in your code and
 have this method called as you would hope.
 
 You will typically want to create DateTimes using the new method which
@@ -1080,7 +1080,7 @@ net.transaction_commit
 ```
 
 The use of the form which looks as though it is a method e.g.
-ro.user\_number\_1 is potentially clearer to those writing and
+`ro.user_number_1` is potentially clearer to those writing and
 maintaining scripts, but the \[\] form can be more flexible since the
 parameter of the \[\] method is a Ruby string and therefore can be an
 expression. The following demonstrates this by storing the two values
@@ -1450,8 +1450,8 @@ while unprocessedLinks.size<0
 end
 ```
 
-As well as demonstrating use of the us\_links method of WSNode and the
-us\_node method of WSLink, this demonstrate some other useful
+As well as demonstrating use of the `us_links` method of WSNode and the
+`us_node` method of `WSLink`, this demonstrate some other useful
 techniques:
 
 1 – as with the example above listing the WSModelObject objects in a
@@ -1638,7 +1638,7 @@ is loaded.
 <br/>
 <br/>
 
-#### `cancel_job (ICM Exchange only)`
+#### `cancel_job` (ICM Exchange only)
 
 ##### Syntax:
 
@@ -1688,7 +1688,7 @@ bSuccess=WSApplication.connect_local_agent(wait_time)
 Connects to the local agent, returning true if it succeeds. The call
 waits for a number of milliseconds specified in the parameter.
 
-This method must be called before the launch\_sims method is called.
+This method must be called before the `launch_sims` method is called.
 
 <br/>
 <br/>
@@ -1782,8 +1782,7 @@ parameter.
 ##### Syntax:
 
 ```ruby
-file_or_files=WSApplication.file_dialog(open, extension,
-description, default_name,allow_multiple_files,hard_wire_cancel)
+file_or_files=WSApplication.file_dialog(open, extension,description, default_name,allow_multiple_files,hard_wire_cancel)
 ```
 
 ##### Description:
@@ -1957,7 +1956,7 @@ trace, though they can vary between traces.
 <br/>
 <br/>
 
-#### `input_box(UI only)`
+#### `input_box` (UI only)
 
 ##### Syntax:
 
@@ -3690,7 +3689,6 @@ s=mo.name
 
 ##### Description:
 
-
 Returns the name of an object as a string.
 
 <br/>
@@ -3709,14 +3707,21 @@ mo.name=s
 
 Sets the name of an object from a string
 
-#### `new_model_object – limited functionality in UI, full in Exchange –
-see below`
+#### `new_model_object` – limited functionality in UI, full in Exchange – see below
 
-**mo2=mo.new\_model\_object(type,name)**
+##### Syntax:
 
-e.g.
+```ruby
+mo2=mo.new_model_object(type,name)
+```
 
-child=mo.new\_model\_object(‘Model Network','MyNetwork')
+##### Example:
+
+```ruby
+child=mo.new_model_object('Model Network','MyNetwork')
+```
+
+##### Description:
 
 Given a scripting type and a name will create a child object with that
 type and name. The type must be a type that can be contained in the
@@ -3757,7 +3762,7 @@ selection lists may not be created from scripts in the UI in viewer mode
 <br/>
 <br/>
 
-#### `new_risk_analysis_run (ICM Exchange only)`
+#### `new_risk_analysis_run` (ICM Exchange only)
 
 ##### Syntax:
 
@@ -5396,7 +5401,10 @@ The parameters are:
 >
 > Notes – the notes for the scenario
 
-#### *clear\_selection*
+<br/>
+<br/>
+
+#### `clear_selection`
 
 ##### Syntax:
 
@@ -5493,7 +5501,7 @@ to the ‘maximum’ ‘timestep’.
 ##### Syntax:
 
 ```ruby
-nno.csv_export(filename,options)
+on.csv_export(filename,options)
 ```
 
 ##### Description:
@@ -5535,10 +5543,11 @@ nno.csv_import(filename,options)
 
 Updates the WSOpenNetwork from the CSV file specified.
 
-The options parameter must be nil, or a hash which can contain any or
-all of the following.
+The options parameter must be nil, or a hash which can contain any or all of the following.
 
-|                      |                                                                                                                                                                       |       |
+[](May want to convert this to a table using HTML table)
+
+|        Option        | Description                                                                                                                                                           |       |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
 | Force Link Rename    | If nodes are renamed, then associated objects have the node renamed                                                                                                   | True  |
 | Flag Genuine Only    | Only genuine changes to the field are flagged                                                                                                                         | False |
@@ -5546,24 +5555,8 @@ all of the following.
 | Update With Any Flag | If this is set to true, then any field can be updated, if it is set to false then only fields with the flag set to the ‘update flag’ will be updated                  | True  |
 | Use Asset ID         | Use the asset ID as the key for updates rather than the normal ‘primary key’                                                                                          | False |
 | User Units           | Use the current ‘user units’ rather than the native (SI) units                                                                                                        | True  |
-| Action               | Action to perform                                                                                                                                                     
-
-                        Update Only – will only update existing objects                                                                                                                        
-
-                        Update And Add – will update and add objects, but not perform deletions                                                                                                
-
-                        Mixed – will add, update and delete objects depending on an ‘action’ field in the CSV file                                                                             
-
-                        Delete – will delete objects                                                                                                                                           | Mixed |
-| Header               | What header the importer will expect in the file(s)                                                                                                                   
-
-                        ID – ID only                                                                                                                                                           
-
-                        ID Description – Ids on one line, followed by descriptions on the next                                                                                                 
-
-                        ID Units – Ids on one line, followed by units on the next                                                                                                              
-
-                        ID Descriptions Units – Ids on one line, followed by descriptions on the next, followed by units on the 3rd                                                            | ID    |
+| Action               | Action to perform: <br/>Update Only – will only update existing objects<br/>Update And Add – will update and add objects, but not perform deletions<br/>Mixed – will add, update and delete objects depending on an ‘action’ field in the CSV file</br>Delete – will delete objects  | Mixed |
+| Header               | What header the importer will expect in the file(s):<br/>ID – ID only<br/>ID Description – Ids on one line, followed by descriptions on the next.<br/>ID Units – Ids on one line, followed by units on the next<br/>ID Descriptions Units – Ids on one line, followed by descriptions on the next, followed by units on the 3rd  |  ID   |
 | New Flag             | Flag used for new / updated fields                                                                                                                                    | Blank |
 | Update Flag          | Flag used to determine what objects are updated if the ‘Update With Any Flag’ field is set to false                                                                   | Blank |
 
@@ -6043,8 +6036,7 @@ selected in the WSOpenNetwork.
 ##### Syntax:
 
 ```ruby
-on.run_inference(inference,ground_model, mode,
-zone_or_zone_category, error_file)
+on.run_inference(inference,ground_model, mode, zone_or_zone_category, error_file)
 ```
 
 ##### Description:
@@ -6181,14 +6173,17 @@ Saves the current selection to the already existing selection list.
 ##### Syntax:
 
 ```ruby
-on.scenarios.each do |s|
+on.scenarios do |s|
+    #Process scenarios...
+end
 ```
 
 ##### Example:
 
 ```rb
-on.scenarios do |s|
-    puts s
+on.scenarios do |scenario|
+    on.current_scenario = scenario
+    #analyse scenario
 end
 ```
 
@@ -6608,7 +6603,7 @@ v=on.validate(scenarios)
 
 
 This method validates the scenario or scenarios given in the parameter,
-returning a WSValidation object.
+returning a WSValidations object.
 
 The parameter may be nil, in which case the Base scenario is validated,
 a string in which case the named scenario (which may be ‘Base’) will be
@@ -7298,32 +7293,21 @@ Returns the data type of the field as a string. The method is named
 described in InfoWorks terms, not Ruby data types. The types are as
 follows:
 
--   Flag
-
--   Boolean
-
--   Single
-
--   Double
-
--   Short
-
--   Long
-
--   Date
-
--   String
-
--   Array:Long
-
--   Array:Double
-
--   WSStructurei
-
--   GUID
+* `Flag`
+* `Boolean`
+* `Single`
+* `Double`
+* `Short`
+* `Long`
+* `Date`
+* `String`
+* `Array:Long`
+* `Array:Double`
+* `WSStructure`
+* `GUID`
 
 Flag fields have their type returned as ‘Flag’, their underlying Ruby
-type is the Ruby string.
+type is `String`.
 
 <br/>
 <br/>
@@ -7945,7 +7929,7 @@ description in the user interface if the difference is noteworthy.
 
 Consult InfoWorks ICM's main help for more details.
 
-The behaviour of unspecified values for run parameters is as follows:
+The behavior of unspecified values for run parameters is as follows:
 When the run is created a number of the run parameters are supplied with
 default values. This means that were you to create a run, passing an
 empty hash in as the last parameter, and then to look at the values for
@@ -7963,33 +7947,33 @@ you would see that a number of the fields have non-nil values as
 follows:
 
 ```
-Duration 60
-DWFMultiplier 32
-EveryNode false
-EveryOutflow false
-EverySubcatchment false
-GaugeMultiplier 1
-IncludeBaseFlow false
-IncludeLevel false
-IncludeNode false
-IncludeOutflow false
-IncludeRainfall false
-IncludeRunoff false
-LevelLag 0
-LevelThreshold 0.0
-NodeLag 0
-NodeThreshold 0.0
-OutflowLag 0
-OutflowThreshold 0.0
-RainfallLag 0
-RainfallThreshold 0.0
-RainType false
-ResultsMultiplier 6
-RTCLag 0
-Start Time 0.0
-SubcatchmentLag 0
+Duration              60
+DWFMultiplier         32
+EveryNode             false
+EveryOutflow          false
+EverySubcatchment     false
+GaugeMultiplier       1
+IncludeBaseFlow       false
+IncludeLevel          false
+IncludeNode           false
+IncludeOutflow        false
+IncludeRainfall       false
+IncludeRunoff         false
+LevelLag              0
+LevelThreshold        0.0
+NodeLag               0
+NodeThreshold         0.0
+OutflowLag            0
+OutflowThreshold      0.0
+RainfallLag           0
+RainfallThreshold     0.0
+RainType              false
+ResultsMultiplier     6
+RTCLag                0
+Start Time            0.0
+SubcatchmentLag       0
 SubcatchmentThreshold 0.0
-TimeStep 60
+TimeStep              60
 ```
 
 All other fields are treated as nil by default. However, for a number of
@@ -8284,7 +8268,7 @@ Location in UI: Timestep Control Sheet - Outflows Page
 
 Default: false
 
-Description in UI: Check for ouflows
+Description in UI: Check for outflows
 
 **IncludeRainfall**
 
@@ -8526,7 +8510,7 @@ Data type: Boolean
 
 Location in UI: Main Page col 2
 
-Description in UI: Read subevent NAPI and Antecdent Depth
+Description in UI: Read subevent NAPI and Antecedent Depth
 
 **ReadSubeventParams**
 
@@ -8869,7 +8853,7 @@ the script file itself.
 The paths for the script files may either be fully qualified paths (i.e.
 beginning with a drive letter or the name of a network share) in which
 case that path will be used, or a non-fully qualified path in which case
-the software will assume the file is in the folder containing the csv
+the software will assume the file is in the folder containing the CSV
 file or a subdirectory of it.
 
 Changes to this file only take effect when the application is restarted.
@@ -8885,18 +8869,14 @@ At its simplest, if you can hard-code the paths of all files, then this
 can be done with 2 lines of code e.g.
 
 ```ruby
+#Import:
 net=WSApplication.current_network
 net.odic_import_ex('CSV','d:\\temp\\odic.cfg',nil,'Node','d:\\temp\\goat.csv','Pipe','d:\\temp\\stoat.csv')
-```
 
-for import and
-
-```ruby
+#Export:
 net=WSApplication.current_network
 net.odec_export_ex('CSV','d:\\temp\\odxc.cfg',nil,'Node','d:\\temp\\goat2.csv','Pipe','d:\\temp\\stoat2.csv')
 ```
-
-for export.
 
 As described above, both methods take a variable number of parameters.
 If you are importing a large number of files you may find it less
@@ -8934,9 +8914,7 @@ It should be noted that
     behaviour will be used for the options set on the dialog, this may
     not be what you want.
 
-3.  
-
-The first of these can be solved by specifying an error text file e.g.
+3.   The first of these can be solved by specifying an error text file e.g.
 
 ```ruby
 net=WSApplication.current_network
