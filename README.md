@@ -11,5 +11,5 @@ Feel free to make push requests, or flag up issues regarding documentation chang
 
 ## Issue flagging convention
 
-![issueFlagging](pictures/Github - How To Report an issue.png)
+![issueFlagging](/pictures/Github%20-%20How%20To%20Report%20an%20issue.png)
 
