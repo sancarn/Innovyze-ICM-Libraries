@@ -9,3 +9,7 @@ After experiencing frustration with finding documentation created by Innovyze fo
 Feel free to make push requests, or flag up issues regarding documentation changes and/or APIs which should be added to the repository. I'm always up for worthwhile contributions for the greater good.
 
 
+## Issue flagging convention
+
+![issueFlagging](pictures/Github - How To Report an issue.png)
+
