@@ -139,26 +139,68 @@ Class ICM {
 		;https://msdn.microsoft.com/en-us/library/bb982948.aspx
 		;; can use WM_GETDLGCODE  to navigate using keyboard
 		
+		;this.accICM
+		;this.hICM
+		;this.accAFXMessageControl
+		;this.hAFXMessageControl
+		;this.accSysListView
+		;this.hSysListView
+		;this.accMDBPaneW
+		;this.hMDBPaneW
+		
+		__initMDB(){
+			if !this.hMDBPaneW {
+				;Create a new explorer window
+				ICM_New_Explorer := 0x8836
+				PostMessage, % Msg32.WM_COMMAND,% ICM_New_Explorer,,,% "ahk_id " . this.hICM
+				
+				;Get Explorer window
+				;#TODO
+				;Ideally here we would use WinEvents (so we can use multiple ICM instances)
+				winTitle=Master Database ahk_exe InnovyzeWC.exe
+				winwait, %winTitle% ,, 2
+				hMDBPaneW := winexist(winTitle)
+			}
+		
 		AFXMessageControl := 0xD2A44
 		SysListViewControl := 0x9F2296
 		
+		Find(filter,value){
+			this.__initMDB()
+			
+		}
 		
-		Class FindWindow{
-			open(){
-				;ICM.MasterDatabase.FindWindow.Open
-				wParam := 0x0000DF72
-				lParam := 0x00000000
-				PostMessage, % Msg32.WM_COMMAND,%wParam%,%lParam%,,ahk_id %AFXMessageControl%
+		Class FindFilters {
+			byName(name){
+				
+			}
+			byType(type){
+				
+			}
+			byID(id){
+				
+			}
+			byUser(user){
+				
+			}
+			byDescription(desc){
+				
+			}
+			byDate(date){
+				
+			}
+			byHyperlink(link){
+				
 			}
 		}
 		
 		GetSelectedMDBItemID(SysList="SysListView321"){
-			ControlGet, hSysListView, hwnd, , %SysList%, % "ahk_id " . this.hwnd
+			hSysListView := this.hSysListView
 			accLV:=Acc_ObjectFromWindow(hSysListView)
 			Loop, % accLV.accChildCount -1
 			{
 				;msgbox , % (accLV.accState(A_Index) & ACCSTATE_SELECTED)
-				if((accLV.accState(A_Index) & ACCSTATE_SELECTED))
+				if((accLV.accState(A_Index) & ACC_STATE.SELECTED))
 					return A_Index
 			}
 		}

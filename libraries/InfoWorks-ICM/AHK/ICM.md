@@ -16,7 +16,7 @@ Not all features are integrated into ICM exchange and as long as the ICMExchange
 
 ## About the creator
 
-My name is James Warren. I am a Theoretical Physics graduate from the University of Sussex. I started work in the Hydraulic Modelling industry in 2015 and have spent this time automating systems in MapBasic, AHK and Ruby. However automation is not my job so this library and libraries like them have been entirely written in my own time at night, for the fun of it! Perhaps someone who's job is more in line with automation in the Hydraulic Modelling industry, will take up this library and improve it further.
+My name is James Warren. I am a Theoretical Physics graduate from the University of Sussex. I started work in the Hydraulic Modelling industry in 2015 and have spent this time automating systems in MapBasic, AHK and Ruby. However automation is not my job so this library and libraries like them have been entirely written in my own time at night, mostly for the fun of it! Perhaps someone who's job is more in line with automation in the Hydraulic Modelling industry, will take up this library and improve it further.
 
 ## Contributors
 

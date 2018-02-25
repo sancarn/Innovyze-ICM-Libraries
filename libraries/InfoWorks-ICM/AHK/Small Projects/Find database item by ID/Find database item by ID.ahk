@@ -16,7 +16,7 @@ Class ICM {
 	;Currently not operational, needs debugging`
 	__isTabListParent(oAcc,value){
 		if oAcc.accName = "" {
-			arr=acc_childrenFilter(oAcc,ACC_FILTERS.byRole,ACC_ROLE.PAGETABLIST,true)
+			arr:=acc_childrenFilter(oAcc,ACC_FILTERS.byRole,ACC_ROLE.PAGETABLIST,true)
 			return arr.length>0
 		}
 		return false
