@@ -2088,6 +2088,62 @@ The buttons appear as follows:
 <br/>
 <br/>
 
+#### `open` (Exchange only)
+
+##### Syntax:
+
+```ruby
+iwdb=WSApplication.open(path,bUpdate)
+```
+
+##### Example:
+
+```ruby
+db=WSApplication.open 'd:\\temp\\1.icmm',false
+db.open nil,false
+```
+
+##### Description:
+
+Opens the database with path ‘path’ and returns an object of type
+WSDatabase. If the database requires updating and the flag bUpdate
+evaluates to true then the database will be updated (if possible)
+otherwise the call will fail
+
+If the path is blank then uses the current master database, if any.
+
+Likely exceptions for this method to throw are:
+
+Error 13 : File Not Found : d:\\temp\\misc.icmm (error=2: "The system
+cannot find the file specified.")
+
+if the database is not present.
+
+Error 13 : File Not Found : z:\\misc.icmm (error=3: "The system cannot
+find the path specified.")
+
+if the database path is invalid
+
+no database path specified
+
+if the path is nil and there is no currently selected master database
+via the UI
+
+major update failed
+
+minor update failed
+
+if there is a problem with a database update
+
+database requires major update but allow update flag is not set
+
+database requires minor update but allow update flag is not set
+
+if the database requires an update but the second parameter is false
+
+<br/>
+<br/>
+
 #### `open_text_view` (UI only)
 
 ##### Syntax:
@@ -2110,6 +2166,78 @@ the next item in the script.
 The purpose of the delete\_on\_exit parameter is allow the user to
 create a temporary file which will be displayed by this method and then
 deleted when the view is closed by the user.
+
+<br/>
+<br/>
+
+#### `override_user_unit (Exchange only – see note in method text)`
+
+##### Syntax:
+
+```ruby
+OK=WSApplication.override_user_unit(code,value)
+```
+
+##### Example:
+
+```ruby
+OK=WSApplication.override_user_unit 'X','ft'
+```
+
+##### Description:
+
+Overrides a current user unit for the duration of the script
+
+This can be useful where ICM Exchange is running as a service, where the
+"user" has no settings of it own and you don't want the default user
+units that are selected for the locale
+
+Returns `true` if successful, `false` for an unknown unit or value.
+
+> Note – When scripts are run from the UI, user units are always used.
+
+<br/>
+<br/>
+
+#### `override_user_units` (Exchange only)
+
+##### Syntax:
+
+```ruby
+errs=WSApplication.override_user_units(filename)
+```
+
+##### Example:
+
+```ruby
+errs=WSApplication.override_user_units 'd:\\temp\\uu.csv'
+if errs.length<0
+    puts “error reading CSV file”
+end
+```
+
+##### Description:
+
+Bulk overrides the current user units for the duration of the script.
+
+Takes a filename of a file containing comma separated pairs of unit
+code, unit value pairs, one pair per line. E.g.
+
+XY,US Survey ft
+
+Useful where ICM Exchange is running as a service, where the "user" has
+no settings of it own.
+
+Returns an error string. An empty string indicates success. Note,
+however, that any valid units will be applied, regardless of whether
+there are any errors with other lines of the file.
+
+A likely exception for this method to throw is:
+
+Error 13 : File Not Found : z:\\uu.csv (error=3: "The system cannot find
+the path specified.")
+
+if the file does not exist.
 
 <br/>
 <br/>
@@ -2246,10 +2374,36 @@ using DateTime.new as described earlier in this document.
 
 If OK is hit without changing any values, it returns an array like this:
 
-```
+```ruby
 [nil, nil, nil, #<DateTime: 2012-07-13T12:45:00+00:00 (78595905/32,0,2299161)>, 234.123456, 11.0, 100.0, "Badger",
 "Default", nil, 23.0, nil, #<DateTime: 2011-10-13T14:12:30+00:00 (1414568501/576,0,2299161)>, false, false, true, "Badger.dat", nil, nil, nil, "Turbo Pump", 12.3456678, 87.65456789]
 ```
+
+<br/>
+<br/>
+
+#### `results_folder` (Exchange only)
+
+##### Syntax:
+
+```ruby
+s=WSApplication.results_folder
+```
+
+##### Example:
+
+```rb
+puts WSApplication.results_folder
+```
+
+##### Description:
+
+Returns the current results folder as a string
+
+NB – if you have not specified a results folder, either in a script or
+in the UI, the default results folder which is used will be returned
+i.e. this returns the results folder that is actually being used
+regardless of whether you have explicitly set it or not
 
 <br/>
 <br/>
@@ -2292,218 +2446,6 @@ otherwise the to\_s method will be used.
 Index 2 (optional) – a number of decimal places to be used between 0 and
 8 inclusive, this will be used for float and double values and ignored
 for any others.
-
-<br/>
-<br/>
-
-#### `wait_for_jobs` (Exchange only)
-
-##### Syntax:
-
-```ruby
-id_or_nil=WSApplication.wait_for_jobs(array_of_job_ids,wait_for_all,timeout)
-```
-
-##### Description:
-
-
-Waits for one or all of the jobs in the array to complete, or for the
-timeout time to be reached.
-
-The parameters are as follows:
-
-Array\_of\_job\_ids – an array of job IDs, i.e. values in the array
-returned by launch\_sims. This array may contain nil values which are
-safely ignored.
-
-Wait\_for\_all – true to wait until all the jobs in the array complete,
-false to wait for one.
-
-Timeout – a timeout time in milliseconds.
-
-Returns Qnil if waittime is exceeded, otherwise returns the array index
-of the job that caused the wait to end (if waitall is true, this is the
-last job to complete)
-
-<br/>
-<br/>
-
-#### `working_folder` (Exchange only)
-
-##### Syntax:
-
-```ruby
-s=WSApplication.working_folder
-```
-
-##### Example:
-
-```rb
-puts WSApplication.working_folder
-```
-
-##### Description:
-
-Returns the current working folder as a string
-
-NB – if you have not specified a working folder, either in a script or
-in the UI, the default working folder which is used will be returned
-i.e. this returns the working folder that is actually being used
-regardless of whether you have explicitly set it or not
-
-<br/>
-<br/>
-
-#### `results_folder` (Exchange only)
-
-##### Syntax:
-
-```ruby
-s=WSApplication.results_folder
-```
-
-##### Example:
-
-```rb
-puts WSApplication.results_folder
-```
-
-##### Description:
-
-Returns the current results folder as a string
-
-NB – if you have not specified a results folder, either in a script or
-in the UI, the default results folder which is used will be returned
-i.e. this returns the results folder that is actually being used
-regardless of whether you have explicitly set it or not
-
-<br/>
-<br/>
-
-#### `open` (Exchange only)
-
-##### Syntax:
-
-```ruby
-iwdb=WSApplication.open(path,bUpdate)
-```
-
-##### Example:
-
-```ruby
-db=WSApplication.open 'd:\\temp\\1.icmm',false
-db.open nil,false
-```
-
-##### Description:
-
-Opens the database with path ‘path’ and returns an object of type
-WSDatabase. If the database requires updating and the flag bUpdate
-evaluates to true then the database will be updated (if possible)
-otherwise the call will fail
-
-If the path is blank then uses the current master database, if any.
-
-Likely exceptions for this method to throw are:
-
-Error 13 : File Not Found : d:\\temp\\misc.icmm (error=2: "The system
-cannot find the file specified.")
-
-if the database is not present.
-
-Error 13 : File Not Found : z:\\misc.icmm (error=3: "The system cannot
-find the path specified.")
-
-if the database path is invalid
-
-no database path specified
-
-if the path is nil and there is no currently selected master database
-via the UI
-
-major update failed
-
-minor update failed
-
-if there is a problem with a database update
-
-database requires major update but allow update flag is not set
-
-database requires minor update but allow update flag is not set
-
-if the database requires an update but the second parameter is false
-
-<br/>
-<br/>
-
-#### `override_user_unit (Exchange only – see note in method text)`
-
-##### Syntax:
-
-```ruby
-OK=WSApplication.override_user_unit(code,value)
-```
-
-##### Example:
-
-```ruby
-OK=WSApplication.override_user_unit 'X','ft'
-```
-
-##### Description:
-
-Overrides a current user unit for the duration of the script
-
-This can be useful where ICM Exchange is running as a service, where the
-"user" has no settings of it own and you don't want the default user
-units that are selected for the locale
-
-Returns `true` if successful, `false` for an unknown unit or value.
-
-> Note – When scripts are run from the UI, user units are always used.
-
-<br/>
-<br/>
-
-#### `override_user_units` (Exchange only)
-
-##### Syntax:
-
-```ruby
-errs=WSApplication.override_user_units(filename)
-```
-
-##### Example:
-
-```ruby
-errs=WSApplication.override_user_units 'd:\\temp\\uu.csv'
-if errs.length<0
-    puts “error reading CSV file”
-end
-```
-
-##### Description:
-
-Bulk overrides the current user units for the duration of the script.
-
-Takes a filename of a file containing comma separated pairs of unit
-code, unit value pairs, one pair per line. E.g.
-
-XY,US Survey ft
-
-Useful where ICM Exchange is running as a service, where the "user" has
-no settings of it own.
-
-Returns an error string. An empty string indicates success. Note,
-however, that any valid units will be applied, regardless of whether
-there are any errors with other lines of the file.
-
-A likely exception for this method to throw is:
-
-Error 13 : File Not Found : z:\\uu.csv (error=3: "The system cannot find
-the path specified.")
-
-if the file does not exist.
 
 <br/>
 <br/>
@@ -2604,6 +2546,38 @@ Sets the results folder.
 NB – this results folder will be used for the duration of this ICM
 Exchange run. it will not be stored in the registry and will not be used
 by any other instances of ICM Exchange or the ICM UI.
+
+<br/>
+<br/>
+
+#### `wait_for_jobs` (Exchange only)
+
+##### Syntax:
+
+```ruby
+id_or_nil=WSApplication.wait_for_jobs(array_of_job_ids,wait_for_all,timeout)
+```
+
+##### Description:
+
+
+Waits for one or all of the jobs in the array to complete, or for the
+timeout time to be reached.
+
+The parameters are as follows:
+
+Array\_of\_job\_ids – an array of job IDs, i.e. values in the array
+returned by launch\_sims. This array may contain nil values which are
+safely ignored.
+
+Wait\_for\_all – true to wait until all the jobs in the array complete,
+false to wait for one.
+
+Timeout – a timeout time in milliseconds.
+
+Returns Qnil if waittime is exceeded, otherwise returns the array index
+of the job that caused the wait to end (if waitall is true, this is the
+last job to complete)
 
 <br/>
 <br/>
@@ -2751,6 +2725,35 @@ puts WSApplication.version
 Returns the InfoWorks ICM version number as a string e.g.
 
 “2.5.0.5001”
+
+<br/>
+<br/>
+
+#### `working_folder` (Exchange only)
+
+##### Syntax:
+
+```ruby
+s=WSApplication.working_folder
+```
+
+##### Example:
+
+```rb
+puts WSApplication.working_folder
+```
+
+##### Description:
+
+Returns the current working folder as a string
+
+NB – if you have not specified a working folder, either in a script or
+in the UI, the default working folder which is used will be returned
+i.e. this returns the working folder that is actually being used
+regardless of whether you have explicitly set it or not
+
+<br/>
+<br/>
 
 ###
 
