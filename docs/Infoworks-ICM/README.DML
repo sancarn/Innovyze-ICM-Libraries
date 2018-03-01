@@ -1,20 +1,22 @@
+[html]
+	<style>
+		.red {
+			color:"red";
+		}
+	</style>
+[/html]
+
 # The InfoWorks ICM / InfoNet Ruby Scripting Interface
 
 ## Disclaimer
 
-<span style='color="red"'>*We do not guarantee the information in this document. The presence of a
-class or method in this document does not guarantee it will exist and/or
-work as described.*</span>
+[red][b]We do not guarantee the information in this document. The presence of a class or method in this document does not guarantee it will exist and/or work as described.[/b][/red]
 
 ## Sancarn's notes
 
 This document is still Work-In-Progress
 
-This file has been transpiled from documentation provided by Innovyze. Afterwards
-it has been edited further to improve the documentation and remove transpilation glitches. However
-some glitches due to the transpiling may still occur. For example, occasionally single lines
-have been occasionally split into multiple lines with little reason. These glitches can also occur
-in the middle of source code examples.
+This file has been transpiled from documentation provided by Innovyze. Afterwards it has been edited further to improve the documentation and remove transpiling glitches. However some glitches, due to the transpiling, may still remain. For example, occasionally single lines have been occasionally split into multiple lines with little reason. These glitches can also occur in the middle of source code examples.
 
 **PLEASE REPORT CODE SAMPLES WHICH DO NOT WORK AS ISSUES**, similarly if code samples,
 or descriptions could be articulated in a different more meaningful way, please
@@ -34,8 +36,7 @@ between InfoWorks CS and InfoWorks ICM is important to all.
 I hope his documentation helps you as much as it helps me on a daily basis.
 ~Sancarn
 
-Index
-------------
+# Index
 
 ## [InfoWorks ICM API guidance documents](#infoworks-icm-api-guidance-documents)
 1. [Introduction](#introduction)
@@ -81,34 +82,32 @@ Index
 4. [Open Data Import / Export Centre UI Customisation](#appendix-4---open-data-import--export-centre-ui-customisation)
 5. [Character encoding](#appendix-5--character-encoding)
 
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
+`
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-InfoWorks ICM API guidance documents
-------------
+# InfoWorks ICM API guidance documents
 
 This document describes the Ruby interface for InfoWorks ICM and
 InfoNet. It assumes a degree of familiarity with Ruby and with the
@@ -145,10 +144,11 @@ broadly speaking as follows:
 
 > Note – Due to the embedded nature of Ruby within the InfoWorks ICM / InfoNet applications, it may not be possible to get other Ruby libraries working within InfoWorks without issues. Innovyze will not be able to provide assistance/support when such issues arise.
 
-# The Exchange Object Model
--------------------------
+----
 
-<img src="./media/ModelObjectDiagram.png" />
+# The Exchange Object Model
+
+[img]media/ModelObjectDiagram.png[/img]
 
 The above diagram uses arrows to represent a containment hierarchy
 rather than an inheritance hierarchy i.e. it shows that a number of
@@ -177,17 +177,17 @@ categories:
 3.  Running simulations – these methods allow access to advanced
     features of running simulations via the simulation agent.
 
-**WSDatabase**
+[link]`WSDatabase`[/link]
 
 The WSDatabase class represents master and transportable databases.
 
-**WSModelObjectCollection**
+[link]`WSModelObjectCollection`[/link]
 
 The WSModelObjectCollection class represents collections of objects of
 class WSModelObject and the classes derived from it,
 WSNumbatNetworkObject and WSSimObject.
 
-**WSModelObject**
+[link]`WSModelObject`[/link]
 
 The WSModelObject class represents individual tree objects e.g.
 selection lists, stored queries, ICM runs etc.
@@ -197,36 +197,36 @@ object, the actual class of the object returned will be determined at
 run time and an object of the appropriate type will be returned e.g.
 WSNumbatNetworkObject for network types, WSSimObject for simulations.
 
-**WSNumbatNetworkObject**
+[link]`WSNumbatNetworkObject`[/link]
 
 The WSNumbatNetworkObject class is derived from the WSModelObject class.
 It represents networks, specifically both types of asset network and the
 modelling network.
 
-**WSSimObject**
+[link]`WSSimObject`[/link]
 
 The WSSimObject class is derived from the WSModelObject class. It
 represents an InfoWorks ICM simulation object. It can also represent the
 Risk Analysis Results and Risk Analysis Sim objects.
 
-**WSRiskAnalysisRunObject**
+[link]`WSRiskAnalysisRunObject`[/link]
 
 The WSRiskAnalysisRunObject class is derived from the WSModelObject
 class. It represents an InfoWorks ICM risk analysis run object.
 
-**WSOpenNetwork**
+[link]`WSOpenNetwork`[/link]
 
 The WSOpenNetwork class also represents networks. The distinction
 between the two classes is described below.
 
-**WSRowObjectCollection**
+[link]`WSRowObjectCollection`[/link]
 
 The WSRowObjectCollection class represents a collection of objects which
 is designed to be iterated through. Obtaining a WSRowObjectCollection
 and iterating through it is more efficient than obtaining a vector of
 WSRowObject objects.
 
-**WSRowObject**
+[link]`WSRowObject`[/link]
 
 The WSRowObject class represents individual objects in the network e.g.
 a node, a CCTV survey etc.
@@ -237,53 +237,53 @@ the object will be determined at run time and an object of the
 appropriate type will be returned e.g. WSNode for a node, WSLink for a
 link or WSRowObject otherwise.
 
-**WSNode**
+[link]`WSNode`[/link]
 
 The WSNode class is derived from the WSRowObject class. It represents
 individual nodes in the network.
 
-**WSLink**
+[link]`WSLink`[/link]
 
 The WSLink class is derived from the WSRowObject class. It represents
 individual links in the network.
 
-**WSStructure**
+[link]`WSStructure`[/link]
 
 The WSStructure class represents the data stored in a ‘structure blob’
 field in a WSRowObject (or derived class). It is largely a collection
 class, containing a collection of WSStructureRow objects, each of which
 represents a single row in the ‘structure blob’.
 
-**WSStructureRow**
+[link]`WSStructureRow`[/link]
 
 The WSStructureRow class represents a row in a ‘structure blob’ field in
 a WSRowObject (or derived class).
 
-*Classes not shown in the diagram above are as follows:*
+## Classes not shown in the diagram
 
-**WSTableInfo**
+[link]`WSTableInfo`[/link]
 
 The WSTableInfo class represents information about the table i.e. about
 the table itself rather than individual objects contained in that table
 in a particular network.
 
-**WSFieldInfo**
+[link]`WSFieldInfo`[/link]
 
 The WSFieldInfo class represents information about a field i.e. about
 the field for the table rather than the field for an individual object
 contained in that table.
 
-**WSCommits**
+[link]`WSCommits`[/link]
 
 The WSCommits class is a collection class represents the information
 about the collection of commits for a network.
 
-**WSCommit**
+[link]`WSCommit`[/link]
 
 The WSCommit class represents the information about one of the commits
 for a network.
 
-**WSValidations**
+[link]`WSValidations`[/link]
 
 The WSValidations represents the results generated by the validation of
 a network. It is essentially a collection class, containing a collection
@@ -291,7 +291,7 @@ of WSValidation objects, each of which represents a single validation
 message which would appear in a separate row if the validation were
 performed within the user interface of the software.
 
-**WSValidation**
+[link]`WSValidation`[/link]
 
 The WSValidation class represents the information about one of the
 individual validation messages found when performing the validation.
