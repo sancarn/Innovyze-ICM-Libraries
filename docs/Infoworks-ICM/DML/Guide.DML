@@ -1,0 +1,1470 @@
+[html]
+	<style>
+		.red {
+			color:"red";
+		}
+	</style>
+[/html]
+
+# The InfoWorks ICM / InfoNet Ruby Scripting Interface
+
+## Disclaimer
+
+[red][b]We do not guarantee the information in this document. The presence of a class or method in this document does not guarantee it will exist and/or work as described.[/b][/red]
+
+# InfoWorks ICM API guidance documents
+
+This document describes the Ruby interface for InfoWorks ICM and
+InfoNet. It assumes a degree of familiarity with Ruby and with the
+terminology of object oriented programming e.g. ‘class’,’method’.
+
+### UI and Exchange
+
+Scripts may be run both from
+
+1.  the user interface of InfoWorks ICM and InfoNet,
+
+2.  the separately licensed InfoWorks ICM Exchange and InfoNet Exchange
+    products, which run from the command line without displayed a
+    graphical user interface.
+
+Whilst there is a great degree of overlap between the functionality
+available when running scripts from the user interface and that
+available within the Exchange products, some functionality is only
+available with one or the other. The distinction between the two is
+broadly speaking as follows:
+
+1.  Within the user interface, scripts are run when a GeoPlan is open
+    displaying a network, possibly with a guest network loaded. The
+    scripts may manipulate the data in the network, perform imports and
+    exports using the Open Data Import and Export centres, commit and
+    revert changes, and display some simple user interface features. The
+    scripts may not manipulate tree objects except selection lists, and
+    may not open and close databases, set up and run simulations etc.
+
+2.  From the Exchange applications, users may in addition manipulate
+    tree objects, create databases, set up and run simulations etc.,
+    however the user interface items available from the ICM / InfoNet
+    user interfaces will not be available.
+
+> Note – Due to the embedded nature of Ruby within the InfoWorks ICM / InfoNet applications, it may not be possible to get other Ruby libraries working within InfoWorks without issues. Innovyze will not be able to provide assistance/support when such issues arise.
+
+----
+
+# The Exchange Object Model
+
+[img]media/ModelObjectDiagram.png[/img]
+
+The above diagram uses arrows to represent a containment hierarchy
+rather than an inheritance hierarchy i.e. it shows that a number of
+items of class WSDatabase may be returned from the WSApplication class,
+not that the WSDatabase class is derived from the WSApplication class.
+
+Inheritance is represented by overlapping boxes e.g. WSNode and WSLink
+are derived from the WSRowObject class.
+
+For clarity only the most important classes provided by the applications
+are represented in the diagram.
+
+The classes shown in the diagram above are as follows:
+
+**WSApplication**
+
+The WSApplication class represents the top-level of the application. It
+consists purely of class methods. These methods fall into three
+categories:
+
+1.  Ones that get and set settings global to the application
+
+2.  Ones that create and open databases represented by the WSDatabase
+    class
+
+3.  Running simulations – these methods allow access to advanced
+    features of running simulations via the simulation agent.
+
+[link]`WSDatabase`[/link]
+
+The WSDatabase class represents master and transportable databases.
+
+[link]`WSModelObjectCollection`[/link]
+
+The WSModelObjectCollection class represents collections of objects of
+class WSModelObject and the classes derived from it,
+WSNumbatNetworkObject and WSSimObject.
+
+[link]`WSModelObject`[/link]
+
+The WSModelObject class represents individual tree objects e.g.
+selection lists, stored queries, ICM runs etc.
+
+When one of the methods of WSDatabase / WSModelObject returns a model
+object, the actual class of the object returned will be determined at
+run time and an object of the appropriate type will be returned e.g.
+WSNumbatNetworkObject for network types, WSSimObject for simulations.
+
+[link]`WSNumbatNetworkObject`[/link]
+
+The WSNumbatNetworkObject class is derived from the WSModelObject class.
+It represents networks, specifically both types of asset network and the
+modelling network.
+
+[link]`WSSimObject`[/link]
+
+The WSSimObject class is derived from the WSModelObject class. It
+represents an InfoWorks ICM simulation object. It can also represent the
+Risk Analysis Results and Risk Analysis Sim objects.
+
+[link]`WSRiskAnalysisRunObject`[/link]
+
+The WSRiskAnalysisRunObject class is derived from the WSModelObject
+class. It represents an InfoWorks ICM risk analysis run object.
+
+[link]`WSOpenNetwork`[/link]
+
+The WSOpenNetwork class also represents networks. The distinction
+between the two classes is described below.
+
+[link]`WSRowObjectCollection`[/link]
+
+The WSRowObjectCollection class represents a collection of objects which
+is designed to be iterated through. Obtaining a WSRowObjectCollection
+and iterating through it is more efficient than obtaining a vector of
+WSRowObject objects.
+
+[link]`WSRowObject`[/link]
+
+The WSRowObject class represents individual objects in the network e.g.
+a node, a CCTV survey etc.
+
+When one of the methods of WSOpenNetwork, WSRowObjectCollection,
+WSRowObject etc. returns an object in the network, the actual class of
+the object will be determined at run time and an object of the
+appropriate type will be returned e.g. WSNode for a node, WSLink for a
+link or WSRowObject otherwise.
+
+[link]`WSNode`[/link]
+
+The WSNode class is derived from the WSRowObject class. It represents
+individual nodes in the network.
+
+[link]`WSLink`[/link]
+
+The WSLink class is derived from the WSRowObject class. It represents
+individual links in the network.
+
+[link]`WSStructure`[/link]
+
+The WSStructure class represents the data stored in a ‘structure blob’
+field in a WSRowObject (or derived class). It is largely a collection
+class, containing a collection of WSStructureRow objects, each of which
+represents a single row in the ‘structure blob’.
+
+[link]`WSStructureRow`[/link]
+
+The WSStructureRow class represents a row in a ‘structure blob’ field in
+a WSRowObject (or derived class).
+
+## Classes not shown in the diagram
+
+[link]`WSTableInfo`[/link]
+
+The WSTableInfo class represents information about the table i.e. about
+the table itself rather than individual objects contained in that table
+in a particular network.
+
+[link]`WSFieldInfo`[/link]
+
+The WSFieldInfo class represents information about a field i.e. about
+the field for the table rather than the field for an individual object
+contained in that table.
+
+[link]`WSCommits`[/link]
+
+The WSCommits class is a collection class represents the information
+about the collection of commits for a network.
+
+[link]`WSCommit`[/link]
+
+The WSCommit class represents the information about one of the commits
+for a network.
+
+[link]`WSValidations`[/link]
+
+The WSValidations represents the results generated by the validation of
+a network. It is essentially a collection class, containing a collection
+of WSValidation objects, each of which represents a single validation
+message which would appear in a separate row if the validation were
+performed within the user interface of the software.
+
+[link]`WSValidation`[/link]
+
+The WSValidation class represents the information about one of the
+individual validation messages found when performing the validation.
+
+WSNumbatNetworkObject vs WSOpenNetwork
+--------------------------------------
+
+Networks (model and asset) are represented by two object types:
+WSNumbatNetworkObject and WSOpenNetwork. These may be thought of as
+corresponding to the difference between a file on a disk, which has
+attributes such as its name, size etc., and an open file handle which
+can be read from and/or written to. Alternatively it may be viewed as
+the difference between a closed network viewed in the explorer tree and
+a network which is opened. Most operations looking at or altering the
+network data must be performed on a WSOpenNetwork, although there is
+some overlap as some methods that affect the network data, particularly
+those used in InfoNet Exchange, are also available as methods of the
+WSNumbatNetworkObject class.
+
+The process of getting a WSOpenNetwork from a WSNumbatNetworkObject may
+be thought of as being akin to opening a network from the tree in the
+software by dragging it to the background, or right-clicking on it and
+then selecting the ‘Open’ menu item.
+
+Methods
+-------
+
+Unless noted, methods return nil.
+
+In the examples of exceptions thrown below example paths are given,
+these will of course be different in real-life cases.
+
+Dates and Times
+---------------
+
+The DateTime class provided by the Ruby core library is used to
+represent dates and times. Accordingly, if you use any methods getting,
+setting or otherwise returning dates you will need to include the date
+header using
+
+```ruby
+require 'date'
+```
+The default to\_s implementation for the DateTime class can be
+overridden to provide a more normal date and time format e.g. as follows
+
+```ruby
+class DateTime
+    def to_s
+        return strftime('%d/%m/%Y %H:%M:%S')
+    end
+end
+```
+
+Ruby’s behavior means that you can add this method in your code and
+have this method called as you would hope.
+
+You will typically want to create DateTimes using the new method which
+is of the form `DateTime.new(year,month,day,hours,minute,seconds)` e.g.
+
+
+```ruby
+myDate=DateTime.new(2012,7,23,12,34,56.789)
+```
+
+As ICM Exchange does not have a Ruby data time to represent the use of
+times in ICM simulations, in which both relative times and absolute
+times are used, the following convention is used:
+
+*Absolute times are represented as a DateTime object, relative times as
+a negative double – a time in seconds.*
+
+Handling objects at the master database level
+---------------------------------------------
+
+By ‘at the master database level’ we mean at the level of handling
+objects that appear in the database tree rather than within an
+individual network.
+
+By and large this functionality is only available in ICM Exchange and
+InfoNet Exchange.
+
+The classes that are of most relevance here are WSDatabase,
+WSModelObjectCollection and WSModelObject.
+
+Objects in the tree are typically represented two ways – by type of
+object (e.g. is is a Run, an Asset Group, a Selection List etc.) and ID,
+a number which appears in the property sheet when ‘properties’ is
+selected for an object in the tree, or by a scripting path. The
+scripting path can be thought of as being roughly analogous to the path
+of a file e.g. `‘C:\\program files (x86)\\innovyze\\innovyzewc.exe`. They
+are described in more detail below.
+
+If I have the scripting path for an object, either obtained using a Ruby
+method, or worked out ‘by hand’, you can get access to the object and
+then call whatever methods you desire on it.
+
+For example, if I know the scripting path of a simulation is
+
+`>MODG~Basic Initial Loss Runs>MODG~Initial Loss Type>RUN~Abs>SIM~M2-60`
+
+and I wish to export a full binary results file, I can simply write the
+following script:
+
+```ruby
+db=WSApplication.open nil,false
+
+mo=db.model_object '>MODG~Basic Initial Loss Runs>MODG~Initial Loss Type>RUN~Abs>SIM~M2-60'
+
+mo.results_binary_export nil,nil,'d:\\temp\\sim.dat'
+```
+
+When developing scripts, or when running an ad-hoc script, a ‘quick and
+dirty’ way of identifying an object can often be by using its type and
+ID.
+
+For example, if I want to export a rainfall event to a CSV file, I
+simply have to look up its ID in the tree in the user interface and
+write the following script:
+
+```ruby
+db=WSApplication.open nil,false
+
+mo=db.model_object_from_type_and_id 'Rainfall Event',18
+
+mo.export 'd:\\temp\\myfile.csv','csv'
+```
+
+Clearly this can be done in the user interface, but simple scripts like
+this can form the building blocks for more complex scripts in which you
+process the files in Ruby, or use Ruby to call other programs via COM
+interfaces or similar.
+
+As well as obtaining objects by path and type and ID it is also possible
+to obtain them by type and name using the find\_child\_model\_object
+method of a group, or find\_root\_model\_object of a database.
+
+It is possible to find all the objects in the root of the database using
+the root\_model\_objects method of the database e.g.
+
+```ruby
+db=WSApplication.open nil,false
+db.root_model_objects.each do |o|
+    puts o.path
+end
+```
+
+Similarly, it is possible to find all the objects which are children of
+a given object using the children method of the parent object.
+
+This code, therefore, finds all the objects which are children of
+objects in the root of the database.
+
+```ruby
+db=WSApplication.open nil,false
+db.root_model_objects.each do |o|
+    o.children.each do |c|
+        puts c.path
+    end
+end
+```
+
+These methods can be used recursively to find all the objects in the
+database. The technique used in the example below is a ‘breadth first
+search’ i.e. we start by finding the objects in the root of the database
+and putting them in an array. Thereafter we take the first object in the
+array, find its children, add them onto the end of the array and remove
+the first object.
+
+```ruby
+db=WSApplication.open nil,false
+toProcess=Array.new
+db.root_model_objects.each do |o|
+    toProcess << o
+end
+while toProcess.size<0
+    working=toProcess.delete_at(0)
+    puts working.path
+    working.children.each do |c|
+        toProcess << c
+    end
+end
+```
+
+> `array.delete_at(0)` Deletes the element at the specified index, and returns
+the removed element, or `nil` if the index is out of range.
+
+In both the examples above the snippets of code output the paths of the
+found objects but in real life you will want to do something else e.g.
+this example runs all the simulations in the database
+
+Where WSModelObject objects are specified in parameters of other
+methods, they can be passed as
+
+-   A ruby object
+-   The object’s ID (if the parameter can only be of one object type)
+-   The path of the object
+
+### Scripting paths
+
+The purpose of a scripting path is to uniquely identify an object in a
+database by giving its name and type, the name and type of the group in
+which it is contained if any, the group in which that group is contained
+if any and so on. This is very similar to the way the path of a file
+gives the name of the file, the name of the directory in which it is
+contained, the name of the directory in which that directory is
+contained and so on.
+
+Since, however, it is possible to have objects of the same name of
+different types in the same group (e.g. you can have a stored query and
+a selection list both called ‘My Nodes’ in the same group), the names
+need to be made non-ambiguous by adding the object types to them.
+
+The paths always begin with &gt;, then each object in the tree is formed
+by taking the object type’s ‘short code’ (as given in the table below),
+following this with a ~ then adding the name so, for example, a rainfall
+event ‘Winter 5 20’ in a model group ‘West’ in a master group ‘General’
+has the path:
+
+`>MASG~General>MODG~North>RAIN~Winter 5 20`
+
+If the name of any object in the scripting path for an object contains
+the characters `~` or `>`, then those characters are ‘escaped’ with a
+backslash. The backslash character is also escaped with another
+backslash. e.g. a master group with the unlikely name
+`My Master >>>~~~\\\ Group`. Will have the path:
+
+```
+>MASG~My Master \>\>\>\~\~\~\\\\\\ Group
+```
+
+| **Description**                    | **ShortCode** |
+|------------------------------------|---------------|
+| Alert Definition List              | ADL           |
+| Asset group                        | AG            |
+| Custom graph                       | CGDT          |
+| Collection inference               | CINF          |
+| Collection network                 | CNN           |
+| Collection digitisation template   | CNTMP         |
+| Collection cost estimator          | COST          |
+| Custom report                      | CR            |
+| Dashboard                          | DASH          |
+| Engineering validation             | ENV           |
+| Flow survey                        | FS            |
+| Graph                              | GDT           |
+| Ground model grid                  | GGM           |
+| Ground model TIN                   | GM            |
+| 2D initial conditions              | IC2D          |
+| Ground infiltration                | IFN           |
+| Inflow                             | INF           |
+| Inference                          | INFR          |
+| Label list                         | LAB           |
+| Level                              | LEV           |
+| Live group                         | LG            |
+| Layer list                         | LL            |
+| Manifest                           | MAN           |
+| Manifest Deployment                | MAND          |
+| Master group                       | MASG          |
+| Model group                        | MODG          |
+| GeoExplorer                        | NGX           |
+| Model network                      | NNET          |
+| Digitisation template              | NNT           |
+| Distribution network               | NWNET         |
+| Observed depth event               | OBD           |
+| Observed flow event                | OBF           |
+| Observed velocity event            | OBV           |
+| Pollutograph                       | PGR           |
+| Pipe sediment data                 | PSD           |
+| Results analysis                   | PTSEL         |
+| Rainfall event                     | RAIN          |
+| Regulator                          | REG           |
+| Run                                | RUN           |
+| Selection list                     | SEL           |
+| Sim                                | SIM           |
+| Stored query                       | SQL           |
+| Statistics template                | ST            |
+| Simulation statistics              | STAT          |
+| Theme                              | THM           |
+| Time varying data                  | TVD           |
+| Trade waste                        | TW            |
+| Collection validation              | VAL           |
+| Distribution cost estimator        | WCOST         |
+| Distribution inference             | WINF          |
+| Workspace                          | WKSP          |
+| Distribution digitisation template | WNTMP         |
+| Distribution validation            | WVAL          |
+| Waste water                        | WW            |
+
+Handling objects within a network
+---------------------------------
+
+By ‘within a network’ we refer to the navigating between, adding,
+deleting and altering objects within a network, e.g. adding a node,
+changing the ground level of a node etc.
+
+The most relevant classes here are WSOpenNetwork, WSRowObject collection
+and WSRowObject and the classes derived from it.
+
+Before operating on individual objects within a network it is necessary
+to object a WSOpenNetwork object. The mechanism for doing this is
+different between use of the Ruby scripting functionality within the
+software's user interface and via the Exchange products:
+
+Within the user interface, obtain the WSOpenNetwork object for the
+current network by using the current method of the WSApplication class
+i.e.
+
+```ruby
+on=WSApplication.current_network
+```
+
+From the Exchange products you should obtain the WSOpenNetwork by use of
+the open method of the WSNumbatNetworkObject class i.e.
+
+```ruby
+db=WSApplication.open nil,false
+net=db.model_object_from_type_and_id 'Model Network',2
+on=net.open
+```
+
+Having obtained the WSOpenNetwork object it is possible to obtain
+WSRowObjectCollection and WSRowObject (both individually and in arrays)
+from it.
+
+To do this it is generally necessary to know the table name or category.
+
+The table names used are the internal table names. These are not
+generally used in the software's user interface but can be seen in the
+exported CSV files. They are typically of the form prefix\_name or
+prefix\_parts\_of\_name (i.e. lower case strings, beginning with a
+prefix and with words separated by underscores). The prefixes are
+
+hw for model networks, cams for collection networks and wams for
+distribution networks e.g. hw\_node, cams\_manhole, wams\_manhole.
+
+Categories are used to obtain the objects in more than one table; the
+most common use of a category is to obtain all of the links in a network
+regardless of the types of the individual links.
+
+The categories are as follows:
+
+'\_nodes' – all nodes
+
+'\_links' – all links
+
+'\_subcatchments' – all subcatchments (model networks only)
+
+'\_other' – other objects
+
+The lists of tables for the three types of network are as follows:
+
+| **Model Network Tables**            |                                     |
+|-------------------------------------|-------------------------------------|
+| 2D boundary                         | hw\_2d\_boundary\_line              |
+| 2D point source                     | hw\_2d\_point\_source               |
+| 2D zone                             | hw\_2d\_zone                        |
+| 2D zone defaults                    | hw\_2d\_zone\_defaults              |
+| Bank line                           | hw\_bank\_survey                    |
+| Base linear structure (2D)          | hw\_2d\_linear\_structure           |
+| Bridge                              | hw\_bridge                          |
+| Bridge inlet                        | hw\_bridge\_inlet                   |
+| Bridge opening                      | hw\_bridge\_opening                 |
+| Bridge outlet                       | hw\_bridge\_outlet                  |
+| Channel                             | hw\_channel                         |
+| Channel defaults                    | hw\_channel\_defaults               |
+| Channel shape                       | hw\_channel\_shape                  |
+| Conduit                             | hw\_conduit                         |
+| Conduit defaults                    | hw\_conduit\_defaults               |
+| Cross section line                  | hw\_cross\_section\_survey          |
+| Culvert inlet                       | hw\_culvert\_inlet                  |
+| Culvert outlet                      | hw\_culvert\_outlet                 |
+| Flap valve                          | hw\_flap\_valve                     |
+| Flow efficiency                     | hw\_flow\_efficiency                |
+| Flume                               | hw\_flume                           |
+| General line                        | hw\_general\_line                   |
+| General point                       | hw\_general\_point                  |
+| Ground infiltration                 | hw\_ground\_infiltration            |
+| Head discharge                      | hw\_head\_discharge                 |
+| Headloss curve                      | hw\_headloss                        |
+| IC zone - hydraulics (2D)           | hw\_2d\_ic\_polygon                 |
+| IC zone - infiltration (2D)         | hw\_2d\_inf\_ic\_polygon            |
+| IC zone - water quality (2D)        | hw\_2d\_wq\_ic\_polygon             |
+| Infiltration surface (2D)           | hw\_2d\_infil\_surface              |
+| Infiltration zone (2D)              | hw\_2d\_infiltration\_zone          |
+| Inline bank                         | hw\_inline\_bank                    |
+| Irregular weir                      | hw\_irregular\_weir                 |
+| Land use                            | hw\_land\_use                       |
+| Large catchment parameters          | hw\_large\_catchment\_parameters    |
+| Mesh zone                           | hw\_mesh\_zone                      |
+| Network results line (2D)           | hw\_2d\_results\_line               |
+| Network results point (1D)          | hw\_1d\_results\_point              |
+| Network results point (2D)          | hw\_2d\_results\_point              |
+| Network results polygon (2D)        | hw\_2d\_results\_polygon            |
+| Node                                | hw\_node                            |
+| Node defaults                       | hw\_manhole\_defaults               |
+| Orifice                             | hw\_orifice                         |
+| Polygon                             | hw\_polygon                         |
+| Porous polygon                      | hw\_porous\_polygon                 |
+| Porous wall                         | hw\_porous\_wall                    |
+| Pump                                | hw\_pump                            |
+| RTC data                            | hw\_rtc                             |
+| RTK hydrograph                      | hw\_unit\_hydrograph                |
+| River defaults                      | hw\_river\_reach\_defaults          |
+| River reach                         | hw\_river\_reach                    |
+| Roughness zone                      | hw\_roughness\_zone                 |
+| Runoff surface                      | hw\_runoff\_surface                 |
+| Screen                              | hw\_screen                          |
+| Shape                               | hw\_shape                           |
+| Sim parameters                      | hw\_sim\_parameters                 |
+| Siphon                              | hw\_siphon                          |
+| Sluice                              | hw\_sluice                          |
+| Sluice linear structure (2D)        | hw\_2d\_sluice                      |
+| Snow pack                           | hw\_snow\_pack                      |
+| Snow parameters                     | hw\_snow\_parameters                |
+| Storage area                        | hw\_storage\_area                   |
+| Subcatchment                        | hw\_subcatchment                    |
+| Subcatchment defaults               | hw\_subcatchment\_defaults          |
+| User control                        | hw\_user\_control                   |
+| Water quality parameters            | hw\_wq\_params                      |
+| Weir                                | hw\_weir                            |
+| **Collection Network Tables**       |                                     |
+| Approval level                      | cams\_approval\_level               |
+| Blockage incident                   | cams\_incident\_blockage            |
+| CCTV survey                         | cams\_cctv\_survey                  |
+| Channel                             | cams\_channel                       |
+| Collapse incident                   | cams\_incident\_collapse            |
+| Connection node                     | cams\_connection\_node              |
+| Connection pipe                     | cams\_connection\_pipe              |
+| Connection pipe name group          | cams\_name\_group\_connection\_pipe |
+| Cross section survey                | cams\_cross\_section\_survey        |
+| Customer complaint                  | cams\_incident\_complaint           |
+| Data logger                         | cams\_data\_logger                  |
+| Defence area                        | cams\_defence\_area                 |
+| Defence structure                   | cams\_defence\_structure            |
+| Drain test                          | cams\_drain\_test                   |
+| Dye test                            | cams\_dye\_test                     |
+| FOG inspection                      | cams\_fog\_inspection               |
+| Flooding incident                   | cams\_incident\_flooding            |
+| Flume                               | cams\_flume                         |
+| GPS survey                          | cams\_gps\_survey                   |
+| General asset                       | cams\_general\_asset                |
+| General incident                    | cams\_incident\_general             |
+| General line                        | cams\_general\_line                 |
+| General maintenance                 | cams\_general\_maintenance          |
+| General survey                      | cams\_general\_survey               |
+| General survey line                 | cams\_general\_survey\_line         |
+| Generator                           | cams\_generator                     |
+| Manhole repair                      | cams\_manhole\_repair               |
+| Manhole survey                      | cams\_manhole\_survey               |
+| Material                            | cams\_material                      |
+| Monitoring survey                   | cams\_mon\_survey                   |
+| Node                                | cams\_manhole                       |
+| Node name group                     | cams\_name\_group\_node             |
+| Odor incident                       | cams\_incident\_odor                |
+| Order                               | cams\_order                         |
+| Orifice                             | cams\_orifice                       |
+| Outlet                              | cams\_outlet                        |
+| Pipe                                | cams\_pipe                          |
+| Pipe clean                          | cams\_pipe\_clean                   |
+| Pipe name group                     | cams\_name\_group\_pipe             |
+| Pipe repair                         | cams\_pipe\_repair                  |
+| Pollution incident                  | cams\_incident\_pollution           |
+| Property                            | cams\_property                      |
+| Pump                                | cams\_pump                          |
+| Pump station                        | cams\_pump\_station                 |
+| Pump station electrical maintenance | cams\_pump\_station\_em             |
+| Pump station mechanical maintenance | cams\_pump\_station\_mm             |
+| Pump station survey                 | cams\_pump\_station\_survey         |
+| Resource                            | cams\_resource                      |
+| Screen                              | cams\_screen                        |
+| Siphon                              | cams\_siphon                        |
+| Sluice                              | cams\_sluice                        |
+| Smoke defect observation            | cams\_smoke\_defect                 |
+| Smoke test                          | cams\_smoke\_test                   |
+| Storage area                        | cams\_storage                       |
+| Treatment works                     | cams\_wtw                           |
+| User ancillary                      | cams\_ancillary                     |
+| Valve                               | cams\_valve                         |
+| Vortex                              | cams\_vortex                        |
+| Weir                                | cams\_weir                          |
+| Zone                                | cams\_zone                          |
+| **Distribution Network Tables**     |                                     |
+| Approval level                      | wams\_approval\_level               |
+| Borehole                            | wams\_borehole                      |
+| Burst incident                      | wams\_incident\_burst               |
+| Customer complaint                  | wams\_incident\_complaint           |
+| Data logger                         | wams\_data\_logger                  |
+| Fitting                             | wams\_fitting                       |
+| GPS survey                          | wams\_gps\_survey                   |
+| General asset                       | wams\_general\_asset                |
+| General incident                    | wams\_incident\_general             |
+| General line                        | wams\_general\_line                 |
+| General maintenance                 | wams\_general\_maintenance          |
+| General survey                      | wams\_general\_survey               |
+| General survey line                 | wams\_general\_survey\_line         |
+| Generator                           | wams\_generator                     |
+| Hydrant                             | wams\_hydrant                       |
+| Hydrant maintenance                 | wams\_hydrant\_maintenance          |
+| Hydrant test                        | wams\_hydrant\_test                 |
+| Leak detection                      | wams\_leak\_detection               |
+| Manhole                             | wams\_manhole                       |
+| Manhole repair                      | wams\_manhole\_repair               |
+| Manhole survey                      | wams\_manhole\_survey               |
+| Material                            | wams\_material                      |
+| Meter                               | wams\_meter                         |
+| Meter maintenance                   | wams\_meter\_maintenance            |
+| Meter test                          | wams\_meter\_test                   |
+| Monitoring survey                   | wams\_mon\_survey                   |
+| Node name group                     | wams\_name\_group\_node             |
+| Order                               | wams\_order                         |
+| Pipe                                | wams\_pipe                          |
+| Pipe name group                     | wams\_name\_group\_pipe             |
+| Pipe repair                         | wams\_pipe\_repair                  |
+| Pipe sample                         | wams\_pipe\_sample                  |
+| Property                            | wams\_property                      |
+| Pump                                | wams\_pump                          |
+| Pump station                        | wams\_pump\_station                 |
+| Pump station electrical maintenance | wams\_pump\_station\_em             |
+| Pump station mechanical maintenance | wams\_pump\_station\_mm             |
+| Pump station survey                 | wams\_pump\_station\_survey         |
+| Resource                            | wams\_resource                      |
+| Surface source                      | wams\_surface\_source               |
+| Tank                                | wams\_tank                          |
+| Treatment works                     | wams\_wtw                           |
+| Valve                               | wams\_valve                         |
+| Valve maintenance                   | wams\_valve\_maintenance            |
+| Water quality incident              | wams\_incident\_wq                  |
+| Zone                                | wams\_zone                          |
+
+e.g. to obtain all the nodes as a WSRowObjectCollection object
+
+```ruby
+roc=on.row_object_collection('_nodes')
+```
+
+To obtain them as an array of WSRowObject objects
+
+```ruby
+ro_vec=on.row_objects('_nodes')
+```
+
+In both cases the resultant WSRowObjectCollection or array can be
+iterated through e.g. this example, which finds the smallest x
+coordinate of all the manholes in the network.
+
+```ruby
+net=WSApplication.current_network
+minx=nil
+net.row_object_collection('cams_manhole').each do |ro|
+    if minx.nil? || ro.x < minx
+        minx=ro.x
+    end
+end
+
+puts minx
+```
+
+
+or the more or less identical
+
+```ruby
+net=WSApplication.current_network
+minx=nil
+net.row_objects('cams_manhole').each do |ro|
+    if minx.nil? || ro.x < minx
+        minx=ro.x
+    end
+end
+puts minx
+```
+
+In this instance, the fact that one method returns a Ruby array of
+WSRowObjects and the other returns a since WSRowObjectCollection object
+is disguised by the WSRowObjectCollection object following the normal
+Ruby convention for enumerable objects.
+
+To obtain an individual WSRowObject from a WSOpenNetwork if you know its
+name use the row\_object method e.g.
+
+```ruby
+ro=on.row_object('cams_manhole','MH359457')
+```
+
+This uses the ID of an object, so for links in model networks use the
+upstream node ID followed by a dot followed by the links suffix e.g. the
+following example which clears the selection, and selects one link:
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_object('hw_conduit','44633101.1')
+ro.selected=true
+```
+
+Some methods also take a ‘category’, the main use of which is to allow
+all the link types to be treated together e.g. in SQL. The category
+types are
+
+\_nodes
+
+\_links
+
+\_subcatchments
+
+\_other
+
+e.g. to select all the links regardless of type:
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+net.row_objects('_links').each do |ro|
+    ro.selected=true
+end
+```
+
+Because names are unique within the node, link and subcatchment
+categories, you can also use the category to find individual objects,
+thus the example which selects one link above can be rewritten as:
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_object('_links','44633101.1')
+ro.selected=true
+```
+
+Nodes and links are always automatically returned as objects of classes
+WSNode and WSLink respectively, with the parent class WSRowObject. These
+are largely identical to the WSRowObject class but have a few extra
+methods for use when navigating between objects (see below).
+
+### Getting and setting values in ‘row objects’.
+
+A fundamental part of the purpose of the Ruby scripting within InfoWorks
+ICM and InfoNet is to get and set values of fields for the objects
+within the networks.
+
+There are two fundamentally different sorts of values that can be got or
+set and two fundamentally different ways of doing this.
+
+The two sorts of values are:
+
+1.  Values of object fields stored in the network. These are the values
+    with which users of the software will be familiar; they are the
+    values that are displayed in the grids and property sheets, imported
+    via the Open Data Import Centre, exported via the Open Data Export
+    Centre etc.  
+    The names of the object fields are fixed for each type of object.
+
+2.  Tags. These are temporary values added to the objects for the
+    duration of the running of the script. They are typically used for
+    storing ‘working’ values which will later be aggregated or stored
+    into the object fields which will persist after the running of the
+    script– they can, of course, also be written to files using Ruby’s
+    file access mechanisms.  
+    The names of tags are not fixed but must begin with \_ and can only
+    contain digits and the letters A-Z and a-z (without accents) and the
+    \_ character.
+
+The two ways of accessing values are:
+
+1.  By using the \[\] and \[\]= notation e.g. ro\['field'\]=value,
+    value=ro\['field'\] (for object fields) and
+    ro\['\_tag\_name'\]=value, value=ro\['\_tag\_name'\] (for tags)
+
+2.  By using the field name or tag name as though it were the name of a
+    method e.g. ro.field=value, value=ro.field (for object fields) and
+    ro.\_tag\_name = value, value=ro.\_tag\_name (for tags).
+
+The key differences in behaviour between object fields and values,
+beyond that of the object field values having a life beyond the duration
+of the running of the script, are
+
+1.  Object field values must be explicitly written back to the local
+    database for the network using the write method – since tags are not
+    stored anywhere other than in working memory, the write method does
+    not need to be called for them.
+
+2.  Object field values are stored in the ‘InfoWorks / InfoNet’ world.
+    Any given field has a particular data type and, for string fields,
+    a length. Any attempt to store values incompatible with the object’s
+    data type will fail. Tags, on the other hand, exist in the Ruby
+    world and may therefore contain anything that can be stored in a
+    Ruby variable. There is no requirement for all the values for
+    different objects of the same tag to be of the same data type.
+
+3.  Object field values may be cached in the database, allowing more
+    objects and more data to be manipulated within a network than with
+    tags, which always exist in memory. Using too many tags and storing
+    too much data in them may cause the program’s memory limit to
+    be exceeded.
+
+Flags are treated as being separate fields.
+
+Fields can, in general, be set to nil which is the equivalent of causing
+them to be blank in the user interface or setting them to NULL in SQL.
+NULL in SQL and nil in Ruby are essentially the same.
+
+Arrays e.g. of coordinates are returned as a Ruby array.
+
+This example finds and selects pipes with width less than 200 or length
+less than 60 or, of course, both.
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_objects('cams_pipe').each do |ro|
+    if (!ro.width.nil? && ro.width<200) || (!ro.length.nil? && ro.length<60)
+        ro.selected=true
+    end
+end
+```
+
+This demonstrates a key difference between Ruby and SQL; in SQL it is
+safe to say
+
+width&lt;200, the expression will ignore values which are NULL. In Ruby
+however, it is necessary to explicitly check for nil values, nil being
+the Ruby counterpart to NULL.
+
+If you fail to do this check a runtime error will be raised.
+
+An equivalent way of writing the same script would be to use the \[\]
+notation as follows:
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_objects('cams_pipe').each do |ro|
+    if (!ro['width'].nil? && ro['width']<200) || (!ro['length'].nil? && ro['length']<60)
+        ro.selected=true
+    end
+end
+```
+
+To set values it is necessary to
+
+1.  Set them within a transaction. Transactions are treated as a single
+    unit for purposes of undo / red. When run from the user interface,
+    each transaction is treated as a single undo / redo step and appears
+    in the menu as 'Scripted transaction'.
+
+2.  Call the write method on the row object to explicitly put the values
+    into the database. This is the equivalent in the user interface of
+    finishing to edit an object, of which you might have changed a
+    number of values.
+
+This example sets a couple of users fields for CCTV surveys based on
+simple calculations performed on other fields:
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+net.transaction_begin
+ro=net.row_objects('cams_cctv_survey').each do |ro|
+    ro.user_number_1 = ro.surveyed_length / ro.total_length
+    ro.user_number_2 = ro.total_length / ro.pipe_length
+    ro.write
+end
+net.transaction_commit
+```
+
+The equivalent way of writing the script using the \[\] notation is as
+follows:
+
+```ruby
+net=WSApplication.current_network
+
+net.clear_selection
+
+net.transaction_begin
+
+ro=net.row_objects('cams_cctv_survey').each do |ro|
+
+ro['user_number_1'] = ro['surveyed_length'] /
+ro['total_length']
+
+ro['user_number_2'] = ro['total_length'] / ro['pipe_length']
+
+ro.write
+
+end
+
+net.transaction_commit
+```
+
+The use of the form which looks as though it is a method e.g.
+`ro.user_number_1` is potentially clearer to those writing and
+maintaining scripts, but the \[\] form can be more flexible since the
+parameter of the \[\] method is a Ruby string and therefore can be an
+expression. The following demonstrates this by storing the two values
+used on the right hand side of the above expressions as string
+parameters, and building up the user field name as a string expression:
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+net.transaction_begin
+expressions=[['surveyed_length','total_length'],['total_length','pipe_length']]
+ro=net.row_objects('cams_cctv_survey').each do |ro|
+    (0...expressions.size).each do |i|
+        ro['user_number_'+(i+1).to_s] = ro[expressions[i][0]] / ro[expressions[i][1]]
+        ro.write
+    end
+end
+net.transaction_commit
+```
+
+Once the user has run a script such as the above, the changes will have
+been made to the local network as though the change had been made
+manually in the user interface, or via SQL or similar, the changes have
+NOT been committed to the master database. It IS possible to commit the
+network to the master database by adding a call to the commit method
+with a suitable comment as a parameter e.g.
+
+net.commit 'set user fields'
+
+Two users of tags, one simple and one more complex, are demonstrated
+below in the 'navigating between objects' section.
+
+Various data fields in InfoWorks are represented as ‘structure blobs’ -
+the field contains a number of ‘rows’ of values for each object which in
+some respects behave as though they are a sub-table – they have a number
+of named fields with values.
+
+The structure blobs that are most common are the following:
+
+> hyperlinks
+>
+> attachments
+>
+> material\_details
+>
+> resource\_details
+
+Many tables contain a hyperlinks field. The following tables in asset
+networks contain one or more of the other three fields named above:
+
+**Collection Network**
+
+| Table                               | has attachments field | has material\_details field | has resource\_details field |
+|-------------------------------------|-----------------------|-----------------------------|-----------------------------|
+| Blockage incident                   | Y                     | Y                           | Y                           |
+| CCTV survey                         | Y                     | Y                           | Y                           |
+| Channel                             | Y                     | N                           | N                           |
+| Collapse incident                   | Y                     | Y                           | Y                           |
+| Connection node                     | Y                     | N                           | N                           |
+| Connection pipe                     | Y                     | N                           | N                           |
+| Cross section survey                | Y                     | Y                           | Y                           |
+| Customer complaint                  | Y                     | Y                           | Y                           |
+| Data logger                         | Y                     | N                           | N                           |
+| Defence area                        | Y                     | N                           | N                           |
+| Defence structure                   | Y                     | N                           | N                           |
+| Drain test                          | Y                     | Y                           | Y                           |
+| Dye test                            | Y                     | Y                           | Y                           |
+| FOG inspection                      | Y                     | Y                           | Y                           |
+| Flooding incident                   | Y                     | Y                           | Y                           |
+| Flume                               | Y                     | N                           | N                           |
+| GPS survey                          | Y                     | Y                           | Y                           |
+| General asset                       | Y                     | N                           | N                           |
+| General incident                    | Y                     | Y                           | Y                           |
+| General line                        | Y                     | N                           | N                           |
+| General maintenance                 | Y                     | Y                           | Y                           |
+| General survey                      | Y                     | Y                           | Y                           |
+| General survey line                 | Y                     | Y                           | Y                           |
+| Generator                           | Y                     | N                           | N                           |
+| Manhole repair                      | Y                     | Y                           | Y                           |
+| Manhole survey                      | Y                     | Y                           | Y                           |
+| Monitoring survey                   | Y                     | Y                           | Y                           |
+| Node                                | Y                     | N                           | N                           |
+| Odor incident                       | Y                     | Y                           | Y                           |
+| Orifice                             | Y                     | N                           | N                           |
+| Outlet                              | Y                     | N                           | N                           |
+| Pipe                                | Y                     | N                           | N                           |
+| Pipe clean                          | Y                     | Y                           | Y                           |
+| Pipe repair                         | Y                     | Y                           | Y                           |
+| Pollution incident                  | Y                     | Y                           | Y                           |
+| Property                            | Y                     | N                           | N                           |
+| Pump                                | Y                     | N                           | N                           |
+| Pump station                        | Y                     | N                           | N                           |
+| Pump station electrical maintenance | Y                     | Y                           | Y                           |
+| Pump station mechanical maintenance | Y                     | Y                           | Y                           |
+| Pump station survey                 | Y                     | Y                           | Y                           |
+| Screen                              | Y                     | N                           | N                           |
+| Siphon                              | Y                     | N                           | N                           |
+| Sluice                              | Y                     | N                           | N                           |
+| Smoke defect observation            | Y                     | N                           | N                           |
+| Smoke test                          | Y                     | Y                           | Y                           |
+| Storage area                        | Y                     | N                           | N                           |
+| Treatment works                     | Y                     | N                           | N                           |
+| User ancillary                      | Y                     | N                           | N                           |
+| Valve                               | Y                     | N                           | N                           |
+| Vortex                              | Y                     | N                           | N                           |
+| Weir                                | Y                     | N                           | N                           |
+| Zone                                | Y                     | N                           | N                           |
+
+**Distribution Network**
+
+| Table                               | has attachments field | has material\_details field | has resource\_details field |
+|-------------------------------------|-----------------------|-----------------------------|-----------------------------|
+| Borehole                            | Y                     | N                           | N                           |
+| Burst incident                      | Y                     | Y                           | Y                           |
+| Customer complaint                  | Y                     | Y                           | Y                           |
+| Data logger                         | Y                     | N                           | N                           |
+| Fitting                             | Y                     | N                           | N                           |
+| GPS survey                          | Y                     | Y                           | Y                           |
+| General asset                       | Y                     | N                           | N                           |
+| General incident                    | Y                     | Y                           | Y                           |
+| General line                        | Y                     | N                           | N                           |
+| General maintenance                 | Y                     | Y                           | Y                           |
+| General survey                      | Y                     | Y                           | Y                           |
+| General survey line                 | Y                     | Y                           | Y                           |
+| Generator                           | Y                     | N                           | N                           |
+| Hydrant                             | Y                     | N                           | N                           |
+| Hydrant maintenance                 | Y                     | Y                           | Y                           |
+| Hydrant test                        | Y                     | Y                           | Y                           |
+| Leak detection                      | Y                     | Y                           | Y                           |
+| Manhole                             | Y                     | N                           | N                           |
+| Manhole repair                      | Y                     | Y                           | Y                           |
+| Manhole survey                      | Y                     | Y                           | Y                           |
+| Meter                               | Y                     | N                           | N                           |
+| Meter maintenance                   | Y                     | Y                           | Y                           |
+| Meter test                          | Y                     | Y                           | Y                           |
+| Monitoring survey                   | Y                     | Y                           | Y                           |
+| Pipe                                | Y                     | N                           | N                           |
+| Pipe repair                         | Y                     | Y                           | Y                           |
+| Pipe sample                         | Y                     | Y                           | Y                           |
+| Property                            | Y                     | N                           | N                           |
+| Pump                                | Y                     | N                           | N                           |
+| Pump station                        | Y                     | N                           | N                           |
+| Pump station electrical maintenance | Y                     | Y                           | Y                           |
+| Pump station mechanical maintenance | Y                     | Y                           | Y                           |
+| Pump station survey                 | Y                     | Y                           | Y                           |
+| Surface source                      | Y                     | N                           | N                           |
+| Tank                                | Y                     | N                           | N                           |
+| Treatment works                     | Y                     | N                           | N                           |
+| Valve                               | Y                     | N                           | N                           |
+| Valve maintenance                   | Y                     | Y                           | Y                           |
+| Valve shut off                      | Y                     | N                           | N                           |
+| Water quality incident              | Y                     | Y                           | Y                           |
+| Zone                                | Y                     | N                           | N                           |
+
+In addition to these four fields, the following fields containing
+structure blobs occur in the tables as follows:
+
+**Model Network**
+
+| Bank line                    |                            |                     |
+|------------------------------|----------------------------|---------------------|
+| Bank line                    | Bank data                  | bank\_array         |
+| Base linear structure (2D)   |                            |                     |
+| Base linear structure (2D)   | Section data               | sections            |
+| Bridge                       |                            |                     |
+| Bridge                       | Bridge deck data           | bridge\_deck        |
+| Bridge                       | DS bridge section data     | ds\_bridge\_section |
+| Bridge                       | DS link section data       | ds\_link\_section   |
+| Bridge                       | US bridge section data     | us\_bridge\_section |
+| Bridge                       | US link section data       | us\_link\_section   |
+| Bridge linear structure (2D) |                            |                     |
+| Bridge linear structure (2D) | Section data               | sections            |
+| Bridge opening               |                            |                     |
+| Bridge opening               | Piers                      | piers               |
+| Channel shape                |                            |                     |
+| Channel shape                | Channel profile            | profile             |
+| Cross section line           |                            |                     |
+| Cross section line           | Section data               | section\_array      |
+| Flow efficiency              |                            |                     |
+| Flow efficiency              | Flow efficiency table      | FE\_table           |
+| Head discharge               |                            |                     |
+| Head discharge               | Head discharge power table | HDP\_table          |
+| Inline bank                  |                            |                     |
+| Inline bank                  | Section data               | bank                |
+| Irregular weir               |                            |                     |
+| Irregular weir               | Chainage elevation         | chainage\_elevation |
+| Node                         |                            |                     |
+| Node                         | Storage array              | storage\_array      |
+| River reach                  |                            |                     |
+| River reach                  | Left river bank            | left\_bank          |
+| River reach                  | Right river bank           | right\_bank         |
+| River reach                  | River sections             | sections            |
+| River reach                  | Section spacing            | section\_spacing    |
+| Shape                        |                            |                     |
+| Shape                        | Geometry                   | geometry            |
+| Subcatchment                 |                            |                     |
+| Subcatchment                 | ReFH descriptors           | refh\_descriptors   |
+
+**Collection Network**
+
+| CCTV survey                         |                     |                      |
+|-------------------------------------|---------------------|----------------------|
+| CCTV survey                         | Details             | details              |
+| Cross section survey                |                     |                      |
+| Cross section survey                | Section data        | section\_data        |
+| General survey line                 |                     |                      |
+| General survey line                 | Points              | point\_array         |
+| Manhole survey                      |                     |                      |
+| Manhole survey                      | Details             | details              |
+| Manhole survey                      | Incoming pipes      | pipes\_in            |
+| Manhole survey                      | Outgoing pipes      | pipes\_out           |
+| Order                               |                     |                      |
+| Order                               | Order details       | order\_details       |
+| Pipe clean                          |                     |                      |
+| Pipe clean                          | Pipes               | pipes                |
+| Pump station                        |                     |                      |
+| Pump station                        | Available telemetry | available\_telemetry |
+| Pump station                        | Levels              | levels               |
+| Pump station                        | Pump groups         | pump\_groups         |
+| Pump station mechanical maintenance |                     |                      |
+| Pump station mechanical maintenance | Pumps               | pumps                |
+| Pump station survey                 |                     |                      |
+| Pump station survey                 | Drop tests          | drop\_tests          |
+| Storage area                        |                     |                      |
+| Storage area                        | Level Data          | level\_data          |
+
+**Distribution Network**
+
+General survey line
+
+| General survey line                 | Points              | point\_array         |
+|-------------------------------------|---------------------|----------------------|
+| Hydrant test                        |                     |                      |
+| Hydrant test                        | Flow hydrants       | flow\_hydrants       |
+| Order                               |                     |                      |
+| Order                               | Order details       | order\_details       |
+| Pump station                        |                     |                      |
+| Pump station                        | Available telemetry | available\_telemetry |
+| Pump station                        | Levels              | levels               |
+| Pump station                        | Pump groups         | pump\_groups         |
+| Pump station mechanical maintenance |                     |                      |
+| Pump station mechanical maintenance | Pumps               | pumps                |
+| Pump station survey                 |                     |                      |
+| Pump station survey                 | Drop tests          | drop\_tests          |
+| Valve shut off                      |                     |                      |
+| Valve shut off                      | Points              | point\_array         |
+| Valve shut off                      | Valves              | valve\_details       |
+
+A simple example which loops through all the CCTV details to build up a
+list of videos used is as follows:
+
+```ruby
+net=WSApplication.current_network
+videos=Hash.new
+ro=net.row_objects('cams_cctv_survey').each do |ro|
+    ro.details.each do |d|
+        video=d.video_no
+        if !video.nil?
+            if !videos.has_key?(video)
+                videos[video]=0
+            end
+        end
+    end
+end
+videos.keys.sort.each do |k|
+    puts k
+end
+```
+
+ro.details may be written as ro\['details'\] as with all other fields.
+ro.details in this case is an object of type WSStructure. Each row of
+the structure is accessed as an object of type WSStructureRow, a class
+which has only two methods, \[\] and \[\]=.
+
+An alternative way of writing the code is to get the rows by index
+rather than use the 'each' method:
+
+```ruby
+net=WSApplication.current_network
+net.transaction_begin
+net.row_objects('cams_cctv_survey').each do |ro|
+    ro_details=ro.details
+    (0...ro_details.size).each do |i|
+    detail_row=ro_details[i]
+    if detail_row.code=='OJS'
+        detail_row.code='SJO'
+    end
+end
+ro_details.write
+ro.write
+end
+net.transaction_commit
+```
+
+This version makes it more explicit that ro.details and the individual
+rows are Ruby objects.
+
+When setting values in structure blobs it is necessary to call the write
+method on the WSStructure to save the data back to the WSRowObject, the
+write method must then be called on the WSRowObject to save it back to
+the local database e.g.
+
+```ruby
+net=WSApplication.current_network
+net.transaction_begin
+net.row_objects('cams_cctv_survey').each do |ro|
+    ro.details.each do |d|
+        if d.code=='OJS'
+            d.code='SJO'
+        end
+    end
+    ro.details.write
+    ro.write
+end
+net.transaction_commit
+```
+
+This example changes the OJS code to SJO in all defects in all CCTV
+surveys.
+
+### Navigating between objects
+
+The term ‘navigate’ is used here for the process of finding objects that
+are either physically connected to a given object (e.g. the upstream
+node, the downstream links) or conceptually linked (e.g. the surveys for
+an asset, the assets for a survey).
+
+There are two methods for navigating between objects.
+
+#### Specific to nodes and links.
+
+Node and links are presented to the user as instances of classes WSNode
+and WSLink respectively. The nodes have the methods us\_links and
+ds\_links and the links have methods us\_node and us\_link.
+
+This code clears the selection, then selects a node, then iteratively
+selects its upstream links, then their upstream nodes, then their
+upstream links etc.
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_object('cams_manhole','MH354671')
+ro.selected=true
+ro._seen=true
+unprocessedLinks=Array.new
+ro.us_links.each do |l|
+    if !l._seen
+        unprocessedLinks << l
+    end
+end
+
+while unprocessedLinks.size<0
+    working=unprocessedLinks.shift
+    working.selected=true
+    workingUSNode=working.us_node
+    if !workingUSNode.nil? && !workingUSNode._seen
+        workingUSNode.selected=true
+        workingUSNode.us_links.each do |l|
+            if !l._seen
+                unprocessedLinks << l
+                l.selected=true
+            end
+        end
+    end
+end
+```
+
+As well as demonstrating use of the `us_links` method of WSNode and the
+`us_node` method of `WSLink`, this demonstrate some other useful
+techniques:
+
+1 – as with the example above listing the WSModelObject objects in a
+database, this demonstrates the use of a breadth first search – we add
+the upstream links of the node to an array, then work through the array
+from the front, taking the links from it, selecting them, then if they
+have an upstream node, getting the upstream links of that node and
+adding them to the back of the array. In this case we are using the
+shift method of the Ruby array, which returns the first item in the
+array, removing it from the array.
+
+2-unlike the navigation of the database, where the objects are in a
+simple tree structure, networks can contain loops, therefore you will
+typically need to make sure that you only process any given node or link
+once, otherwise your script may well keep revisiting the same objects
+over and over again. We do this by use of a tag which we have named
+'\_seen'. Whenever we process a node or link we set the value of the
+\_seen tag to true, and we ensure that we don't process nodes or links
+if they have got the tag set to true, signifying that they have already
+been processed.
+
+#### General navigation
+
+The more general way of navigating between objects is to use the
+navigate and navigate1 methods of the WSRowObject. The difference
+between the 2 methods is that navigate1 may only be used for one to one
+links and returns a WSRowObject or nil, whereas navigate may also be
+used for one-to-many links and returns an array, possibly containing
+zero elements.
+
+The code above may be rewritten using these methods as follows:
+
+```ruby
+net=WSApplication.current_network
+net.clear_selection
+ro=net.row_object('cams_manhole','MH354671')
+ro.selected=true
+ro._seen=true
+unprocessedLinks=Array.new
+ro.navigate('us_links').each do |l|
+    if !l._seen
+        unprocessedLinks << l
+    end
+end
+while unprocessedLinks.size<0
+    working=unprocessedLinks.shift
+    working.selected=true
+    workingUSNode=working.navigate1('us_node')
+    if !workingUSNode.nil? && !workingUSNode._seen
+        workingUSNode.selected=true
+        workingUSNode.navigate('us_links').each do |l|
+            if !l._seen
+                unprocessedLinks << l
+                l.selected=true
+            end
+        end
+    end
+end
+```
+
+As you can see, the only changes here are that calls to us\_links are
+replaced by calls to `nagivate('us_links')` and the call to us\_link is
+replaced by a call to `navigate1('us_link')`.
+
+The navigate method however is much more versatile – this example
+navigates from CCTV surveys to pipes
+
+```ruby
+net=WSApplication.current_network
+interesting_codes=['ABC','DEF','GHI','JKL','MNO']
+net.transaction_begin
+net.row_objects('cams_pipe').each do |ro|
+    (0...interesting_codes.size).each do |i|
+        ro['user_number_'+(i+1).to_s]=nil
+    end
+    ro.write
+end
+
+codes=Hash.new
+net.row_objects('cams_cctv_survey').each do |ro|
+    ro.details.each do |d|
+        code=d.code
+        code_index=interesting_codes.index(code)
+        if !code_index.nil?
+            pipe=ro.navigate1('pipe')
+            if pipe
+                if pipe._defects.nil?
+                    pipe._defects=Array.new(interesting_codes.size,0)
+                end
+            pipe._defects[code_index]+=1
+            end
+        end
+    end
+end
+
+net.row_objects('cams_pipe').each do |ro|
+    if !ro._defects.nil?
+        (0...interesting_codes.size).each do |i|
+            ro['user_number_'+(i+1).to_s]=ro._defects[i]
+        end
+        ro.write
+    end
+end
+
+net.transaction_commit
+```
+
+Essentially, it clears user numbers 1 to 5 for all pipes, then iterates
+through all defects, counting the number of defects of 5 particular
+codes for each pipe, then stores those in user numbers 1 to 5.
+
+Note the use of arrays stored in tags for temporary storage of counts.

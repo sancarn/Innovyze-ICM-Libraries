@@ -1,0 +1,1522 @@
+Appendix
+===============================
+
+## Appendix 1 – Pollutograph codes
+
+List of pollutograph codes:
+
+| P2D  |
+|------|
+| P2A  |
+| P1D  |
+| P1A  |
+| NHD  |
+| COD  |
+| COA  |
+| PH\_ |
+| SAL  |
+| NO3  |
+| NO2  |
+| DO\_ |
+| COL  |
+| TW\_ |
+| BOD  |
+| TPD  |
+| TPA  |
+| TKD  |
+| TKA  |
+| SF2  |
+| SF1  |
+| P4D  |
+| P4A  |
+| P3D  |
+| P3A  |
+| BOA  |
+
+## Appendix 2 – Run Parameters
+
+The fields that are set on the run dialog in the user interface are, in
+ICM Exchange, set as key value pairs within the hash passed in as the
+6<sup>th</sup> parameter of the new\_run method, called on the asset
+group in which the run is to be created.
+
+The keys of the hash are all strings, the values are of a number of
+different types as described below.
+
+Where the values have units, they must always be specified in S.I.
+units.
+
+The run parameters used for ICM Exchange broadly speaking correspond to
+those set in the user interface. The list below therefore includes the
+field’s location in the run dialog and its sub-dialogs, and its
+description in the user interface if the difference is noteworthy.
+
+Consult InfoWorks ICM's main help for more details.
+
+The behavior of unspecified values for run parameters is as follows:
+When the run is created a number of the run parameters are supplied with
+default values. This means that were you to create a run, passing an
+empty hash in as the last parameter, and then to look at the values for
+the parameters using the \[\] method of the run object i.e.
+
+```ruby
+db.list_read_write_run_fields.each do |p|
+    if !run[p].nil?
+        puts "#{p} #{run[p]}"
+    end
+end
+```
+
+you would see that a number of the fields have non-nil values as
+follows:
+
+```
+Duration              60
+DWFMultiplier         32
+EveryNode             false
+EveryOutflow          false
+EverySubcatchment     false
+GaugeMultiplier       1
+IncludeBaseFlow       false
+IncludeLevel          false
+IncludeNode           false
+IncludeOutflow        false
+IncludeRainfall       false
+IncludeRunoff         false
+LevelLag              0
+LevelThreshold        0.0
+NodeLag               0
+NodeThreshold         0.0
+OutflowLag            0
+OutflowThreshold      0.0
+RainfallLag           0
+RainfallThreshold     0.0
+RainType              false
+ResultsMultiplier     6
+RTCLag                0
+Start Time            0.0
+SubcatchmentLag       0
+SubcatchmentThreshold 0.0
+TimeStep              60
+```
+
+All other fields are treated as nil by default. However, for a number of
+fields a nil value is treated as a particular default value for that
+field as specified in the detailed notes for the fields in question.
+
+Where the name of the field below contains spaces or underscores the
+spaces or underscores should be used when setting the value in the hash.
+
+**Always Use Final State**
+
+Data type: Boolean
+
+Location in UI: Main page col 2
+
+Description in UI: Always use state without initialisation
+
+**Buildup Time**
+
+Data type: Long Integer
+
+Location in UI: Water Quality Form
+
+Notes: BuildUp time – used in water quality simulations, may either be
+nil (in which case it is not used) or a value between 1 and 1000000
+
+**CheckPumps**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Control Page
+
+**Comment**
+
+Data type: String
+
+Location in UI: Tree object property page
+
+**ConcentrationWarning**
+
+Data type: Double
+
+Location in UI: Diagnostics Form
+
+Description in UI: Concentration
+
+**Depth**
+
+Data type: Double
+
+Location in UI: 2D Sheet, Tolerance Tab
+
+Nil treated as: 0.001
+
+Valid range: 0 - 99999999
+
+Notes: Depth and InnudationMapDepthThreshold – Depth must be greater
+than 0 and less then 99999999, and also must be less then
+InnundationMapDepthThreshold.
+
+**Depth\_threshold**
+
+Data type: Double
+
+Location in UI: 2d Sheet, Steady State Tab
+
+Description in UI: Threshold for 1-hour change in depth
+
+**DontApplyRainfallSmoothing**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Nil treated as: TRUE
+
+Notes: NB, this is the opposite sense to the check box on the dialog
+
+**DontLogModeSwitches**
+
+Data type: Boolean
+
+Location in UI: Diagnostics Form
+
+Notes: NB, this is the opposite sense to the check box on the dialog
+
+**DontLogRTCRuleChanges**
+
+Data type: Boolean
+
+Location in UI: Diagnostics Form
+
+Notes: NB, this is the opposite sense to the check box on the dialog
+
+**DontOutputRTCState**
+
+Data type: Boolean
+
+Location in UI: Diagnostics Form
+
+Notes: NB, this is the opposite sense to the check box on the dialog
+
+**Duration**
+
+Data type: Long Integer
+
+Location in UI: Main Page col 1
+
+Default: 60
+
+Notes: Duration of simulation, in units used in duration unit
+
+**DurationUnit**
+
+Data type: String
+
+Location in UI: Main Page col 1
+
+Notes: The DurationType field must be nil or one of the strings
+‘Minutes’, ‘Hours’, ‘Days’, ‘Weeks’, ‘Years’. It is important to realise
+that the value of this fields does NOT affect the meaning of the
+Duration field, which is always in minutes, it merely affects the way
+the duration is displayed e.g. to run a simulation for a day, and have
+the time in the run view displayed as ‘1 day’ you should enter the
+values 1440 in the Duration fields and ‘Days’ in the DurationType field.
+
+**DWFDefinition**
+
+Data type: String
+
+Location in UI: Timestep Control Sheet - RTC Page
+
+Default: '
+
+Description in UI: DWF Mode Definition
+
+**DWFModeResults**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Control Page
+
+Description in UI: Store results when in DWF mode
+
+**DWFMultiplier**
+
+Data type: Long Integer
+
+Location in UI: Timestep Control Sheet - Control Page
+
+Default: 32
+
+Notes: Must be a power of 2 between 1 and 2048
+
+**End Duration**
+
+Data type: Boolean
+
+Location in UI: Main Page col 1
+
+Notes: True for time/date, false for duration
+
+**End Time**
+
+Data type: Double / DateTime (see note 1)
+
+Location in UI: Main Page col 1
+
+Notes: See note 1
+
+**EveryNode**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Node Page
+
+Default: false
+
+Notes: True = Total flow into system, False = flow at each node
+
+**EveryOutflow**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Outflows Page
+
+Default: false
+
+Notes: True = Total flow from system, False = flow at each outfall
+
+**EverySubcatchment**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Subcatchment Page
+
+Default: false
+
+Notes: True = Total flow into system, False = flow at each subcatchment
+
+**ExitOnFailedInit**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Notes: Exit if initialisation fails
+
+**ExitOnFailedInitCompletion**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Description in UI: Exit if initialisation complete in (mins)
+
+Notes: If the ExitOnFailedInitCompletion field is set to true, the
+InitCompletionMinutes field must be set to a value between 1 and
+99999999
+
+**GaugeMultiplier**
+
+Data type: Long Integer
+
+Location in UI: Main Page col 1
+
+Default: 1
+
+Valid range: 0 - 99999
+
+Notes: Gauge timestep multiplier
+
+**Gauges**
+
+Data type: Index
+
+Location in UI: Main Page col 1
+
+Description in UI: Additional links to be gauged
+
+Notes: a selection list object
+
+**GetStartTimeFromRainEvent**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+**Ground Infiltration**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Notes: Ground Infiltration object used for simulation
+
+**IncludeBaseFlow**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Subcatchments Page
+
+Default: false
+
+Description in UI: Include Base Flow
+
+**IncludeLevel**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Level Page
+
+Default: false
+
+Description in UI: Check for levels
+
+**IncludeNode**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Node Page
+
+Default: false
+
+Description in UI: Check for inflows
+
+**IncludeOutflow**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Outflows Page
+
+Default: false
+
+Description in UI: Check for outflows
+
+**IncludeRainfall**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Rainfall Page
+
+Default: false
+
+Description in UI: Check for rainfall
+
+**IncludeRTC**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - RTC Page
+
+Description in UI: Check RTC
+
+**IncludeRunoff**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Subcatchments Page
+
+Default: false
+
+Description in UI: Include Runoff
+
+**Inflow**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Notes: Inflow object used for simulation
+
+**InitCompletionMinutes**
+
+Data type: Long Integer
+
+Location in UI: Main page col 2
+
+**Initial Conditions 2D**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Notes: 2D Initial conditions object used for simulation
+
+**InundationMapDepthThreshold**
+
+Data type: Double
+
+Location in UI: 2D Sheet, Advanced Tab
+
+Nil treated as: 0.01
+
+Valid range: &gt;=0
+
+Notes: see Depth above.
+
+**Level**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Notes: Level object used for simulation
+
+**LevelLag**
+
+Data type: Long Integer
+
+Location in UI: Timestep Control Sheet - Level Page
+
+Default: 0
+
+**LevelThreshold**
+
+Data type: Double
+
+Location in UI: Timestep Control Sheet - Level Page
+
+Default: 0
+
+Valid range: 0 - 99999999
+
+**MaxVelocity**
+
+Data type: Double
+
+Location in UI: 2D Sheet, Advanced Tab
+
+Nil treated as: 10
+
+Valid range: 0 - 99999999
+
+**Minor Timestep 2D**
+
+Data type: Boolean
+
+Location in UI: 2D Sheet, Advanced Tab
+
+Description in UI: Link 1D-2D calculations at minor timestep
+
+**Momentum**
+
+Data type: Double
+
+Location in UI: 2D Sheet, Tolerance Tab
+
+Nil treated as: 0.01
+
+Valid range: 0 - 99999999
+
+**NodeLag**
+
+Data type: Long Integer
+
+Location in UI: Timestep Control Sheet - Node Page
+
+Default: 0
+
+**NodeThreshold**
+
+Data type: Double
+
+Location in UI: Timestep Control Sheet - Node Page
+
+Default: 0
+
+**OutflowLag**
+
+Data type: Long Integer
+
+Location in UI: Timestep Control Sheet - Outflows Page
+
+Default: 0
+
+**OutflowThreshold**
+
+Data type: Double
+
+Location in UI: Timestep Control Sheet - Outflows Page
+
+Default: 0
+
+**Pipe Sediment Data**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Notes: Pipe sediment data object used for simulation
+
+**Pollutant Graph**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Notes: Pollutant graph object used for simulation
+
+**QM Dependent Fractions**
+
+Data type: Boolean
+
+Location in UI: Water Quality Form
+
+Description in UI: Dependent Sediment Fractions
+
+**QM Hydraulic Feedback**
+
+Data type: Boolean
+
+Location in UI: Water Quality Form
+
+Description in UI: Erosion Deposition Affects Hydraulics
+
+**QM Model Macrophytes**
+
+Data type: Boolean
+
+Location in UI: Water Quality Form
+
+**QM Multiplier**
+
+Data type: Long Integer
+
+Location in UI: Water Quality Form
+
+Valid range: 0 - 10
+
+**QM Native Washoff Routing**
+
+Data type: Boolean
+
+Location in UI: Water Quality Form
+
+**QM Oxygen Demand**
+
+Data type: Text
+
+Location in UI: Water Quality Form
+
+Nil treated as: BOD
+
+**RainfallLag**
+
+Data type: Long Integer
+
+Location in UI: Timestep Control Sheet - Rainfall Page
+
+Default: 0
+
+**RainfallThreshold**
+
+Data type: Double
+
+Location in UI: Timestep Control Sheet - Rainfall Page
+
+Default: 0
+
+**RainType**
+
+Data type: Boolean
+
+Location in UI: 2D Sheet, Advanced Tab
+
+Default: false
+
+Description in UI: Ignore rain falling on dry elements
+
+**ReadSubeventNAPIAndAntecedDepth**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Description in UI: Read subevent NAPI and Antecedent Depth
+
+**ReadSubeventParams**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Description in UI: Read subevent UCWI & Evaporation
+
+**Regulator**
+
+Data type: Index
+
+Location in UI: Main Page col 2
+
+Notes: Regulator object used for simulation
+
+**ResultsMultiplier**
+
+Data type: Long Integer
+
+Location in UI: Main Page col 1
+
+Default: 6
+
+Valid range: 0 - 99999
+
+Description in UI: Results timestep multiplier
+
+**RTCLag**
+
+Data type: Long Integer
+
+Location in UI: Timestep Control Sheet - RTC Page
+
+Default: 0
+
+Valid range: 0 - 99999999
+
+**RTCRulesOverride**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Description in UI: RTC rules override pump on levels
+
+**RunoffOnly**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Notes: Restrictions as in UI
+
+**Save Final State**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+**Sim**
+
+Data type: Index
+
+Location in UI: Main Page col 2
+
+Notes: Sim object used for the initial state
+
+**SpillCorrection**
+
+Data type: Boolean
+
+Location in UI: 2D Sheet, Advanced Tab
+
+Nil treated as: TRUE
+
+Description in UI: Adjust bank levels based on adjacent element ground
+levels
+
+**Start Time**
+
+Data type: Double / DateTime
+
+Location in UI: Main Page col 1
+
+Default: 0
+
+Notes: See note 1
+
+**StopOnEndOfTimeVaryingData**
+
+Data type: Boolean
+
+Location in UI: Timestep Control Sheet - Control Page
+
+Description in UI: Stop simulation at the end of time varying data
+
+**StorePRN**
+
+Data type: Boolean
+
+Location in UI: Main Page col 2
+
+Description in UI: Summary (PRN) results
+
+**StormDefinition**
+
+Data type: String
+
+Location in UI: Timestep Control Sheet - RTC Page
+
+Default: '
+
+Description in UI: Storm Mode Condition
+
+**SubcatchmentLag**
+
+Data type: Long Integer
+
+Location in UI: Timestep Control Sheet - Subcatchments Page
+
+Default: 0
+
+**SubcatchmentThreshold**
+
+Data type: Double
+
+Location in UI: Timestep Control Sheet - Subcatchments Page
+
+Default: 0
+
+**Theta**
+
+Data type: Double
+
+Location in UI: 2D Sheet, Advanced Tab
+
+Nil treated as: 0.9
+
+Valid range: 0 - 99999999
+
+**Time\_lag**
+
+Data type: Double
+
+Location in UI: 2d Sheet, Steady State Tab
+
+Nil treated as: 60
+
+**TimeStep**
+
+Data type: Long Integer
+
+Location in UI: Main Page col 1
+
+Default: 60
+
+Valid range: 1 - 99999
+
+Description in UI: Timestep (s)
+
+**timestep\_stability\_control**
+
+Data type: Double
+
+Location in UI: 2D Sheet, Advanced Tab
+
+Nil treated as: 0.95
+
+Valid range: 0 - 1
+
+**TimestepLog**
+
+Data type: Boolean
+
+Location in UI: Diagnostics Form
+
+**Trade Waste**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Notes: Trade Waste object used for simulation
+
+**Use\_local\_steady\_state**
+
+Data type: Boolean
+
+Location in UI: 2d Sheet, Steady State Tab
+
+Description in UI: Deactivate steady state areas
+
+**UseGPU**
+
+Data type: Long Integer
+
+Location in UI: 2D Sheet, GPU Tab
+
+Notes: 0 or nil = never, 1 = if available, 2 = always
+
+**UseQM**
+
+Data type: Boolean
+
+Location in UI: Main Page col 3
+
+**Velocity**
+
+Data type: Double
+
+Location in UI: 2D Sheet, Tolerance Tab
+
+Nil treated as: 0.01
+
+Valid range: 0 - 99999999
+
+**Velocity\_threshold**
+
+Data type: Double
+
+Location in UI: 2d Sheet, Steady State Tab
+
+Description in UI: Threshold for 1-hour change in velocity
+
+**VelocityWarning**
+
+Data type: Double
+
+Location in UI: Diagnostics Form
+
+Description in UI: Velocity
+
+**VolumeBalanceWarning**
+
+Data type: Double
+
+Location in UI: Diagnostics Form
+
+Description in UI: Volume balance
+
+**Waste Water**
+
+Data type: Index
+
+Location in UI: Main Page col 3
+
+Description in UI: Waste Water object used for simulation
+
+**Working**
+
+Data type: Boolean
+
+Location in UI: Main Page col 1
+
+Description in UI: Allow re-runs using updated network
+
+Notes: Must be set to true before the update\_to\_latest method may be
+used.
+
+Notes
+
+1.  As ICM Exchange does not have a Ruby data time to represent the use
+    of times in ICM simulations, in which both relative times and
+    absolute times are used, the following convention is used for the
+    start time and end time:  
+    Absolute times are represented as a DateTime object, relative times
+    as a negative double – a time in seconds. This is similar to the
+    representation used in the results binary file. Therefore to set a
+    relative time, negate the number of seconds and set the field to
+    this value, to set an absolute time use a ruby DateTime object as
+    described earlier in this document.  
+    When reading a value from the database to determine whether the
+    start time is relative of absolute you will want to use code like
+    this:
+
+```ruby
+myStartTime=working['Start Time']
+if myStartTime.nil?
+    myText='nil'
+elsif myStartTime.kind_of? DateTime
+    myText="absolute -#{myStartTime.year}/#{myStartTime.month}/#{myStartTime.day}"
+elsif myStartTime.kind_of? Float
+    myText="relative - #{-myStartTime} seconds"
+else
+    myText="unexpected type"
+end
+puts "#{myText}"
+```
+
+1.  The percentage volume balance is not available from ICM Exchange.
+
+## Appendix 3 – Running scripts from the user interface
+
+Ruby scripts may be run from the user interface when a network of any
+type is open.
+
+The menu items to run them can be found on the ‘Network’ menu.
+
+“Run Ruby script…” allows the user to select a script file, the default
+suffix being “.rb”.
+
+Once scripts are run the output directed to ‘standard output’e.g. by
+using the command puts (e.g. ‘puts 'hello world'’) is displayed. This
+output is not currently displayed synchronously as the script is run,
+though this may change in a future release of the software.
+
+The last ten scripts run are saved in a list and accessed via the
+‘Recent scripts’ menu item.
+
+It is possible to store a CSV file containing the names of a number of
+scripts along with a name of a menu item to invoke them. These appear as
+sub-menu items of the ‘Run add-on’ menu item, which also appears on the
+‘Network’ menu.
+
+The CSV file must be stored in a directory below that used by the user’s
+application data named ‘scripts’ and must be called ‘scripts.csv’.
+
+The name of the directory used by the user’s application data will vary
+according to the user’s set up, version of Windows etc. and can be found
+in the about box of the software as ‘NEP (iws) Folder’.
+
+Having found this folder e.g.
+
+C:\\Users\\badgerb\\AppData\\Roaming\\Innovyze\\WorkgroupClient
+
+Add a sub-directory called ‘scripts’.
+
+The folder may also be determined by using the
+WSApplication.add\_on\_folder method, this will return the path of the
+scripts folder i.e.
+C:\\Users\\badgerb\\AppData\\Roaming\\Innovyze\\WorkgroupClient\\scripts
+in this case.
+
+In this scripts.csv file you should add a CSV file containing 2 columns,
+the first being the menu item for the script, the second the path for
+the script file itself.
+
+The paths for the script files may either be fully qualified paths (i.e.
+beginning with a drive letter or the name of a network share) in which
+case that path will be used, or a non-fully qualified path in which case
+the software will assume the file is in the folder containing the CSV
+file or a subdirectory of it.
+
+Changes to this file only take effect when the application is restarted.
+
+## Appendix 4 - Open Data Import / Export Centre UI Customisation
+
+The Ruby scripting can be used to make the import / export of data via
+the open data import centre more streamlined for users of the software
+by using Ruby scripts from the UI in conjunction with pre-prepared
+configuration files and the Ruby scripting's UI elements.
+
+At its simplest, if you can hard-code the paths of all files, then this
+can be done with 2 lines of code e.g.
+
+```ruby
+#Import:
+net=WSApplication.current_network
+net.odic_import_ex('CSV','d:\\temp\\odic.cfg',nil,'Node','d:\\temp\\goat.csv','Pipe','d:\\temp\\stoat.csv')
+
+#Export:
+net=WSApplication.current_network
+net.odec_export_ex('CSV','d:\\temp\\odxc.cfg',nil,'Node','d:\\temp\\goat2.csv','Pipe','d:\\temp\\stoat2.csv')
+```
+
+As described above, both methods take a variable number of parameters.
+If you are importing a large number of files you may find it less
+unwieldy to call the method multiple times importing one file at a time
+e.g.
+
+```ruby
+net=WSApplication.current_network
+import=[['Node','goat'],['Pipe','stoat']]
+import.each do |f|
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',nil,f[0],'d:\\temp\\'+f[1]+'.csv')
+end
+```
+
+for import and
+
+```ruby
+net=WSApplication.current_network
+export=[['Node','goat'],['Pipe','stoat']]
+export.each do |f|
+    net.odec_export_ex('CSV','d:\\temp\\odxc.cfg',nil,f[0],'d:\\temp\\'+f[1]+'2.csv')
+end
+```
+
+
+for export.
+
+It should be noted that
+
+1.  You will not see any of the error messages on import that would
+    appear in the text box. Exceptions are not thrown for that sort of
+    error, only for more serious errors in the processing.
+
+2.  By using nil in the 3<sup>rd</sup> parameter of each method, default
+    behaviour will be used for the options set on the dialog, this may
+    not be what you want.
+
+3.   The first of these can be solved by specifying an error text file e.g.
+
+```ruby
+net=WSApplication.current_network
+import=[['Node','goat'],['Pipe','stoat']]
+import.each do |f|
+    params=Hash.new
+    params['Error File']='d:\\temp\\errs'+f[0]+'.txt'
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',params,f[0],'d:\\temp\\'+f[1]+'.csv')
+end
+```
+
+The aim here is to produce one file per table. The files will be created
+but of zero bytes long if there are no errors for that table.
+
+You will probably want to communicate the errors to the user. In its
+simplest form this could be done by checking the size of the files and
+displaying a message box at the end of the process e.g.
+
+```ruby
+require 'FileUtils'
+net=WSApplication.current_network
+import=[['Node','goatwitherrs'],['Pipe','stoat']]
+errFiles=Array.new
+import.each do |f|
+    params=Hash.new
+    errFile='d:\\temp\\errs'+f[0]+'.txt'
+    params['Error File']=errFile
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',params,f[0],'d:\\temp\\'+f[1]+'.csv')
+    if File.size(errFile)<0
+        errFiles << errFile
+    else
+        FileUtils.rm errFile
+    end
+end
+if errFiles.size<0
+    msg="Errors occurred - please consult the following files:"
+    errFiles.each do |f|
+        msg+="\r\n"
+        msg+=f
+    end
+    WSApplication.message_box msg,nil,nil,nil
+end
+```
+
+This will display a message reporting to the user the error files which
+should be consulted e.g.
+
+<img src="./media/image12.png" width="375" height="161" />
+
+Note the inclusion of FileUtils and the use of the FileUtils.rm method
+to delete files of zero length.
+
+If you wish to show the user the actual messages then this can be
+achieved either by reading the files and outputting them to the standard
+output e.g.
+
+```ruby
+require 'FileUtils'
+net=WSApplication.current_network
+import=[['Node','goatwitherrs','nodes'],['Pipe','stoat','pipes']]
+errInfo=Array.new
+import.each do |f|
+    params=Hash.new
+    errFile='d:\\temp\\errs'+f[0]+'.txt'
+    if File.exists? errFile
+        FileUtils.rm errFile
+    end
+    params['Error File']=errFile
+    net.odic_import_ex('CSV','d:\\temp\\odic.cfg',params,f[0],'d:\\temp\\'+f[1]+'.csv')
+    if File.size(errFile)<0
+        temp=Array.new
+        temp << errFile
+        temp << f[2]
+        errInfo << temp
+    else
+        FileUtils.rm errFile
+    end
+end
+if errInfo.size<0
+    puts "Errors importing data:"
+    errInfo.each do |ei|
+        puts "Errors for #{ei[1]}:"
+        outputString=''
+        File.open ei[0] do |f|
+            f.each_line do |l|
+                l.chomp!
+                outputString+=l
+                outputString+="\r"
+            end
+        end
+        puts outputString
+    end
+end
+```
+
+Or by using the open\_text\_view method, in which case the block
+beginning with if ErrInfo.size&gt;0 would be replaced with the
+following:
+
+```ruby
+if errInfo.size<0
+    consolidatedErrFileName='d:\\temp\\allerrs.txt'
+    if File.exists? consolidatedErrFileName
+        FileUtils.rm consolidatedErrFileName
+    end
+    consolidatedFile=File.open consolidatedErrFileName,'w'
+    errInfo.each do |ei|
+        consolidatedFile.puts "Errors for #{ei[1]}:"
+        File.open ei[0] do |f|
+            f.each_line do |l|
+                l.chomp!
+                consolidatedFile.puts l
+            end
+        end
+    end
+    consolidatedFile.close
+    WSApplication.open_text_view 'Open Data Import Centre Errors',consolidatedErrFileName,false
+end
+```
+
+You may wish to not hard code the path of the config file but to store
+it with the Ruby script. This may be done by obtaining the path of the
+folder containing the script then adding the configuration file name
+onto the name e.g.
+
+```ruby
+configfile=File.dirname(WSApplication.script_file)+'\\odicwithsource.cfg'
+```
+
+This works via the following 3 steps:
+
+Get the file name of the script file e.g. d:\\temp\\myscript.rb
+
+Use the File.dirname method to obtain the folder name e.g. d:\\temp
+
+Add the configuration file name e.g. d:\\temp\\odicwitsource.cfg
+
+Alternatively you may wish to allow the user to choose a config file
+using the WSApplication.file\_dialog method e.g. by beginning the script
+with
+
+```ruby
+net=WSApplication.current_network
+configfile=WSApplication.file_dialog(true,'cfg','Open Data Import Centre Config File',nil,false,false)
+
+if configfile.nil?
+    WSApplication.message_box 'No config file selected - no import will be performed',nil,nil,false
+else
+    ...
+```
+
+and then using configfile in the call to odic\_import\_ex
+
+Similarly you may wish to allow the user to choose the location of the
+data files or database tables etc. This may be done in numerous ways
+depending on the data type and/or how things are structured.
+
+Possible mechanisms include:
+
+1 Allowing the user to select a folder and then using hard-coded names
+based on that folder.
+
+2 Allowing the user to choose one file and then selecting similarly
+named files in the same folder (e.g. if we are expecting a file with the
+suffix 'stoat' and we find a file called 'northwest\_stoat' we will also
+look for files called 'northwest\_goat' etc.)
+
+3 Allowing the user to select multiple files and choosing the data type
+to import based on the file names.
+
+Here are brief examples of the 3 mechanisms:
+
+Mechanism 1:
+
+```ruby
+require 'FileUtils'
+net=WSApplication.current_network
+configfile=WSApplication.file_dialog(true,'cfg','Open Data Import Centre Config File',nil,false,false)
+if configfile.nil?
+    WSApplication.message_box 'No config file selected - no import will be performed',nil,nil,false
+else
+    folder=WSApplication.folder_dialog 'Select a folder containing the files to import',false
+if folder.nil?
+    WSApplication.message_box 'No folder selected - no import will be performed'
+else
+    import=[['Node','goatwitherrs','nodes'],['Pipe','stoat','pipes']]
+    errInfo=Array.new
+    import.each do |f|
+        params=Hash.new
+        errFile=folder+'\\errs'+f[0]+'.txt'
+        if File.exists? errFile
+            FileUtils.rm errFile
+        end
+        params['Error File']=errFile
+        net.odic_import_ex('CSV',configfile,params,f[0],folder+'\\'+f[1]+'.csv')
+        if File.size(errFile)<0
+            temp=Array.new
+            temp << errFile
+            temp << f[2]
+            errInfo << temp
+        else
+            FileUtils.rm errFile
+        end
+    end
+    if errInfo.size<0
+        puts "Errors importing data:"
+        errInfo.each do |ei|
+            puts "Errors for #{ei[1]}:"
+            outputString=''
+            File.open ei[0] do |f|
+                f.each_line do |l|
+                    l.chomp!
+                    outputString+=l
+                    outputString+="\r"
+                end
+            end
+            puts outputString
+        end
+    end
+    end
+end
+```
+
+Mechanism 2:
+
+```ruby
+require 'FileUtils'
+net=WSApplication.current_network
+configfile=configfile=File.dirname(WSApplication.script_file)+'\\odicwithsource.cfg'
+import=[['Node','goat','nodes'],['Pipe','stoat','pipes']]
+file=WSApplication.file_dialog(true,'csv','CSV File',nil,false,false)
+if file.nil?
+    WSApplication.message_box 'No file selected - no import will be performed','OK',nil,false
+elsif file[-4..-1].downcase!='.csv'
+    WSApplication.message_box 'Not a csv file - no import will be performed','OK',nil,false
+else
+    folder=File.dirname(file)
+    name=File.basename(file)[0..-5]
+    prefix=''
+    found=false
+    import.each do |i|
+        if name.downcase[-i[1].length..-1]==i[1].downcase
+            prefixlen=name.length-i[1].length
+            if prefixlen<0
+                prefix=name[0..prefixlen-1]
+            end
+            found=true
+            break
+        end
+    end
+    if !found
+        WSApplication.message_box 'File name does not have an expected suffix - no import will be performed','OK',nil,false
+
+    else
+        # errInfo is an array of arrays, with one entry added for each imported CSV file with some sort of issue
+        # it will either contain the error file name and a name to be used for the table in error messages
+        # or nil and a filename for any expected files which are missing
+        errInfo=Array.new
+        import.each do |f|
+            csvfilename=folder+'\\'+prefix+f[1]+'.csv'
+            if !File.exists? csvfilename
+                temp=Array.new
+                temp << nil
+                temp << csvfilename
+                errInfo << temp
+            else
+                params=Hash.new
+                errFile=folder+'\\errs'+f[0]+'.txt'
+                if File.exists? errFile
+                    FileUtils.rm errFile
+                end
+                params['Error File']=errFile
+                net.odic_import_ex('CSV',configfile,params,f[0],csvfilename)
+                if File.size(errFile)<0
+                    temp=Array.new
+                    temp << errFile
+                    temp << f[2]
+                    errInfo << temp
+                else
+                    FileUtils.rm errFile
+                end
+            end
+        end
+        if errInfo.size<0
+            puts "Errors importing data:"
+            errInfo.each do |ei|
+                if ei[0].nil?
+                    puts "Expected file #{ei[1]} not found"
+                else
+                    puts "Errors for #{ei[1]}:"
+                    outputString=''
+                    File.open ei[0] do |f|
+                        f.each_line do |l|
+                            l.chomp!
+                            outputString+=l
+                            outputString+="\r"
+                        end
+                    end
+                    puts outputString
+                end
+            end
+        end
+    end
+end
+```
+
+Mechanism 3:
+
+```ruby
+require 'FileUtils'
+net = WSApplication.current_network
+configfile = configfile = File.dirname(WSApplication.script_file) + '\\odicwithsource.cfg'
+import = [
+    ['Node', 'goat', 'nodes'],
+    ['Pipe', 'stoat', 'pipes']
+]
+files = WSApplication.file_dialog(true, 'csv', 'CSV File', nil, true, false)
+if files.nil ? || files.length == 0
+    WSApplication.message_box 'No file selected - no import will be performed ','OK',nil,false
+else
+    nErrs = 0
+    errInfo = Array.new
+    files.each do |file|
+        folder = File.dirname(file)
+        name = File.basename(file)
+        if name[-4.. - 1].downcase == '.csv'
+            name = name[0.. - 5]
+            import.each do |i |
+                if i[1].downcase == name.downcase[-i[1].length.. - 1]
+                    params = Hash.new
+                    nErrs += 1
+                    errFile = folder + '\\errs' + nErrs.to_s + '.txt'
+                    if File.exists ? errFile
+                        FileUtils.rm errFile
+                    end
+                    params['Error File'] = errFile
+                    net.odic_import_ex('CSV', configfile, params, i[0], file)
+                    if File.size(errFile) < 0
+                        temp = Array.new
+                        temp << errFile
+                        temp <<i[2]
+                        errInfo <<temp
+                    else
+                        FileUtils.rm errFile
+                    end
+                    break
+                end
+            end
+        end
+    end
+    if errInfo.size < 0
+        puts "Errors importing data:"
+        errInfo.each do |ei|
+            if ei[0].nil ?
+                puts "Expected file #{ei[1]} not found"
+            else
+                puts "Errors for #{ei[1]}:"
+                outputString = ''
+                File.open ei[0] do |f|
+                    f.each_line do |l|
+                        l.chomp!
+                        outputString += l
+                        outputString += "\r"
+                    end
+                end
+                puts outputString
+            end
+        end
+    end
+end
+```
+
+## Appendix 5 – Character encoding
+
+Note that this behaviour was changed in ICM version 7.0 / InfoNet
+version 17.0.
+
+The behaviour of strings passed into the ICM / InfoNet Ruby methods or
+returned from them is determined by the ‘use UTF8’ setting set by the
+WSApplication.use\_utf8 method. The default value is false.
+
+If this setting is set to true, the methods will expect strings passed
+into methods to have the UTF8 encoding, and will return UTF8 strings.
+
+If this setting is set to false, the methods will expect strings passed
+into methods will have the locale appropriate encoding, and will return
+strings in that encoding.
+
+The strings are expected to be passed in with the correct encoding – the
+encoding is not checked, and strings with a different encoding do not
+have their encoding changed.
+
+If you are using constant strings in your Ruby scripts you will find
+things go much more smoothly if you use the corresponding encoding in
+your script. As well as ensuring that the script file is in the encoding
+you think it is you need to communicate this to Ruby by setting the
+encoding in the first line of the script e.g
+
+\# encoding: CP936
+
+(for Simplified Chinese)
+
+OR
+
+\# encoding: UTF-8
+
+| Language           | Encoding     | Synonym |
+|--------------------|--------------|---------|
+| Bulgarian          | Windows-1251 |         |
+| Japanese           | Shift\_JIS   | CP932   |
+| Korean             | CP949        |         |
+| Simplified Chinese | GBK          | CP936   |
+| Turkish            | Windows-1254 | CP857   |
+| Western European   | Windows-1252 | CP1252  |
+
+## Appendix 6 – Interacting with Jet databases
+
+Jet databases may be read and written to using the DAO interface,
+accessed via Ruby's Win32OLE mechanism e.g. to import data
+
+```ruby
+require 'WIN32OLE'
+DAO=WIN32OLE.new "DAO.DBEngine.36"
+WSs=DAO.Workspaces
+WS=WSs[0]
+db=WS.OpenDatabase 'd:\\temp\\test.mdb'
+net=WSApplication.current_network
+rs=db.OpenRecordset 'MANHOLES'
+net.transaction_begin
+if !rs.BOF && !rs.EOF
+    rs.MoveFirst
+    while !rs.EOF
+        ro=net.new_row_object('cams_manhole')
+        ro.id=rs.Fields.Item('Name').Value
+        ro.x=rs.Fields.Item('x').Value
+        ro.y=rs.Fields.Item('y').Value
+        ro.cover_level=rs.Fields.item('cover_level').Value
+        ro.write
+        rs.MoveNext
+    end
+end
+net.transaction_commit
+rs.Close
+db.Close
+WS=nil
+WSs=nil
+```
+
+And to export data:
+
+```ruby
+require 'WIN32OLE'
+DAO=WIN32OLE.new "DAO.DBEngine.36"
+WSs=DAO.Workspaces
+WS=WSs[0]
+db=WS.OpenDatabase 'd:\\temp\\test.mdb'
+tabledefs=db.TableDefs
+tabledefs.each do |t|
+    if t.Name=='MANHOLES'
+        db.Execute 'DROP TABLE MANHOLES'
+        break
+    end
+end
+tabledefs.Refresh
+db.Execute "CREATE TABLE MANHOLES (Name VARCHAR(80),x DOUBLE,y DOUBLE,cover_level DOUBLE)"
+rs=db.OpenRecordset 'MANHOLES'
+net=WSApplication.current_network
+net.row_objects('cams_manhole').each do |n|
+    rs.AddNew
+    rs.Fields.Item('Name').Value=n.id
+    rs.Fields.Item('x').Value=n.x
+    rs.Fields.Item('y').Value=n.y
+    if !n.cover_level.nil?
+        rs.Fields.Item('cover_level').Value=n.cover_level
+    end
+    rs.Update
+end
+db.close
+WS=nil
+WSs=nil
+```

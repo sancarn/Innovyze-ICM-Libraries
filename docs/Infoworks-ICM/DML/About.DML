@@ -1,0 +1,21 @@
+# InfoWorks ICM / InfoNet Ruby Scripting Interface user guide and reference
+`
+    
+    ## Notes
+    
+        This document is still a Work-In-Progress. It has primarily been written by Innovyze, however has been altered by James Warren (a.k.a. Sancarn). The intention is for this document to be maintained by the users of the ruby scripting interface.`
+        `
+        This file has been transpiled from documentation provided by Innovyze. Afterwards it has been edited further to improve the documentation and remove transpiling glitches. However some glitches, due to the transpiling, may still remain. For example, occasionally single lines have been occasionally split into multiple lines with little reason. These glitches can also occur in the middle of source code examples.`
+        `
+        *PLEASE REPORT CODE SAMPLES WHICH DO NOT WORK AS ISSUES [HERE][http://github.com/sancarn/innovyze-icm-libraries/issues]*, similarly if code samples, or descriptions could be articulated in a different more meaningful way, please raise these as issues or make a push request to alter the documentation. I will gladly accept push requests which add meaningful detail to the document.`
+        `
+        There are also numerous undocumented methods, classes and structures provided by the Ruby APIs. These will be documented as much as possible in this document, however, of course, we are very limited as to how much we can know without information directly provided by Innovyze. *If you have any information or any lost documentation please contribute it!*`
+        `
+        Finally if you have any information regarding the InfoWorksCS API, please send this over to me also, as I am also building a document regarding InfoWorks CS APIs, as the interop between InfoWorks CS and InfoWorks ICM is important to all.`
+        `
+        I hope this documentation helps you as much as it helps me on a daily basis.`
+        \~Sancarn
+    
+    ## Other relevant documentation
+        * [DML Documentation][http://tarvk.github.io/empirler/about.html] used for writing documentation.`
+        * [Sancarn's standard ICM Libraries][http://github.com/sancarn/innovyze-icm-libraries/].`
