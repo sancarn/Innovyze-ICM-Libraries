@@ -4,25 +4,25 @@
         //  <div style="float:right;background-color:#aaaaaa;border-radius:5px;border:5px solid #aaaaaa;"><b>v6.5.1</b></div>
         //  <div style="float:right;background-color:#ddffdd;border-radius:5px;border:5px solid #ddffdd;"><b>Official</b></div>
     </script>
-	<style>
-'	<div class="docAppType" style="float:right;background-color:#aaaaaa;border-radius:5px;border:5px solid #aaaaaa;"><b>432364246</b></div>' + "\n" +
-'	<div class="docDocType" style="float:right;background-color:#ddffdd;border-radius:5px;border:5px solid #ddffdd;"><b>229633707</b></div>' + "\n" +
-		.body {
-			position:relative;
-		}
-		.docVersion {
-			float:right;
-			background-color:#ffdddd;
-			border-radius:5px;
-			border:5px solid #ffdddd;
-		}
-		.docAppType {
+    <style>
+'    <div class="docAppType" style="float:right;background-color:#aaaaaa;border-radius:5px;border:5px solid #aaaaaa;"><b>432364246</b></div>' + "\n" +
+'    <div class="docDocType" style="float:right;background-color:#ddffdd;border-radius:5px;border:5px solid #ddffdd;"><b>229633707</b></div>' + "\n" +
+        .body {
+            position:relative;
+        }
+        .docVersion {
+            float:right;
+            background-color:#ffdddd;
+            border-radius:5px;
+            border:5px solid #ffdddd;
+        }
+        .docAppType {
 
-		}
-		.docDocType {
+        }
+        .docDocType {
 
-		}
-	</style>
+        }
+    </style>
 [/html]
 
 # InfoWorks ICM API Reference
@@ -50,13 +50,13 @@
                     `#### Description:
 
                         Returns the full path of the 'add ons' folder described in Appendix 3 e.g.`
-                        `
+            			`
                         `C:\\Users\\badgerb\\AppData\\Roaming\\Innovyze\\WorkgroupClient\\scripts``
-                        `
+            			`
                         > Note - This folder will not exist unless manually created. Its parent folder will exist if InfoNet/InfoWorks has been opened on this PC.`
 
                         `
-                        `
+            `
         [/method]
         [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -74,8 +74,8 @@
                     only work on current and background networks in the UI mode. The background network may,
                     of course, be nil if no background network is loaded.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
@@ -92,8 +92,8 @@
                     Cancels a job being run by the agent. The parameter is a job ID from the
                     array returned by launch\_sims – see below.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -112,8 +112,8 @@
                     colour with those red, green and blue values e.g. colour(0,0,0) returns
                     black, colour(255,0,0) returns red, colour(255,255,255) returns white.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -132,8 +132,8 @@
                     `
                     This method must be called before the `launch_sims` method is called.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -151,8 +151,8 @@
                     is available from Ruby scripting from within the UI. This method is used
                     to return the database object for the currently open master database.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -173,8 +173,8 @@
                     If a Ruby script is run in the UI when the current network has results
                     then the results will be available to the script.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -203,8 +203,8 @@
 
                     z:\\test.icmm contains an incorrect path
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -222,8 +222,8 @@
                     Creates a transportable database at the location given by the path
                     parameter.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -267,8 +267,8 @@
                     Hard-wire cancel – if this parameter is true or nil, if the user cancels
                     from the dialog, the execution of the Ruby script is stopped.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -297,8 +297,8 @@
                     If the user selects cancel and the hard\_wire\_cancel parameter is set
                     to false, nil will be returned.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -407,8 +407,8 @@
                     There must be an equal number of values in the XArray and YArray in each
                     trace, though they can vary between traces.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -430,8 +430,8 @@
                     value in the text field is returned, otherwise the empty string is
                     returned.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -472,8 +472,8 @@
                     in the array will be safely ignored by the wait\_for\_jobs method so the
                     results array may be passed into it.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -545,8 +545,8 @@
 
                     <img src="./media/image10.png" width="339" height="161" />
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -603,8 +603,8 @@
 
                     if the database requires an update but the second parameter is false
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -631,8 +631,8 @@
                     create a temporary file which will be displayed by this method and then
                     deleted when the view is closed by the user.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -662,8 +662,8 @@
 
                     > Note – When scripts are run from the UI, user units are always used.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -707,8 +707,8 @@
 
                     if the file does not exist.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -849,8 +849,8 @@
                         "Default", nil, 23.0, nil, #<DateTime: 2011-10-13T14:12:30+00:00 (1414568501/576,0,2299161)>, false, false, true, "Badger.dat", nil, nil, nil, "Turbo Pump", 12.3456678, 87.65456789]
                     ```
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -877,8 +877,8 @@
                     i.e. this returns the results folder that is actually being used
                     regardless of whether you have explicitly set it or not
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -921,8 +921,8 @@
                     8 inclusive, this will be used for float and double values and ignored
                     for any others.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -945,8 +945,8 @@
                     to process the path to get the paths of files in the same directory e.g.
                     config files for the Open Data Import and Export Centres.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -975,8 +975,8 @@
                     it merely sets the exit code returned to the operating system when the
                     script *does* terminate.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1002,8 +1002,8 @@
                     Exchange run. it will not be stored in the registry and will not be used
                     by any other instances of ICM Exchange or the ICM UI.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1029,8 +1029,8 @@
                     Exchange run. it will not be stored in the registry and will not be used
                     by any other instances of ICM Exchange or the ICM UI.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1063,8 +1063,8 @@
                     of the job that caused the wait to end (if waitall is true, this is the
                     last job to complete)
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1103,8 +1103,8 @@
                     Note – when scripts are run from the UI, the desktop licence is, of
                     course, used.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1128,8 +1128,8 @@
                     (default is false for the Exchange products and true within the user
                     interface).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1151,8 +1151,8 @@
 
                     Sets the flag indicating whether the application is using user units.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1175,8 +1175,8 @@
                     Returns a Boolean indicating whether the application is using UTF8 in
                     string handling (default is false). See appendix 5 for more details.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1199,8 +1199,8 @@
                     Sets the flag indicating whether the application is using UTF8 in string
                     handling (default is false). See appendix 5 for more details.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1224,8 +1224,8 @@
 
                     “2.5.0.5001”
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1252,8 +1252,8 @@
                     i.e. this returns the working folder that is actually being used
                     regardless of whether you have explicitly set it or not
 
-                    `
-                    `
+        `
+        `
 
         ## WSDatabase
 
@@ -1284,8 +1284,8 @@
                     results and ground models respectively are copied, corresponding to the
                     equivalent user interface options.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1310,8 +1310,8 @@
                     will be the one used by the software in this situation i.e. the folder
                     containing the master database.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1341,8 +1341,8 @@
                     so the name, rather than scripting full path is enough to identify the
                     object in the database uniquely.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1367,8 +1367,8 @@
                     Currently the only object types found in the root of the database are
                     'Master Group', 'Model Group' and 'Asset Group'
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1386,8 +1386,8 @@
                     Returns the GUID for the database, otherwise known as the 'database
                     identifier'.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1410,8 +1410,8 @@
                     Returns an array of strings containing all the fields in the Run object
                     that are read-write fields i.e. may be set from ICM Exchange scripts.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1437,8 +1437,8 @@
                     If you know the scripting path of the object in the database, this is
                     the 'official' way of finding the model object.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1456,8 +1456,8 @@
                     Given a scripting type, returns a WSModelObjectCollection of all the
                     objects of that type – not just the objects of that type in the root.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1481,8 +1481,8 @@
                     'CreationGUID' (an internal database field) given in the second
                     parameter.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1511,8 +1511,8 @@
                     have found in the InfoWorks ICM UI by selecting the object in the tree
                     and obtaining its properties.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1546,8 +1546,8 @@
                     true then \#1 or \_1 will be appended to the name regardless of whether
                     or not the name ends in \# or \_ followed by a number.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1591,8 +1591,8 @@
 
                     unable to create object – if the creation fails for some other reason
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1614,8 +1614,8 @@
 
                     returns the pathname of the master database as a string
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1654,8 +1654,8 @@
                     Returns the nth WSModelObject in the collection. The index is 0 based
                     i.e. valid values are from 0 to length-1.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1672,8 +1672,8 @@
 
                     Returns the number of WSModelObjects in the collection
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1708,8 +1708,8 @@
 
             ###`[]` (Exchange only)
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1741,8 +1741,8 @@
 
                     3.  The scripting path of the object
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1760,8 +1760,8 @@
                     This deletes the object and all its children. The deleted objects are
                     NOT put into the recycle bin, they are completely deleted.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1783,8 +1783,8 @@
 
                     Returns the children of the object as a WSModelObjectCollection
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1802,8 +1802,8 @@
                     Returns the description (i.e. the text which appears in the description
                     tab of the properties for an object) as a string.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1820,8 +1820,8 @@
 
                     Sets the description (as described above) for an object from a string.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1850,8 +1850,8 @@
                     compared if the database from which they came is the current master
                     database.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1872,8 +1872,8 @@
                     simulation results and ground models respectively are copied,
                     corresponding to the equivalent user interface options.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1894,8 +1894,8 @@
                     interface and reflects the same rules e.g. does it have children, is it
                     used in a simulation etc.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1915,8 +1915,8 @@
                     anything. This reflects, therefore, the rules used in the user
                     interface.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -1933,8 +1933,8 @@
 
                     Deletes the results for the object, if the object is a simulation.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2027,8 +2027,8 @@
                     >
                     > Trade Waste *(from a version 7.5 patch)*
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2068,8 +2068,8 @@
                     >
                     > "Category Code vs Component"
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2087,8 +2087,8 @@
                     Given the scripting type of an object and a name will return the child
                     of the object with that name and type.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2105,8 +2105,8 @@
 
                     Returns the ID of the model object as a number
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2130,8 +2130,8 @@
                     CRD,CSD,EVP,ISD,TEM and WND which export data in the InfoWorks text file
                     format and have the same meaning as for export\_data above.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2193,8 +2193,8 @@
                         rainfall=model_group.import_new_model_object 'Rainfall Event','The Rainfall','','d:temp1.red',0
                     ```
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2227,8 +2227,8 @@
                     this will import the data in event file format into an existing event,
                     overwriting the data already there if there is any.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2245,8 +2245,8 @@
 
                     Returns the name of the user who last modified the object as a string.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2262,8 +2262,8 @@
 
                     Returns the name of an object as a string.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2334,8 +2334,8 @@
 
                     selection lists may not be created from scripts in the UI in viewer mode
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2369,8 +2369,8 @@
 
                     Param – the numerical parameter
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2447,8 +2447,8 @@
 
                     Parameters for the run may either be set in this call.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2476,8 +2476,8 @@
                     This method has the same effect as pressing the 'update to latest
                     version of network' button on the Run view in the user interface.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2516,8 +2516,8 @@
                         only maximum results in which case they are opened as the maximum
                         results timestep.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2539,8 +2539,8 @@
 
                     Returns the scripting path of the object as a string.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2558,8 +2558,8 @@
                     Returns the scripting type of the parent of the object (or 'Master
                     Database' if the object is in the root of the database).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2577,8 +2577,8 @@
                     Returns the ID of the parent object (or 0 if the object is in the root
                     of the database).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2627,8 +2627,8 @@
                     Commits changes to a network to the database. Returns the commit ID or
                     returns nil if there were not changes made since the last commit.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2663,8 +2663,8 @@
                         end
                     ```
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2684,8 +2684,8 @@
                     otherwise. The difference is that commit\_reserve keeps the network
                     reserved.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2706,8 +2706,8 @@
                     changes to another network via “Import/Update from CSV files…”
                     functionality.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2754,8 +2754,8 @@
                         no.csv_export 'd:tempnetwork.csv',myHash
                     ```
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2789,8 +2789,8 @@
                     | New Flag             | String  |         | Flag used for new and updated data                                                                                    |
                     | Update Flag          | String  |         | If the 'update with any flag' option is set to false, only update fields with this flag value                         |
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2809,8 +2809,8 @@
                     the latest commit ID i.e. the most recent commit ID on the server, which
                     is returned by latest\_commit\_id (see below).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2875,8 +2875,8 @@
                     names of tables as returned by the list\_GIS\_export\_tables. Duplicates
                     and unrecognised values are not permitted.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2895,8 +2895,8 @@
                     recent commit on the server. This may not be the same as the commit ID
                     of the local copy, which is returned by current\_commit\_id (see above).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2915,8 +2915,8 @@
                     strings. This method is designed to return information useful when
                     customising the parameters to GIS\_export.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3075,8 +3075,8 @@
 
                     9.  Password
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3216,8 +3216,8 @@
                     >
                     > 8- password (for non-integrated security, nil otherwise)
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3235,8 +3235,8 @@
                     Removes the local copy of the network, any uncommitted changes will be
                     lost.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3254,8 +3254,8 @@
                     Reserves the network so no-one else can edit it and updates the local
                     copy to the latest version.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3272,8 +3272,8 @@
 
                     Reverts any uncommitted changes in the local copy of the network.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3290,14 +3290,14 @@
 
                     Select all objects added or changed between the commit id specified and
                     the current network.`
-					`
+                    `
                     The network must have no outstanding changes for this to work (otherwise
                     an exception will be thrown).`
-					`
+                    `
                     Obviously, deleted objects will not be selected.`
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3314,8 +3314,8 @@
 
                     Clears the selection in the network
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3332,8 +3332,8 @@
 
                     Returns the number of selected items in the network
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3371,8 +3371,8 @@
                     the SQL block selecting a non-zero number of object (or zero if there is
                     no such clause).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3390,8 +3390,8 @@
                     Returns true if there are uncomitted changes in the local copy of the
                     network, false otherwise.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3408,8 +3408,8 @@
 
                     Cancels the reservation of the network.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3427,8 +3427,8 @@
                     Updates the local copy of the network from the server. Returns true if
                     there are no conflicts, false if there are.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3521,8 +3521,8 @@
                     the parameters to max\_results\_binary\_export.and
                     max\_results\_csv\_export
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3559,8 +3559,8 @@
                     This method is designed to return information useful when customising
                     the parameters to results\_binary\_export.and results\_csv\_export
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3614,8 +3614,8 @@
                     Note the results for 2D elements is \_2DElements and that the table name
                     used for all links, which are combined into one GIS layer, is \_links.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3636,8 +3636,8 @@
                     For a risk analysis results object, this returns an array of the return
                     periods for the object.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3671,8 +3671,8 @@
 
                     Filename: the filename to be exported.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3700,8 +3700,8 @@
                     exported, or may be an array as described in the
                     list\_max\_results\_attributes method above.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3729,8 +3729,8 @@
                     exported, or may be an array as described in the
                     list\_max\_results\_attributes method above.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3760,8 +3760,8 @@
                     (Note that the parameters for this method are the same as those for
                     results\_csv\_export\_ex)
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3783,8 +3783,8 @@
                     selection list object, or the WSModelObject itself, or it may be nil in
                     which case results for the whole network will be exported.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3804,8 +3804,8 @@
                     an array as described in the list\_results\_attributes method above
                     (i.e. as results\_binary\_export).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3924,8 +3924,8 @@
                     inclusive representing the number of decimal places. If this is not set
                     then a default of 2 decimal places is used.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3945,8 +3945,8 @@
                     simulations which permit greater control over the process. The
                     simulation will be run on the current machine.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3968,8 +3968,8 @@
                     machine name or one of '.' Or '\*'. '.' has the meaning of local machine
                     and '\*' has the meaning of any available server.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -3994,8 +3994,8 @@
 
                     -   “Fail”
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4018,8 +4018,8 @@
 
                     -   “OK”
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4070,8 +4070,8 @@
                     >
                     > Notes – the notes for the scenario
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4088,8 +4088,8 @@
 
                     Clears the selection
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4111,8 +4111,8 @@
                     attempt to access methods for them will cause an exception to be
                     thrown).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4137,8 +4137,8 @@
                     ICM Exchange will be 0 if there are time varying results, otherwise -1
                     for the 'maximum' 'timestep'.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4155,8 +4155,8 @@
 
                     Returns the time of the current timestep.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4208,8 +4208,8 @@
                     | Coordinate Arrays Format | The mechanism whereby arrays of coordinates (e.g. polylines and polygons) are exported. Choices are 'None', 'Packed' and 'Unpacked' | Packed |
                     | Other Arrays Format      | The mechanism whereby other arrays (e.g. shapes / demand diagrams) are exported. Choices are 'None', 'Packed' and 'Separate'        | Packed |
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4243,8 +4243,8 @@
                     | New Flag             | Flag used for new / updated fields                                                                                                                                    | Blank |
                     | Update Flag          | Flag used to determine what objects are updated if the 'Update With Any Flag' field is set to false                                                                   | Blank |
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4264,8 +4264,8 @@
                     If the current scenario is the base scenario, returns 'Base' (in
                     English).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4284,8 +4284,8 @@
                     string or can be nil in which case the current scenario is set to the
                     base scenario. The new scenario must exist.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4309,8 +4309,8 @@
                     scenario is the current scenario, the current scenario is set to be the
                     base scenario.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4327,8 +4327,8 @@
 
                     Deletes the current selection from the network in the current scenario.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4351,8 +4351,8 @@
 
                     end
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4369,8 +4369,8 @@
 
                     As each but iterates through the selected objects only.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4397,8 +4397,8 @@
                     UTF8 – if set to true the file will be UTF8 encoded (default false i.e.
                     current locals)
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4424,8 +4424,8 @@
                     Given the internal name of a type, returns a list of names of the fields
                     for that object type – the object type cannot be a class.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4444,8 +4444,8 @@
                     timesteps, either because no objects are 'gauged' or because the gauge
                     timestep for the run was set to 0 it returns 0.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4463,8 +4463,8 @@
                     This method returns the time for the gague timestep with the index given
                     as the method's parameter.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4484,8 +4484,8 @@
                     See the method of the same name for WSNumbatNetworkObject for an
                     explanation of the parameters.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4503,8 +4503,8 @@
                     This method returns an array containing the times of all the gauge
                     timesteps for the sim in order.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4523,8 +4523,8 @@
                     strings. This method is designed to return information useful when
                     customising the parameters to GIS\_export.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4542,8 +4542,8 @@
                     This method returns an array containing the times of all the timesteps
                     for the sim in order.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4562,8 +4562,8 @@
                     a WSModelObject, an object path or the numerical ID of the model object
                     – providing in all cases that the model object is a selection list.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4586,8 +4586,8 @@
                     This method creates a new row object in the network. This must be done
                     within a transaction.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4608,8 +4608,8 @@
                     in one network and the objects found to be in another e.g. the current
                     network and the background network.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4630,8 +4630,8 @@
                     since the network is not left open after the method, and WSRowObject
                     objects may not be open when their network is not).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4648,8 +4648,8 @@
 
                     As for WSNumbatNetworkObject above.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4673,8 +4673,8 @@
                     type with multiple key fields) returns a WSRowObject or derived class.
                     Returns nil if there is no such object in the network.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4698,8 +4698,8 @@
                     instances of derived classes). Returns a vector of zero length if there
                     are no objects of that type in the network.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4719,8 +4719,8 @@
                     vector of zero length if there are no objects of that type in the
                     network.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4740,8 +4740,8 @@
                     parameter can be the type or class of the object, or nil in which case
                     all objects will be returned.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4759,8 +4759,8 @@
                     As row\_object\_collection above, but only returns objects currently
                     selected in the WSOpenNetwork.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4817,8 +4817,8 @@
                     is a ground model loaded into the network (either TIN or grid), it will
                     be used instead.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4841,8 +4841,8 @@
                     node or link tables in the same way as can be achieved by selecting 'All
                     nodes' or 'All links' in the dropdowns in the SQL dialog.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4865,8 +4865,8 @@
                     UI may be run from the UI. This was not the case with previous versions
                     and is not the case when they are run from the Exchange products.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4904,8 +4904,8 @@
 
                     Saves the current selection to the already existing selection list.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4934,8 +4934,8 @@
                     through. The base scenario is included in the results as the string
                     'Base', in English.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4956,8 +4956,8 @@
                     name of a type or a category. It may not contain duplicates, and may not
                     contain a category and a table within that category.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4974,8 +4974,8 @@
 
                     Returns the number of objects selected.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -4994,8 +4994,8 @@
                     has the same effect as calling snapshot\_import\_ex with the second
                     parameter being nil.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5030,8 +5030,8 @@
 
                     ImportImageFiles - Boolean
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5047,16 +5047,16 @@
 
 
                     Exports a snapshot of the network to the given filename.`
-					`
+                    `
                     All objects are exported from all tables, but image files and GeoPlan
                     properties and themes are not exported.`
-					`
+                    `
                     The method `snapshot_export_ex` allows more flexibility over what is
                     exported.`
-					`
-                    Snapshots cannot be exported from networks with uncommitted changes.`
-					`
                     `
+                    Snapshots cannot be exported from networks with uncommitted changes.`
+        `
+        `
                     `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
@@ -5098,18 +5098,18 @@
 
                     The SelectedOnlyOptions must not be mixed with the Tables option or the
                     ChangesFromVersion option.`
-					`
+                    `
                     Any other keys for the hash are treated as an error and an exception
                     raised.`
-					`
+                    `
                     If the second parameter is nil then the default are used i.e. all
                     objects from all tables are exported but image files and GeoPlan
                     properties and themes are not, yielding the same result as calling
                     snapshot\_export.`
-					`
-                    Snapshots cannot be exported from networks with uncommitted changes.`
-					`
                     `
+                    Snapshots cannot be exported from networks with uncommitted changes.`
+        `
+        `
                     `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
@@ -5181,8 +5181,8 @@
                     be zero unless the export is from a more recent version of the software
                     than the user is using to import the data.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5207,8 +5207,8 @@
                     This method returns an array of the tables names for the WSOpenNetwork –
                     these are the internal names.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5226,8 +5226,8 @@
                     Given a table name, this method returns a WSTableInfo object for that
                     table.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5245,8 +5245,8 @@
                     This method returns an array of WSTableInfo objects for the
                     WSOpenNetwork.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5265,8 +5265,8 @@
                     it does not include the 'maximum' 'timestep' so for sims without any
                     time varying results this method will return 0.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5284,8 +5284,8 @@
                     This method returns the time for the timestep with the index given as
                     the method's parameter.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5306,8 +5306,8 @@
                     transaction\_begin, or with transaction\_rollback, which cancels the
                     changes since transaction\_begin
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5324,8 +5324,8 @@
 
                     Commits the transaction – see above.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5342,8 +5342,8 @@
 
                     Ends the transaction – see above.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5361,8 +5361,8 @@
                     Calculates CCTV scores for all surveys in the network using the current
                     standard.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5435,15 +5435,15 @@
 
             ###`[]`
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`[]=`
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5475,8 +5475,8 @@
                     The above are used to set and get values of fields for WSRowObject
                     objects as described in the 'getting and setting values' section above.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5494,8 +5494,8 @@
                     Returns the category name (as described above) of the object's table as
                     a string.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5512,8 +5512,8 @@
 
                     Returns true if polygon ro contains the object ro2.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5530,8 +5530,8 @@
 
                     Deletes the row object.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5552,8 +5552,8 @@
                     field – it is essentially a short cut to getting the table and then
                     getting the field info from that.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5573,8 +5573,8 @@
                     results. If the object or field does not have gauge results it will
                     return the 'normal' results.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5593,8 +5593,8 @@
                     primary key, then the key will be output with part separated by the '.'
                     character.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5611,8 +5611,8 @@
 
                     Updates the ID of the row object.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5629,15 +5629,15 @@
 
                     Returns true if ro2 is inside the polygon ro2.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`navigate`
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5720,8 +5720,8 @@
                     | general\_surveys              | No  |
                     | fog\_inspections              | No  |
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5744,8 +5744,8 @@
                     the similar parameter in the WSNumbatNetworkObject's search\_at\_point
                     method.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5763,8 +5763,8 @@
                     Returns the result for the given results field name for the object at
                     the current timestep.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5782,8 +5782,8 @@
                     Returns an array of the results for the given results field name for the
                     object at all timesteps – the field must have time varying results.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5800,8 +5800,8 @@
 
                     returns True if the object is currently selected, False otherwise
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5826,8 +5826,8 @@
                     If the value on the right of the = evaluates to true, the object is
                     selected, otherwise it is deselected.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5844,8 +5844,8 @@
 
                     Returns the internal name of the object's table as a string.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5863,8 +5863,8 @@
                     Returns the WSTableInfo object for the object's table, this may be used
                     to get the list of fields for the object.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5909,8 +5909,8 @@
                     upstream links of the node. If there are no upstream links a collection
                     of length zero is returned.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -5955,8 +5955,8 @@
                     Returns a WSRowObject representing the link's upstream node, or nil if
                     it doesn't have one.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6018,8 +6018,8 @@
 
                     Returns the number of WSRowObjects in the collection
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6037,8 +6037,8 @@
                     Returns the nth WSRowObject in the collection. The index is 0 based i.e.
                     valid values are from 0 to length-1.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6083,8 +6083,8 @@
 
                     returns the description of the table.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6104,8 +6104,8 @@
 
                     - flags are treated as separate fields.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6122,8 +6122,8 @@
 
                     returns the internal name of the table.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6149,14 +6149,12 @@
                     method which returns the fields for the network which do not on the
                     whole change for a network type for a particular release of the
                     software, except for user defined fields and tables in InfoNet.
-
+		[/method]
 
 
         ## WSFieldInfo
-
-            `
-            `
-        [/method]
+        `
+        `
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`data_type`
@@ -6191,8 +6189,8 @@
                     Flag fields have their type returned as 'Flag', their underlying Ruby
                     type is `String`.
 
-                    `
-                    `
+            `
+            `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6209,8 +6207,8 @@
 
                     returns the description of the table
 
-                    `
-                    `
+            `
+            `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6228,8 +6226,8 @@
                     returns an array of fields if the field is itself a 'structure blob'. If
                     the field is not a structure blob, this method returns nil.
 
-                    `
-                    `
+            `
+            `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6249,8 +6247,8 @@
                     network fields. Please see the WSTableInfo results\_fields method for
                     more discussion.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6271,8 +6269,8 @@
                     'timestep'. It will return false for network fields. Please see the
                     WSTableInfo results\_fields method for more discussion.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6289,8 +6287,8 @@
 
                     returns the name of the field
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6307,8 +6305,8 @@
 
                     Returns true if the field is read only, false if it isn't
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="7.0"]
 
@@ -6321,71 +6319,105 @@
                     ```
 
                 `#### Description:
-
-
                     Returns 4 if the field is a flag field, the length of a string field for
                     string fields or 0 otherwise.
-
-
-
+		`
+		`
+		[/method]
+		`
+		`
         ## WSCommit
+		`
+		`
+        The methods of this class are all read only and each of them returns the
+        value in one of the fields that appears in the commit grid as follows:
 
-            The methods of this class are all read only and each of them returns the
-            value in one of the fields that appears in the commit grid as follows:
-
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
             ### `branch_id`
-				`#### Description:
-					Returns the Branch ID of this particular model network version.
-            ### `comment`
-				`#### Description:
-					Returns the comments/notes of this particular model network version.
-            ### `commit_id`
-				`#### Description:
-					Returns the Commit ID of this particular model network version.`
-					`
-					It should be noted that, in ICM version 8.0 you are not able to get the network object itself, thus you cannot open and compare 2 different models. However there is currently a work around, which involves exporting a commit and re-importing the commit to a new model, ultimately making the changes required:`
-					`
+                `#### Description:
+                    Returns the Branch ID of this particular model network version.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+		    ### `comment`
+                `#### Description:
+                    Returns the comments/notes of this particular model network version.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+	           ### `commit_id`
+	               `#### Description:
+	                   Returns the Commit ID of this particular model network version.`
+	                   `
+	                   It should be noted that, in ICM version 8.0 you are not able to get the network object itself, thusyou cannot open and compare 2 different models. However there is currently a work around, whichinvolves exporting a commit and re-importing the commit to a new model, ultimately making the changesrequired:`
+	                   `
 
-					```ruby
-						net.snapshot_export_ex "some/snapshot/path", {"ChangesFromVersion"=>commitID}
-						newNet.snapshot_import "some/snapshot/path"
-						#use newNet, to find and make changes required
-					```
-
-
-
-            ### `date`
-				`#### Description:
-					Returns the date of this particular model network version.
-            ### `deleted_count`
-				`#### Description:
-					Returns the number of objects deleted in this particular model network version.
-			### `inserted_count`
-				`#### Description:
-					Returns the number of objects added in this particular model network version.
-            ### `modified_count`
-				`#### Description:
-					Returns the number of objects modified in this particular model network version.
-            ### `setting_changed_count`
-				`#### Description:
-					Returns the number of settings which have been modified in this particular model network version.
-            ### `user`
-
+	                   ```ruby
+	                       net.snapshot_export_ex "some/snapshot/path", {"ChangesFromVersion"=>commitID}
+	                       newNet.snapshot_import "some/snapshot/path"
+	                       #use newNet, to find and make changes required
+	                   ```
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        	### `date`
+            	`#### Description:
+                	Returns the date of this particular model network version.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        	### `deleted_count`
+            	`#### Description:
+                	Returns the number of objects deleted in this particular model network version.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        	### `inserted_count`
+            	`#### Description:
+                	Returns the number of objects added in this particular model network version.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+	           ### `modified_count`
+	               `#### Description:
+	                   Returns the number of objects modified in this particular model network version.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+	           ### `setting_changed_count`
+	               `#### Description:
+	                   Returns the number of settings which have been modified in this particular model network version.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+	           ### `user`
+			    `#### Description:
+					Returns the user that last modified the network
+		[/method]
+		`
+		`
         ## WSCommits
-
-            It is a collection class and thus has the \[\], each and length methods
-            defined. Each individual object in the collection is an instance of the
-            WSCommit class.
-
-            ###
-
-
+		`
+		`
+        The WSCommits is a collection of WSCommit objects.
+		`
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+	        ### `[]`
+				`#### Description:
+					Returns the WSCommit object with the specified index.
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+			### `each`
+				`#### Syntax:
+					```ruby
+						commits.each do |commit|
+							puts commit.commit_id
+						end
+					```
+				`#### Description:
+					When supplied a block ruby will loop over each WSCommit object in the array
+		[/method]
+		[method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+			### `length`
+				`#### Description:
+					Returns the number of WSCommit objects in the collection
+		[/method]
 
         ## WSStructure
-
-            `
-            `
-        [/method]
+        `
+        `
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`each`
@@ -6401,8 +6433,8 @@
 
                     Iterates through the collection.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6416,12 +6448,11 @@
 
                 `#### Description:
 
-
                     Returns the number of WSStructureRow objects in the WSStructure
                     collection
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6438,8 +6469,8 @@
 
                     Sets the number of WSStructureRow objects in the WSStructure collection
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6457,8 +6488,8 @@
                     Returns the number of WSStructureRow objects in the WSStructure
                     collection (synonym for length)
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6472,12 +6503,11 @@
 
                 `#### Description:
 
-
                     Sets the number of WSStructureRow objects in the WSStructure collection
                     (synonym for length)
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6491,20 +6521,19 @@
 
                 `#### Description:
 
-
                     Causes the changes to the WSStructure, i.e. changes to its length, data
                     in any new rows, and changes to data in existing rows to be 'written
                     back' to the WSRowObject. If this is not called then changes to the
-                    WSStructure will not take effect.
-
+                    WSStructure will not take effect.`
+					`
                     Once any changes to the structure blob have been written back to the
                     WSRowObject, the WSRowObject must be written to the database with its
                     write method (and then, of course, the transaction must be committed and
                     the network written to the database with the commit method or in the
                     user interface!).
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6518,16 +6547,16 @@
 
                 `#### Description:
 
-
                     Returns the nth WSStructureRow object in the collection (zero based).
-
-
+		`
+		`
+		[/method]
 
         ## WSStructureRow
 
             `
             `
-        [/method]
+
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`[]`
@@ -6543,8 +6572,8 @@
 
                     Returns the value of the named field in the WSStructureRow object.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6560,14 +6589,15 @@
 
 
                     Sets the value of the named field in the WSStructureRow object.
-
-
+		`
+		`
+		[/method]
 
         ## WSValidations
 
             `
             `
-        [/method]
+
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`error_count`
@@ -6583,8 +6613,8 @@
 
                     Returns the number of errors found when performing the validation.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6601,8 +6631,8 @@
 
                     Returns the number of warnings found when performing the validation.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6620,8 +6650,8 @@
                     Returns the number of WSValidation objects in the WSValidations
                     collection
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6638,8 +6668,8 @@
 
                     Iterates through the collection.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6682,8 +6712,8 @@
 
                     Returns the code of the validation message.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6702,8 +6732,8 @@
                     database field, but if it is then the internal name rather than the
                     description will be returned.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6721,8 +6751,8 @@
                     Returns the field column from the validation message as it appears in
                     the validation window.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6739,8 +6769,8 @@
 
                     Returns ID for the object in the validation message, if any.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6758,8 +6788,8 @@
                     Returns the description from the object type column of the validation
                     message, if any.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6776,8 +6806,8 @@
 
                     Returns the validation message.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6794,8 +6824,8 @@
 
                     Returns the priority of the validation message.
 
-                    `
-                    `
+        `
+        `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -6813,7 +6843,7 @@
                     Returns the type of the validation message: 'error', 'warning' or
                     'information'.
 
-                    `
+        `
                     `
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
