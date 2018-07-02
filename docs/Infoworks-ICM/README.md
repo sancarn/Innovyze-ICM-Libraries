@@ -114,7 +114,7 @@ This document describes the Ruby interface for InfoWorks ICM and
 InfoNet. It assumes a degree of familiarity with Ruby and with the
 terminology of object oriented programming e.g. ‘class’,’method’.
 
-### UI and Exchange
+###  UI and Exchange
 
 Scripts may be run both from
 
@@ -490,7 +490,7 @@ methods, they can be passed as
 -   The object’s ID (if the parameter can only be of one object type)
 -   The path of the object
 
-### Scripting paths
+###  Scripting paths
 
 The purpose of a scripting path is to uniquely identify an object in a
 database by giving its name and type, the name and type of the group in
@@ -924,7 +924,7 @@ WSNode and WSLink respectively, with the parent class WSRowObject. These
 are largely identical to the WSRowObject class but have a few extra
 methods for use when navigating between objects (see below).
 
-### Getting and setting values in ‘row objects’.
+###  Getting and setting values in ‘row objects’.
 
 A fundamental part of the purpose of the Ruby scripting within InfoWorks
 ICM and InfoNet is to get and set values of fields for the objects
@@ -1401,7 +1401,7 @@ net.transaction_commit
 This example changes the OJS code to SJO in all defects in all CCTV
 surveys.
 
-### Navigating between objects
+###  Navigating between objects
 
 The term ‘navigate’ is used here for the process of finding objects that
 are either physically connected to a given object (e.g. the upstream
@@ -2754,9 +2754,9 @@ regardless of whether you have explicitly set it or not
 <br/>
 <br/>
 
-###
 
-###   
+
+
 
 ### WSDatabase
 
@@ -3108,7 +3108,7 @@ moc=iwdb.root_model_objects
 Returns a WSModelObjectCollection of all the objects in the root of the
 database.
 
-###   
+
 
 ### WSModelObjectCollection
 
@@ -4006,7 +4006,7 @@ s=mo.type
 
 Returns the scripting type of the object.
 
-###   
+
 
 ### WSNumbatNetworkObject
 
@@ -4817,7 +4817,7 @@ The CSV file has no header and the arbitrary string is output as the
 first column, the second column being the internal table name and the
 third column being the user field name.
 
-###   
+
 
 ### WSSimObject
 
@@ -5371,7 +5371,7 @@ n=sim.timestep_count
 
 Returns the number of results timesteps for a simulation.
 
-###   
+
 
 ### WSOpenNetwork
 
@@ -6612,7 +6612,7 @@ a string in which case the named scenario (which may be ‘Base’) will be
 validated, or an array of strings, in which case all the named scenarios
 (which may include ‘Base’) will be validated.
 
-###   
+
 
 ### WSRowObject
 
@@ -7067,7 +7067,7 @@ ro.write
 After changing field values it is necessary to call the write method,
 otherwise the changes will not take effect.
 
-###   
+
 
 ### WSNode
 
@@ -7110,7 +7110,7 @@ Returns a WSRowObjectCollection (see below) representing all the
 downstream links of the node. If there are no upstream links a
 collection of length zero is returned.
 
-###   
+
 
 ### WSLink
 
@@ -7151,7 +7151,7 @@ ro=link.ds_node
 Returns a WSRowObject representing the link’s downstream node, or nil if
 it doesn’t have one.
 
-###   
+
 
 ### WSRiskAnalysisRunObject
 
@@ -7171,7 +7171,7 @@ raro.run
 
 Performs the risk analysis run.
 
-###   
+
 
 ### WSRowObjectCollection
 
@@ -7230,7 +7230,7 @@ puts ro.id
 
 end
 
-###   
+
 
 ### WSTableInfo
 
@@ -7311,7 +7311,7 @@ method which returns the fields for the network which do not on the
 whole change for a network type for a particular release of the
 software, except for user defined fields and tables in InfoNet.
 
-###   
+
 
 ### WSFieldInfo
 
@@ -7471,7 +7471,7 @@ n=fi.size
 Returns 4 if the field is a flag field, the length of a string field for
 string fields or 0 otherwise.
 
-###   
+
 
 ### WSCommit
 
@@ -7496,9 +7496,9 @@ value in one of the fields that appears in the commit grid as follows:
 >
 > *user*
 
-###
 
-###   
+
+
 
 ### WSCommits
 
@@ -7506,9 +7506,9 @@ It is a collection class and thus has the \[\], each and length methods
 defined. Each individual object in the collection is an instance of the
 WSCommit class.
 
-###
 
-###   
+
+
 
 ### WSStructure
 
@@ -7636,7 +7636,7 @@ v=sb[n]
 
 Returns the nth WSStructureRow object in the collection (zero based).
 
-###   
+
 
 ### WSStructureRow
 
@@ -7672,7 +7672,7 @@ row[val]=v
 
 Sets the value of the named field in the WSStructureRow object.
 
-###   
+
 
 ### WSValidations
 
@@ -7757,7 +7757,6 @@ v=vals[n]
 
 Returns the nth WSValidation object in the collection (zero based).
 
-###   
 
 ### WSValidation
 

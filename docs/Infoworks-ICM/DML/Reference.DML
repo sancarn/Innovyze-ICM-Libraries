@@ -168,8 +168,8 @@
 
                     Returns the network for the GeoPlan that currently has focus. Scripts
                     may only work on the current network (and background networks) in the UI
-                    mode.
-
+                    mode.`
+					`
                     If a Ruby script is run in the UI when the current network has results
                     then the results will be available to the script.
 
@@ -194,15 +194,12 @@
 
                 `#### Description:
 
-                    Creates a standard database at the location given by the path parameter.
-
-                    Likely exceptions for this method to throw are the following
-                    RuntimeExceptions:
-
-                    Error 43 : Can't overwrite an existing database
-
-                    z:\\test.icmm contains an incorrect path
-
+                    Creates a standard database at the location given by the path parameter.`
+					`
+                    Likely exceptions for this method to throw are the following:
+						RuntimeExceptions:
+							`Error 43 : Can't overwrite an existing database z:\\test.icmm contains an incorrect path`
+							
         `
         `
         [/method]
@@ -240,32 +237,32 @@
 
                     Displays a file dialog (open or save), and if OK is selected returns the
                     file path, or if allow\_multiple\_files was set to true, an array of
-                    selected files.
-
-                    The parameters are as follows:
-
+                    selected files.`
+                    `
+                    The parameters are as follows:`
+                    `
                     open – true if the dialog is to be an 'open' dialog (i.e. to select an
                     existing file to be read subsequently in the Ruby script), false if it
                     is to be a 'save' dialog (i.e. to select the name of a file to be
-                    written subsequently in the Ruby script)
-
+                    written subsequently in the Ruby script)`
+                    `
                     extension – the extension of the file e.g. 'csv', 'dat', 'xml'.
-
+                    `
                     Description – a description of the type of file to save which will
-                    appear in the file dialog e.g. 'Comma Separated Value file'.
-
+                    appear in the file dialog e.g. 'Comma Separated Value file'.`
+                    `
                     Default name – a default name to save the file (if open is false), or a
-                    default name to search for (if open is true).
-
+                    default name to search for (if open is true).`
+                    `
                     Allow multiple files – true if open is false and you wish to allow more
-                    than one file to be selected. The parameter is ignored if open is true.
-
+                    than one file to be selected. The parameter is ignored if open is true.`
+                    `
                     The method returns the path of the file chosen as a string, unless open
                     is true and allow\_multiple\_files is true, in which case an array of
-                    strings is returned.
-
+                    strings is returned.`
+                    `
                     Hard-wire cancel – if this parameter is true or nil, if the user cancels
-                    from the dialog, the execution of the Ruby script is stopped.
+                    from the dialog, the execution of the Ruby script is stopped.`
 
         `
         `
@@ -284,18 +281,18 @@
 
 
                     Displays a dialog allowing the selection of a folder, returned as a
-                    string.
-
-                    The parameters are as follows:
-
-                    Title – a title for the dialog
-
+                    string.`
+                    `
+                    The parameters are as follows:`
+                    `
+                    Title – a title for the dialog`
+                    `
                     Hard-wire cancel – if the parameter is true or nil, if the user cancels
-                    from the dialog, the execution of the Ruby script is stopped.
-
+                    from the dialog, the execution of the Ruby script is stopped.`
+                    `
                     If the user selects OK, the path of the folder is returned as a string.
                     If the user selects cancel and the hard\_wire\_cancel parameter is set
-                    to false, nil will be returned.
+                    to false, nil will be returned.`
 
         `
         `
@@ -345,68 +342,137 @@
 
                 `#### Description:
 
-                    **This method appears to be deprecated!**
-
-                    Displays a graph according to the parameters passed in.
-
+                    Displays a graph according to the parameters passed in.`
+                    `
                     The graph method contains 1 parameter, a hash.
-
+                    `
                     It has the following keys, which are all strings:
-
-                    WindowTitle – a string containing the title of the graph window
-
-                    GraphTitle – a string containing the title of the graph (i.e. this
-                    appears IN the window rather than being the title)
-
-                    XAxisLabel – a string containing the label of the X-axis
-
-                    YAxisLabel – a string containing the label of the Y-axis
-
-                    IsTime – a value which evaluates as true or false, which should be set
-                    to true if the x axis is made up of time values and is labelled as dates
-                    / times.
-
-                    Traces – an array of traces defined as follows:
-
-                    Each trace in the array of traces is in turn also a hash.
-
-                    The trace hash has the following keys, which are all strings:
-
-                    Title – a string giving the trace's name
-
-                    TraceColour – an integer containing an RGB value of the trace's colour.
-                    A convenient way of getting this is to use the WSApplicatioon.colour
-                    method
-
-                    SymbolColour - – an integer containing an RGB value of the colour used
-                    for the symbol used at the points along the trace. A convenient way of
-                    getting this is to use the WSApplicatioon.colour method
-
-                    Marker – a string containing the symbol to be used for the points along
-                    the trace – possible values are:
-
-                    None, Cross, XCross, Star, Circle, Triangle, Diamond, Square, FCircle,
-                    FTriangle, FDiamond, FSquare
-
-                    The F in the above names means 'filled'.
-
-                    LineType – a string containing the style to be used for the trace's line
-                    – possible values are:
-
-                    None, Solid, Dash, Dot, DashDot, DashDotDot
-
-                    XArray – an array containing the values used in the trace for the x
-                    coordinates of the points. They must be floating point values (or values
-                    that can be converted to a floating point values) if IsTime is false or
-                    time values if IsTime is true.
-
-                    YArray - – an array containing the values used in the trace for the y
-                    coordinates of the points. They must be floating point values (or values
-                    that can be converted to a floating point values).
-
-                    There must be an equal number of values in the XArray and YArray in each
+                    `
+					[table]
+						[header]
+							[column]Key[/column]
+							[column]Type[/column]
+							[column]Description[/column]
+						[/header]
+						[row]
+							[column]WindowTitle[/column]
+							[column]`rb String`[/column]
+							[column]The title of the graph window[/column]
+						[/row]
+						[row]
+						    [column]GraphTitle[/column]
+						    [column]`rb String`[/column]
+						    [column]The title of the graph (i.e. this appears IN the window rather than being the title)[/column]
+						[/row]
+						[row]
+							[column]XAxisLabel[/column]
+							[column]`rb String`[/column]
+							[column]The label of the X-axis[/column]
+						[/row]
+						[row]
+							[column]YAxisLabel[/column]
+							[column]`rb String`[/column]
+							[column]The label of the Y-axis[/column]
+						[/row]
+						[row]
+							[column]IsTime[/column]
+							[column]`rb Boolean`[/column]
+							[column]Set this field to true if the x axis is made up of time values and is labelled as dates / times.[/column]
+						[/row]
+						[row]
+							[column]Traces[/column]
+							[column]`rb Array`[/column]
+							[column]An array of traces (see below for more details).[/column]
+						[/row]
+					[/table]
+                    
+					`##### Trace
+					
+					A trace is a Hash which contains data about about the style and position of data within the graph.
+					The keys and values of the Hash are described in the table below:`
+					`
+					[table]
+						[header]
+							[column]Key[/column]
+							[column]Type[/column]
+							[column]Description[/column]
+						[/header]
+						[row]
+							[column]Title[/column]
+							[column]`rb String`[/column]
+							[column]The name of the dataset.[/column]
+						[/row]
+						[row]
+						    [column]TraceColour[/column]
+						    [column]`rb Integer`[/column]
+						    [column]An RGB value of the trace's colour. A convenient way of getting this is to use the 
+							        WSApplicatioon.colour method[/column]
+						[/row]
+						[row]
+						    [column]SymbolColour[/column]
+						    [column]`rb Integer`[/column]
+						    [column]An RGB value of the symbol colour. A convenient way of getting this is to use the 
+							        WSApplicatioon.colour method[/column]
+						[/row]
+						[row]
+							[column]Marker[/column]
+							[column]`rb String`[/column]
+							[column]
+								The symbol to be used for the points along the trace. Possible options:
+								[table]
+								    [header][column]Key     [/column][column]Description     [/column][/header]
+									[row][column]None     [/column][column]No symbol will be used.[/column][/row]
+									[row][column]Cross    [/column][column]Shaped like a plus (+).[/column][/row]
+									[row][column]XCross   [/column][column]Shaped like an x.[/column][/row]
+									[row][column]Star     [/column][column]Shaped like a star.     [/column][/row]
+									[row][column]Circle   [/column][column]Shaped like a circle.   [/column][/row]
+									[row][column]Triangle [/column][column]Shaped like a triangle. [/column][/row]
+									[row][column]Diamond  [/column][column]Shaped like a diamond.  [/column][/row]
+									[row][column]Square   [/column][column]Shaped like a square.   [/column][/row]
+									[row][column]FCircle  [/column][column]Same as `Circle`, but filled instead of empty.  [/column][/row]
+									[row][column]FTriangle[/column][column]Same as `Triangle`, but filled instead of empty.[/column][/row]
+									[row][column]FDiamond [/column][column]Same as `Diamond`, but filled instead of empty. [/column][/row]
+									[row][column]FSquare  [/column][column]Same as `Square`, but filled instead of empty.  [/column][/row]
+								[/table]
+							[/column]
+						[/row]
+						[row]
+							[column]LineType[/column]
+							[column]`rb String`[/column]
+							[column]
+								The style to be used for the trace's line.
+								[table]
+									[row][column]None      [/column][/row]
+									[row][column]Solid     [/column][/row]
+									[row][column]Dash      [/column][/row]
+									[row][column]Dot       [/column][/row]
+									[row][column]DashDot   [/column][/row]
+									[row][column]DashDotDot[/column][/row]
+								[/table]
+							[/column]
+						[/row]
+						[row]
+							[column]XArray[/column]
+							[column]`rb Array`[/column]
+							[column]
+								The values used in the trace for the x coordinates of the points. They 
+								must be floating point values (or values that can be converted to a
+								floating point values) if IsTime is false or time values if IsTime is true.
+							[/column]
+						[/row]
+						[row]
+							[column]YArray[/column]
+							[column]`rb Array`[/column]
+							[column]
+								The values used in the trace for the y coordinates of the points. They
+								must be floating point values (or values that can be converted to a 
+								floating point values) if IsTime is false or time values if IsTime is true.
+							[/column]
+						[/row]
+					[/table]
+					`
+                    > There must be an equal number of values in the XArray and YArray in each
                     trace, though they can vary between traces.
-
         `
         `
         [/method]
@@ -448,10 +514,10 @@
 
 
                     Launches one or more simulations in a flexible way. This method requires
-                    connect\_local\_agent to have been called prior to its being called.
-
-                    The parameters are as follows:
-
+                    `connect_local_agent` to have been called prior to its being called.`
+					`
+                    The parameters are as follows:`
+					`
                     > Sims – an array of WSModelObject objects for the simulations
                     >
                     > Server – the name of the server to run the simulation on, or '.' for
@@ -464,13 +530,13 @@
                     >
                     > After – the time (as a time\_t time) after which the simulation should
                     > run, or 0 for 'now'.
-
+					`
                     The method returns an array of 'job IDs', one for each simulation in the
                     sims array, the ID of a given simulation will be nil if the simulation
                     failed to launch. The job IDs are strings intended for use as parameters
                     to the wait\_for\_jobs method and the cancel\_job method. Any nil values
                     in the array will be safely ignored by the wait\_for\_jobs method so the
-                    results array may be passed into it.
+                    results array may be passed into it.`
 
         `
         `
@@ -487,64 +553,132 @@
 
                 `#### Description:
 
-
-                    Displays a message box.
-
-                    The parameters are as follows:
-
-                    Text – the text displayed
-
-                    Options – must be nil or one of the following strings: 'OK', 'OKCancel',
-                    'YesNo', 'YesNoCancel'. If the parameter is nil, then the OK and Cancel
-                    buttons are displayed.
-
-                    Icon – must be nil or one of the following strings: '!', '?',
-                    'Information'. If the parameter is nil then the '!' icon is used.
-
-                    Hard Wire Cancel – if this is set to true or nil then hitting the cancel
-                    button (if there is one) will result in the Ruby script processing
-                    stopping as though the 'cancel' button had been hit.
-
-                    The method returns 'Yes','No','OK' or 'Cancel' as a string, unless
-                    cancel is hit and the 'hard wire cancel' parameter is set to true or nil
-                    in which case execution of the script is stopped.
-
-                    The icons appear as follows:
-
-                    '!' (and nil)
-
-                    <img src="./media/image3.png" width="241" height="161" />
-
-                    '?'
-
-                    <img src="./media/image4.png" width="241" height="161" />
-
-                    'Information'
-
-                    <img src="./media/image5.png" width="241" height="161" />
-
-                    'Stop'
-
-                    <img src="./media/image6.png" width="241" height="161" />
-
-                    The buttons appear as follows:
-
-                    'OK'
-
-                    <img src="./media/image7.png" width="269" height="161" />
-
-                    'OKCancel' (and nil)
-
-                    <img src="./media/image8.png" width="241" height="161" />
-
-                    'YesNo'
-
-                    <img src="./media/image9.png" width="241" height="161" />
-
-                    'YesNoCancel'
-
-                    <img src="./media/image10.png" width="339" height="161" />
-
+                    Displays a message box.`
+					`
+					The method returns 'Yes','No','OK' or 'Cancel' as a string. If hard_wire_cancel is
+					false or nil, the ruby script is halted and nothing is returned.`
+					`
+                    The parameters are as follows:`
+					`
+                    [table]
+						[header]
+							[column]Parameter name[/column]
+							[column]Parameter type[/column]
+							[column]Parameter description[/column]
+						[/header]
+						[row]
+							[column]Text[/column]
+							[column]`rb String`[/column]
+							[column]The text displayed[/column]
+						[/row]
+						[row]
+							[column]Options[/column]
+							[column]`rb String` or `rb nil`[/column]
+							[column]
+								The options are as follows:
+								[table]
+									[header]
+										[column]Option name[/column]
+										[column]Option description[/column]
+									[/header]
+									[row]
+										[column]`rb nil`[/column]
+										[column]
+											Alias for OKCancel
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "OK"`[/column]
+										[column]
+											[[ image7.png
+											[img width=241 height=161]media/WSApplication_Message_Box_OK.png[/img]`
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "OKCancel"`[/column]
+										[column]
+											[[ image8.png
+											[img width=241 height=161]media/WSApplication_Message_Box_OKCancel.png[/img]
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "YesNo"`[/column]
+										[column]
+											[[ image9.png
+											[img width=241 height=161]media/WSApplication_Message_Box_YesNo.png[/img]
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "YesNoCancel"`[/column]
+										[column]
+											[[ image10.png
+											[img width=241 height=161]media/WSApplication_Message_Box_YesNoCancel.png[/img]
+										[/column]
+									[/row]
+								[/table]
+							[/column]
+						[/row]
+						[row]
+							[column]Icon[/column]
+							[column]`rb String`[/column]
+							[column]
+								The icon displayed in the message box.`
+								`
+								[table]
+									[header]
+										[column]Icon Value[/column]
+										[column]Icon Displayed[/column]
+									[/header]
+									[row]
+										[column]`rb nil`[/column]
+										[column]
+											Alias for `rb "!"`.
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "!"`[/column]
+										[column]
+											[[ image3.png
+											[img width=241 height=161]media/WSApplication_Message_Box_Exclamation.png[/img]
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "?"`[/column]
+										[column]
+											[[ image4.png
+											[img width=241 height=161]media/WSApplication_Message_Box_Question.png[/img]
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "Information"`[/column]
+										[column]
+											[[ image5.png
+											[img width=241 height=161]media/WSApplication_Message_Box_Information.png[/img]
+										[/column]
+									[/row]
+									[row]
+										[column]`rb "Stop"`[/column]
+										[column]
+											[[ image6.png
+											[img width=241 height=161]media/WSApplication_Message_Box_Critical.png[/img]
+										[/column]
+									[/row]
+								[/table]
+							[/column]
+						[/row]
+						[row]
+							[column]hard_wire_cancel[/column]
+							[column]`rb Boolean`[/column]
+							[column]
+								Whether the script should stop processing if the 'Cancel' button is hit.`
+								`
+								If this value is set to true or nil then hitting the cancel button (if there is one),
+								or quitting the dialog, will result in the Ruby script halting. If this value is false,
+								the ruby script will continue regardless of the user's interaction with the cancel
+								button.
+							[/column]
+						[/row]
+					[/table]
         `
         `
         [/method]
@@ -570,38 +704,38 @@
                     Opens the database with path 'path' and returns an object of type
                     WSDatabase. If the database requires updating and the flag bUpdate
                     evaluates to true then the database will be updated (if possible)
-                    otherwise the call will fail
-
-                    If the path is blank then uses the current master database, if any.
-
-                    Likely exceptions for this method to throw are:
-
+                    otherwise the call will fail`
+                    `
+                    If the path is blank then uses the current master database, if any.`
+                    `
+                    Likely exceptions for this method to throw are:`
+                    `
                     Error 13 : File Not Found : d:\\temp\\misc.icmm (error=2: "The system
-                    cannot find the file specified.")
-
-                    if the database is not present.
-
+                    cannot find the file specified.")`
+                    `
+                    if the database is not present.`
+                    `
                     Error 13 : File Not Found : z:\\misc.icmm (error=3: "The system cannot
-                    find the path specified.")
-
-                    if the database path is invalid
-
-                    no database path specified
-
+                    find the path specified.")`
+                    `
+                    if the database path is invalid`
+                    `
+                    no database path specified`
+                    `
                     if the path is nil and there is no currently selected master database
-                    via the UI
-
-                    major update failed
-
-                    minor update failed
-
-                    if there is a problem with a database update
-
-                    database requires major update but allow update flag is not set
-
-                    database requires minor update but allow update flag is not set
-
-                    if the database requires an update but the second parameter is false
+                    via the UI`
+                    `
+                    major update failed`
+                    `
+                    minor update failed`
+                    `
+                    if there is a problem with a database update`
+                    `
+                    database requires major update but allow update flag is not set`
+                    `
+                    database requires minor update but allow update flag is not set`
+                    `
+                    if the database requires an update but the second parameter is false`
 
         `
         `
@@ -621,12 +755,12 @@
 
                     This method opens a text file in a text view within the application. The
                     parameters are a window title, the filename and a Boolean, which if set
-                    to true, will cause the file to be deleted when the view is closed.
-
+                    to true, will cause the file to be deleted when the view is closed.`
+                    `
                     It is important to realise that this method does not cause the script to
                     wait until the file is closed – it opens the view and then continues to
-                    the next item in the script.
-
+                    the next item in the script.`
+                    `
                     The purpose of the delete\_on\_exit parameter is allow the user to
                     create a temporary file which will be displayed by this method and then
                     deleted when the view is closed by the user.
@@ -652,14 +786,14 @@
 
                 `#### Description:
 
-                    Overrides a current user unit for the duration of the script
-
+                    Overrides a current user unit for the duration of the script`
+                    `
                     This can be useful where ICM Exchange is running as a service, where the
                     "user" has no settings of it own and you don't want the default user
-                    units that are selected for the locale
-
-                    Returns `true` if successful, `false` for an unknown unit or value.
-
+                    units that are selected for the locale`
+                    `
+                    Returns `true` if successful, `false` for an unknown unit or value.`
+                    `
                     > Note – When scripts are run from the UI, user units are always used.
 
         `
@@ -686,26 +820,26 @@
 
                 `#### Description:
 
-                    Bulk overrides the current user units for the duration of the script.
-
+                    Bulk overrides the current user units for the duration of the script.`
+                    `
                     Takes a filename of a file containing comma separated pairs of unit
-                    code, unit value pairs, one pair per line. E.g.
-
-                    XY,US Survey ft
-
+                    code, unit value pairs, one pair per line. E.g.`
+                    `
+                    XY,US Survey ft`
+                    `
                     Useful where ICM Exchange is running as a service, where the "user" has
-                    no settings of it own.
-
+                    no settings of it own.`
+                    `
                     Returns an error string. An empty string indicates success. Note,
                     however, that any valid units will be applied, regardless of whether
-                    there are any errors with other lines of the file.
-
-                    A likely exception for this method to throw is:
-
+                    there are any errors with other lines of the file.`
+                    `
+                    A likely exception for this method to throw is:`
+                    `
                     Error 13 : File Not Found : z:\\uu.csv (error=3: "The system cannot find
-                    the path specified.")
-
-                    if the file does not exist.
+                    the path specified.")`
+                    `
+                    if the file does not exist.`
 
         `
         `
@@ -725,26 +859,26 @@
 
                     This method displays a prompt grid, similar to that used in the SQL in
                     InfoWorks ICM / InfoNet. It displays values and allows users to edit
-                    them.
-
-                    Title – the title of the displayed dialog.
-
-                    Layout – an array of arrays as described below.
-
+                    them.`
+                    `
+                    Title – the title of the displayed dialog.`
+                    `
+                    Layout – an array of arrays as described below.`
+                    `
                     Hard-wire cancel – if this is set to true or nil, if the user hits
-                    cancel, the running of the Ruby script is interrupted.
-
-                    The method returns an array of values, one for each line in the dialog.
-
+                    cancel, the running of the Ruby script is interrupted.`
+                    `
+                    The method returns an array of values, one for each line in the dialog.`
+                    `
                     The layout parameter must be an array consisting of one array for each
-                    line to be displayed.
-
-                    The array for each line must contain between 2 and 9 values as follows:
-
-                    Index 0 – a string to display as a description of the value for the row
-
-                    Index 1 – a type of the value – one of the following strings:
-
+                    line to be displayed.`
+                    `
+                    The array for each line must contain between 2 and 9 values as follows:`
+                    `
+                    Index 0 – a string to display as a description of the value for the row`
+                    `
+                    Index 1 – a type of the value – one of the following strings:`
+                    `
                     > NUMBER – a number
                     >
                     > STRING- a string
@@ -756,16 +890,16 @@
                     > READONLY – a read only value, appearing in the edit column as a string
                     > with a grey background. The value is converted to a string except for
                     > Ruby types float and double.
-
+                    `
                     Index 2 (optional, except for rows of read only type) – a default value
                     i.e. the initial value when the dialog appears. For read only rows, this
-                    is the value displayed which cannot, of course, be changed
-
+                    is the value displayed which cannot, of course, be changed`
+                    `
                     Index 3 (optional) a number of decimal places – used for numbers and
-                    read only values of Ruby types float and double.
-
-                    Index 4 (optional) a subtype – one of the following strings
-
+                    read only values of Ruby types float and double.`
+                    `
+                    Index 4 (optional) a subtype – one of the following strings`
+                    `
                     > RANGE – valid for NUMBER only, the value will be chosen from a combo
                     > box with values specified in array elements index 5 and 6 inclusive.
                     >
@@ -795,9 +929,9 @@
                     > button and selecting a folder. Array element 6 must be a folder
                     > description as a string or nil, in which case a default title will be
                     > used.
-
-                    Here is an example of a prompt exercising most of these options:
-
+                    `
+                    Here is an example of a prompt exercising most of these options:`
+                    `
                     ```rb
                         require 'Date'
                         val=WSApplication.prompt "Badger", [
@@ -827,23 +961,23 @@
                         ],false
                         puts val.to_s
                     ```
-
-                    When run, it looks like this:
-
-                    <img src="./media/image11.png" width="448" height="315" />
-
+                    `
+                    When run, it looks like this:`
+                    `
+                    [img width="448" height="315"]media/image11.png[/img]
+                    `
                     As you can see, there are a number of lists (with the button for the
                     pull down to the right), and a number of filenames (with a button
-                    showing ellipses to press to invoke the file or folder dialog).
-
+                    showing ellipses to press to invoke the file or folder dialog).`
+                    `
                     The read only values are showed greyed out, in this example the rows are
-                    ordered so they appear at the bottom of the grid.
-
+                    ordered so they appear at the bottom of the grid.`
+                    `
                     Notice that the date time values in the lists and for defaults are set
-                    using DateTime.new as described earlier in this document.
-
-                    If OK is hit without changing any values, it returns an array like this:
-
+                    using DateTime.new as described earlier in this document.`
+                    `
+                    If OK is hit without changing any values, it returns an array like this:`
+                    `
                     ```ruby
                         [nil, nil, nil, #<DateTime: 2012-07-13T12:45:00+00:00 (78595905/32,0,2299161)>, 234.123456, 11.0, 100.0, "Badger",
                         "Default", nil, 23.0, nil, #<DateTime: 2011-10-13T14:12:30+00:00 (1414568501/576,0,2299161)>, false, false, true, "Badger.dat", nil, nil, nil, "Turbo Pump", 12.3456678, 87.65456789]
@@ -870,12 +1004,12 @@
 
                 `#### Description:
 
-                    Returns the current results folder as a string
-
+                    Returns the current results folder as a string`
+                    `
                     NB – if you have not specified a results folder, either in a script or
                     in the UI, the default results folder which is used will be returned
                     i.e. this returns the results folder that is actually being used
-                    regardless of whether you have explicitly set it or not
+                    regardless of whether you have explicitly set it or not.`
 
         `
         `
@@ -894,32 +1028,32 @@
 
 
                     This method displays a grid of values, similar to that used in the SQL
-                    in InfoWorks ICM / InfoNet.
-
-                    The parameters are as follows:
-
-                    Title – the title of the displayed dialog.
-
-                    Layout – an array of arrays as described below.
-
+                    in InfoWorks ICM / InfoNet.`
+                    `
+                    The parameters are as follows:`
+                    `
+                    Title – the title of the displayed dialog.`
+                    `
+                    Layout – an array of arrays as described below.`
+                    `
                     Hard-wire cancel – if this is set to true or nil, if the user hits
-                    cancel, the running of the Ruby script is interrupted.
-
+                    cancel, the running of the Ruby script is interrupted.`
+                    `
                     The layout parameter must be an array consisting of one array for each
-                    line to be displayed.
-
-                    The array for each line must contain 2 or 3 values as follows:
-
+                    line to be displayed.`
+                    `
+                    The array for each line must contain 2 or 3 values as follows:`
+                    `
                     Index 0 – a string to display as the description of the value for the
-                    row
-
+                    row`
+                    `
                     Index 1 – the value to be displayed as a Ruby value. If the value is a
                     float or a double it will be displayed by using the Ruby to\_f method,
-                    otherwise the to\_s method will be used.
-
+                    otherwise the to\_s method will be used.`
+                    `
                     Index 2 (optional) – a number of decimal places to be used between 0 and
                     8 inclusive, this will be used for float and double values and ignored
-                    for any others.
+                    for any others.`
 
         `
         `
@@ -939,11 +1073,11 @@
 
                     Returns the full path of the script file. This will either by the file
                     specified on the command line of the Exchange product or the file
-                    selected in the user interface.
-
+                    selected in the user interface.`
+                    `
                     This method is supplied primarily to obtain the script's path in order
                     to process the path to get the paths of files in the same directory e.g.
-                    config files for the Open Data Import and Export Centres.
+                    config files for the Open Data Import and Export Centers.`
 
         `
         `
@@ -967,13 +1101,13 @@
                 `#### Description:
 
                     Sets the InfoLite application's exit code. The exit code must evaluate
-                    to a Fixnum, if it does not, an exception will be thrown:
-
-                    exit code is not a number
-
+                    to a Fixnum, if it does not, an exception will be thrown:`
+                    `
+                    exit code is not a number`
+                    `
                     > Note - Calling this method *does not* cause the script to terminate,
                     it merely sets the exit code returned to the operating system when the
-                    script *does* terminate.
+                    script *does* terminate.`
 
         `
         `
@@ -996,11 +1130,11 @@
 
                 `#### Description:
 
-                    Sets the working folder.
-
+                    Sets the working folder.`
+                    `
                     NB – this working folder will be used for the duration of this ICM
                     Exchange run. it will not be stored in the registry and will not be used
-                    by any other instances of ICM Exchange or the ICM UI.
+                    by any other instances of ICM Exchange or the ICM UI.`
 
         `
         `
@@ -1023,11 +1157,11 @@
 
                 `#### Description:
 
-                    Sets the results folder.
-
+                    Sets the results folder.`
+                    `
                     NB – this results folder will be used for the duration of this ICM
                     Exchange run. it will not be stored in the registry and will not be used
-                    by any other instances of ICM Exchange or the ICM UI.
+                    by any other instances of ICM Exchange or the ICM UI.`
 
         `
         `
@@ -1046,22 +1180,22 @@
 
 
                     Waits for one or all of the jobs in the array to complete, or for the
-                    timeout time to be reached.
-
-                    The parameters are as follows:
-
-                    Array\_of\_job\_ids – an array of job IDs, i.e. values in the array
+                    timeout time to be reached.`
+                    `
+                    The parameters are as follows:`
+                    `
+                    `Array_of_job_ids` – an array of job IDs, i.e. values in the array
                     returned by launch\_sims. This array may contain nil values which are
-                    safely ignored.
-
-                    Wait\_for\_all – true to wait until all the jobs in the array complete,
-                    false to wait for one.
-
-                    Timeout – a timeout time in milliseconds.
-
+                    safely ignored.`
+                    `
+                    `Wait_for_all` – true to wait until all the jobs in the array complete,
+                    false to wait for one.`
+                    `
+                    Timeout – a timeout time in milliseconds.`
+                    `
                     Returns Qnil if waittime is exceeded, otherwise returns the array index
                     of the job that caused the wait to end (if waitall is true, this is the
-                    last job to complete)
+                    last job to complete)`
 
         `
         `
@@ -1098,10 +1232,10 @@
                     the software uses an ArcGIS server licence type by default. Use this
                     method to use an ArcGIS desktop licence instead. It is the
                     responsibility of the user to choose an appropriate ArcGIS licence based
-                    on their use of the software.
-
+                    on their use of the software.`
+                    `
                     Note – when scripts are run from the UI, the desktop licence is, of
-                    course, used.
+                    course, used.`
 
         `
         `
@@ -1126,7 +1260,7 @@
 
                     Returns a Boolean indicating whether the application is using user units
                     (default is false for the Exchange products and true within the user
-                    interface).
+                    interface).`
 
         `
         `
@@ -1149,7 +1283,7 @@
 
                 `#### Description:
 
-                    Sets the flag indicating whether the application is using user units.
+                    Sets the flag indicating whether the application is using user units.`
 
         `
         `
@@ -1173,7 +1307,7 @@
                 `#### Description:
 
                     Returns a Boolean indicating whether the application is using UTF8 in
-                    string handling (default is false). See appendix 5 for more details.
+                    string handling (default is false). See appendix 5 for more details.`
 
         `
         `
@@ -1197,7 +1331,7 @@
                 `#### Description:
 
                     Sets the flag indicating whether the application is using UTF8 in string
-                    handling (default is false). See appendix 5 for more details.
+                    handling (default is false). See appendix 5 for more details.`
 
         `
         `
@@ -1220,9 +1354,9 @@
 
                 `#### Description:
 
-                    Returns the InfoWorks ICM version number as a string e.g.
-
-                    “2.5.0.5001”
+                    Returns the InfoWorks ICM version number as a string e.g.`
+                    `
+                    `rb "2.5.0.5001"`
 
         `
         `
@@ -1245,16 +1379,18 @@
 
                 `#### Description:
 
-                    Returns the current working folder as a string
-
+                    Returns the current working folder as a string`
+                    `
                     NB – if you have not specified a working folder, either in a script or
                     in the UI, the default working folder which is used will be returned
                     i.e. this returns the working folder that is actually being used
-                    regardless of whether you have explicitly set it or not
+                    regardless of whether you have explicitly set it or not`
 
         `
         `
-
+        [/method]
+		`
+		`
         ## WSDatabase
 
             The majority of these methods are only available in the Exchange
@@ -1262,9 +1398,9 @@
             allow navigation of the database in order to find and create selection
             list objects.
 
-            `
-                `
-        [/method]
+        `
+        `
+
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`copy_into_root` (Exchange only)
@@ -1282,7 +1418,7 @@
                     the database in the root, returning the new model object. The bCopySims
                     and bCopyGroundModels parameters determine whether or not simulation
                     results and ground models respectively are copied, corresponding to the
-                    equivalent user interface options.
+                    equivalent user interface options.`
 
         `
         `
@@ -1303,12 +1439,12 @@
                     Returns the root used for GIS files for the database – i.e. the path
                     within which GIS file names will be treated as having relative paths.
                     This will be the path shown in the UI as 'Remote files root' when the
-                    user selects the 'Select remote roots…' option.
-
+                    user selects the 'Select remote roots…' option.`
+                    `
                     If the database is a standalone database and the check-box is checked to
                     force the roots to be below the master database, then the path returned
                     will be the one used by the software in this situation i.e. the folder
-                    containing the master database.
+                    containing the master database.`
 
         `
         `
@@ -1334,12 +1470,12 @@
                     Given the scripting type of an object and a name of a version controlled
                     object (not its scripting path), will return the model object in the
                     database of that type with that name. The name should not be the
-                    scripting full path, just the name of the object.
-
+                    scripting full path, just the name of the object.`
+                    `
                     This method only works for version controlled objects and takes
                     advantage of the fact that version controlled objects have unique names
                     so the name, rather than scripting full path is enough to identify the
-                    object in the database uniquely.
+                    object in the database uniquely.`
 
         `
         `
@@ -1365,7 +1501,7 @@
                     Given the scripting type of an object and the name of an object, will
                     return the model object with that name in the root of the database.
                     Currently the only object types found in the root of the database are
-                    'Master Group', 'Model Group' and 'Asset Group'
+                    'Master Group', 'Model Group' and 'Asset Group'`
 
         `
         `
@@ -1384,7 +1520,7 @@
 
 
                     Returns the GUID for the database, otherwise known as the 'database
-                    identifier'.
+                    identifier'.`
 
         `
         `
@@ -1408,7 +1544,7 @@
                 `#### Description:
 
                     Returns an array of strings containing all the fields in the Run object
-                    that are read-write fields i.e. may be set from ICM Exchange scripts.
+                    that are read-write fields i.e. may be set from ICM Exchange scripts.`
 
         `
         `
@@ -1432,10 +1568,10 @@
                 `#### Description:
 
                     Given a scripting path of an object returns the model object with that
-                    path, otherwise returns nil.
-
+                    path, otherwise returns nil.`
+                    `
                     If you know the scripting path of the object in the database, this is
-                    the 'official' way of finding the model object.
+                    the 'official' way of finding the model object.`
 
         `
         `
@@ -1454,7 +1590,7 @@
 
 
                     Given a scripting type, returns a WSModelObjectCollection of all the
-                    objects of that type – not just the objects of that type in the root.
+                    objects of that type – not just the objects of that type in the root.`
 
         `
         `
@@ -1479,7 +1615,7 @@
 
                     Returns the model object of the given scripting type with the
                     'CreationGUID' (an internal database field) given in the second
-                    parameter.
+                    parameter.`
 
         `
         `
@@ -1505,11 +1641,11 @@
                     Returns the model object in this database with the type and ID given,
                     the type is from the list of scripting types (see above), and the ID is
                     the Id in the database which will be found by selecting the 'properties'
-                    option on the object.
-
+                    option on the object.`
+                    `
                     This can be an easy way of getting a WSModelObject from something you
                     have found in the InfoWorks ICM UI by selecting the object in the tree
-                    and obtaining its properties.
+                    and obtaining its properties.`
 
         `
         `
@@ -1535,8 +1671,8 @@
                     The purpose of this method is to generate a name for a new network based
                     on a given network name, with the intention that the old name is the
                     name of an existing network and the new name will be used as the name of
-                    a subsequently created network.
-
+                    a subsequently created network.`
+                    `
                     The 3<sup>rd</sup> and 4<sup>th</sup> parameters are Boolean parameters
                     which control the precise naming convention used. If branch is false the
                     names will be got by appending \#1 on the end if the name does not end
@@ -1544,7 +1680,7 @@
                     the number will be incremented. If branch is true the same applies
                     except that \_ is used as the special character instead of \#. If add is
                     true then \#1 or \_1 will be appended to the name regardless of whether
-                    or not the name ends in \# or \_ followed by a number.
+                    or not the name ends in \# or \_ followed by a number.`
 
         `
         `
@@ -1571,25 +1707,25 @@
                     in the root of the database. For this to work it is necessary that the
                     type be a legal object type that can go into the root of the database
                     i.e. this type must be “Asset Group”,”Model Group” or “Master Group”.
-                    More may be added in the future.
-
-                    Likely exceptions thrown by this method are:
-
-                    unrecognised type – if the type is not a valid scripting type name
-
+                    More may be added in the future.`
+                    `
+                    Likely exceptions thrown by this method are:`
+                    `
+                    unrecognised type – if the type is not a valid scripting type name`
+                    `
                     invalid object type for the root of a database – if objects of this type
-                    cannot be placed in the root of the database
-
+                    cannot be placed in the root of the database`
+                    `
                     an object of this type and name already exists in root of database – if
-                    an object with this type and name exists in the root of the database
-
+                    an object with this type and name exists in the root of the database`
+                    `
                     licence and/or permissions do not permit creation of a child of this
                     type in the root of the database – if the object cannot be created in
                     the root of the database for licence and/or permissions reasons e.g. an
                     attempt to create an Asset Group when the user doe not have an InfoNet
-                    licence of some sort
-
-                    unable to create object – if the creation fails for some other reason
+                    licence of some sort`
+                    `
+                    unable to create object – if the creation fails for some other reason`
 
         `
         `
@@ -1612,7 +1748,7 @@
 
                 `#### Description:
 
-                    returns the pathname of the master database as a string
+                    returns the pathname of the master database as a string`
 
         `
         `
@@ -1631,7 +1767,7 @@
 
 
                     Returns a WSModelObjectCollection of all the objects in the root of the
-                    database.
+                    database.`
 
         ## WSModelObjectCollection
 
@@ -1652,7 +1788,7 @@
 
 
                     Returns the nth WSModelObject in the collection. The index is 0 based
-                    i.e. valid values are from 0 to length-1.
+                    i.e. valid values are from 0 to length-1.`
 
         `
         `
@@ -1670,7 +1806,7 @@
                 `#### Description:
 
 
-                    Returns the number of WSModelObjects in the collection
+                    Returns the number of WSModelObjects in the collection`
 
         `
         `
@@ -1694,19 +1830,30 @@
                 `#### Description:
 
                     The each method can be used to iterate through all the objects in the
-                    collection.
-
+                    collection.`
+        `
+		`
+		[/method]
+		`
+		`
         ## WSModelObject
 
             The majority of these methods are only available in the Exchange
-            products.
+            products.`
 
             `
             `
-        [/method]
+
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
             ###`[]` (Exchange only)
+				`#### Syntax:
+					```ruby
+						puts mo['field']
+					```
+				
+				`#### Description:
+					Retrieves a value from the model object given a field name.
 
         `
         `
@@ -1727,19 +1874,19 @@
                     **v=mo\['field'\]**
 
                     The array operator is used to get and set values from fields in the
-                    object. This is likely to be of most use for runs.
-
+                    object. This is likely to be of most use for runs.`
+                    `
                     The parameter is invariably a field name, the value is a Ruby value of
-                    an appropriate type to be stored in the InfoWorks master database.
-
+                    an appropriate type to be stored in the InfoWorks master database.`
+                    `
                     A special case is the case where the value being stored is the reference
-                    to another object in the database. In this case the value stored may be
-
-                    1.  The object as a WSModelObject (or class derived from it)
-
-                    2.  The ID of the object
-
-                    3.  The scripting path of the object
+                    to another object in the database. In this case the value stored may be`
+                    `
+                    *1.*  The object as a WSModelObject (or class derived from it)`
+                    `
+                    *2.*  The ID of the object`
+                    `
+                    *3.*  The scripting path of the object`
 
         `
         `
@@ -1758,7 +1905,7 @@
 
 
                     This deletes the object and all its children. The deleted objects are
-                    NOT put into the recycle bin, they are completely deleted.
+                    NOT put into the recycle bin, they are completely deleted.`
 
         `
         `
@@ -1781,7 +1928,7 @@
 
                 `#### Description:
 
-                    Returns the children of the object as a WSModelObjectCollection
+                    Returns the children of the object as a WSModelObjectCollection`
 
         `
         `
@@ -1800,7 +1947,7 @@
 
 
                     Returns the description (i.e. the text which appears in the description
-                    tab of the properties for an object) as a string.
+                    tab of the properties for an object) as a string.`
 
         `
         `
@@ -1818,7 +1965,7 @@
                 `#### Description:
 
 
-                    Sets the description (as described above) for an object from a string.
+                    Sets the description (as described above) for an object from a string.`
 
         `
         `
@@ -1848,7 +1995,7 @@
                     type and must be version controlled objects or simulation results. There
                     is currently a limitation that the simulation results may only be
                     compared if the database from which they came is the current master
-                    database.
+                    database.`
 
         `
         `
@@ -1870,7 +2017,7 @@
                     the database as a child of this object, returning the new model object.
                     The bCopySims and bCopyGroundModels parameters determine whether or not
                     simulation results and ground models respectively are copied,
-                    corresponding to the equivalent user interface options.
+                    corresponding to the equivalent user interface options.`
 
         `
         `
@@ -1892,7 +2039,7 @@
                     using bulk\_delete which can, of course, delete anything. This
                     corresponds to whether the object can be deleted from the normal user
                     interface and reflects the same rules e.g. does it have children, is it
-                    used in a simulation etc.
+                    used in a simulation etc.`
 
         `
         `
@@ -1913,7 +2060,7 @@
                     Deletes the object, providing it can be deleted in the normal user
                     interface i.e. without using bulk\_delete which can, of course, delete
                     anything. This reflects, therefore, the rules used in the user
-                    interface.
+                    interface.`
 
         `
         `
@@ -1931,7 +2078,7 @@
                 `#### Description:
 
 
-                    Deletes the results for the object, if the object is a simulation.
+                    Deletes the results for the object, if the object is a simulation.`
 
         `
         `
@@ -1949,84 +2096,64 @@
                 `#### Description:
 
 
-                    Exports the model object in the appropriate format.
-
+                    Exports the model object in the appropriate format.`
+                    `
                     The formats permitted depend on the object type. The format string may
                     affect the actual data exported as well as the format in which the data
                     is exported e.g. for rainfall events the parameter 'CRD' means that the
-                    Catchment Runoff Data is exported.
-
+                    Catchment Runoff Data is exported.`
+                    `
                     When the format is the empty string the data is exported in the
-                    InfoWorks text file format. This format may be used for:
-
-                    > Inflow
-                    >
-                    > Level
-                    >
-                    > Infiltration
-                    >
-                    > Waste Water
-                    >
-                    > Trade Waste
-                    >
-                    > Rainfall Event (non-synthetic)
-                    >
-                    > Pipe Sediment Data
-                    >
-                    > Observed Flow Event
-                    >
-                    > Observed Depth Event
-                    >
-                    > Observed Velocity Event
-                    >
-                    > Layer List ( this is a different file format but still termed the
-                    > 'InfoWorks file' in the user interface).
-                    >
-                    > Regulator *(from 6.0)*
-
-                    For rainfall events the following parameters cause the export of other
-                    data in a text file format:
-
-                    > CRD – Catchment Runoff Data
-                    >
-                    > CSD – Catchment Sediment Data
-                    >
-                    > EVP – Evaporation
-                    >
-                    > ISD – Initial Snow Data
-                    >
-                    > TEM – Temperature Data
-                    >
-                    > WND – Wind Data
-
+                    InfoWorks text file format. This format may be used for:`
+                    `
+					[[ #TODO - Table with variable rows depending on version
+					```
+                        Inflow
+                        Level
+                        Infiltration
+                        Waste Water
+                        Trade Waste
+                        Rainfall Event (non-synthetic)
+                        Pipe Sediment Data
+                        Observed Flow Event
+                        Observed Depth Event
+                        Observed Velocity Event
+                        Layer List ( this is a different file format but still termed the 'InfoWorks file' in the user interface).
+                        Regulator (from version 6.0)
+                    ```
+					For rainfall events the following parameters cause the export of other
+                    data in a text file format:`
+					
+					[[ #TODO - Table
+					```
+                        CRD – Catchment Runoff Data
+                        CSD – Catchment Sediment Data
+                        EVP – Evaporation
+                        ISD – Initial Snow Data
+                        TEM – Temperature Data
+                        WND – Wind Data
+					```
+					
                     For pollutant graphs the parameters listed in Appendix A list cause the
-                    export of the appropriate pollutant's data in the text file format.
-
+                    export of the appropriate pollutant's data in the text file format.`
+                    `
                     If the format is 'CSV' the file will be exported in 'InfoWorks CSV'
-                    format for the following object types:
-
-                    > Level
-                    >
-                    > Infiltration
-                    >
-                    > Inflow
-                    >
-                    > Observed Flow
-                    >
-                    > Observed Depth
-                    >
-                    > Observed Velocity
-                    >
-                    > Rainfall Event (synthetic – main rainfall data)
-                    >
-                    > Regulator
-                    >
-                    > Damage Function *(from version 6.5)*
-                    >
-                    > Waste Water *(from a version 7.5 patch)*
-                    >
-                    > Trade Waste *(from a version 7.5 patch)*
-
+                    format for the following object types:`
+                    `
+					[[ #TODO - Table with variable rows depending on version
+                    ```
+						Level
+						Infiltration
+						Inflow
+						Observed Flow
+						Observed Depth
+						Observed Velocity
+						Rainfall Event (synthetic – main rainfall data)
+						Regulator
+						Damage Function  (from ICM version 6.5)
+						Waste Water      (from an ICM version 7.5 patch)
+						Trade Waste      (from an ICM version 7.5 patch)
+					```
         `
         `
         [/method]
@@ -2034,38 +2161,28 @@
 
             ###`(from version 6.5)`
 
-                    The results obtained by risk analysis runs may be exported as follows:
-
+                    The results obtained by risk analysis runs may be exported as follows:`
+					`
                     For Risk Analysis Results objects (known in ICM Exchange as Risk
                     Calculation Results) the files may be exported by using the following in
-                    the format field:
-
+                    the format field:`
+					`
                     > "Receptor Damages"
-                    >
                     > "Component Damages"
-                    >
                     > "Code Damages"
-                    >
                     > "Impact Zone Damages"
-                    >
                     > "Category Damages"
-                    >
                     > "Inundation Depth Results"
-
+					`
                     For Risk Analysis Sim objects (known in ICM Exchange as Damage
                     Calculation Results) the files may be exported by using the following in
-                    the format field:
-
+                    the format field:`
+					`
                     > "Receptor vs Code"
-                    >
                     > "Receptor vs Component"
-                    >
                     > "Code vs Component"
-                    >
                     > "Impact Zone vs Code"
-                    >
                     > "Impact Zone Code vs Component"
-                    >
                     > "Category Code vs Component"
 
         `
@@ -2085,7 +2202,7 @@
 
 
                     Given the scripting type of an object and a name will return the child
-                    of the object with that name and type.
+                    of the object with that name and type.`
 
         `
         `
@@ -2103,7 +2220,7 @@
                 `#### Description:
 
 
-                    Returns the ID of the model object as a number
+                    Returns the ID of the model object as a number`
 
         `
         `
@@ -2121,14 +2238,14 @@
                 `#### Description:
 
 
-                    Imports data into an existing object.
-
-                    Currently may only be used for rainfall events and pollutographs.
-
-                    The formats supported for rainfall events are
-
+                    Imports data into an existing object.`
+					`
+                    Currently may only be used for rainfall events and pollutographs.`
+					`
+                    The formats supported for rainfall events are`
+					`
                     CRD,CSD,EVP,ISD,TEM and WND which export data in the InfoWorks text file
-                    format and have the same meaning as for export\_data above.
+                    format and have the same meaning as for export\_data above.`
 
         `
         `
@@ -2146,48 +2263,35 @@
                 `#### Description:
 
 
-                    Imports a new model object from a file.
-
-                    Permitted types are:
-
+                    Imports a new model object from a file.`
+					`
+                    Permitted types are:`
+					
                     > Inflow
-                    >
                     > Level
-                    >
                     > Infiltration
-                    >
                     > Waste Water
-                    >
                     > Trade Waste
-                    >
                     > Rainfall Event (non-synthetic)
-                    >
                     > Pipe Sediment Data
-                    >
                     > Observed Flow Event
-                    >
                     > Observed Depth Event
-                    >
                     > Observed Velocity Event
-                    >
-                    > Layer List (this is a different file format but still termed the
-                    > 'InfoWorks file' in the user interface)
-                    >
+                    > Layer List (this is a different file format but still termed the 'InfoWorks file' in the user interface)
                     > Regulator *(from 6.0)*
-                    >
                     > Damage Function *(from 6.5)*
-
+					`
                     The format parameter may be “” (for 'InfoWorks format' files) or “CSV”
                     for InfoWorks format CSV files (not available for layer lists or damage
-                    functions). *(CSV format added in 6.0)*
-
+                    functions). *(CSV format added in 6.0)*`
+					`
                     The event parameter is for compatibility with old files and should in
-                    general be set to 0
-
+                    general be set to 0`
+					`
                     The object on which the method is called must be of a suitable type to
-                    contain the object imported.
-
-                    e.g.
+                    contain the object imported.`
+					`
+                    e.g.`
 
                     ```ruby
                         rainfall=model_group.import_new_model_object 'Rainfall Event','The Rainfall','','d:temp1.red',0
@@ -2209,23 +2313,21 @@
                 `#### Description:
 
 
-                    Imports event data into an existing object.
-
-                    The parameters are as follows:
-
+                    Imports event data into an existing object.`
+					`
+                    The parameters are as follows:`
+					`
                     > Filename – file to be imported
-                    >
                     > Format – 'CSV' or 'RED'
-                    >
                     > Event – integer – must be present but is ignored
-
+					`
                     If the format is 'CSV' this will import a CSV file in the 'InfoWorks CSV
                     file' format into an existing event, overwriting the data already there
-                    if there is any.
-
+                    if there is any.`
+					`
                     If the format is 'RED' and the type of the object is a rainfall event
                     this will import the data in event file format into an existing event,
-                    overwriting the data already there if there is any.
+                    overwriting the data already there if there is any.`
 
         `
         `
@@ -2243,7 +2345,7 @@
                 `#### Description:
 
 
-                    Returns the name of the user who last modified the object as a string.
+                    Returns the name of the user who last modified the object as a string.`
 
         `
         `
@@ -2260,7 +2362,7 @@
 
                 `#### Description:
 
-                    Returns the name of an object as a string.
+                    Returns the name of an object as a string.`
 
         `
         `
@@ -2278,7 +2380,7 @@
                 `#### Description:
 
 
-                    Sets the name of an object from a string
+                    Sets the name of an object from a string`
         [/method]
         [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
 
@@ -2300,39 +2402,39 @@
 
                     Given a scripting type and a name will create a child object with that
                     type and name. The type must be a type that can be contained in the
-                    object.
-
+                    object.`
+					`
                     Runs must be created using the new\_run method and sims cannot be
                     created directly – they are created along with the runs based on the
                     nature of the network and rainfall events / flow surveys used to create
-                    the run.
-
-                    Risk analysis runs must be created using the new\_risk\_analysis\_run
-                    method.
-
-                    Likely exceptions to be thrown by this method are:
-
-                    unrecognised type – if the type is not a valid scripting type
-
-                    runs must be created using the new\_run method – if an attempt is made
-                    to create a run
-
-                    sims cannot be created directly – if an attempt is made to create a sim
-
+                    the run.`
+					`
+                    Risk analysis runs must be created using the `new_risk_analysis_run`
+                    method.`
+					`
+                    Likely exceptions to be thrown by this method are:`
+					`
+                    unrecognised type – if the type is not a valid scripting type`
+					`
+                    runs must be created using the `new_run` method – if an attempt is made
+                    to create a run`
+					`
+                    sims cannot be created directly – if an attempt is made to create a sim`
+					`
                     invalid child type for this object – if the type in the first parameter
-                    may not be a child of this object type
-
+                    may not be a child of this object type`
+					`
                     name already in use – if the name is in use (globally for a version
-                    controlled object, as a child of this object for other types)
-
+                    controlled object, as a child of this object for other types)`
+					`
                     licence and/or permissions do not permit creation of a child of this
                     type for this object – if this type of object cannot be created for
                     licensing and/or permissions reasons e.g. creation of an Asset Group
-                    when the software is begin run without an InfoNet licence of some sort.
-
-                    unable to create object – if the call fails for some other reason.
-
-                    selection lists may not be created from scripts in the UI in viewer mode
+                    when the software is begin run without an InfoNet licence of some sort.`
+					`
+                    unable to create object – if the call fails for some other reason.`
+					`
+                    selection lists may not be created from scripts in the UI in viewer mode`
 
         `
         `
@@ -2351,22 +2453,18 @@
 
 
                     Creates a new risk analysis run object. The parameters are as follows:
-
+					`
                     Damage\_function - The parameter must be the ID of the damage function
                     object, its scripting path, or the WSModelObject (i.e. the damage
                     function object returned from a suitable call).
-
+					`
                     Runs – This parameter must be one of
-
-                    1.  The ID of the 'normal' run object
-
-                    2.  The scripting path of the 'normal' run object
-
-                    3.  The WSModelObject representing the run object
-
-                    4.  An array of items which must all be of the types described in 1 to 3
-                        above
-
+					`
+                    1.  The ID of the 'normal' run object`
+                    2.  The scripting path of the 'normal' run object`
+                    3.  The WSModelObject representing the run object`
+                    4.  An array of items which must all be of the types described in 1 to 3 above`
+					`
                     Param – the numerical parameter
 
         `
@@ -2387,22 +2485,22 @@
 
                     Creates a new run. The method must be called on a model group otherwise
                     an exception will be thrown – 'new\_run : runs may only be created in
-                    model groups'.
-
+                    model groups'.`
+					`
                     The method can take arrays as parameters for both the rainfalls and flow
                     surveys and for the scenarios. In the same way that dropping multiple
                     rainfall events and flow surveys into the drop target on the schedule
                     run dialog and selecting multiple scenarios on it yield multiple
                     simulations for a run, so calling this method with arrays of values and
                     with synthetic rainfall events which have multiple parameters (singly or
-                    in an array) will yield multiple sims for the run.
-
+                    in an array) will yield multiple sims for the run.`
+					`
                     The 'run' method which actually runs simulations is a method of the
                     individual sim objects below the run, which may easily be found by using
-                    the 'children' method of the WSModelObject created using this method.
-
-                    The parameters are as follows:
-
+                    the 'children' method of the WSModelObject created using this method.`
+					`
+                    The parameters are as follows:`
+					`
                     > Name – the name of the new run. This must not already be in use in the
                     > model group otherwise an exception will be thrown – 'new\_run : name
                     > already in use'.
@@ -2414,38 +2512,31 @@
                     > Commit ID – the commit ID to be used for the run. This may either be
                     > the integer commit ID or nil in which case the latest commit at time
                     > the run is created will be used.
-
-                    Rainfalls and flow surveys – this may be:
-
-                    1.  nil – in this case the run will be a dry weather flow run
-
-                    2.  a WSModelObject which is a rainfall event or a flow survey
-
-                    3.  the scripting path of a rainfall event or a flow survey as a string
-
-                    4.  the ID of a rainfall event
-
+					`
+                    Rainfalls and flow surveys – this may be:`
+					`
+                    1.  nil – in this case the run will be a dry weather flow run`
+                    2.  a WSModelObject which is a rainfall event or a flow survey`
+                    3.  the scripting path of a rainfall event or a flow survey as a string`
+                    4.  the ID of a rainfall event`
                     5.  a negative number equal to -1 times the ID of a flow survey e.g. -7
-                        means the Flow Survey with ID 7.
-
+                        means the Flow Survey with ID 7.`
                     6.  An array. If the parameter is an array, then if the length of the
                         array is 0 then the event will be a dry weather flow run, otherwise
                         all the array elements must be one of 2 – 5 above. The array may not
-                        contain duplicates otherwise an exception will be thrown.
-
+                        contain duplicates otherwise an exception will be thrown.`
+					`
                     Scenarios – this may be:
-
-                    1.  nil – in this case the run will use the base scenario of the network
-
-                    2.  the name of a scenario
-
+					`
+                    1.  nil – in this case the run will use the base scenario of the network`
+                    2.  the name of a scenario`
                     3.  an array in which each element is the name of a scenario as
                         a string. It must not contain scenarios that do not exist
-                        or duplicates.
-
-                    Parameters – this must be a hash containing parameters (see Appendix 2).
-
-                    Parameters for the run may either be set in this call.
+                        or duplicates.`
+					`
+                    Parameters – this must be a hash containing parameters (see Appendix 2).`
+					`
+                    Parameters for the run may either be set in this call.`
 
         `
         `
@@ -2464,17 +2555,15 @@
 
 
                     This method may only be used on runs. The following conditions must
-                    apply:
-
-                    1.  The 'Working' field must have been set to true
-
-                    2.  There must be no uncommented changes for the network for the run.
-
+                    apply:`
+					`
+                    1.  The 'Working' field must have been set to true`
+                    2.  There must be no uncommented changes for the network for the run.`
                     3.  all scenarios which were included in the list of scenarios for which
-                        the run was set up must be present and validates.
-
+                        the run was set up must be present and validates.`
+					`
                     This method has the same effect as pressing the 'update to latest
-                    version of network' button on the Run view in the user interface.
+                    version of network' button on the Run view in the user interface.`
 
         `
         `
@@ -2491,30 +2580,25 @@
 
                 `#### Description:
 
-
                     Returns a WSOpenNetwork object corresponding to the model object,
                     providing the model object is of a network type or a sim – see above for
                     the description of the difference between a WSModelObject and a
-                    WSOpenNetwork.
-
+                    WSOpenNetwork.`
+					`
                     When this method is called on a sim, the network will be opened with the
                     results of the simulation loaded into it. An exception will be thrown if
                     the simulation did not succeed, the results are inaccessible or are not
-                    open.
-
-                    When you open the results of a simulation:
-
-                    -   The network is opened as read only
-
-                    -   The current scenario is set to the scenario used for the simulation
-
-                    -   The current scenario cannot be changed
-
+                    open.`
+					`
+                    When you open the results of a simulation:`
+                    -   The network is opened as read only`
+                    -   The current scenario is set to the scenario used for the simulation`
+                    -   The current scenario cannot be changed`
                     -   As with the behaviour in the UI of the software, the network with
                         the results loaded has a current timestep. The results start by
                         being opened at the first timestep (timestep 0) unless there are
                         only maximum results in which case they are opened as the maximum
-                        results timestep.
+                        results timestep.`
 
         `
         `
@@ -2537,7 +2621,7 @@
 
                 `#### Description:
 
-                    Returns the scripting path of the object as a string.
+                    Returns the scripting path of the object as a string.`
 
         `
         `
@@ -2554,9 +2638,8 @@
 
                 `#### Description:
 
-
                     Returns the scripting type of the parent of the object (or 'Master
-                    Database' if the object is in the root of the database).
+                    Database' if the object is in the root of the database).`
 
         `
         `
@@ -2573,9 +2656,8 @@
 
                 `#### Description:
 
-
                     Returns the ID of the parent object (or 0 if the object is in the root
-                    of the database).
+                    of the database).`
 
         `
         `
@@ -2592,8 +2674,7 @@
 
                 `#### Description:
 
-
-                    Returns the scripting type of the object.
+                    Returns the scripting type of the object.`
 
         ## WSNumbatNetworkObject
 
@@ -2625,7 +2706,7 @@
                 `#### Description:
 
                     Commits changes to a network to the database. Returns the commit ID or
-                    returns nil if there were not changes made since the last commit.
+                    returns nil if there were not changes made since the last commit.`
 
         `
         `
@@ -2642,20 +2723,20 @@
 
                 `#### Description:
 
-
                     Returns a WSCommits object containing the commits for the network i.e.
                     the details of what is committed at each stage in the history of the
-                    network.
-
-                    e.g.
-
+                    network.`
+					`
+                    e.g.`
+					`
                     ```ruby
                         mo.commits.each do |c|
                             puts "#{c.branch_id},#{c.comment},#{c.commit_id},#{c.deleted_count},#{c.inserted_count},#{c.modified_count},#{c.setting_changed_count},|#{c.user}|"
                         end
                     ```
-
+					`
                     or
+					`
                     ```ruby
                         (0...mo.commits.length).each do |i|
                             c=mo.commits[i]
@@ -2678,11 +2759,10 @@
 
                 `#### Description:
 
-
                     This is similar to commit in that it commits changes to the network to
                     the database and returns the commit ID if changes have been made, nil
                     otherwise. The difference is that commit\_reserve keeps the network
-                    reserved.
+                    reserved.`
 
         `
         `
@@ -2699,12 +2779,11 @@
 
                 `#### Description:
 
-
                     Outputs the differences between commit id 1 and commit id 2 to the
                     specified filename. The CSV file output is in the same format as
                     generated by the “Compare network” function and can be used to apply the
                     changes to another network via “Import/Update from CSV files…”
-                    functionality.
+                    functionality.`
 
         `
         `
@@ -2721,32 +2800,102 @@
 
                 `#### Description:
 
-
                     Exports the network to a CSV file with options similar to those
-                    available in the user interface.
-
+                    available in the user interface.`
+					`
                     The second parameter may either be nil or a hash containing the options.
                     If the parameter is nil then the default options will be used. The hash
-                    values are as follows:
-
-                    | Key                      | Type    | Default | Notes                                                                      |
-                    |--------------------------|---------|---------|----------------------------------------------------------------------------|
-                    | Use Display Precision    | Boolean | TRUE    |                                                                            |
-                    | Field Descriptions       | Boolean | FALSE   |                                                                            |
-                    | Field Names              | Boolean | TRUE    |                                                                            |
-                    | Flag Fields              | Boolean | TRUE    |                                                                            |
-                    | Multiple Files           | Boolean | FALSE   | Set to true to export to different files, false to export to the same file |
-                    | Native System Types      | Boolean | FALSE   |                                                                            |
-                    | User Units               | Boolean | FALSE   |                                                                            |
-                    | Object Types             | Boolean | FALSE   |                                                                            |
-                    | Selection Only           | Boolean | FALSE   |                                                                            |
-                    | Units Text               | Boolean | FALSE   |                                                                            |
-                    | Triangles                | Boolean | FALSE   |                                                                            |
-                    | Coordinate Arrays Format | String  | Packed  | One of Packed, None or Separate                                            |
-                    | Other Arrays Format      | String  | Packed  | One of Packed, None or Unpacked                                            |
-
-                    e.g.
-
+                    values are as follows:`
+					`
+					[table]
+						[header]
+							[column]Key[/column]
+							[column]Type[/column]
+							[column]Default[/column]
+							[column]Notes[/column]
+						[/header]
+						[row]
+							[column]Use Display Precision[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb true`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Field Descriptions[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Field Names[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb true`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Flag Fields[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb true`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Multiple Files[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column]Set to true to export to different files, false to export to the same file.[/column]
+						[/row]
+						[row]
+							[column]Native System Types[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]User Units[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Object Types[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Selection Only[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Units Text[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Triangles[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Coordinate Arrays Format[/column]
+							[column]`rb String`[/column]
+							[column]`rb "Packed"`[/column]
+							[column]One of `rb "Packed"`, `rb "None"` or `rb "Seperate"`[/column]
+						[/row]
+						[row]
+							[column]Other Arrays Format[/column]
+							[column]`rb String`[/column]
+							[column]`rb "Packed"`[/column]
+							[column]One of `rb "Packed"`, `rb "None"` or `rb "Seperate"`[/column]
+						[/row]
+					[/table]
+					`
+                    e.g.`
+					`
                     ```ruby
                         myHash=Hash.new
                         myHash['Multiple Files']=true
@@ -2773,21 +2922,82 @@
                     Updates the network from a CSV file with options similar to those
                     available in the user interface. The second parameter may either be nil
                     or a hash containing the options. If the parameter is nil then the
-                    default options will be used. The hash values are as follows:
-
-                    | Key                  | Type    | Default | Notes                                                                                                                 |
-                    |----------------------|---------|---------|-----------------------------------------------------------------------------------------------------------------------|
-                    | Force Link Rename    | Boolean | TRUE    |                                                                                                                       |
-                    | Flag Genuine Only    | Boolean | FALSE   |                                                                                                                       |
-                    | Load Null Fields     | Boolean | TRUE    |                                                                                                                       |
-                    | Update With Any Flag | Boolean | TRUE    | True to update all values, false to only update fields with the 'update flag' flag                                    |
-                    | Use Asset ID         | Boolean | FALSE   |                                                                                                                       |
-                    | User Units           | Boolean | TRUE    | Set to true for User Units, false for Native Units - used for fields without an explicit unit set in a 'units' record |
-                    | UK Dates             | Boolean | FALSE   | If set to true, the import is done with the UK date format for dates regardless of the PC's settings                  |
-                    | Action               | String  | Mixed   | One of Mixed,'Update And Add','Update Only',Delete'                                                                   |
-                    | Header               | String  | ID      | One of ID,'ID Description','ID Description Units','ID Units'                                                          |
-                    | New Flag             | String  |         | Flag used for new and updated data                                                                                    |
-                    | Update Flag          | String  |         | If the 'update with any flag' option is set to false, only update fields with this flag value                         |
+                    default options will be used. The hash values are as follows:`
+					`
+					[table]
+						[header]
+							[column]Key[/column]
+							[column]Type[/column]
+							[column]Default[/column]
+							[column]Notes[/column]
+						[/header]
+						[row]
+							[column]Force Link Rename[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb true`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Flag Genuine Only[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Load Null Fields[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb true`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]Update With Any Flag[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb true`[/column]
+							[column]True to update all values, false to only update fields with the 'update flag' flag.[/column]
+						[/row]
+						[row]
+							[column]Use Asset ID[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]User Units[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb true`[/column]
+							[column]Set to true for User Units, false for Native Units - used for fields without an explicit unit set in a 'units' record.[/column]
+						[/row]
+						[row]
+							[column]UK Dates[/column]
+							[column]`rb Boolean`[/column]
+							[column]`rb false`[/column]
+							[column]If set to true, the import is done with the UK date format for dates regardless of the PC's settings.[/column]
+						[/row]
+						[row]
+							[column]Action[/column]
+							[column]`rb String`[/column]
+							[column]`rb "Mixed"`[/column]
+							[column]One of `rb "Mixed"`,`rb "Update And Add"`,`rb "Update Only"`,`rb "Delete"`[/column]
+						[/row]
+						[row]
+							[column]Header[/column]
+							[column]`rb String`[/column]
+							[column]`rb "ID"`[/column]
+							[column]One of `rb "ID"`,`rb "ID Description"`,`rb "ID Description Units"`,`rb "ID Units"`[/column]
+						[/row]
+						[row]
+							[column]New Flag[/column]
+							[column]`rb String`[/column]
+							[column]`rb ""`[/column]
+							[column]Flag used for new and updated data.[/column]
+						[/row]
+						[row]
+							[column]Update Flag[/column]
+							[column]`rb String`[/column]
+							[column]`rb ""`[/column]
+							[column]If the 'update with any flag' option is set to false, only update fields with this flag value.[/column]
+						[/row]
+					[/table]
 
         `
         `
@@ -2803,12 +3013,11 @@
                     ```
 
                 `#### Description:
-
-
+					
                     Returns the commit ID of the local copy of the network – this may not be
                     the latest commit ID i.e. the most recent commit ID on the server, which
-                    is returned by latest\_commit\_id (see below).
-
+                    is returned by latest\_commit\_id (see below).`
+					
         `
         `
         [/method]
@@ -2825,55 +3034,51 @@
                 `#### Description:
 
 
-                    Exports the network data to GIS.
-
-                    The parameters are as follows:
-
-                    Format :
-
-                    This parameter must be one of the following:
-
-                    -   SHP – Shape file
-
-                    -   TAB – Tab file
-
-                    -   MIF – MIF file
-
-                    -   GDB – GeoDatabase
-
+                    Exports the network data to GIS.`
+					`
+                    The parameters are as follows:`
+					`
+                    Format:`
+					`
+                    This parameter must be one of the following:`
+                    -   SHP – Shape file`
+                    -   TAB – Tab file`
+                    -   MIF – MIF file`
+                    -   GDB – GeoDatabase`
+					`
                     Params:
-
+					`
                     This parameter can either be a hash, described below, or nil. If the
                     parameter is nil then the default values for its various options will be
-                    used.
-
-                    Folder:
-
+                    used.`
+					`
+                    Folder:`
+					`
                     This parameter contains the base folder for the files to be exported,
-                    except for the GDB format where it is the name of the GeoDatabase.
-
+                    except for the GDB format where it is the name of the GeoDatabase.`
+					`
                     The params hash can contain a number of keys. If the hash is nil or the
-                    value is not specified the default behaviour applies as described below.
-
+                    value is not specified the default behaviour applies as described below.`
+					`
                     ExportFlags – Boolean – if this is true then the flags are exported
-                    along with the data values, if false they aren't. The default is true.
-
+                    along with the data values, if false they aren't. The default is true.`
+					`
                     Feature Dataset – String – for GeoDatabases, the name of the feature
-                    dataset. The default is an empty string.
-
+                    dataset. The default is an empty string.`
+					`
                     SkipEmptyTables – Boolean – if true skips empty tables (even if they are
-                    listed in the value for the Tables key). The default is false.
-
+                    listed in the value for the Tables key). The default is false.`
+					`
                     Tables – Array as described below – the default is to export results for
-                    all tables.
-
+                    all tables.`
+					`
                     UseArcGISCompatability – Boolean – this is the equivalent of selecting
                     the check-box in the UI. The default is false i.e. the equivalent of not
-                    checking the check-box in the UI.
-
+                    checking the check-box in the UI.`
+					`
                     The tables element of the hash must be an array of strings which must be
                     names of tables as returned by the list\_GIS\_export\_tables. Duplicates
-                    and unrecognised values are not permitted.
+                    and unrecognised values are not permitted.`
 
         `
         `
@@ -2888,9 +3093,8 @@
                         id=nno.latest_commit_id
                     ```
 
-                `#### Description:
-
-
+                `#### Description:`
+					
                     Returns the latest commit ID for the network i.e. the ID of the most
                     recent commit on the server. This may not be the same as the commit ID
                     of the local copy, which is returned by current\_commit\_id (see above).
@@ -2909,8 +3113,7 @@
                     ```
 
                 `#### Description:
-
-
+					
                     This method lists the tables that will be exported to GIS as an array of
                     strings. This method is designed to return information useful when
                     customising the parameters to GIS\_export.
@@ -2932,46 +3135,103 @@
 
 
                     This method exports network data using a previously set up Open Data
-                    Export Centre configuration.
-
+                    Export Centre configuration.`
+					`
                     The number of parameters for this method is variable and depends on the
                     type of data imported (determined by the first parameter) and the number
-                    of imports set up in one call to the method, which can be more then one.
-
+                    of imports set up in one call to the method, which can be more then one.`
+					`
                     The first parameter can be one of the table below. Depending on that
-                    value, the number of parameters per table is as shown in the table:
-
-                    | Format    | Meaning                                                     | Parameters per table |
-                    |-----------|-------------------------------------------------------------|----------------------|
-                    | CSV       | CSV                                                         | 2                    |
-                    | TSV       | Tab separated text data (not to be confused with TAB files) | 2                    |
-                    | XML       | XML                                                         | 4                    |
-                    | MDB       | Access database                                             | 3                    |
-                    | SHP       | Shape file                                                  | 2                    |
-                    | MIF       | MapInfo Interchange Format                                  | 2                    |
-                    | TAB       | TAB file (MapInfo format binary file)                       | 2                    |
-                    | GDB       | GeoDatabase                                                 | 6                    |
-                    | ORACLE    | Oracle                                                      | 7                    |
-                    | SQLSERVER | SQL Server                                                  | 9                    |
-
-                    The GDB option is only available with a suitably licenced and available
-                    ESRI desktop or server product.
-
-                    The TAB option (but not the MIF option) is only available if your copy
-                    of InfoWorks ICM was installed with the installer with the MapXTreme
-                    component.
-
-                    The ORACLE and SQLSERVER options require the relevant client software to
-                    be installed.
-
+                    value, the number of parameters per table is as shown in the table:`
+					`
+					[table]
+						[header]
+							[column]Format[/column]
+							[column]Meaning[/column]
+							[column]Parameters per table[/column]
+							[column]Requirements[/column]
+							[column]Example[/column]
+						[/header]
+						[row]
+							[column]CSV[/column]
+							[column]Comma separated text file.[/column]
+							[column]2[/column]
+							[column][/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]TSV[/column]
+							[column]Tab separated text file.[/column]
+							[column]2[/column]
+							[column][/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]XML[/column]
+							[column]Extensible Markup Language.[/column]
+							[column]4[/column]
+							[column][/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]MDB[/column]
+							[column]Microsoft database (can be made and used in MSAccess)[/column]
+							[column]3[/column]
+							[column][/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]SHP[/column]
+							[column]ESRI Shape File[/column]
+							[column]2[/column]
+							[column][/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]MIF[/column]
+							[column]MapInfo Interchange Format[/column]
+							[column]2[/column]
+							[column][/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]TAB[/column]
+							[column]MapInfo TAB file (binary file format)[/column]
+							[column]2[/column]
+							[column]Only available if your ICM was installed with the installer with the MapXTreme component[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]GDB[/column]
+							[column]GeoDatabase[/column]
+							[column]6[/column]
+							[column]Only available with a suitably licensed and available ESRI desktop or server product.[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]ORACLE[/column]
+							[column]Oracle[/column]
+							[column]7[/column]
+							[column]Requires relevant client software to be installed.[/column]
+							[column][/column]
+						[/row]
+						[row]
+							[column]SQLSERVER[/column]
+							[column]SQL Server[/column]
+							[column]9[/column]
+							[column]Requires relevant client software to be installed.[/column]
+							[column][/column]
+						[/row]
+					[/table]
+					`
                     The second parameter is the path of the CFG file, as saved from the Open
                     Data Import Centre user interface. It can contain the mappings for more
-                    than one table.
-
+                    than one table.`
+					`
                     The third parameter must be nil or a hash containing the options, which
                     broadly correspond to those in the Open Data Export Centre user
-                    interface as follows:
-
+                    interface as follows:`
+					`
                     | Key              | Type       | Default | Notes                                                  |
                     |------------------|------------|---------|--------------------------------------------------------|
                     | Callback Class   | Ruby Class | nil     |                                                        |
@@ -2981,99 +3241,74 @@
                     | Append           | Boolean    | FALSE   | True to enable 'Append to existing data'               |
                     | Export Selection | Boolean    | FALSE   | True to export the selected objects only               |
                     | Previous Version | Integer    | 0       | Previous version, if not zero differences are exported |
-
+					`
                     Following these three parameters, there then follow a multiple of the
                     'parameters per table' depending on data type, as show in the table
                     above. It is possible to export data into more than one table by
                     supplying a multiple of that number of parameters e.g. to export data
                     from 3 tables into CSV files, six parameters are supplied for these
                     bringing the total to 9 parameters. Alternatively, of course, it is
-                    possible to export the data by making three calls to the method.
-
-                    The parameters are as follows:
-
+                    possible to export the data by making three calls to the method.`
+					`
+                    The parameters are as follows:`
+					`
                     In all cases the first parameter is the name of the table to export. In
                     this context the name is as displayed in the software's user interface
                     in the Open Data Export Centre with any spaces removed. E.g. Node,
                     CCTVSurvey. This differs from the convention used elsewhere e.g. for
-                    SQL.
-
+                    SQL.`
+					`
                     For CSV, TSV, MIF, TAB and Shape files the second parameter is the path
-                    of the file to export.
-
-                    For Access databases (MDB) the parameters are as described below:
-
-                    1.  Table to export
-
-                    2.  Name of table in Access database
-
-                    3.  File name of Access database
-
-                    For XML the parameters are as follows:
-
-                    1.  Table to export
-
+                    of the file to export.`
+					`
+                    For Access databases (MDB) the parameters are as described below:`
+					`
+                    1.  Table to export`
+                    2.  Name of table in Access database`
+                    3.  File name of Access database`
+					
+                    For XML the parameters are as follows:`
+                    1.  Table to export`
                     2.  'Feature class' (as it is called in the UI – i.e. the name of the
-                        root element)
-
+                        root element)`
                     3.  'Feature dataset' (as it is called in the UI- i.e. the name used for
-                        each data element)
+                        each data element)`
+                    4.  XML file name.`
 
-                    4.  XML file name.
-
-                    For GeoDatabase the parameters are as follows:
-
-                    1.  Table to export
-
-                    2.  Feature class
-
-                    3.  Feature dataset
-
+                    For GeoDatabase the parameters are as follows:`
+					`
+                    1.  Table to export`
+                    2.  Feature class`
+                    3.  Feature dataset`
                     4.  Update – true to update, false otherwise. If true the feature class
-                        must exist.
-
+                        must exist.`
                     5.  ArcSDE configuration keyword – nil for Personal / File GeoDatabases,
-                        and ignored for updates
-
+                        and ignored for updates`
                     6.  Filename (for personal and file GeoDatabases, connection name
-                        for SDE)
-
-                    For Oracle the parameters are as follows:
-
-                    1.  Table to export
-
-                    2.  Table name in Oracle
-
-                    3.  Table owner
-
-                    4.  Update – true to update, false otherwise. If true the table
-                        must exist.
-
-                    5.  User name
-
-                    6.  Password
-
-                    7.  Connection string
-
-                    For SQL Server the parameters are as follows:
-
-                    1.  Table to export
-
-                    2.  Table name in SQL Server
-
-                    3.  Server name
-
-                    4.  Instance name
-
-                    5.  Database name
-
-                    6.  Update – true to update, false otherwise
-
-                    7.  Integrated security – true if integrated, false if not
-
-                    8.  User name
-
-                    9.  Password
+                        for SDE)`
+					`
+                    For Oracle the parameters are as follows:`
+					`
+                    1.  Table to export`
+                    2.  Table name in Oracle`
+                    3.  Table owner`
+                    4.  Update – true to update, false otherwise. If true the table`
+                        must exist.`
+                    5.  User name`
+                    6.  Password`
+                    7.  Connection string`
+					`
+                    For SQL Server the parameters are as follows:`
+					`
+                    1.  Table to export`
+                    2.  Table name in SQL Server`
+                    3.  Server name`
+                    4.  Instance name`
+                    5.  Database name`
+                    6.  Update – true to update, false otherwise`
+                    7.  Integrated security – true if integrated, false if not`
+                    8.  User name`
+                    9.  Password`
 
         `
         `
@@ -3090,19 +3325,18 @@
 
                 `#### Description:
 
-
                     This method imports and updates network data using a previously set up
-                    Open Data Import Centre configuration.
-
-                    Unlike the WSOpenNetwork version, it returns nil.
-
+                    Open Data Import Centre configuration.`
+					`
+                    Unlike the WSOpenNetwork version, it returns nil.`
+					`
                     The number of parameters for this method is variable and depends on the
                     type of data imported (determined by the first parameter) and the number
-                    of imports set up in one call to the method, which can be more then one.
-
+                    of imports set up in one call to the method, which can be more then one.`
+					`
                     The first parameter can be one of the table below. Depending on that
-                    value, the number of parameters per table is as shown in the table:
-
+                    value, the number of parameters per table is as shown in the table:`
+					`
                     | **Format** | **Meaning**                                                 | **Parameters per table** |
                     |------------|-------------------------------------------------------------|--------------------------|
                     | CSV        | CSV                                                         | 2                        |
@@ -3113,21 +3347,21 @@
                     | GDB        | GeoDatabase                                                 | 3                        |
                     | ORACLE     | Oracle                                                      | 6                        |
                     | SQLSERVER  | SQL Server                                                  | 8                        |
-
+					`
                     The GDB option only available with a suitably installed and licenced
-                    copy of an ESRI server or desktop product.
-
+                    copy of an ESRI server or desktop product.`
+					`
                     The ORACLE and SQLSERVER options require the relevant client software to
-                    be installed.
-
+                    be installed.`
+					`
                     The second parameter is the path of the CFG file, as saved from the Open
                     Data Import Centre user interface. It can contain the mappings for more
-                    than one table.
-
+                    than one table.`
+					`
                     The third parameter must be nil or a hash containing the options, which
                     broadly correspond to those in the Open Data Import Centre user
-                    interface as follows:
-
+                    interface as follows:`
+					`
                     | **Key**                        | **Type**   | **Default** | **Notes**                                                   |
                     |--------------------------------|------------|-------------|-------------------------------------------------------------|
                     | Error File                     | String     | Blank       | Path of error file                                          |
@@ -3145,7 +3379,7 @@
                     | Blob Merge                     | Boolean    | FALSE       |                                                             |
                     | Use Network Naming Conventions | Boolean    | FALSE       |                                                             |
                     | Import Images                  | Boolean    | FALSE       |                                                             |
-
+					`
                     Following these three parameters, there then follow a multiple of the
                     'parameters per table' depending on data type, as show in the table
                     above. It is possible to import data into more than one table, or data
@@ -3153,38 +3387,38 @@
                     number of parameters e.g. to import data into 3 tables from CSV files,
                     six parameters are supplied for these bringing the total to 9
                     parameters. Alternatively, of course, it is possible to import the data
-                    by making three calls to the method.
-
+                    by making three calls to the method.`
+					`
                     All these parameters are strings with the exception of one parameter for
                     SQL Server, which is the sixth out of eight parameters and is a Boolean
-                    which is described below.
-
-                    The parameters are as follows:
-
+                    which is described below.`
+					`
+                    The parameters are as follows:`
+					`
                     In all cases the first parameter is the name of the table to import. In
                     this context the name is as displayed in the software's user interface
                     in the Open Data Import Centre with any spaces removed. E.g. Node,
                     CCTVSurvey. This differs from the convention used elsewhere e.g. for
-                    SQL.
-
+                    SQL.`
+					`
                     For subtables the name is the name of the table, followed by the name of
                     the subtable without any spaces e.g. to import the Details from the CCTV
-                    Survey, the string should be CCTVSurveyDetails.
-
+                    Survey, the string should be CCTVSurveyDetails.`
+					`
                     For CSV, TSV and Shape files the second parameter is the path of the
-                    file to import.
-
+                    file to import.`
+					`
                     For Access databases the second parameter is the path of the Access
                     database and the third parameter is the name of the table or stored
                     query to import. Data can be imported on the basis of SQL queries by
                     adding an SQL query to the database, however an SQL expression cannot be
-                    used in this parameter.
-
+                    used in this parameter.`
+					`
                     For GeoDatabases the second parameter is the name of the feature class
-                    to import from and the third parameter is the path of the GeoDatabase.
-
+                    to import from and the third parameter is the path of the GeoDatabase.`
+					`
                     For Oracle the parameters are as follows:
-
+					`
                     > 1 – the table name to import into as described above
                     >
                     > 2 – the table name in the Oracle database
@@ -3196,9 +3430,9 @@
                     > 5 – the oracle user name
                     >
                     > 6 – the oracle password
-
-                    For SQL server the parameters are as follows:
-
+					`
+                    For SQL server the parameters are as follows:`
+					`
                     > 1– the table name to import into as described above
                     >
                     > 2 – the table name in SQL Server
@@ -3233,7 +3467,7 @@
 
 
                     Removes the local copy of the network, any uncommitted changes will be
-                    lost.
+                    lost.`
 
         `
         `
@@ -3252,7 +3486,7 @@
 
 
                     Reserves the network so no-one else can edit it and updates the local
-                    copy to the latest version.
+                    copy to the latest version.`
 
         `
         `
@@ -3270,7 +3504,7 @@
                 `#### Description:
 
 
-                    Reverts any uncommitted changes in the local copy of the network.
+                    Reverts any uncommitted changes in the local copy of the network.`
 
         `
         `
@@ -3312,7 +3546,7 @@
                 `#### Description:
 
 
-                    Clears the selection in the network
+                    Clears the selection in the network`
 
         `
         `
@@ -3330,7 +3564,7 @@
                 `#### Description:
 
 
-                    Returns the number of selected items in the network
+                    Returns the number of selected items in the network`
 
         `
         `
@@ -3355,21 +3589,21 @@
 
                     This method runs the SQL query with the given table being the 'current
                     table' as it appears in the SQL dialog i.e. the default table if the SQL
-                    query does not further qualify the table name.
-
-                    The names '\_nodes' or '\_links' can be used to run the SQL over all
+                    query does not further qualify the table name.`
+					`
+                    The names `'_nodes'` or `'_links'` can be used to run the SQL over all
                     node or link tables in the same way as can be achieved by selecting 'All
-                    nodes' or 'All links' in the dropdowns in the SQL dialog.
-
+                    nodes' or 'All links' in the dropdowns in the SQL dialog.`
+					`
                     The SQL query can include multiple clauses in the same was as SQL run
                     from the user interface, and can use any of the options that do not open
-                    results or prompt grids e.g.
-
-                    `nno.select_sql 'hw_node', "SELECT distinct x into file 'd:\\temp\\distinctx.dat'"`
-
+                    results or prompt grids e.g.`
+					`
+                    `rb nno.select_sql 'hw_node', "SELECT distinct x into file 'd:\\temp\\distinctx.dat'"`
+					`
                     The method returns the number of objects selected in the last clause in
                     the SQL block selecting a non-zero number of object (or zero if there is
-                    no such clause).
+                    no such clause).`
 
         `
         `
@@ -3388,7 +3622,7 @@
 
 
                     Returns true if there are uncomitted changes in the local copy of the
-                    network, false otherwise.
+                    network, false otherwise.`
 
         `
         `
@@ -3406,7 +3640,7 @@
                 `#### Description:
 
 
-                    Cancels the reservation of the network.
+                    Cancels the reservation of the network.`
 
         `
         `
@@ -3425,7 +3659,7 @@
 
 
                     Updates the local copy of the network from the server. Returns true if
-                    there are no conflicts, false if there are.
+                    there are no conflicts, false if there are.`
 
         `
         `
@@ -3444,11 +3678,11 @@
 
 
                     Produces a CSV file consisting of the names of all the user fields for
-                    all the object types in the network.
-
+                    all the object types in the network.`
+                    `
                     The CSV file has no header and the arbitrary string is output as the
                     first column, the second column being the internal table name and the
-                    third column being the user field name.
+                    third column being the user field name.`
 
 
 
@@ -3457,19 +3691,19 @@
             An object of this type represents a Sim object, a Risk Analysis Results
             object or a Risk Analysis Sim object. The Risk Analysis Results objects
             contain the results for a number of return periods and summary results.
-            The Risk Analysis Sim objects contain only summary results.
-
+            The Risk Analysis Sim objects contain only summary results.`
+            `
             The different return periods for the Risk Analysis Results objects
             correspond to the timesteps for 'normal' simulations. The names of the
             methods reflect the usage for 'normal' simulations i.e. to list the
             return periods for a risk analysis results object you should use the
-            list\_timesteps method.
-
+            list\_timesteps method.`
+            `
             Various methods cannot be called for the Risk Analysis Sim objects if
-            those methods are not relevant for sims with only summary results.
-
-            This chart shows which methods are available for which object types:
-
+            those methods are not relevant for sims with only summary results.`
+            `
+            This chart shows which methods are available for which object types:`
+            `
             |                                    | Sim | Risk Analysis Results | Risk Analysis Sim |
             |------------------------------------|-----|-----------------------|-------------------|
             | list\_max\_results\_attributes     | \*  | \*                    | \*                |
@@ -3511,15 +3745,15 @@
                     on the binary results export dialog e.g. 'Node', 'Link', 'Subcatchment'
                     for the time varying results. Each array contains 2 elements, the first
                     of which is the name of the Tab, whilst the 2<sup>nd</sup> is an array
-                    of attribute names e.g.
-
+                    of attribute names e.g.`
+                    `
                     ```rb
                         [['Scalar',['totfl','totout','totr','totrun','totvol']],['Node',['flooddepth','floodvolume','flvol','pcvolbal','qincum','qinfnod','qnode','qrain','vflood','vground','volbal','volume','DEPNOD']]]
                     ```
-
+                    `
                     This method is designed to return information useful when customising
                     the parameters to max\_results\_binary\_export.and
-                    max\_results\_csv\_export
+                    max\_results\_csv\_export`
 
         `
         `
@@ -3540,8 +3774,8 @@
                     Returns an array of arrays. The arrays returned correspond to the tabs
                     on the binary results export dialog e.g. 'Node', 'Link', 'Subcatchment'.
                     Each array contains 2 elements, the first of which is the name of the
-                    Tab, whilst the 2<sup>nd</sup> is an array of attribute names e.g.
-
+                    Tab, whilst the 2nd is an array of attribute names e.g.`
+                    `
                     ```rb
                         [["Node", ["flooddepth", "floodvolume", "flvol", "qinfnod", "qnode",
                         "qrain", "volume", "depnod"]]
@@ -3555,9 +3789,9 @@
 
                         ["Rain Gauge", ["raindpth", "RAINFALL"]]]
                     ```
-
+                    `
                     This method is designed to return information useful when customising
-                    the parameters to results\_binary\_export.and results\_csv\_export
+                    the parameters to `results_binary_export` and `results_csv_export``
 
         `
         `
@@ -3576,43 +3810,31 @@
 
 
                     Returns an array of the tables that may be exported to GIS using the
-                    results\_GIS\_export method. This method is designed to return
+                    `results_GIS_export` method. This method is designed to return
                     information useful when customising the parameters to
-                    results\_GIS\_export. The list will essentially only change when more
-                    tables are added to InfoWorks. The current list is:
-
-                    > \_2DElements
-                    >
-                    > \_links
-                    >
-                    > hw\_1d\_results\_point
-                    >
-                    > hw\_2d\_bridge
-                    >
-                    > hw\_2d\_linear\_structure
-                    >
-                    > hw\_2d\_results\_line
-                    >
-                    > hw\_2d\_results\_point
-                    >
-                    > hw\_2d\_results\_polygon
-                    >
-                    > hw\_2d\_sluice
-                    >
-                    > hw\_bridge
-                    >
-                    > hw\_bridge\_opening
-                    >
-                    > hw\_node
-                    >
-                    > hw\_river\_reach
-                    >
-                    > hw\_subcatchment
-                    >
-                    > hw\_tvd\_connector
-
-                    Note the results for 2D elements is \_2DElements and that the table name
-                    used for all links, which are combined into one GIS layer, is \_links.
+                    `results_GIS_export`. The list will essentially only change when more
+                    tables are added to InfoWorks. The current list is:`
+                    `
+                    [table]
+						[row]`_2DElements`             [/row]
+						[row]`_links`                  [/row]
+						[row]`hw_1d_results_point`     [/row]
+						[row]`hw_2d_bridge`            [/row]
+						[row]`hw_2d_linear_structure`  [/row]
+						[row]`hw_2d_results_line`      [/row]
+						[row]`hw_2d_results_point`     [/row]
+						[row]`hw_2d_results_polygon`   [/row]
+						[row]`hw_2d_sluice`            [/row]
+						[row]`hw_bridge`               [/row]
+						[row]`hw_bridge_opening`       [/row]
+						[row]`hw_node`                 [/row]
+						[row]`hw_river_reach`          [/row]
+						[row]`hw_subcatchment`         [/row]
+						[row]`hw_tvd_connector`        [/row]
+                    [/table]
+					`
+                    Note the results for 2D elements is `_2DElements` and that the table name
+                    used for all links, which are combined into one GIS layer, is `_links`.`
 
         `
         `
@@ -3629,12 +3851,11 @@
 
                 `#### Description:
 
-
                     For a normal simulation, this returns an array of the results timesteps
                     for the simulation. See the 'Dates and Times' section above for details
                     on how absolute and relative times are handled.
                     For a risk analysis results object, this returns an array of the return
-                    periods for the object.
+                    periods for the object.`
 
         `
         `
@@ -3653,23 +3874,23 @@
 
 
                     Exports the flood contours to files (GIS or ASCII). The ASCII format is
-                    the same as produced via the user interface.
-
+                    the same as produced via the user interface.`
+                    `
                     Format: MIF, TAB, SHP or ASCII – as with the user interface GeoDatabases
-                    are not supported.
-
+                    are not supported.`
+                    `
                     GroundModel: this may either be the scripting path, the ID or the
                     WSModelObject representing a ground model (either grid or TIN). If the
                     ID is negative then it represents a TIN ground model i.e. -7 represents
                     the TIN ground model with ID 7. If the ID is positive it represents a
-                    gridded ground model.
-
-                    For the ASCII export, this must be a grid ground model.
-
+                    gridded ground model.`
+                    `
+                    For the ASCII export, this must be a grid ground model.`
+                    `
                     Theme: the script path, ID or WSModelObject representing theme to use
-                    for the contours.
-
-                    Filename: the filename to be exported.
+                    for the contours.`
+                    `
+                    Filename: the filename to be exported.`
 
         `
         `
@@ -3690,15 +3911,15 @@
                     Exports the maximum results (and other summary results) for the
                     simulation in a binary file format intended for reading by program
                     written by a user or 3<sup>rd</sup> party. The format is documented in a
-                    separate document available from Innovyze.
-
+                    separate document available from Innovyze.`
+                    `
                     The selection parameter may contain the ID or scripting path of a
                     selection list object, or the WSModelObject itself, or may be nil in
-                    which case results for the whole network will be exported.
-
+                    which case results for the whole network will be exported.`
+                    `
                     The attributes parameter may be nil, in which case all attributes are
                     exported, or may be an array as described in the
-                    list\_max\_results\_attributes method above.
+                    list\_max\_results\_attributes method above.`
 
         `
         `
@@ -3719,15 +3940,15 @@
                     Exports the results for each results timestep for the simulation in a
                     binary file format intended for reading by program written by a user or
                     3<sup>rd</sup> party. The format is documented in a separate document
-                    available from Innovyze.
-
+                    available from Innovyze.`
+                    `
                     The selection parameter may contain the ID or scripting path of a
                     selection list object, or the WSModelObject itself, or may be nil in
-                    which case results for the whole network will be exported.
-
+                    which case results for the whole network will be exported.`
+                    `
                     The attributes parameter may be nil, in which case all attributes are
                     exported, or may be an array as described in the
-                    list\_max\_results\_attributes method above.
+                    list\_max\_results\_attributes method above.`
 
         `
         `
@@ -3746,19 +3967,19 @@
 
 
                     Exports the results for the simulation in the CSV format corresponding
-                    to that used in the CSV results export menu option.
-
+                    to that used in the CSV results export menu option.`
+                    `
                     The selection parameter may contain the ID or scripting path of a
                     selection list object, or the WSModelObject itself, or it may be nil in
-                    which case results for the whole network will be exported.
-
+                    which case results for the whole network will be exported.`
+                    `
                     The attributes parameter may be nil, in which case all attributes are
                     exported, or may be an array as described in the
                     list\_max\_results\_attributes method above (i.e. as
-                    max\_results\_binary\_export).
-
+                    max\_results\_binary\_export).`
+                    `
                     (Note that the parameters for this method are the same as those for
-                    results\_csv\_export\_ex)
+                    results\_csv\_export\_ex)`
 
         `
         `
@@ -3777,11 +3998,11 @@
 
 
                     Exports the results for the simulation in the CSV format corresponding
-                    to that used in the CSV results export menu option.
-
+                    to that used in the CSV results export menu option.`
+                    `
                     The selection parameter may contain the ID or scripting path of a
                     selection list object, or the WSModelObject itself, or it may be nil in
-                    which case results for the whole network will be exported.
+                    which case results for the whole network will be exported.`
 
         `
         `
