@@ -1,5 +1,9 @@
 # Innovyze-InfoWorks-API-Libraries
 
+### [Documentation](https://github.com/sancarn/Innovyze-ICM-Libraries/blob/master/docs/Infoworks-ICM/README.md)
+
+### [Scripts](https://github.com/sancarn/Innovyze-ICM-Libraries/tree/master/libraries/InfoWorks-ICM/Ruby)
+
 Documentation and Libraries for InfoWorks ICM and InfoWorks CS
 
 ## Author notes
