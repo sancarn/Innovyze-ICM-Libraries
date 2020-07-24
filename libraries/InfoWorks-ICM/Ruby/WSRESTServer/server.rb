@@ -134,25 +134,38 @@ class Table
 end
 
 
+#if WSApplication.current_network
+#  server.register("current",Network.new(WSApplication.current_network))
+#else
+#  server.register("databases",{
+#    "infoWorks"=>{
+#      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master"),
+#      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master"),
+#      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master")
+#    },
+#    "infoAsset"=>{
+#      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master"),
+#      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master"),
+#      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master")
+#    }
+#  })
+#end
 
+class Authentication
+  def auth(token)
+    if Digest::SHA256.hexdigest(token) = "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
+      return {
+        "app" => WSApplication,
+        "db" => WSDatabase
+      }
+    end
+  end
+end
 
 
 require_relative 'RESTServer.rb'
 server = RESTServer.new(:Port => 8000)
-if WSApplication.current_network
-  server.register("current",Network.new(WSApplication.current_network))
-else
-  server.register("databases",{
-    "infoWorks"=>{
-      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master"),
-      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master"),
-      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master")
-    },
-    "infoAsset"=>{
-      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master"),
-      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master"),
-      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master")
-    }
-  })
-end
+server.register("root",Authentication.new)
 server.start
+
+
