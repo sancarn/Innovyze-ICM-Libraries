@@ -6108,6 +6108,8 @@ The names ‘\_nodes’ or ‘\_links’ can be used to run the SQL over all
 node or link tables in the same way as can be achieved by selecting ‘All
 nodes’ or ‘All links’ in the dropdowns in the SQL dialog.
 
+> Note: This function does not return the data selected as an array or otherwise. In order to loop over the selection you need to use `WSOpenNetwork#row_object_collection_selection`
+
 <br/>
 <br/>
 
