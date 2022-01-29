@@ -85,7 +85,7 @@ class Database
     @conn = connection_string
   end
   def networks(id)
-    return 
+    return Network.new()
   end
 end
 
@@ -110,7 +110,7 @@ class Table
   end
   def value
     rows = []
-    roc.each do |ro|
+    @roc.each do |ro|
       ret = {}
       @table.fields.each do |field|
         if field.data_type == "WSStructure"
@@ -125,7 +125,6 @@ class Table
         else
           ret[field.name] = ro[field.name]
         end
-        
       end
       rows.push(ret)
     end
@@ -150,22 +149,3 @@ end
 #    }
 #  })
 #end
-
-class Authentication
-  def auth(token)
-    if Digest::SHA256.hexdigest(token) = "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
-      return {
-        "app" => WSApplication,
-        "db" => WSDatabase
-      }
-    end
-  end
-end
-
-
-require_relative 'RESTServer.rb'
-server = RESTServer.new(:Port => 8000)
-server.register("root",Authentication.new)
-server.start
-
-

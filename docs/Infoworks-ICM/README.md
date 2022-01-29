@@ -73,6 +73,10 @@ Index
 18. [WSStructureRow](#wsstructurerow)
 19. [WSValidations](#wsvalidations)
 20. [WSValidation](#wsvalidation)
+21. [WSSpatialBookmarks](#wsspatialbookmarks)
+22. [WSBounds](#WSBounds)
+23. [WSNetSelectionList](#wsnetselectionlist)
+24. [WSBaseNetworkObject](#wsbasenetworkobject)
 
 ## [Appendix](#appendix-1)
 1. [Pollutograph codes](#appendix-1--pollutograph-codes)
@@ -7915,6 +7919,183 @@ s=v.scenario
 
 Returns the scenario name for the validation message – returns ‘Base’
 for the base scenario.
+
+<br/>
+<br/>
+
+### `WSSpatialBookmarks`
+
+WSSpatialBookmarks is undocumented in most sets of documentation. It provides means for developers to automate the creation of InfoAsset/InfoWorks ICM bookmarks.
+
+#### Creation
+
+##### Syntax:
+
+```ruby
+bookmarks = WSSpatialBookmarks.new()
+```
+
+<br/>
+<br/>
+
+#### `load_from_network`
+
+##### Syntax:
+
+```ruby
+net = WSApplication.current_network
+bookmarks = WSSpatialBookmarks.new()
+bookmarks.load_from_network(net)
+```
+
+##### Description:
+
+Load the existing bookmarks from the network into the bookmarks object.
+
+<br/>
+<br/>
+
+#### `set_bookmark`
+
+##### Syntax:
+
+```ruby
+bookmarks = WSSpatialBookmarks.new()
+#bookmarks.set_bookmark(bookmark_name, x, y, width, height, zoom)
+bookmarks.set_bookmark("Skydrop pumping station", 123456,123456, 30, 30, 5)
+```
+
+##### Description:
+
+Create set a named bookmark to a new spatial zone
+
+<br/>
+<br/>
+
+#### `new_bookmark_from_selection`
+
+##### Syntax:
+
+```ruby
+net = WSApplication.current_network
+bookmarks = WSSpatialBookmarks.new()
+bookmarks.new_bookmark_from_selection "Bookmark name", net, width=30, height=30 #TODO: uncertain what arg3 and arg4 are for.
+```
+
+##### Description:
+
+Create and set a named bookmark to 
+
+<br/>
+<br/>
+
+#### `delete_bookmark`
+
+##### Syntax:
+
+```ruby
+bookmarks.delete_bookmark "Bookmark name"
+```
+
+##### Description:
+
+Deletes the specified bookmark
+
+<br/>
+<br/>
+
+#### `set_bookmark_bounds`
+
+##### Syntax:
+
+```ruby
+bookmarks.set_bookmark_bounds(name, net, size)
+```
+
+##### Description:
+
+Set the bounds of a bookmark in a network(?)
+
+<br/>
+<br/>
+
+#### `get_bookmark`
+
+##### Syntax:
+
+```ruby
+bookmark = bookmarks.get_bookmark(name)
+```
+
+##### Description:
+
+Gets the bookmark (or `WSBounds` object for the bookmark) named `name`.
+
+<br/>
+<br/>
+
+#### `save_to_network`
+
+##### Syntax:
+
+```ruby
+bookmarks.save_to_network(net)
+```
+
+##### Description:
+
+Save bookmarks to a network
+
+<br/>
+<br/>
+
+#### `load_from_file`
+
+##### Syntax:
+
+```ruby
+bookmarks.load_from_file "file/path"
+```
+
+##### Description:
+
+Load bookmarks from a file
+
+<br/>
+<br/>
+
+#### `save_to_file`
+
+##### Syntax:
+
+```ruby
+bookmarks.save_to_file "file/path"
+```
+
+##### Description:
+
+Save bookmarks to a file
+
+<br/>
+<br/>
+
+
+### `WSBounds`
+
+Currently no methods on this object are callable and this is an object which is internal to Innovyze, however the class is exposed regardless.
+
+### `WSNetSelectionList`
+
+Currently no methods on this object are callable and this is an object which is internal to Innovyze, however the class is exposed regardless.
+
+### `WSBaseNetworkObject`
+
+Currently no methods on this object are callable and this is an object which is internal to Innovyze, however the class is exposed regardless.
+
+
+<br/>
+<br/>
+
 
 Appendix
 ===============================
