@@ -1,4 +1,4 @@
-require_relative 'RESTServer.rb'
+require_relative 'HOOPServer.rb'
 
 class Test
   include BaseElement

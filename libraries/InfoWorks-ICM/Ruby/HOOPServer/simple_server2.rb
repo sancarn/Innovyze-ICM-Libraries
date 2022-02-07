@@ -1,84 +1,24 @@
 =begin
-  http://IExchange - 
+  The following implementation implements an ICM Exchange HTTP API.
+    * Includes documentation
+    * API is mostly read-only
+    * Can be run on an IExchange server or in the UI
+      * IExchange: http://IExchange:{port}/api/v1/master
+      * IExchange: http://IExchange:{port}/api/v1/open/server:40000\InfoAsset%20Master/...
+      * UI:        http://localhost:{port}/api/v1/current_network
 
-  v2 - 
-  GET http://IExchange/databases/InfoNet/Networks/19/hw_nodes
-  GET http://IExchange/databases/InfoNet/Networks/19/SQL/10/hw_nodes                //Runs an SQL object and returns selected nodes
-  GET http://IExchange/databases/InfoNet/Networks/19/SelectionLists/10/hw_nodes     //Runs a selection list and returns selected nodes
-
-
-  Can also run this on open networks in the UI:
-  GET http://IExchange/current/hw_nodes        //Returns all nodes of current network
-  GET http://IExchange/current/hw_pipes        //Returns all pipes of current network
-
-
-  General setup of REST server:
-  class SomeObject
-    def value
-      return {
-        :id => @id
-      }
-    end
-    def initialize(id)
-      @id = id
-    end
-    def some_method
-      return {
-        :key => "value"
-      }
-    end
-    def nobj
-      return SomeObject(@id+1)
-    end
-    def enum
-      return [{"a"=>@id},{"a"=>@id*2},{"a"=>@id*3}].each
-    end
-    def hash
-      return Dictionary.new({
-        "1"=>1,
-        "a"=>2,
-        "2"=>3
-      })
-    end
-    def test
-      Test.new()
-    end
-  end
-  class Dictionary
-    def initialize(hash)
-      @hash
-      @hash.each do |key|
-        define_method key.to_sym do
-          @hash[key]
-        end
-      end
-    end
-    def value
-      return {}
-    end
-  end
-  class Test
-    #If class doesn't define value() method...
-    def poop
-
-    end
-  end
-
-  RESTServer.register("obj",SomeObject.new(10))
-
-  Registers the following API:
-  http://IExchange/obj              // {"id":10}
-  http://IExchange/obj/some_method  // {"key":"value"}
-  http://IExchange/obj/nobj         // {"id":11}
-  http://IExchange/obj/nobj/nobj    // {"id":12}
-  http://IExchange/obj/enum         // [{"a": 10},{"a": 20},{"a": 30}].each
-  http://IExchange/obj/enum/0/      // {"a": 10}
-  http://IExchange/obj/hash         // {}
-  http://IExchange/obj/hash/1/      // 1
-  http://IExchange/obj/hash/a/      // 2
-  http://IExchange/obj/hash/2/      // 3
-  http://IExchange/obj/test         // {"class": "Test", "methods": ["poop"]}
+    * Can be used to extract table data, and data of the entire network
+    * Can terminate via terminate/test (by default)
+      * http://localhost:{port}/api/terminate/test
+  
 =end
+
+#CONSTANTS
+$terminate_pass = "test"
+$master_database = "test"
+$master_network_type = "Collection Network"
+$master_network_id = 20
+$port = 8000
 
 require_relative 'HOOPServer.rb'
 require_relative 'Annotations.rb'
@@ -118,14 +58,12 @@ def rocData(roc)
     end
     rows.push(ret)
   end
-  return rows.to_json
+  return rows
 end
 
-$master_database = "test"
-$master_network_type = "Collection Network"
-$master_network_id = 20
-
+#entry-point http://iexchange/api
 class HTTP_API
+  #example-url http://iexchange/api/v1
   _docs(description: "Version 1 of the api", params: [])
   def v1
     Application.new
@@ -140,20 +78,28 @@ class HTTP_API
         "description" => "A stateless HTTP OOP API end point"
         "methods" => getMethodDocs(self)
       }
-    }.to_json
+    }
+  end
+
+  _docs(description: "", params: [])
+  def terminate(s)
+    if s==$terminate_pass
+      $server.stop
+    end
   end
 end
 
+#entry-point http://iexchange/api/v1
 class Application
   annotate!
 
-  #@example-url http://IExchange/application/current_network
+  #@example-url http://IExchange/api/v1/current_network
   _docs(description: "Access the current network in UI mode", params: [])
   def current_network()
     return Network.new(WSApplication.current_network)
   end
 
-  #@example-url http://IExchange/application/open/testServer:40000\Test
+  #@example-url http://IExchange/api/v1/open/testServer:40000\Test
   _docs(description: "Access the current network in UI mode", params: [
     {name: "connection_string", type: "string", description: "Connection string of database. See https://github.com/sancarn/Innovyze-ICM-Libraries/tree/master/docs/Infoworks-ICM#open-exchange-only"}
   ])
@@ -161,13 +107,13 @@ class Application
     Database.new(connection_string)
   end
 
-  #@example-url http://IExchange/application/master
+  #@example-url http://IExchange/api/v1/master
   _docs(description: "Retrieve the assigned master database.", params: [])
   def master
     Database.new($master_database)
   end
 
-  #@example-url http://IExchange/application
+  #@example-url http://IExchange/api/v1
   _docs(description: "Retrieve the value of the object", params: [])
   def value()
     {
@@ -176,10 +122,13 @@ class Application
       "docs" => {
         "methods" => getMethodDocs(self)
       }
-    }.to_json
+    }
   end
 end
 
+#entry-point http://iexchange/api/v1/{database}
+#entry-point http://iexchange/api/v1/master
+#entry-point http://iexchange/api/v1/open/{connection-string}
 class Database
   annotate!
 
@@ -190,7 +139,7 @@ class Database
     @db = @@cache[:db][@conn] || (@@cache[:db][@conn] = WSApplication.open(@conn))
   end
 
-  #@example-url http://IExchange/application/master/collection_network/10
+  #@example-url http://IExchange/api/v1/master/collection_network/10
   _docs(description: "Get the collection network with the specified ID", params: [
     {name: "id", type: "int", description: "ID of the collection network to retrieve"}
   ])
@@ -198,7 +147,7 @@ class Database
     return Network.new(@db.model_object_from_type_and_id("Collection Network", id))
   end
   
-  #@example-url http://IExchange/application/master/model_network/10
+  #@example-url http://IExchange/api/v1/master/model_network/10
   _docs(description: "Get the model network with the specified ID", params: [
     {name: "id", type: "int", description: "ID of the collection network to retrieve"}
   ])
@@ -206,13 +155,13 @@ class Database
     return Network.new(@db.model_object_from_type_and_id("Model Network", id))
   end
 
-  #@example-url http://IExchange/application/master/master
+  #@example-url http://IExchange/api/v1/master/master
   _docs(description: "Get the master network for this database", params: [])
   def master
     return Network.new(@db.model_object_from_type_and_id($master_network_type,$master_network_id))
   end
 
-  #@example-url http://IExchange/application/master/model_object_from_type_and_id/Model%20Network/10
+  #@example-url http://IExchange/api/v1/master/model_object_from_type_and_id/Model%20Network/10
   _docs(description: "Obtain a model object from the database based on type and id", params: [
     {name: "type", type: "string", description: "The type of the model object to retrieve"},
     {name: "id", type: "int", description: "ID of the model object to retrieve"}
@@ -221,9 +170,8 @@ class Database
     return ModelObject.new(@db.model_object_from_type_and_id(type,id))
   end
 
-  #TODO: Dump entire database structure as JSON
-  #@example-url http://IExchange/application/master/tree
-  _docs(description: "Obtain the entire database structure as JSON", params: [])
+  #@example-url http://IExchange/api/v1/master/tree
+  _docs(description: "Obtain all database items", params: [])
   def tree(uuid=nil)
     if uuid 
       @@cache[:tree][uuid][:status] ||= @@cache[:tree][uuid][:threads].all? {|t| !t.status}
@@ -231,7 +179,7 @@ class Database
         type: "Tree Response",
         status: @@cache[:tree][uuid][:status],
         tree: @@cache[:tree][uuid][:data]
-      }.to_json
+      }
     else
       @@cache ||= {}
       @@cache[:tree] ||= {}
@@ -257,11 +205,11 @@ class Database
       return {
         type: "Tree Reference",
         treeID: uuid
-      }.to_json
+      }
     end
   end
 
-  #@example-url http://IExchange/application/master
+  #@example-url http://IExchange/api/v1/master
   _docs(description: "Obtain information about the object", params: [])
   def value()
     {
@@ -274,7 +222,7 @@ class Database
       "docs" => {
         "methods" => getMethodDocs(self)
       }
-    }.to_json
+    }
   end
 end
 
@@ -286,7 +234,7 @@ class ModelObject
     @mo = mo
   end
 
-  #@example-url http://IExchange/application/master/model_object_from_type_and_id/Model%20Network/10
+  #@example-url http://IExchange/api/v1/master/model_object_from_type_and_id/Model%20Network/10
   _docs(description: "Obtain information about the object", params: [])
   def value()
     {
@@ -301,10 +249,18 @@ class ModelObject
       "docs" => {
         "methods"=> getMethodDocs(self)
       }
-    }.to_json
+    }
   end
 end
 
+#entry-point http://iexchange/api/v1/{database}/{network}
+#entry-point http://iexchange/api/v1/master/master
+#entry-point http://iexchange/api/v1/master/model_network/{id}
+#entry-point http://iexchange/api/v1/master/collection_network/{id}
+#entry-point http://iexchange/api/v1/open/{connection-string}/master
+#entry-point http://iexchange/api/v1/open/{connection-string}/model_network/{id}
+#entry-point http://iexchange/api/v1/open/{connection-string}/collection_network/{id}
+#entry-point http://iexchange/api/v1/current_network
 class Network
   annotate!
 
@@ -315,7 +271,7 @@ class Network
     end
   end
 
-  #@example-url http://IExchange/application/master/master/tables
+  #@example-url http://IExchange/api/v1/master/master/tables
   _docs(description: "Obtain a table of the network", params: [
     {name: "table_name", type: "string", description: "The name of the table to retrieve"}
   ])
@@ -323,7 +279,7 @@ class Network
     return Table.new(@net,table_name)
   end
 
-  #@example-url http://IExchange/application/master/master/scenarios/KST/...
+  #@example-url http://IExchange/api/v1/master/master/scenarios/KST/data
   _docs(description: "Obtain a scenario of the network", params: [
     {name: "scenario_name", type: "string", description: "The name of the scenario to retrieve"}
   ])
@@ -332,7 +288,7 @@ class Network
     return self
   end
 
-  #TODO: All tables
+  #@example-url http://IExchange/api/v1/master/master/data
   _docs(description: "Obtain all data of the object in JSON representation", params: [])
   def data
     return @net.tables.enum_for(:each).map do |table|
@@ -340,10 +296,10 @@ class Network
         table: table.name,
         data: rocData(@net.row_object_collection(table.name))
       }
-    end.to_json
+    end
   end
 
-  #@example-url http://IExchange/application/master/master
+  #@example-url http://IExchange/api/v1/master/master
   _docs(description: "Obtain information about the object", params: [])
   def value()
     {
@@ -355,10 +311,12 @@ class Network
       "docs" => {
         "methods" => getMethodDocs(self)
       }
-    }.to_json
+    }
   end
 end
 
+#entry-point http://iexchange/api/v1/{database}/{network}/tables/{table-name}
+#entry-point http://iexchange/api/v1/master/master/tables/{table-name}
 class Table
   annotate!
 
@@ -367,21 +325,21 @@ class Table
     @table = table
   end
 
-  #@example-url http://IExchange/application/master/master/tables/_links/data
+  #@example-url http://IExchange/api/v1/master/master/tables/_links/data
   _docs(description: "Obtain all data of the object in JSON representation", params: [])
   def data
-    return rocData(@net.row_object_collection(@table)).to_json
+    return rocData(@net.row_object_collection(@table))
   end
 
-  #@example-url http://IExchange/application/master/master/tables/_links/data_where/link_type='cond'
+  #@example-url http://IExchange/api/v1/master/master/tables/_links/data_where/link_type='cond'
   _docs(description: "Obtain all data of the object in JSON representation where a SQL condition is met", params: [])
   def data_where(sQuery)
     @net.clear_selection
     @net.run_SQL(@table,sQuery)
-    return rocData(@net.row_object_collection_selection(@table)).to_json
+    return rocData(@net.row_object_collection_selection(@table))
   end
 
-  #@example-url http://IExchange/application/master/master/tables/_links
+  #@example-url http://IExchange/api/v1/master/master/tables/_links
   _docs(description: "Obtain information about the object", params: [])
   def value()
     {
@@ -398,28 +356,14 @@ class Table
       "docs" => {
         "methods" => getMethodDocs(self)
       }
-    }.to_json
+    }
   end
 end
 
-
-
-
-HOOPServer.register("api",HTTP_API.new)
-
-#if WSApplication.current_network
-#  server.register("current",Network.new(WSApplication.current_network))
-#else
-#  server.register("databases",{
-#    "infoWorks"=>{
-#      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master"),
-#      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master"),
-#      "InfoWorks Master"=> Database.new("server:port/InfoWorks Master")
-#    },
-#    "infoAsset"=>{
-#      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master"),
-#      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master"),
-#      "InfoAsset Master"=> Database.new("server:port/InfoAsset Master")
-#    }
-#  })
-#end
+begin
+  $server = HOOPServer.new({:Port => $port})
+  $server.register("api",HTTP_API.new)
+  $server.start
+rescue Exception=>e
+  puts e.message
+end

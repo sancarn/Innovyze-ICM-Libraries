@@ -121,7 +121,7 @@ class HOOPServer
       if obj.respond_to?(:value)
         res.status = 200
         res['Content-Type'] = 'text/json'
-        res.body = obj.value.to_s
+        res.body = obj.value.to_json
       else
         res.status=200
         res['Content-Type'] = 'text/json'
