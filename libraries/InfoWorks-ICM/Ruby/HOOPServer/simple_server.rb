@@ -37,8 +37,8 @@ class Authentication
 end
 
 
-require_relative 'RESTServer.rb'
-server = RESTServer.new(:Port => 8000)
+require_relative 'HOOPServer.rb'
+server = HOOPServer.new(:Port => 8000)
 server.register("root",Authentication.new)
 server.start
 

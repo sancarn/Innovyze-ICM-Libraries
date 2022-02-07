@@ -27,7 +27,7 @@ class Test
 end
 
 begin
-  $server = RESTServer.new({:Port => 8000})
+  $server = HOOPServer.new({:Port => 8000})
   $server.register("test",Test.new)
   $server.start
 rescue Exception=>e

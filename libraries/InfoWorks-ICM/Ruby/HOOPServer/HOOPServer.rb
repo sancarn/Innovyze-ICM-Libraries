@@ -16,7 +16,8 @@ end
 
 require 'json'
 require 'webrick'
-class RESTServer
+#HTTP OOP Server
+class HOOPServer
   #Constructor
   def initialize(options)
     @roots = {}
