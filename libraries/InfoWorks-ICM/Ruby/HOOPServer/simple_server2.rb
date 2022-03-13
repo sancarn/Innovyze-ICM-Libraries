@@ -1,5 +1,5 @@
 =begin
-  The following implementation implements an ICM Exchange HTTP API.
+The following implementation implements an ICM Exchange HTTP API.
     * Includes documentation
     * API is mostly read-only
     * Can be run on an IExchange server or in the UI
@@ -10,16 +10,18 @@
     * Can be used to extract table data, and data of the entire network
     * Can terminate via terminate/test (by default)
       * http://localhost:{port}/api/terminate/test
-  
 =end
 
-#CONSTANTS
 $terminate_pass = "test"
 $master_database = "test"
 $master_network_type = "Collection Network"
 $master_network_id = 20
 $port = 8000
+$entry = "api"
 
+MESSAGE_ADDRESS = true
+
+#require_relative 'HOOPServer.rb'
 require_relative 'HOOPServer.rb'
 require_relative 'Annotations.rb'
 require 'securerandom'
@@ -35,6 +37,7 @@ def getMethodDocs(instance)
     klass.annotations(m)[:docs].each do |k,v|
       h[k] = v
     end
+    next h
   end
 end
 
@@ -63,7 +66,8 @@ end
 
 #entry-point http://iexchange/api
 class HTTP_API
-  #example-url http://iexchange/api/v1
+  annotate!
+  
   _docs(description: "Version 1 of the api", params: [])
   def v1
     Application.new
@@ -73,14 +77,16 @@ class HTTP_API
   def value 
     return {
       "self" => self.inspect,
-      "metadata" => {},
+      "metadata" => {
+        "computer" => ENV["COMPUTERNAME"]
+      },
       "docs" => {
-        "description" => "A stateless HTTP OOP API end point"
+        "description" => "A stateless HTTP OOP API end point",
         "methods" => getMethodDocs(self)
       }
     }
   end
-
+  
   _docs(description: "", params: [])
   def terminate(s)
     if s==$terminate_pass
@@ -100,7 +106,7 @@ class Application
   end
 
   #@example-url http://IExchange/api/v1/open/testServer:40000\Test
-  _docs(description: "Access the current network in UI mode", params: [
+  _docs(description: "Open a database with the specified connection string", params: [
     {name: "connection_string", type: "string", description: "Connection string of database. See https://github.com/sancarn/Innovyze-ICM-Libraries/tree/master/docs/Infoworks-ICM#open-exchange-only"}
   ])
   def open(connection_string)
@@ -170,18 +176,35 @@ class Database
     return ModelObject.new(@db.model_object_from_type_and_id(type,id))
   end
 
-  #@example-url http://IExchange/api/v1/master/tree
-  _docs(description: "Obtain all database items", params: [])
-  def tree(uuid=nil)
-    if uuid 
-      @@cache[:tree][uuid][:status] ||= @@cache[:tree][uuid][:threads].all? {|t| !t.status}
-      return {
-        type: "Tree Response",
-        status: @@cache[:tree][uuid][:status],
-        tree: @@cache[:tree][uuid][:data]
-      }
-    else
-      @@cache ||= {}
+  #TODO: Dump entire database structure as JSON
+  #@example-url http://IExchange/api/v1/master/tree/123e4567-e89b-12d3-a456-426614174000
+  _docs(description: "Obtain the entire database structure as JSON. After obtaining an existing payload, poll on this function to obtain the data.", params: [
+		{name: "uuid", type: "string", description: "The UUID of the tree object to retrieve"},
+  ])
+  def tree(uuid)
+    @@cache[:tree] ||= {}
+		begin
+			@@cache[:tree][uuid][:status] ||= @@cache[:tree][uuid][:threads].all? {|t| !t.status}
+			return {
+				type: "Tree Response",
+				status: @@cache[:tree][uuid][:status],
+				tree: @@cache[:tree][uuid][:data],
+				error: nil
+			}
+		rescue Exception => e
+			return {
+				type: "Tree Response",
+				status: false,
+				tree: nil,
+				error: "No tree with the UUID \"#{uuid}\" exists." 
+			}
+		end
+  end
+  
+	#@example-url http://IExchange/api/v1/master/tree/123e4567-e89b-12d3-a456-426614174000
+	_docs(description: "Obtain the entire database structure. This function is used to request a new payload. Use tree/{{uuid}} to obtain existing payloads.", params: [])
+  def getTree()
+			@@cache ||= {}
       @@cache[:tree] ||= {}
       @@cache[:tree][uuid = SecureRandom.uuid()] = {}
       @@cache[:tree][uuid][:threads] = []
@@ -206,7 +229,6 @@ class Database
         type: "Tree Reference",
         treeID: uuid
       }
-    end
   end
 
   #@example-url http://IExchange/api/v1/master
@@ -279,7 +301,7 @@ class Network
     return Table.new(@net,table_name)
   end
 
-  #@example-url http://IExchange/api/v1/master/master/scenarios/KST/data
+  #@example-url http://IExchange/api/v1/master/master/scenarios/KST/...
   _docs(description: "Obtain a scenario of the network", params: [
     {name: "scenario_name", type: "string", description: "The name of the scenario to retrieve"}
   ])
@@ -288,7 +310,7 @@ class Network
     return self
   end
 
-  #@example-url http://IExchange/api/v1/master/master/data
+  #TODO: All tables
   _docs(description: "Obtain all data of the object in JSON representation", params: [])
   def data
     return @net.tables.enum_for(:each).map do |table|
@@ -303,10 +325,17 @@ class Network
   _docs(description: "Obtain information about the object", params: [])
   def value()
     {
-      "self" => self.inspect,
+      #"self" => self.inspect,
       "metadata" => {
-        "tables"=>tables.map {|t| t.name},
-        "scenarios" => @net.scenarios
+        "model_object" => {
+          "name" => @net.model_object.name,
+          "path" => @net.model_object.path
+        },
+        "state" => {
+          "scenario" => @net.current_scenario
+        },
+        "tables"=>@net.tables.map {|t| t.name},
+        "scenarios" => @net.enum_for(:scenarios).to_a
       },
       "docs" => {
         "methods" => getMethodDocs(self)
@@ -360,9 +389,13 @@ class Table
   end
 end
 
+if MESSAGE_ADDRESS
+  WSApplication.message_box("Connect at http://#{ENV["COMPUTERNAME"]}:#{$port}/#{$entry}", "OK", "information", false)
+end
+
 begin
   $server = HOOPServer.new({:Port => $port})
-  $server.register("api",HTTP_API.new)
+  $server.register($entry,HTTP_API.new)
   $server.start
 rescue Exception=>e
   puts e.message
