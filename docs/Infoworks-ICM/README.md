@@ -2104,6 +2104,11 @@ iwdb=WSApplication.open(path,bUpdate)
 ```ruby
 db=WSApplication.open 'd:\\temp\\1.icmm',false
 db.open nil,false
+
+db = WSApplication.open nil, false
+
+db = WSApplication.open "snumbat://localhost:40000/myDatabaseName", false
+
 ```
 
 ##### Description:
