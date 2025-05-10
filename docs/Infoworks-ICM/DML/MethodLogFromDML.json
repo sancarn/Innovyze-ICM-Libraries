@@ -1,0 +1,1690 @@
+[
+    {
+        "class": "WSApplication",
+        "name": "add_ons_folder",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "background_network",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "cancel_job",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "colour",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "connect_local_agent",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "current_database",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "current_network",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "create",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "file_dialog",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "folder_dialog",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "graph",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "input_box",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "launch_sims",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "message_box",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "open",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "open_text_view",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "override_user_units",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "prompt",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "results_folder",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "scalars",
+        "exchange": false,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "script_file",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "set_exit_code",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "set_working_folder",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "set_results_folder",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "wait_for_jobs",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "version",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSApplication",
+        "name": "working_folder",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "copy_into_root",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "file_root",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "find_model_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "find_root_model_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "guid",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "list_read_write_run_fields",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "model_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "model_object_collection",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "model_object_from_type_and_guid",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "model_object_from_type_and_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "new_network_name",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "new_model_object",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "path",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSDatabase",
+        "name": "root_model_objects",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObjectCollection",
+        "name": "count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObjectCollection",
+        "name": "each",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "bulk_delete",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "children",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "comment",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "compare",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "copy_here",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "delete",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "delete_results",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "export",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "find_child_model_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "import_data",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "import_new_model_object",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "modified_by",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "name",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "new_model_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "new_risk_analysis_run",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "new_run",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "update_to_latest",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "open",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "path",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "parent_type",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "parent_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSModelObject",
+        "name": "type",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "commit",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "commits",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "commit_reserve",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "csv_changes",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "csv_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "csv_import",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "current_commit_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "GIS_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "latest_commit_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "list_GIS_export_tables",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "odec_export_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "odic_import_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "remove_local",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "reserve",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "revert",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "select_changes",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "select_clear",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "select_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "select_sql",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "unreserve",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "update",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNumbatNetworkObject",
+        "name": "user_field_names",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "list_max_results_attributes",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "list_results_attributes",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "list_results_GIS_export_tables",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "list_timesteps",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "max_flood_contours_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "max_results_binary_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "results_binary_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "max_results_csv_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "results_csv_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "results_csv_export_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "results_GIS_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "run",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "run_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "status",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "success_substatus",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSSimObject",
+        "name": "timestep_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "add_scenario",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "clear_selection",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "close",
+        "exchange": true,
+        "ui": false,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "current_timestep",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "current_timestep_time",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "csv_import",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "current_scenario",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "delete_scenario",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "delete_selection",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "each",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "each_selected",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "export_IDs",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "gauge_timestep_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "gauge_timestep_time",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "GIS_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "list_gauge_timesteps",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "list_GIS_export_tables",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "list_timesteps",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "load_selection",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "new_row_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "objects_in_polygon",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "odic_import_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "odec_export_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "row_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "row_objects",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "row_objects_from_asset_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "row_object_collection",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "row_object_collection_selection",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "run_inference",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "run_SQL",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "run_stored_query_object",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "save_selection",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "scenarios",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "selection_size",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "snapshot_import",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "snapshot_import_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "snapshot_export",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "snapshot_export_ex",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "snapshot_scan",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "table_names",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "table",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "tables",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "timestep_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "timestep_time",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "transaction_begin",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "transaction_commit",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "transaction_rollback",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "update_cctv_scores",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSOpenNetwork",
+        "name": "validate",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "missing_method",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "category",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "delete",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "field",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "gauge_results",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "navigate",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "navigate1",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "objects_in_polygon",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "result",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "results",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "table",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "table_info",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObject",
+        "name": "write",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNode",
+        "name": "us_links",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSNode",
+        "name": "ds_links",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSLink",
+        "name": "us_node",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSLink",
+        "name": "ds_node",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRiskAnalysisRunObject",
+        "name": "run",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObjectCollection",
+        "name": "length",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSRowObjectCollection",
+        "name": "each",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSTableInfo",
+        "name": "description",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSTableInfo",
+        "name": "fields",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSTableInfo",
+        "name": "name",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSTableInfo",
+        "name": "results_fields",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSFieldInfo",
+        "name": "data_type",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSFieldInfo",
+        "name": "description",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSFieldInfo",
+        "name": "fields",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSFieldInfo",
+        "name": "name",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSFieldInfo",
+        "name": "size",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "7.0"
+    },
+    {
+        "class": "WSCommit",
+        "name": "branch_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "comment",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "commit_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "date",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "deleted_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "inserted_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "modified_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "setting_changed_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommit",
+        "name": "user",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommits",
+        "name": "each",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSCommits",
+        "name": "length",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSStructure",
+        "name": "each",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSStructure",
+        "name": "length",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSStructure",
+        "name": "size",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSStructure",
+        "name": "write",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidations",
+        "name": "error_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidations",
+        "name": "warning_count",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidations",
+        "name": "length",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidations",
+        "name": "each",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "code",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "field",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "field_description",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "object_id",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "object_type",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "message",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "priority",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "type",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    },
+    {
+        "class": "WSValidation",
+        "name": "scenario",
+        "exchange": true,
+        "ui": true,
+        "docs": "official",
+        "v": "1.6.6"
+    }
+]

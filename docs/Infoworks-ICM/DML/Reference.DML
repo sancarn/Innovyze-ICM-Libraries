@@ -115,9 +115,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`connect_local_agent` (Exchange only)
+            ###`connect_local_agent`
 
                 `#### Syntax:
 
@@ -135,9 +135,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`current_database` (UI only)
+            ###`current_database`
 
                 `#### Syntax:
 
@@ -154,9 +154,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`current_network` (UI only)
+            ###`current_network`
 
                 `#### Syntax:
 
@@ -176,9 +176,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`create` (Exchange only)
+            ###`create`
 
                 `#### Syntax:
 
@@ -203,9 +203,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`create_transportable` (Exchange only)
+            ###`create_transportable
 
                 `#### Syntax:
 
@@ -222,9 +222,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`file_dialog` (UI only)
+            ###`file_dialog`
 
                 `#### Syntax:
 
@@ -267,9 +267,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`folder_dialog` (UI only)
+            ###`folder_dialog`
 
                 `#### Syntax:
 
@@ -297,9 +297,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`graph` (UI only)
+            ###`graph`
 
                 `#### Syntax:
 
@@ -476,9 +476,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`input_box` (UI only)
+            ###`input_box`
 
                 `#### Syntax:
 
@@ -499,9 +499,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`launch_sims` (Exchange only)
+            ###`launch_sims`
 
                 `#### Syntax:
 
@@ -541,9 +541,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`message_box` (UI only)
+            ###`message_box`
 
                 `#### Syntax:
 
@@ -682,9 +682,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`open` (Exchange only)
+            ###`open`
 
                 `#### Syntax:
 
@@ -740,9 +740,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`open_text_view` (UI only)
+            ###`open_text_view`
 
                 `#### Syntax:
 
@@ -799,9 +799,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`override_user_units` (Exchange only)
+            ###`override_user_units`
 
                 `#### Syntax:
 
@@ -844,9 +844,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`prompt` (UI only)
+            ###`prompt`
 
                 `#### Syntax:
 
@@ -986,9 +986,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`results_folder` (Exchange only)
+            ###`results_folder`
 
                 `#### Syntax:
 
@@ -1014,9 +1014,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=false ui=true documentation="official" icmVersion="1.6.6"]
 
-            ###`scalars` (UI only)
+            ###`scalars`
 
                 `#### Syntax:
 
@@ -1082,9 +1082,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`set_exit_code` (Exchange only)
+            ###`set_exit_code`
 
                 `#### Syntax:
 
@@ -1112,9 +1112,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`set_working_folder` (Exchange only)
+            ###`set_working_folder`
 
                 `#### Syntax:
 
@@ -1139,9 +1139,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`set_results_folder` (Exchange only)
+            ###`set_results_folder`
 
                 `#### Syntax:
 
@@ -1166,9 +1166,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`wait_for_jobs` (Exchange only)
+            ###`wait_for_jobs`
 
                 `#### Syntax:
 
@@ -1361,9 +1361,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`working_folder` (Exchange only)
+            ###`working_folder`
 
                 `#### Syntax:
 
@@ -1401,9 +1401,9 @@
         `
         `
 
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`copy_into_root` (Exchange only)
+            ###`copy_into_root`
 
                 `#### Syntax:
 
@@ -1423,9 +1423,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`file_root` (Exchange only)
+            ###`file_root`
 
                 `#### Syntax:
 
@@ -1525,9 +1525,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`list_read_write_run_fields` (Exchange only)
+            ###`list_read_write_run_fields`
 
                 `#### Syntax:
 
@@ -1595,9 +1595,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`model_object_from_type_and_guid` (Exchange only)
+            ###`model_object_from_type_and_guid`
 
                 `#### Syntax:
 
@@ -1650,9 +1650,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`new_network_name` (Exchange only)
+            ###`new_network_name`
 
                 `#### Syntax:
 
@@ -1685,9 +1685,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`new_model_object` (Exchange only)
+            ###`new_model_object`
 
                 `#### Syntax:
 
@@ -1891,9 +1891,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`bulk_delete` (Exchange only)
+            ###`bulk_delete`
 
                 `#### Syntax:
 
@@ -1933,9 +1933,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`comment` (Exchange only)
+            ###`comment`
 
                 `#### Syntax:
 
@@ -1970,9 +1970,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`compare` (Exchange only)
+            ###`compare`
 
                 `#### Syntax:
 
@@ -2000,9 +2000,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`copy_here` (Exchange only)
+            ###`copy_here`
 
                 `#### Syntax:
 
@@ -2044,9 +2044,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`delete` (Exchange only)
+            ###`delete`
 
                 `#### Syntax:
 
@@ -2065,9 +2065,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`delete_results` (Exchange only)
+            ###`delete_results`
 
                 `#### Syntax:
 
@@ -2083,9 +2083,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`export` (Exchange only)
+            ###`export`
 
                 `#### Syntax:
 
@@ -2225,9 +2225,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`import_data` (Exchange only)
+            ###`import_data`
 
                 `#### Syntax:
 
@@ -2250,9 +2250,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`import_new_model_object` (Exchange only)
+            ###`import_new_model_object`
 
                 `#### Syntax:
 
@@ -2439,9 +2439,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`new_risk_analysis_run` (ICM Exchange only)
+            ###`new_risk_analysis_run`
 
                 `#### Syntax:
 
@@ -2541,9 +2541,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`update_to_latest` (Exchange only)
+            ###`update_to_latest`
 
                 `#### Syntax:
 
@@ -2568,9 +2568,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`open` (Exchange only)
+            ###`open`
 
                 `#### Syntax:
 
@@ -4312,9 +4312,9 @@
         `
         `
         [/method]
-        [method exchange=true ui=true documentation="official" icmVersion="1.6.6"]
+        [method exchange=true ui=false documentation="official" icmVersion="1.6.6"]
 
-            ###`close` (Exchange only)
+            ###`close`
 
                 `#### Syntax:
 

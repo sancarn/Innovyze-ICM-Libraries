@@ -25,6 +25,7 @@ WSApplication.message_box                                                       
 WSApplication.open_text_view                                                    :    UI Only
 WSApplication.prompt                                                            :    UI Only
 WSApplication.scalars                                                           :    UI Only
+
 WSDatabase.instance.copy_into_root                                              :    ICMExchange Only
 WSDatabase.instance.custom_schema                                               :    ICMExchange Only
 WSDatabase.instance.file_root                                                   :    ICMExchange Only
@@ -38,6 +39,7 @@ WSDatabase.instance.model_object_from_type_and_id                               
 WSDatabase.instance.new_network_name                                            :    ICMExchange Only
 WSDatabase.instance.scripting_name_of_type                                      :    ICMExchange Only
 WSDatabase.instance.new_model_object                                            :    ICMExchange Only
+
 WSOpenNetwork.instance.befdss_export                                            :    The method cannot be run from InfoWorks ICM
 WSOpenNetwork.instance.befdss_import_cctv                                       :    The method cannot be run from InfoWorks ICM
 WSOpenNetwork.instance.befdss_import_manhole_surveys                            :    The method cannot be run from InfoWorks ICM
@@ -90,6 +92,7 @@ WSOpenNetwork.instance.validate                                                 
 WSOpenNetwork.instance.commit                                                   :    Both UI and ICMExchange
 WSOpenNetwork.instance.run_inference                                            :    Both UI and ICMExchange
 WSOpenNetwork.instance.run_stored_query_object                                  :    Both UI and ICMExchange
+
 WSModelObject.instance.[]                                                       :    ICMExchange Only
 WSModelObject.instance.[]=                                                      :    ICMExchange Only
 WSModelObject.instance.bulk_delete                                              :    ICMExchange Only
@@ -123,6 +126,7 @@ WSModelObject.instance.tvd_unit_type                                            
 WSModelObject.instance.tvd_unit_type=                                           :    ICMExchange Only
 WSModelObject.instance.update_dashboard                                         :    ICMExchange Only
 WSModelObject.instance.update_to_latest                                         :    ICMExchange Only
+
 WSNumbatNetworkObject.instance.befdss_export                                    :    The method cannot be run from InfoWorks ICM
 WSNumbatNetworkObject.instance.befdss_import_cctv                               :    The method cannot be run from InfoWorks ICM
 WSNumbatNetworkObject.instance.befdss_import_manhole_surveys                    :    The method cannot be run from InfoWorks ICM
@@ -190,6 +194,7 @@ WSNumbatNetworkObject.instance.tvd_unit_type                                    
 WSNumbatNetworkObject.instance.tvd_unit_type=                                   :    ICMExchange Only
 WSNumbatNetworkObject.instance.update_dashboard                                 :    ICMExchange Only
 WSNumbatNetworkObject.instance.update_to_latest                                 :    ICMExchange Only
+
 WSSimObject.instance.list_max_results_attributes                                :    ICMExchange Only
 WSSimObject.instance.list_results_attributes                                    :    ICMExchange Only
 WSSimObject.instance.list_results_GIS_export_tables                             :    ICMExchange Only
@@ -241,6 +246,7 @@ WSSimObject.instance.tvd_unit_type                                              
 WSSimObject.instance.tvd_unit_type=                                             :    ICMExchange Only
 WSSimObject.instance.update_dashboard                                           :    ICMExchange Only
 WSSimObject.instance.update_to_latest                                           :    ICMExchange Only
+
 WSRiskAnalysisRunObject.instance.run                                            :    ICMExchange Only
 WSRiskAnalysisRunObject.instance.run_ex                                         :    ICMExchange Only
 WSRiskAnalysisRunObject.instance.[]                                             :    ICMExchange Only
@@ -276,7 +282,9 @@ WSRiskAnalysisRunObject.instance.tvd_unit_type                                  
 WSRiskAnalysisRunObject.instance.tvd_unit_type=                                 :    ICMExchange Only
 WSRiskAnalysisRunObject.instance.update_dashboard                               :    ICMExchange Only
 WSRiskAnalysisRunObject.instance.update_to_latest                               :    ICMExchange Only
+
 WSModelObjectCollection.instance.each                                           :    Both UI and ICMExchange
+
 WSNode.instance.[]                                                              :    Both UI and ICMExchange
 WSNode.instance.[]=                                                             :    Both UI and ICMExchange
 WSNode.instance.autoname                                                        :    Both UI and ICMExchange
@@ -301,6 +309,7 @@ WSNode.instance.navigate                                                        
 WSNode.instance.navigate1                                                       :    Both UI and ICMExchange
 WSNode.instance.objects_in_polygon                                              :    Both UI and ICMExchange
 WSNode.instance.method_missing                                                  :    Both UI and ICMExchange
+
 WSLink.instance.[]                                                              :    Both UI and ICMExchange
 WSLink.instance.[]=                                                             :    Both UI and ICMExchange
 WSLink.instance.autoname                                                        :    Both UI and ICMExchange
@@ -313,13 +322,18 @@ WSLink.instance.navigate                                                        
 WSLink.instance.navigate1                                                       :    Both UI and ICMExchange
 WSLink.instance.objects_in_polygon                                              :    Both UI and ICMExchange
 WSLink.instance.method_missing                                                  :    Both UI and ICMExchange
+
 WSStructure.instance.[]                                                         :    Both UI and ICMExchange
+
 WSStructureRow.instance.[]                                                      :    Both UI and ICMExchange
 WSStructureRow.instance.[]=                                                     :    Both UI and ICMExchange
 WSStructureRow.instance.method_missing                                          :    Both UI and ICMExchange
+
 WSRowObjectCollection.instance.each                                             :    Both UI and ICMExchange
 WSRowObjectCollection.instance.[]                                               :    Both UI and ICMExchange
+
 WSValidations.instance.each                                                     :    Both UI and ICMExchange
+
 WSSpatialBookmarks.instance.set_bookmark                                        :    Both UI and ICMExchange
 WSSpatialBookmarks.instance.new_bookmark_from_selection                         :    Both UI and ICMExchange
 WSSpatialBookmarks.instance.delete_bookmark                                     :    Both UI and ICMExchange
@@ -329,6 +343,7 @@ WSSpatialBookmarks.instance.load_from_network                                   
 WSSpatialBookmarks.instance.save_to_network                                     :    Both UI and ICMExchange
 WSSpatialBookmarks.instance.load_from_file                                      :    Both UI and ICMExchange
 WSSpatialBookmarks.instance.save_to_file                                        :    Both UI and ICMExchange
+
 WSDongleCheck.ICM_and_InfoNet_method                                            :    Innovyze Private method
 WSDongleCheck.ICM_method                                                        :    Innovyze Private method
 WSDongleCheck.InfoNet_method                                                    :    Innovyze Private method
